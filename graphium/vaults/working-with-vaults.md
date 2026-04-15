@@ -1,0 +1,104 @@
+# Working with Vaults
+
+> **Article type:** Product Use
+> **Audience:** Internal Team
+> **Status:** Draft
+> **Last updated:** 2026-03-16
+> **Author:** Graphium AI Team
+
+---
+
+## Overview
+
+Vaults are the core organizational unit in Graphium AI. Think of a Vault as a structured container — it holds all the data, forms, connections, and workflows related to a specific project, process, or data type. Every piece of captured data lives inside a Vault.
+
+## When to Use This
+
+Use this article when you need to create a new Vault for a project, browse your team's existing Vaults, or access the details of a specific data collection.
+
+## Prerequisites
+
+- You are signed in to Graphium AI
+- To **view** vaults: you must be an active member of the vault (your administrator adds you)
+- To **create** vaults: you must have the workspace role of **Workspace Owner** or **Workspace Manager**
+
+## Vault Roles
+
+Every member of a vault is assigned one of four roles that controls what they can do:
+
+| Role | What They Can Do |
+|------|-----------------|
+| **Admin** | Full access — manage the vault, its members, all data, and settings |
+| **Builder** | Create and modify tables, forms, schemas, and workflows |
+| **Contributor** | Add and edit records, but cannot change the vault's structure |
+| **Viewer** | Read-only access to view data |
+
+> 💡 **Note:** When you create a vault, you are automatically assigned the **Admin** role. All Workspace Owners are also automatically added as Admins when a vault is created.
+
+## Step-by-Step Instructions
+
+### Step 1: Navigate to the Vaults Section
+
+From the left sidebar, click on **Vaults**. You'll see the Vault List — a grid of cards representing all Vaults you have access to.
+
+### Step 2: Browse Existing Vaults
+
+Each Vault card shows the Vault name, a brief description, and key metadata such as the number of records and last activity date. Click any Vault card to open its detail view.
+
+> 💡 **Tip:** Use the search bar at the top of the Vault List to filter Vaults by name or keyword.
+
+### Step 3: Create a New Vault
+
+To create a new Vault, click the **+ New Vault** button (or the equivalent create button in the top-right area of the Vault List).
+
+> ⚠️ **Permission required:** Only **Workspace Owners** and **Workspace Managers** can create vaults. If you don't see the button or it's greyed out, contact your administrator.
+
+You have two options:
+
+**Option A — Create from Scratch:** Enter a vault name (required) and an optional description. The vault name must be unique within your workspace — if another vault already has the same name, you'll be prompted to choose a different one.
+
+**Option B — Create from a Template:** Select a pre-built vault template to start with an existing schema and structure. Templates give you out-of-the-box functionality for common use cases.
+
+### Step 4: Configure the Vault Schema
+
+After naming your Vault, define the fields that will be captured. Each field has a name, data type (text, number, date, boolean, etc.), and optional validation rules. You can add, reorder, or remove fields at any time using the **Schema Editor**.
+
+> 💡 **Tip:** Think carefully about field names upfront — they become the column headers in your Table View and the labels in your exported data.
+
+### Step 5: Save and Open the Vault
+
+Click **Create Vault** (or **Save**) to finalize. The new Vault will appear in your Vault List and open automatically to the Vault Detail view, where you can begin adding forms, importing data, and managing connections.
+
+You will be automatically set as the **Admin** of the new vault, and all Workspace Owners will also be granted Admin access automatically.
+
+## What to Expect
+
+Once created, a Vault acts as a workspace for all data related to that project. From the Vault Detail view you can:
+
+- Add and manage **Forms** (keyboard, photo, or stylus-based)
+- View captured records in **Table View**
+- Configure **Connections** to external data sources
+- Set up **Workflows** to automate processing
+- Assign **Tasks** to team members
+- Chat with the built-in **AI Assistant** for data queries
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| "Create Vault" button is greyed out or missing | You are not a Workspace Owner or Manager | Contact your administrator to have your workspace role upgraded |
+| "A vault with this name already exists" error | Duplicate vault name within the workspace | Choose a unique name — vault names must be distinct within a workspace |
+| Vault not appearing in the list | You are not an active member of that vault | Ask a vault Admin to add you via vault settings; deactivated vaults also do not appear |
+| Can see the vault but can't edit structure | You are a Contributor or Viewer, not a Builder or Admin | Ask a vault Admin to update your vault role |
+| Schema field types can't be changed after import | Data already present | Export current data, update the schema, and re-import |
+
+## Related Articles
+
+- [Smart Photo Capture](/graphium/forms/smart-photo-capture)
+- [Designing Forms](/graphium/forms/designing-forms)
+- [Building Workflows](/graphium/automations/building-workflows)
+- [Viewing Data in Table View]
+
+---
+
+*Questions? Reach out to your Graphium AI administrator or open a ticket in your internal support channel.*

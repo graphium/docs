@@ -1,0 +1,67 @@
+# Checking Workspace Invitation Status
+
+**Linear issue:** AI-129
+**Linear project:** Vault/Workspace Settings: User Permissions
+**Article type:** Reference
+
+---
+
+## Overview
+
+When a user is invited to the workspace, their invitation goes through a lifecycle from sent to accepted (or revoked). Workspace Owners can monitor the status of active members and pending invitations from the **Members & Invitations** page in Workspace Settings.
+
+---
+
+## Where to See Member and Invitation Status
+
+1. In the top navigation bar, click the **Workspace Settings** button next to the workspace name.
+2. Click **Members** in the left sidebar.
+
+The page has two sections: **Workspace Members** (accepted members) and **Pending Invitations** (outstanding invites).
+
+---
+
+## Member Status Values
+
+Active members appear in the **Workspace Members** table. Each row shows a status badge in the **Status** column.
+
+| Status | What it means |
+|--------|--------------|
+| **Active** | The member has accepted their invitation and has an active account. They can log in and use Graphium normally. |
+| **Deactivated** | The member's access has been suspended. They cannot log in until reactivated. |
+
+---
+
+## Pending Invitations
+
+Invitations that have been sent but not yet accepted appear in the **Pending Invitations** section below the members table. Each row shows the invitee's email address, when the invite was sent, their assigned role, and a **Pending** status badge.
+
+From this section, Workspace Owners can:
+
+- **Resend the invitation** — click **Resend invitation** if the invitee did not receive the email or it has expired.
+- **Revoke the invitation** — click **Revoke** to cancel the invitation. The link becomes invalid immediately.
+
+Once an invitee accepts, they move from Pending Invitations into the Workspace Members table with an **Active** status.
+
+---
+
+## What Invitees See
+
+When a workspace invitation is sent, the invitee receives an email with a link to accept the invitation. Clicking the link takes them through account creation (if they're new to Graphium) or directly into the workspace (if they already have an account).
+
+---
+
+## Permissions
+
+| Role | Can View Invitation Status |
+|------|--------------------------|
+| Owner | ✅ |
+| Member | ❌ |
+
+---
+
+## Related Articles
+
+- [Viewing Workspace Members](/graphium/vaults/viewing-workspace-members)
+- [Inviting a User to the Workspace](/graphium/vaults/inviting-a-user-to-the-workspace)
+- [Removing a Workspace Member](/graphium/vaults/removing-a-workspace-member)

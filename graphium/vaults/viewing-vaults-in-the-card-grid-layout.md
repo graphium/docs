@@ -1,0 +1,65 @@
+# Viewing Vaults in the Card Grid Layout
+
+The Graphium AI dashboard displays your workspace vaults as interactive cards in a grid layout. The grid view is the default view when you open the dashboard, giving you a visual overview of all vaults you have access to at a glance.
+
+---
+
+## What You'll See
+
+When you open the dashboard, your vaults are displayed as cards arranged in a responsive grid. Each card gives you a quick summary of the vault before you open it.
+
+**Each vault card includes:**
+
+- **Vault icon** — displayed in the upper-left corner of the card, using the icon and color assigned to that vault
+- **Vault name** — shown in bold below the icon
+- **Vault description** — a brief description beneath the name; long descriptions are truncated with an ellipsis (...)
+- **Record count** — displayed in the bottom-left corner with a document icon, showing the total number of records across all tables in the vault (e.g., "0 records", "124 records")
+- **Last updated date** — displayed in the bottom-right corner with a clock icon, showing the date the vault was last modified (e.g., "3/17/2026")
+
+---
+
+## The Create a Vault Card
+
+The first card in the grid is always the **Create a Vault** card. It has a dashed border and displays a + icon, the label "Create a Vault," and a brief description of what a vault is. Clicking it opens the vault creation flow.
+
+---
+
+## Hover Interaction
+
+When you hover over a vault card, a **share/connect icon** appears in the top-right corner of the card. Clicking this icon opens the vault, the same as clicking anywhere else on the card body.
+
+---
+
+## Switching Between Grid and List Views
+
+Two view toggle icons appear in the upper-right corner of the dashboard:
+
+- **Grid view** (⊞) — the default; displays vaults as cards in a grid
+- **List view** (☰) — displays vaults in a compact table with NAME, LAST OPENED, and RECORDS columns
+
+Click either icon to switch between views. For more information, see *Toggling Between Grid and List View*.
+
+---
+
+## Opening a Vault from the Grid
+
+Click anywhere on a vault card — the icon, name, description, or metadata area — to open that vault. See *Opening a Vault from the Dashboard* for full details on what happens when you open a vault.
+
+---
+
+## Troubleshooting
+
+**A vault I expect to see is not showing up in the grid.**
+Only vaults that are active and that you have been granted access to will appear on your dashboard. If a vault is missing, contact your workspace administrator to verify your access.
+
+**The grid shows fewer vaults than expected.**
+Vaults are scoped to your workspace. Make sure you are signed into the correct workspace, shown in the top navigation bar.
+
+---
+
+## Related Articles
+
+- Opening a Vault from the Dashboard
+- Understanding Vault Metadata
+- Toggling Between Grid and List View
+- Working with Vaults

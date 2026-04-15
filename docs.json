@@ -48,6 +48,129 @@
         ]
       },
       {
+        "tab": "Graphium AI",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "graphium/table-of-contents",
+              "graphium/product-use-article-template"
+            ]
+          },
+          {
+            "group": "Glossary",
+            "pages": [
+              "graphium/glossary/01-what-is-graphium-ai",
+              "graphium/glossary/02-vaults",
+              "graphium/glossary/03-tables-and-schemas",
+              "graphium/glossary/04-connections",
+              "graphium/glossary/05-ai-assistants",
+              "graphium/glossary/06-autonomous-actions",
+              "graphium/glossary/07-channels",
+              "graphium/glossary/08-workflows-and-tasks",
+              "graphium/glossary/09-access-and-permissions",
+              "graphium/glossary/10-use-cases-overview",
+              "graphium/glossary/11-glossary"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "graphium/getting-started/registering-a-new-account",
+              "graphium/getting-started/signing-in-with-email-and-password",
+              "graphium/getting-started/requesting-a-password-reset",
+              "graphium/getting-started/identifying-your-current-workspace",
+              "graphium/getting-started/viewing-available-workspaces",
+              "graphium/getting-started/using-the-workspace-switcher",
+              "graphium/getting-started/editing-workspace-settings",
+              "graphium/getting-started/viewing-your-profile",
+              "graphium/getting-started/editing-your-profile",
+              "graphium/getting-started/logging-out-of-graphium-ai"
+            ]
+          },
+          {
+            "group": "Navigation",
+            "pages": [
+              "graphium/navigation/navigating-your-vault-using-the-sidebar",
+              "graphium/navigation/adding-a-new-table-from-the-sidebar",
+              "graphium/navigation/expanding-and-collapsing-the-tables-list",
+              "graphium/navigation/resizing-the-sidebar"
+            ]
+          },
+          {
+            "group": "Vaults",
+            "pages": [
+              "graphium/vaults/working-with-vaults",
+              "graphium/vaults/creating-a-vault-from-scratch",
+              "graphium/vaults/opening-a-vault-from-the-dashboard",
+              "graphium/vaults/viewing-vaults-in-the-card-grid-layout",
+              "graphium/vaults/understanding-vault-metadata",
+              "graphium/vaults/vault-settings-general-configuration",
+              "graphium/vaults/deleting-or-deactivating-a-vault",
+              "graphium/vaults/understanding-vault-user-roles",
+              "graphium/vaults/inviting-a-user-to-the-workspace",
+              "graphium/vaults/checking-workspace-invitation-status",
+              "graphium/vaults/viewing-workspace-members",
+              "graphium/vaults/removing-a-workspace-member",
+              "graphium/vaults/adding-a-user-to-a-vault",
+              "graphium/vaults/viewing-all-users-with-vault-access",
+              "graphium/vaults/changing-a-users-vault-role",
+              "graphium/vaults/removing-a-user-from-the-vault"
+            ]
+          },
+          {
+            "group": "Data & Records",
+            "pages": [
+              "graphium/data-records/viewing-table-records-in-the-data-grid",
+              "graphium/data-records/table-views-data-schema-and-settings",
+              "graphium/data-records/renaming-a-table",
+              "graphium/data-records/editing-table-display-names",
+              "graphium/data-records/selecting-a-table-icon",
+              "graphium/data-records/configuring-default-table-properties",
+              "graphium/data-records/enabling-a-table-for-contributor-mode",
+              "graphium/data-records/creating-a-new-record-in-the-data-grid",
+              "graphium/data-records/editing-a-record-in-the-data-grid",
+              "graphium/data-records/deleting-and-voiding-records-in-the-data-grid",
+              "graphium/data-records/record-detail-view-values-and-completion-percentage",
+              "graphium/data-records/filtering-records-in-the-data-grid",
+              "graphium/data-records/sorting-records-in-the-data-grid",
+              "graphium/data-records/loading-more-records-in-the-data-grid"
+            ]
+          },
+          {
+            "group": "Schema & Properties",
+            "pages": [
+              "graphium/schema-properties/managing-properties-in-a-vault",
+              "graphium/schema-properties/browsing-the-schema-property-list",
+              "graphium/schema-properties/configuring-table-property-types",
+              "graphium/schema-properties/configuring-an-auto-id-property",
+              "graphium/schema-properties/configuring-a-reference-property",
+              "graphium/schema-properties/configuring-a-formula-property",
+              "graphium/schema-properties/deleting-archiving-and-unarchiving-properties"
+            ]
+          },
+          {
+            "group": "Forms & Data Capture",
+            "pages": [
+              "graphium/forms/designing-forms",
+              "graphium/forms/smart-photo-capture"
+            ]
+          },
+          {
+            "group": "Automations & Workflows",
+            "pages": [
+              "graphium/automations/building-workflows"
+            ]
+          },
+          {
+            "group": "AI Assistant",
+            "pages": [
+              "graphium/ai-assistant/using-ai-assistants"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API reference",
         "groups": [
           {

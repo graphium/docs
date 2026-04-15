@@ -1,0 +1,134 @@
+# Managing Properties in a Vault
+
+**Linear issues:** AI-42, AI-44
+**Linear project:** Table - Schema: Property Management
+**Article type:** How-to
+
+---
+
+## Overview
+
+Every table in Graphium AI has a **schema** — the set of properties (fields) that define what data each record can hold. From the Schema tab, you can view all existing properties, add new ones, and open any property's settings to make changes. This article covers how to add a new property and how to open a property for editing.
+
+---
+
+## The Schema Tab
+
+To access a table's schema, open a vault, select a table from the sidebar, and click the **Schema** tab in the top-right of the table view. (The other tabs are **Data** and **Settings**.)
+
+The Schema tab displays:
+
+- **"Schema [n] fields"** — the header showing how many properties the table currently has
+- **Search properties...** — an inline search bar for filtering the property list by name
+- **+ Add Field** — a teal button in the top-right corner for adding a new property
+- **Show Archived** — a toggle (when present) to reveal archived properties
+
+> **Note:** If a table's schema is inherited from a template and marked **Read-only**, you will see a "Read-only" badge next to the field count and will not be able to add or edit properties directly.
+
+---
+
+## Reading the Property List
+
+Each row in the property list represents one property and shows:
+
+| Element | Description |
+|---------|-------------|
+| Drag handle (⋮⋮) | Drag to reorder properties in the list |
+| Type icon | Visual indicator of the property's data type (e.g., **T** for Text, **#** for Number) |
+| Display name | The human-readable name shown in forms and data views |
+| Internal name | The system identifier shown in gray (e.g., `first_name`); set once and cannot be changed after creation |
+| **Required** badge | A red badge shown if the property is marked required |
+| Property type | The data type label shown on the right (e.g., Text, Number, Boolean) |
+| **Edit** | Opens the property for editing |
+| Trash icon | Deletes the property (with confirmation) |
+
+---
+
+## Adding a New Property
+
+1. Navigate to the **Schema** tab for the table you want to modify.
+
+2. Click the **+ Add Field** button in the top-right corner. The **Add Property** modal opens.
+
+3. Fill in the required fields:
+
+   - **Name** — The display name for this property (e.g., "Facility Name"). This label appears in forms, the data grid, and throughout the application.
+   - **Description** *(optional)* — A plain-language note about what this property stores. Limited to 128 characters.
+   - **Internal Name** — Auto-populated based on the display name you enter (e.g., `facility_name`). You can edit this before saving, but **the internal name cannot be changed after the property is created**. It serves as the stable identifier used in API calls and data exports.
+   - **Property type** — Select from the dropdown. See [Property Types](#property-types) below.
+   - **Allow multiple values** — Check this if the property needs to store more than one value (e.g., multiple phone numbers, a list of tags, or several procedure codes). When enabled, the property becomes a collection of that type (e.g., a Text property becomes a Text Collection).
+   - **Required** — Check this to make the property mandatory. Required properties display a red **Required** badge in the schema list.
+
+4. Click **Add** to save the new property. It appears at the bottom of the schema list.
+
+> **Note:** Once a property has been published with data, you can still update the display name and description, but the internal name, property type, and collection setting (Allow multiple values) become permanent.
+
+---
+
+## Property Types
+
+When adding a property, select one of the following types from the **Property type** dropdown:
+
+| Type | Description |
+|------|-------------|
+| **Text** | Free-form text |
+| **Number** | Numeric value |
+| **Object** | A grouped set of child properties (expandable in the schema list) |
+| **Date** | A calendar date |
+| **Time** | A time of day |
+| **Date/Time** | Combined date and time |
+| **Select from List** | A value chosen from a predefined list of options |
+| **Signature** | A captured signature |
+| **Boolean** | A true/false toggle |
+| **Image** | An image attachment |
+| **Table Record** | A reference linking to a record in another table |
+| **Formula** *(New)* | A computed value based on other properties using a formula editor |
+| **Auto ID** *(New)* | An automatically assigned unique identifier; collection setting is not available for this type |
+
+Certain types reveal additional configuration options after selection — for example, **Select from List** shows a list options manager, **Formula** shows a formula editor, and **Auto ID** shows a sequence preview and configuration section.
+
+---
+
+## Editing an Existing Property
+
+1. Navigate to the **Schema** tab for the table.
+
+2. Locate the property you want to change. Click the **Edit** button on that property's row.
+
+3. The **Edit Property** modal opens, pre-filled with the property's current values. It has the same layout as the Add Property modal, with the following fields locked (read-only):
+
+   - **Internal Name** — Cannot be changed after creation
+   - **Property type** — Cannot be changed after creation
+   - **Allow multiple values** — Cannot be changed after creation
+
+4. You can update the **display name**, **description**, and **Required** setting freely.
+
+5. Click **Save** to apply your changes.
+
+> **Tip:** If you need to change a property's type or internal name, you must archive the existing property and create a new one in its place.
+
+---
+
+## Searching for a Property
+
+Use the **Search properties...** bar at the top of the schema list to filter by name. The list updates in real time as you type, making it easy to locate a specific property in tables with many fields.
+
+---
+
+## Archived Properties
+
+Properties that have been archived no longer appear in forms or the data grid, but their data is preserved. To view archived properties, enable the **Show Archived** toggle in the schema header. Archived properties appear with a greyed-out background in the list. You can unarchive or permanently delete a property from this view.
+
+---
+
+## Who Can Manage Properties
+
+Adding, editing, and archiving properties requires the **vault_table_update** permission. Users without this permission can view the schema list but will not see the **+ Add Field** button or **Edit** buttons.
+
+---
+
+## Related Articles
+
+- [Understanding Property Types]
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
+- [Renaming a Table](/graphium/data-records/renaming-a-table)

@@ -1,0 +1,163 @@
+# Configuring a Formula Property
+
+**Linear Issues:** AI-54
+**Linear Project:** Table – Schema: Property Types
+
+---
+
+## Overview
+
+A Formula property computes a value automatically by evaluating an expression against the other properties in the same vault table record. Instead of asking users to enter a value manually, the system calculates it at the time the record is created or updated.
+
+Formula properties are useful for combining existing field values into a derived output — for example, concatenating a first and last name into a full name, calculating a total cost from quantity and unit price, or building a formatted summary from multiple fields.
+
+Formula expressions can be written in one of two modes:
+
+- **Template mode** — A text-interpolation syntax that inserts other property values into a string using `{{internal_name}}` placeholders. Best for building formatted text.
+- **JS mode** — A JavaScript expression evaluated against the record. Best for arithmetic and logic (e.g., `record.quantity * record.unit_price`).
+
+> **Note:** JS mode is a planned feature and may not be available in all environments. Template mode is the primary supported mode.
+
+---
+
+## Opening the Schema Editor
+
+1. In the left sidebar, select the vault table you want to configure.
+2. Click the **Schema** tab at the top of the table view.
+3. Click **Add Field** in the top-right corner of the schema list.
+
+The **Add Property** modal opens.
+
+---
+
+## Configuring a Formula Property
+
+### Step 1 — Fill in the standard fields
+
+| Field | Required | Notes |
+|---|---|---|
+| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Full Name`, `Total Cost`) |
+| **Description** | No | Optional context about the property (0 / 128 characters) |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `full_name`). Locked after the property is published and cannot be changed |
+
+### Step 2 — Select the Formula type
+
+In the **Property type** dropdown, search for or select **Formula**.
+
+> Formula appears with a **New** badge in the property type list.
+
+Once selected, a **Formula Configuration** panel appears directly below the Property type field.
+
+### Step 3 — Set the Result type
+
+Use the **Result** dropdown to specify the data type the expression will produce:
+
+| Result type | Use when the expression produces… |
+|---|---|
+| **Text** | A string value — the default; covers most text-combination use cases |
+| **Number** | A numeric value, such as a calculated total or average |
+| **Timestamp** | A date and time value |
+| **Boolean** | A true/false value |
+
+Choosing the correct Result type ensures the value is stored, sorted, and rendered correctly across the platform.
+
+### Step 4 — Choose an expression mode
+
+Two mode tabs appear in the top-right corner of the expression panel:
+
+#### Template mode
+
+Template mode is the default. It uses `{{internal_name}}` placeholders to insert property values into a text string.
+
+- Type `{{` to reference a property by its internal name
+- Surround with any static text or punctuation you need
+
+**Example expression:**
+```
+{{first_name}} {{last_name}}
+```
+
+With a record where `first_name` is `"John"` and `last_name` is `"Doe"`, the formula produces `"John Doe"`.
+
+**Tips for Template mode:**
+- Use a property's **Internal Name** (shown in grey next to the property name in the schema list), not its display name
+- Internal names are snake_case, e.g., `substance_name`, `dea_schedule`
+- Any text outside `{{ }}` is treated as a literal string and included as-is
+- You can reference multiple properties in a single expression: `{{city}}, {{state}} {{zip}}`
+
+#### JS mode
+
+JS mode accepts a JavaScript expression evaluated against the current record. Property values are accessed via `record.internal_name`.
+
+**Example expression:**
+```
+record.quantity * record.unit_price
+```
+
+This produces the numeric product of the `quantity` and `unit_price` properties.
+
+> **Note:** JS mode is intended for numeric calculations and logical expressions. Formula evaluation is performed in a sandboxed environment and does not allow arbitrary code execution or access to external resources.
+
+### Step 5 — Write the expression
+
+Type your expression into the text area. The placeholder text shows a mode-specific example:
+
+- Template mode placeholder: `e.g., {{first_name}} {{last_name}}`
+- JS mode placeholder: `e.g., record.quantity * record.unit_price`
+
+The expression field is required. A validation error is shown if you attempt to save with an empty expression.
+
+> **Note:** The Allow Multiple Values option is not available for Formula properties. A formula always produces a single computed value.
+
+### Step 6 — Add the property
+
+Click **Add** to save the property. The formula expression is stored in the table schema and will be evaluated each time a record is created or updated.
+
+---
+
+## What Happens After Saving
+
+- The Formula property appears as a new column in the data grid.
+- When a new record is created, the system retrieves the current values of the referenced properties, evaluates the expression, and stores the computed result in the formula field automatically.
+- If a referenced property has no value at the time of record creation, it is treated as an empty string (in Template mode) or `null` / `0` (in JS mode depending on the expression).
+
+---
+
+## Editing a Formula Property
+
+After a property is published, you can edit it inline from the Schema tab by clicking **Edit** next to the property row.
+
+| Field | Editable after publish? |
+|---|---|
+| Name | Yes |
+| Description | Yes |
+| Internal Name | No — locked permanently after first publish |
+| Result type | Yes |
+| Expression mode | Yes |
+| Expression | Yes — the updated expression applies to new records only; existing records retain their previously computed value |
+
+> If you change the Property type away from Formula, the expression configuration is removed from the property definition.
+
+---
+
+## Deleting a Formula Property
+
+Deleting a Formula property removes it from the schema. Existing computed values stored on records are also removed. This action cannot be undone.
+
+---
+
+## Permissions
+
+| Action | Role required |
+|---|---|
+| Add or edit a Formula property on a vault table | Builder or Admin (vault table update permission) |
+| Add or edit a Formula property on a vault table template | Graphium Representative (vault table template update permission) |
+
+---
+
+## Related Articles
+
+- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types)
+- [Configuring a Reference Property](/graphium/schema-properties/configuring-a-reference-property)
+- [Configuring an Auto ID Property](/graphium/schema-properties/configuring-an-auto-id-property)
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)

@@ -1,0 +1,70 @@
+# Autonomous Actions
+
+Most analytics tools wait. Someone has to log in, remember to check a dashboard, run a report, and notice the problem. By the time that happens -- if it happens -- the issue has been sitting there for days.
+
+Autonomous actions flip that model. They're scheduled or event-driven tasks that AI assistants execute on their own, without anyone prompting them. The assistant doesn't wait for a question. It runs the analysis on a schedule, checks the data against criteria it understands, and delivers findings to the people who need them. This is the difference between passive analytics and active intelligence -- AI that acts, not just answers.
+
+---
+
+## Where They're Configured
+
+Autonomous actions are set up in the **Actions tab** within an AI assistant's configuration. Each assistant can have multiple actions, and each action operates independently with its own schedule, trigger, and purpose.
+
+The Actions tab shows a list of all configured actions with their name, status (Active or Inactive), schedule description, and run count. You'll see entries like:
+
+- **Nightly Provider Performance Report** -- Daily at 10:00 PM -- Active -- 142 runs
+- **Weekly Efficiency Summary** -- Weekly on Monday at 10:00 AM -- Active -- 23 runs
+
+Click **+ Add Action** to create a new one. Give it a name, configure the schedule or trigger, and activate it. That's it -- the assistant starts executing on the defined cadence.
+
+---
+
+## Two Types of Actions
+
+### Schedule-Based
+
+Schedule-based actions run at a set time. You define the frequency (daily, weekly, monthly) and the time, and the assistant performs the task on that cadence.
+
+A "Nightly Provider Performance Report" set to run daily at 10:00 PM will, every evening, analyze the day's case data, evaluate provider metrics, compare performance against benchmarks, and surface anything that needs attention before the next morning. A "Weekly Efficiency Summary" set to every Monday at 10:00 AM will aggregate the previous week's data, identify trends, and deliver a summary that informs staffing and scheduling decisions for the week ahead.
+
+The assistant uses the same data access, connection actions, and system prompt it has in interactive chat. The difference is no one had to ask. The analysis just happens.
+
+### Event-Based
+
+Event-based actions trigger in response to something happening -- a new record being created, a form submission arriving, or a connection event firing. Instead of running on a clock, they run on data.
+
+When a new case record appears in the Cases table, an event-based action can immediately review it for completeness: Are all required fields populated? Does the procedure duration fall within a reasonable range? Is the provider signature present? If something is missing or anomalous, the assistant can create a task, send a notification, or log the issue -- all before anyone on your team has even looked at the record.
+
+Event-based actions are particularly powerful when paired with connection events. A new HL7 message from Epic, a file uploaded to the SFTP server, a survey completion -- any of these can trigger an assistant to analyze the incoming data and take action.
+
+---
+
+## Why This Matters
+
+The practical value is straightforward: problems get caught sooner.
+
+Without autonomous actions, a provider whose MIPS scores have dipped below benchmark won't get flagged until someone remembers to run the report. A case with missing required fields won't get caught until the billing coordinator reviews it -- maybe days later. A financial anomaly won't surface until the monthly review.
+
+With autonomous actions, the AI is always watching. The nightly report catches the MIPS score issue the same day it happens. The event-based action flags the incomplete case record within minutes of its creation. The weekly financial summary lands in the finance team's Slack channel every Monday morning whether anyone remembered to ask for it or not.
+
+This is the shift from "someone has to remember to check" to "the system checks and tells you." For organizations managing high volumes of cases, patients, or transactions, that shift eliminates the gap between when a problem occurs and when someone knows about it.
+
+---
+
+## Monitoring
+
+Each action tracks its execution history. The run count on the Actions tab tells you how many times the action has fired. You can view the run history to confirm the action is executing on schedule and review what it produced.
+
+If an action isn't running as expected, the status toggle lets you deactivate it while you troubleshoot. Flip it back to Active when you're ready.
+
+---
+
+## Putting It Together
+
+A CFO at a SaaS company wants a weekly financial summary delivered to the finance team without anyone having to request it. She opens the finance assistant's configuration and navigates to the **Actions** tab.
+
+She clicks **+ Add Action** and names it "Weekly Financial Summary." She sets the schedule to weekly, every Monday at 8:00 AM. The assistant already has Read access to the Revenue, Expenses, and Invoices tables, and it has the Slack "Send Message" connection action enabled.
+
+She activates the action. The following Monday at 8:00 AM, the assistant runs. It queries the previous week's revenue data, calculates total revenue and week-over-week change, reviews outstanding invoices, summarizes expense categories, and posts a formatted summary to the #finance Slack channel. The finance team reads it over Monday morning coffee.
+
+Week after week, the summary arrives. No one logs into Graphium to generate it. No one exports a CSV. No one builds a slide deck. The intelligence is automatic, the delivery is where the team already works, and the CFO has one less thing to chase.

@@ -1,0 +1,87 @@
+# Using AI Assistants
+
+> **Article type:** Product Use
+> **Audience:** Internal Team
+> **Status:** Draft
+> **Last updated:** 2026-03-16
+> **Author:** Graphium AI Team
+
+---
+
+## Overview
+
+AI Assistants in Graphium AI are conversational agents trained on your Vault data. Instead of exporting data and running manual queries, you can ask an Assistant questions in plain language and get instant answers grounded in your actual records. Assistants can also help summarize trends, flag anomalies, and guide team members through data entry tasks.
+
+## When to Use This
+
+Use an AI Assistant when you want to query your Vault data without writing filters or formulas, get a natural-language summary of recent submissions, troubleshoot unusual data patterns, or walk a new team member through a data capture process interactively.
+
+## Prerequisites
+
+- You are signed in and have a Vault open
+- The Vault contains data for the Assistant to reference
+- An Assistant has been created and activated for this Vault (administrators can set this up — see [Configuring AI Assistants])
+
+## Step-by-Step Instructions
+
+### Step 1: Open the AI Assistant Panel
+
+From within a Vault, click the **Assistant** tab or the chat icon in the top navigation bar. This opens the **Chat Agent** panel, which lists any Assistants configured for that Vault.
+
+### Step 2: Select an Assistant
+
+If multiple Assistants are available (e.g., one for data queries, one for process guidance), select the one you need from the **Assistants List**. Click on it to open the chat interface.
+
+### Step 3: Ask a Question
+
+Type your question or request in plain English and press Enter. Examples of effective queries:
+
+- *"How many submissions did we receive this week?"*
+- *"Show me all records where Priority is High and Status is still Pending."*
+- *"What was the most common value in the Reason field last month?"*
+- *"Summarize the last 10 submissions."*
+- *"Flag any records where the date of birth field looks invalid."*
+
+> 💡 **Tip:** Be specific. Instead of "Show me the data," try "Show me all records submitted in February where the insurance field is blank." The more context you give, the more precise the answer.
+
+### Step 4: Review the Response
+
+The Assistant will respond with the requested information, often formatted as a summary, a list, or a table. It may also provide follow-up suggestions or ask clarifying questions.
+
+> ⚠️ **Note:** AI Assistants are powerful but not infallible. Always verify critical data decisions against the raw records in the Table View before acting on the results.
+
+### Step 5: Continue the Conversation
+
+Assistants maintain context within a session, so you can ask follow-up questions without repeating yourself. For example:
+
+- You: *"Show me records where Status is Pending."*
+- Assistant: *(lists results)*
+- You: *"Now filter those to only show ones from this week."*
+
+### Step 6: Export or Act on Results
+
+If the Assistant surfaces records you want to act on, you can jump directly to those records in the Table View using the links provided, or ask the Assistant to trigger an action such as assigning a task or updating a field.
+
+## What to Expect
+
+Assistants respond in seconds and draw only from the data within the connected Vault. They do not access data from other Vaults or external systems unless a Connection has been explicitly configured. Conversation history is saved per session for your reference.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Assistant says it can't find data | Vault has no records yet, or Assistant isn't connected to the right Vault | Check that the Vault has submissions; verify the Assistant's data source in settings |
+| Answers are vague or generic | Query is too broad | Rephrase with more specific field names, date ranges, or conditions |
+| Assistant is not available in the Vault | No Assistant configured yet | Ask your administrator to create and activate an Assistant for this Vault |
+| Results don't match Table View | Assistant is using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
+
+## Related Articles
+
+- [Configuring AI Assistants] *(Admin)*
+- [Viewing Data in Table View]
+- [Working with Vaults](/graphium/vaults/working-with-vaults)
+- [Building Workflows](/graphium/automations/building-workflows)
+
+---
+
+*Questions? Reach out to your Graphium AI administrator or open a ticket in your internal support channel.*

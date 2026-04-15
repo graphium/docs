@@ -1,0 +1,78 @@
+# Vaults
+
+## What a Vault Is
+
+A vault is the central organizing unit in Graphium AI. Think of it as a project workspace -- a single container that holds your data tables, AI assistants, automated workflows, tasks, and connections to external systems, all scoped to a specific purpose.
+
+In practice, some teams create one vault per facility or per project. A healthcare group managing four surgery centers might have four vaults: one for Community Surgery Center, one for Memorial Hospital, one for St. Luke's, and one for Regional Medical Center. Each vault is self-contained, with its own data, its own automations, and its own access controls. When you need consistency across vaults, you set up the same tables and schemas in each -- the data is independent, but the structure matches. Sometimes you may have a single vault per project. For example, you may create a vault for analyzing quality data that is coming in from multiple systems. Or create a vault for financial data related to your practice so that you can quickly identify opportunities for improvement.
+
+This is the design principle: vaults give you isolation where you need it (separate facilities, separate permissions) and consistency where you need it (shared structure across vaults).
+
+## The Vault Listing Page
+
+When you open your workspace and click the Vaults tab, you see all your vaults listed in one view. There are two ways to browse them:
+
+**Card View** (the default) displays vaults as cards in a grid layout. Each card shows the vault's color-coded icon, name, description, record count (e.g., "2,847 records"), and last updated date. This view is good for scanning when you have a handful of vaults and want to see descriptions at a glance.
+
+**Table View** switches to a list format -- one vault per row. This is more compact and works better when you have many vaults and want to sort or compare them quickly.
+
+Toggle between the two views using the view switcher in the top-right area of the listing page.
+
+## Creating a Vault
+
+Start with a blank vault and build your own tables, schemas, and workflows from the ground up. Define your tables, add fields, configure connections, and shape the vault to fit your use case -- whether you are tracking cases, managing schedules, or monitoring compliance.
+
+**Explore a Sample Vault.** If you are new to Graphium and want to see how things work before committing to a setup, open a Sample Vault. These come pre-loaded with demo data -- actual records in the tables, pre-configured workflows, example tasks -- so you can browse around, ask the AI assistant questions, and get a feel for the platform without touching real data.
+
+## The Vault Detail View
+
+Once you open a vault, you land in the vault detail view. The left side of the screen shows a sidebar with the vault's navigation sections:
+
+**AI Assistant** -- Opens the chat interface for the vault's AI assistants. This is where you ask questions, get reports, and interact with the assistant in natural language.
+
+**Tables** -- An expandable list showing every table in the vault, with a count of tables. Click the section header to expand or collapse the list, then click a table name to open it. A vault like Community Surgery Center might show Cases, Procedures, Providers, Surgeons, Surgical Locations, Substances, Patient Allergies, Expenses, Key Metrics, and Invoices.
+
+**Tasks** -- Your action items queue, with a count badge showing how many tasks are open. Tasks include things like "Provider signature missing" or "Duplicate case detected," each with a priority level and assignee.
+
+**Automations** -- Houses both Connections (integrations with external systems) and Workflows (automated processes), with a count badge. This is where you manage your Epic connection, your FTP sync, your nightly report workflow, and so on.
+
+**Settings** -- Vault-level configuration for general settings and access controls.
+
+### Collapsible Sidebar
+
+The sidebar can be collapsed to an icon-only view, showing just the icons for each section without labels. This gives you more horizontal space for working with tables and data. Expand it back to the labeled view when you need to navigate to a specific section. The toggle is always available at the edge of the sidebar.
+
+## Vault Settings
+
+The Settings section has two areas:
+
+### General Settings
+
+This is where you manage the vault's basic information:
+
+- **Name** -- The display name for the vault (e.g., "Cases - Community Surgery Center")
+- **Description** -- A short summary of what the vault is for
+- **Danger Zone** -- Delete the vault. This is a destructive action and is visually separated from the rest of the settings to prevent accidental clicks.
+
+### Access & Permissions
+
+This is where you control who can do what inside the vault. Graphium uses role-based access with four levels:
+
+- **Admin** -- Full access to manage the vault, its users, and all data. Can change settings, invite users, and delete the vault.
+- **Builder** -- Can create and modify tables, forms, and workflows. Cannot manage users or delete the vault.
+- **Contributor** -- Can add and edit data, but cannot modify the vault's structure (schemas, workflows, connections).
+- **Viewer** -- Read-only access. Can browse tables and view data, but cannot change anything.
+
+You invite users by email and assign them a role. Until they accept, they show a "Pending" status in the permissions list. You can reassign roles or remove users at any time.
+
+## Scenario: Standing Up Four Facility Vaults
+
+A healthcare group, Urban Health Partners, manages cases at four surgery centers. Their operations lead needs consistent data tracking across all sites so that provider performance, case volumes, and billing status can be compared apples-to-apples.
+
+They start by creating the first vault -- Cases - Community Surgery Center -- and defining tables for Cases, Procedures, Providers, Surgeons, and Surgical Locations, with schemas that match their billing and compliance requirements. Then they replicate that structure across three more vaults, one for each facility.
+
+Each vault gets its own connections (Community Surgery Center connects to its own Epic instance; Memorial Hospital connects to a different one), its own workflows (case review alerts tuned to each site's volume), and its own access permissions (site managers are Admins for their own vault, Viewers for others).
+
+The AI assistants are configured similarly across vaults. The Data Analyst at Community Surgery Center runs the same nightly performance report as the Data Analyst at Memorial Hospital -- same structure, same schedule, different data.
+
+The result: four independent workspaces with a shared foundation. Operations can compare metrics across sites because the data model is the same. New staff can transfer between facilities without relearning the system.

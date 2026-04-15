@@ -1,0 +1,103 @@
+# Configuring a Reference Property
+
+**Linear Issue:** AI-53
+**Project:** Table – Schema: Property Types
+**Article type:** How-to
+
+---
+
+## Overview
+
+A **Reference** property (labeled **Table Record** in the UI) links each record in one table to a record in another table within the same vault. It is the equivalent of a foreign key in a relational database: instead of duplicating data across tables, a reference points to a single authoritative record elsewhere.
+
+For example, a Cases table can have a Provider field that references the Providers table. Each case record then points to a specific provider record rather than storing the provider's name, credentials, or NPI number inline. If the provider record is updated, every case that references it automatically reflects the change.
+
+---
+
+## Opening the Schema Editor
+
+1. Open a vault and select a table from the sidebar.
+2. Click the **Schema** tab in the top-right corner of the main content area.
+3. Click **+ Add Field** to open the Add Property modal.
+
+---
+
+## Configuring the Property
+
+### Step 1 — Fill in the standard fields
+
+In the Add Property modal:
+
+- **Name** — Enter a display label for the property (e.g., *Provider*, *Surgeon*, *Referring Facility*).
+- **Description** — (Optional) Up to 128 characters. Explain what this reference represents.
+- **Internal Name** — Auto-generated from the display name in snake_case (e.g., `provider`, `referring_facility`). You can edit it before saving; it cannot be changed after.
+
+### Step 2 — Select the property type
+
+From the **Property type** dropdown, select **Table Record**.
+
+A new required field appears immediately below:
+
+**Reference Table** *(required)*
+A searchable dropdown listing every other table in the vault. Each table is shown with its table icon and name. Use the **Search tables…** bar to filter by name if the vault has many tables.
+
+> The current table is excluded from the list — a table cannot reference itself.
+
+Select the table whose records this property will link to.
+
+### Step 3 — Allow multiple values (optional)
+
+Enable **Allow multiple values** if a single record should be able to link to more than one record in the referenced table. For example, a case that can have multiple surgeons would need this enabled on the Surgeon reference property.
+
+When enabled, the property stores an array of references (`Table Record[]`) rather than a single link.
+
+### Step 4 — Save
+
+Click **Add**. The property is added to the schema list and a reference relationship is registered between the two tables in the system.
+
+---
+
+## What Happens After Saving
+
+Once a Table Record property is saved, Graphium registers an explicit relationship between the two tables. This means:
+
+- In the **data grid**, the column displays the linked record's identifier from the referenced table rather than a raw ID.
+- In **forms**, the field renders as a selector that lets users search and pick a record from the referenced table.
+- The relationship is tracked internally so that referential integrity can be maintained across the vault.
+
+---
+
+## Editing a Reference Property
+
+To change which table a Table Record property points to:
+
+1. Click **Edit** on the property row in the schema list. The property name becomes an inline text input — you can update the **name** or **description** here.
+2. To change the **referenced table**, use the property type dropdown in the schema view to reopen the configuration. The system will update the reference relationship to point to the newly selected table.
+
+> **Note:** Once a table has been published, the property **name** and **description** can be edited freely. The property type and internal name are locked after publication. If the referenced table needs to change, that can be updated through the edit flow regardless of publication state.
+
+---
+
+## Deleting a Reference Property
+
+Deleting a Table Record property removes both the property from the schema and the underlying reference relationship between the two tables. This action cannot be undone. Archiving the property (setting it to inactive) is the reversible alternative — archived properties are hidden from default views but their data and relationship are preserved.
+
+See [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties) for the full deletion and archiving workflow.
+
+---
+
+## Permissions
+
+| Action | Required Role |
+|--------|--------------|
+| View schema | Any vault member |
+| Add or edit a Table Record property | Vault Admin or Builder |
+| Add or edit a template Table Record property | Graphium Representative with Vault Table Template Update permission |
+
+---
+
+## Related Articles
+
+- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types) — covers the nine simple property types
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)

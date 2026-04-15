@@ -1,0 +1,61 @@
+# [Feature Name]
+
+> **Article type:** Product Use
+> **Audience:** Internal Team
+> **Status:** Draft / In Review / Published
+> **Last updated:** YYYY-MM-DD
+> **Author:** [Your Name]
+
+---
+
+## Overview
+
+One to two sentences describing what this feature does and why it matters to the team.
+
+## When to Use This
+
+Describe the specific scenarios or workflows where a team member would use this feature. Be concrete — mention job roles, triggers, or data types if relevant.
+
+## Prerequisites
+
+List anything the user needs before getting started:
+
+- Access level or role required
+- Any prior steps (e.g., "You must have a Vault created before using this feature")
+- Relevant data or files needed
+
+## Step-by-Step Instructions
+
+### Step 1: [Action Name]
+
+Describe the first action clearly. Include where to navigate, what to click, and what to expect.
+
+> 💡 **Tip:** Add helpful tips, shortcuts, or common gotchas inline.
+
+### Step 2: [Action Name]
+
+Continue with the next logical step. Keep each step focused on one action.
+
+### Step 3: [Action Name]
+
+Repeat as needed. Aim for no more than 7–10 steps per article; split into multiple articles if needed.
+
+## What to Expect
+
+Describe the outcome after completing the steps — what the user will see, what gets created, or what changes in the system.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| [Describe issue] | [Why it happens] | [How to fix it] |
+| [Describe issue] | [Why it happens] | [How to fix it] |
+
+## Related Articles
+
+- [Article Name]
+- [Article Name]
+
+---
+
+*Questions? Reach out to [Team/Contact] or open a ticket in [Support Channel].*

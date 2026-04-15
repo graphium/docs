@@ -1,0 +1,119 @@
+# Deleting, Archiving, and Unarchiving Properties
+
+**Linear issue:** AI-43
+**Linear project:** Table - Schema: Property Management
+**Article type:** How-to
+
+---
+
+## Overview
+
+Every property in a table's schema has a trash icon that removes it from the active property list. What that action *does* — delete permanently or archive — depends entirely on the current state of the table. This article explains how each action works, when each is available, and how to bring an archived property back.
+
+---
+
+## How the Trash Icon Works
+
+The trash icon (🗑) appears on the right side of every property row in the Schema tab for editable tables. A single click triggers the action appropriate for the table's current state:
+
+| Table state | Trash icon action |
+|-------------|-------------------|
+| **Draft** | Permanently deletes the property |
+| **Published** | Archives the property (sets it inactive) |
+| **Unpublished** | Archives the property (sets it inactive) |
+
+> **Why the difference?** Once a table has been published and data has been collected against its schema, permanently removing a property could cause data loss. Archiving keeps the property's definition and data intact while hiding it from forms and views. In Draft state — before any data exists — a full delete is safe and clean.
+
+---
+
+## Deleting a Property (Draft Tables Only)
+
+Permanently deleting a property removes it from the schema entirely. This action is irreversible.
+
+**When it applies:** The table is in **Draft** state (has never been published).
+
+**Steps:**
+
+1. Navigate to the **Schema** tab for the table.
+2. Locate the property you want to delete.
+3. Click the **trash icon** on that property's row.
+4. The property is immediately removed from the schema list. The field count in the header updates instantly.
+
+> **Warning:** Deletion is permanent. The property's name, configuration, and any draft data associated with it cannot be recovered. If you think you might need the property later, consider waiting until the table is published so the archive option becomes available instead.
+
+---
+
+## Archiving a Property (Published / Unpublished Tables)
+
+Archiving hides a property from forms and data views without deleting it or its data. The property definition is preserved and can be restored at any time.
+
+**When it applies:** The table is in **Published** or **Unpublished** state.
+
+**Steps:**
+
+1. Navigate to the **Schema** tab for the table.
+2. Locate the active property you want to archive.
+3. Click the **trash icon** on that property's row.
+4. The property is archived immediately. It disappears from the active property list and no longer appears in forms or the data grid.
+
+**What archiving does:**
+
+- Sets the property's status to inactive (`active: false`)
+- Hides the property from new form submissions and record views
+- Preserves all existing data captured under that property
+- Does **not** delete the property or its historical records
+- The property's original definition (name, type, configuration) is fully retained
+
+---
+
+## Viewing Archived Properties
+
+Archived properties are hidden by default. To see them:
+
+1. In the **Schema** tab header, enable the **Show Archived** toggle.
+2. Archived properties appear in their original position in the list with a **greyed-out background**, distinguishing them from active properties.
+3. All property details (display name, internal name, type, Required badge) remain visible.
+
+Disabling the toggle hides archived properties again without affecting any data.
+
+---
+
+## Unarchiving a Property (Published / Unpublished Tables)
+
+Unarchiving restores a property to active status, making it visible in forms and data views again.
+
+**When it applies:** The table is in **Published** or **Unpublished** state, and the property is currently archived.
+
+**Steps:**
+
+1. In the **Schema** tab, enable the **Show Archived** toggle to reveal archived properties.
+2. Locate the archived property you want to restore (it will have a greyed-out background).
+3. Click the **trash icon** on the archived property's row.
+4. The property is immediately restored to active status and returns to the standard (non-greyed) property list.
+
+> **Note:** The same trash icon both archives active properties and unarchives archived ones. The system determines which action to take based on the property's current active/inactive status.
+
+---
+
+## Quick Reference
+
+| Action | Table state required | Effect on data | Reversible? |
+|--------|---------------------|----------------|-------------|
+| **Delete** | Draft only | Property and definition removed permanently | No |
+| **Archive** | Published or Unpublished | Property hidden; data preserved | Yes — via unarchive |
+| **Unarchive** | Published or Unpublished | Property restored to active; data accessible again | Yes — via archive |
+
+---
+
+## Permissions
+
+All three actions require the **vault_table_update** permission. Users without this permission will not see the trash icon on property rows.
+
+Read-only tables (those managed by a template and marked with the **Read-only** badge) do not display the trash icon at all, regardless of role.
+
+---
+
+## Related Articles
+
+- [Managing Properties in a Vault](/graphium/schema-properties/managing-properties-in-a-vault)
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)

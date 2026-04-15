@@ -1,0 +1,61 @@
+# Removing a Workspace Member
+
+**Linear issue:** AI-577
+**Linear project:** Vault/Workspace Settings: User Permissions
+**Article type:** How-to
+
+---
+
+## Overview
+
+Workspace Owners can deactivate a member from the workspace at any time. Deactivating a member immediately suspends their access — they will no longer be able to log in or access any vaults within that workspace. This action does not delete their Graphium account; it only deactivates their membership in this specific workspace. Deactivated members can be reactivated at any time.
+
+---
+
+## Steps
+
+1. In the top navigation bar, click the **Workspace Settings** button next to the workspace name.
+2. Click **Members** in the left sidebar.
+3. In the **Workspace Members** table, locate the member you want to deactivate.
+4. Click the **Deactivate** link in the **Actions** column on their row.
+5. A confirmation dialog appears — **"Are you sure you want to deactivate this user?"** Click **Deactivate** to confirm.
+
+The member's status immediately changes to **Deactivated** and they lose access to the workspace.
+
+---
+
+## Reactivating a Member
+
+To restore access to a deactivated member, click the **Reactivate** link in their Actions column. No confirmation dialog is shown — reactivation takes effect immediately.
+
+---
+
+## Revoking a Pending Invitation
+
+To cancel an invitation that has not yet been accepted, go to the **Pending Invitations** section and click **Revoke** on the relevant row. The invitation link becomes invalid immediately.
+
+---
+
+## What Happens After Deactivation
+
+- The member loses access to the workspace and all vaults within it.
+- Their data and any records they created remain intact — deactivation only affects access, not data.
+- If the deactivated member is also listed in individual vaults, their vault membership is not automatically changed. Vault Admins may need to separately remove them from vault-level access.
+- Their Graphium account remains usable in any other workspaces they belong to.
+
+---
+
+## Permissions
+
+| Role | Can Deactivate Workspace Members |
+|------|----------------------------------|
+| Owner | ✅ |
+| Member | ❌ |
+
+---
+
+## Related Articles
+
+- [Viewing Workspace Members](/graphium/vaults/viewing-workspace-members)
+- [Inviting a User to the Workspace](/graphium/vaults/inviting-a-user-to-the-workspace)
+- [Checking Workspace Invitation Status](/graphium/vaults/checking-workspace-invitation-status)

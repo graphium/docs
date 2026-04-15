@@ -1,0 +1,94 @@
+# Record Detail View — Values and Completion Percentage
+
+> **Article type:** Reference
+> **Audience:** Internal Team
+> **Status:** Draft
+> **Last updated:** 2026-04-13
+> **Author:** Shauna Dura
+
+**Linear issue:** AI-442
+**Linear project:** Table - Data: Record Management
+
+---
+
+## Overview
+
+When you open a record in a vault table, the **record detail view** displays that record's current field values alongside a **completion percentage** — a live indicator of how fully the record has been filled in. After any edit is saved, the detail view automatically refreshes to reflect the latest values and recalculates the completion percentage. If the post-save refresh fails, a visible error state is shown, though the edit itself is always preserved.
+
+---
+
+## What Is the Record Detail View?
+
+The record detail view is the read surface you see when a record is selected or opened in the data grid. It renders the record's field values as defined by the table's schema and includes:
+
+| Element | Description |
+|---------|-------------|
+| **Field values** | The current value for each schema property defined on the table |
+| **Completion percentage** | A percentage indicator showing how many of the record's fields have been populated |
+| **Edit button** | Opens the default form to update the record's values |
+
+The detail view is a read-only surface — you cannot edit values directly here. Edits are made through the record's default form, which is opened via the edit icon in the data grid.
+
+---
+
+## What Is Completion Percentage?
+
+The **completion percentage** is a numeric indicator (0–100%) that represents how much of a record has been filled in relative to its schema. It is calculated based on the proportion of schema properties that have a non-empty value on the record.
+
+For example:
+- A record with 10 schema properties where 5 have values will show **50% complete**
+- A record where all fields are filled in will show **100% complete**
+- A brand-new record with no values entered will show **0% complete**
+
+The completion percentage updates automatically after a record edit is saved. It reflects the state of the record at the time of the most recent save.
+
+> **Note:** Auto ID and Formula fields are computed by the system and do not count against a record's manual completion. Only user-editable fields factor into the percentage.
+
+---
+
+## How the Detail View Refreshes After an Edit
+
+After you save changes to a record using the default form (via the edit icon), the system automatically fetches the latest record data to update what you see in the detail view. This happens in two stages:
+
+1. **The edit is saved** — your changes are written to the database and confirmed
+2. **The detail view refreshes** — the system fetches the updated record and re-renders both the field values and the completion percentage
+
+These two stages are independent. The save always completes first. The refresh is a separate read operation that runs immediately afterward.
+
+---
+
+## What to Expect
+
+| Scenario | What Happens |
+|----------|--------------|
+| **Save succeeds, refresh succeeds** | The detail view closes the edit form and updates to show the latest field values and the recalculated completion percentage |
+| **Save succeeds, refresh fails** | The detail view shows a visible **error state** indicating that the latest values could not be loaded. The edit was saved — only the display refresh failed. Reloading the page will show the correct updated values. |
+| **Save fails** | An error is shown in the edit form. The record is not changed and the detail view remains as it was. |
+
+> ⚠️ **Important:** If you see an error state in the record detail view after saving, do not re-submit the form. Your changes were saved successfully. Reload the page to see the updated record values and completion percentage.
+
+---
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|--------------|----------|
+| Completion percentage did not update after saving | The post-save refresh may have failed, or not all relevant fields were filled in | Check for an error state in the detail view and reload the page; verify that the fields you edited have values saved correctly |
+| An error state is displayed in the record detail view | The post-save data fetch failed, usually due to a temporary network issue | Your edit was saved. Reload the page to see the updated record and correct completion percentage |
+| Field values appear stale after saving | The display refresh did not complete | Reload the page to force the detail view to re-fetch the latest record data |
+| Completion percentage shows lower than expected | Some schema properties may still be empty | Open the record in edit mode and review which fields remain blank; fill them in and save again |
+| Completion percentage shows 0% on a record with values | The refresh may have failed immediately after the record was created | Reload the page — the completion percentage will reflect the actual saved values |
+
+---
+
+## Related Articles
+
+- [Editing a Record in the Data Grid](/graphium/data-records/editing-a-record-in-the-data-grid)
+- [Creating a New Record in the Data Grid](/graphium/data-records/creating-a-new-record-in-the-data-grid)
+- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
+- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+
+---
+
+*Questions? Reach out to the Graphium AI team or open a ticket in the #product-support Slack channel.*

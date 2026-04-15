@@ -1,0 +1,165 @@
+# Navigating Your Vault Using the Sidebar
+
+**Linear Issues:** AI-16 (Tables), AI-17 (Tasks), AI-18 (Automations), AI-19 (Vault Settings), AI-27 (AI Assistant)
+**Category:** Navigation
+**Roles Required:** Varies by destination — see the Role Visibility section below
+
+---
+
+## Overview
+
+The vault sidebar is the primary navigation panel within a vault. It runs along the left side of the screen and gives you access to every section of your vault from a single place: your tables, the AI Assistant, Tasks, Automations, and Vault Settings.
+
+The sidebar also shows your current location — the active section or table is highlighted in teal so you always know where you are.
+
+---
+
+## Sidebar Layout
+
+From top to bottom, the vault sidebar contains the following elements:
+
+**Vault Header**
+At the very top is the vault name (with an edit pencil icon) and vault icon. A back arrow (←) on the left lets you return to the workspace home. Below the vault name, two metadata items are displayed:
+
+- **"X records"** — the total record count across all tables in the vault (e.g., "57 records"). Updates as records are added or removed.
+- **"Updated [date]"** — the date the vault was last updated (e.g., "Updated 3/30/2026").
+
+**AI Assistant**
+A link to the vault's AI Assistant page, marked with a sparkle icon (✦).
+
+**Tables**
+A section labeled **TABLES** lists all your vault's tables. Each table is shown as a row with a table icon, the table name, and — when the table contains records — a numeric badge showing the table's total record count (e.g., a table with 55 records shows a "55" badge; tables with zero records show no badge). An **+** button in the section header (visible to ADMIN and BUILDER users) lets you add a new table. If the vault has more tables than can fit on screen, a **"X More"** control lets you expand the full list, and a **"Show Less"** control collapses it again.
+
+**Tasks**
+A link to the vault's Tasks page, marked with a task/checkbox icon. A badge shows the number of open tasks.
+
+**Automations**
+A link to the vault's Automations section, marked with a lightning bolt icon. A badge shows the number of active automations.
+
+**Settings**
+A link to the Vault Settings section, marked with a gear icon.
+
+**Builder / Contributor Mode Toggle**
+At the bottom of the sidebar, ADMIN and BUILDER users see a **Builder / Contributor** toggle that switches the sidebar view between the full builder view and a filtered contributor view.
+
+**Collapse Button**
+An icon-only button at the very bottom of the sidebar collapses it to a narrow icon-only view, hiding all text labels. When collapsed, clicking the corresponding expand button restores the full sidebar. See [Resizing the Sidebar](/graphium/navigation/resizing-the-sidebar) for details on adjusting sidebar width by dragging.
+
+---
+
+## Navigating to a Table (AI-16)
+
+To open a specific table:
+
+1. In the **TABLES** section of the sidebar, find the table you want to open.
+2. If the table isn't visible, click **"X More"** to expand the full list.
+3. Click the table name. The table's Data view loads in the main content area, and the table is highlighted in the sidebar to show it's active.
+
+> **Note:** ADMIN and BUILDER users see all tables (including Draft tables). CONTRIBUTOR and VIEWER users see only tables that have been enabled for Contributor Mode.
+
+---
+
+## Navigating to the AI Assistant (AI-27)
+
+To open the AI Assistant:
+
+1. Click **AI Assistant** at the top of the sidebar (below the vault header).
+2. The AI Assistant page loads in the main content area and the sidebar item becomes active.
+
+The AI Assistant is visible to all vault roles: ADMIN, BUILDER, CONTRIBUTOR, and VIEWER.
+
+---
+
+## Navigating to Tasks (AI-17)
+
+To open the Tasks page:
+
+1. Click **Tasks** in the sidebar. The Tasks page loads in the main content area.
+2. The badge next to Tasks shows the number of currently open tasks in this vault.
+
+Tasks is visible to all vault roles. VIEWER users have read-only access.
+
+---
+
+## Navigating to Automations (AI-18)
+
+To open the Automations section:
+
+1. Click **Automations** in the sidebar. The Automations page loads in the main content area.
+2. The badge next to Automations shows the number of active automations.
+
+> **Note:** Automations is only visible to **ADMIN** and **BUILDER** users. If you do not see it in your sidebar, your vault role is CONTRIBUTOR or VIEWER and you do not have access to this section.
+
+---
+
+## Navigating to Vault Settings (AI-19)
+
+To open Vault Settings:
+
+1. Click **Settings** (gear icon) at the bottom of the sidebar navigation list.
+2. The Vault Settings page loads in the main content area.
+
+> **Note:** Settings is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users do not see this item in the sidebar.
+
+---
+
+## Role Visibility Summary
+
+What you see in the sidebar depends on your vault role:
+
+| Sidebar Item | ADMIN | BUILDER | CONTRIBUTOR | VIEWER |
+|---|---|---|---|---|
+| AI Assistant | ✅ | ✅ | ✅ | ✅ |
+| Tables (all) | ✅ | ✅ | — | — |
+| Tables (contributor-enabled only) | — | — | ✅ | ✅ (read-only) |
+| Add table (+) | ✅ | ✅ | ❌ | ❌ |
+| Tasks | ✅ | ✅ | ✅ | ✅ (read-only) |
+| Automations | ✅ | ✅ | ❌ | ❌ |
+| Settings | ✅ | ✅ | ❌ | ❌ |
+| Builder/Contributor mode toggle | ✅ | ✅ | ❌ | ❌ |
+
+---
+
+## Collapsing and Expanding the Sidebar
+
+The sidebar can be collapsed to a narrow icon-only view to free up horizontal space, or expanded to restore the full text labels.
+
+**To collapse the sidebar:**
+
+1. Scroll to the bottom of the sidebar.
+2. Click the **Collapse** button (the arrow icon at the very bottom of the sidebar panel).
+3. The sidebar narrows to show only icons — vault icon, AI Assistant, table icons, Tasks, Automations, Settings, and the Builder/Contributor toggle. All text labels are hidden.
+
+**To expand the sidebar again:**
+
+1. In the collapsed icon bar, click the **Expand** button (the outward-facing arrow at the bottom of the icon bar).
+2. The full sidebar restores with all text labels visible.
+
+> **Tip:** You can also resize the sidebar to any width by dragging its right edge. See [Resizing the Sidebar](/graphium/navigation/resizing-the-sidebar) for details.
+
+---
+
+## Active Route Highlighting
+
+The sidebar always reflects your current location. When you navigate to a section or table, that item is highlighted in teal. This highlight updates automatically as you move between sections, so you always have a clear visual anchor for where you are.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Automations or Settings not visible in sidebar | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN — these sections require ADMIN or BUILDER access |
+| A table you expect is not listed | The table may not be enabled for Contributor Mode | If you are a CONTRIBUTOR or VIEWER, ask an ADMIN or BUILDER to enable that table for Contributor Mode in the table's Settings tab |
+| The sidebar is showing only icons | The sidebar has been collapsed | Click the **Expand** button at the bottom of the icon bar to restore the full sidebar |
+| Clicking a sidebar item does nothing | The destination page may still be loading | Wait a moment and try again; check your network connection if the issue persists |
+
+---
+
+## Related Articles
+
+- [Expanding and Collapsing the Tables List](/graphium/navigation/expanding-and-collapsing-the-tables-list)
+- [Adding a New Table from the Sidebar](/graphium/navigation/adding-a-new-table-from-the-sidebar)
+- [Resizing the Sidebar](/graphium/navigation/resizing-the-sidebar)
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
+- [Enabling a Table for Contributor Mode](/graphium/data-records/enabling-a-table-for-contributor-mode)
