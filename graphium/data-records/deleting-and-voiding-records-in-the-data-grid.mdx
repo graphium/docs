@@ -1,0 +1,133 @@
+---
+title: "Deleting and Voiding Records in the Data Grid"
+description: "Graphium supports two ways to remove a record from a vault table — **Delete** (permanent hard delete) and **Void** (reversible soft delete)."
+icon: "database"
+---
+
+## Overview
+
+Graphium supports two ways to remove a record from a vault table — **Delete** (permanent hard delete) and **Void** (reversible soft delete). The behavior of the trash icon in the data grid is determined by your workspace's Record Deletion Mode setting. Voided records can be restored at any time, and a **Show Voided** toggle lets users surface them in the grid when needed.
+
+---
+
+## When to Use This
+
+Use this feature when you need to:
+
+- Remove a record from a vault table that was entered in error, is a duplicate, or is no longer needed
+- Soft-delete (void) a record that may need to be recovered later rather than permanently removed
+- Restore a previously voided record back to active status
+- Audit or review voided records by toggling them into view
+
+This applies to any user who has edit access to a vault table and needs to manage record lifecycle within the data grid.
+
+---
+
+## Prerequisites
+
+- You must have **Admin**, **Builder**, or **Contributor** access to the vault
+- The vault table must have at least one record to act on
+- Your workspace administrator must have configured the **Record Deletion Mode** in workspace settings — either **Delete** or **Void** mode. Contact your admin if you are unsure which mode is active
+
+---
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Vault Table
+
+Navigate to the vault that contains the table you want to manage. Select the table from the vault sidebar. The **Data** tab opens by default, displaying records in the data grid.
+
+---
+
+### Step 2: Locate the Record
+
+Find the record row you want to delete or void. Each row represents one record, with action icons on the far right of the row.
+
+> 💡 **Tip:** Use the **Filter** button in the table header bar to narrow down records if the table contains a large number of entries.
+
+---
+
+### Step 3: Click the Trash Icon
+
+Click the **trash icon** (🗑) on the right side of the record row. The icon's behavior depends on your workspace's Record Deletion Mode:
+
+| Mode | What the trash icon does |
+|------|--------------------------|
+| **Delete** | Initiates a permanent hard delete of the record |
+| **Void** | Initiates a soft delete (void) of the record |
+
+---
+
+### Step 4: Confirm the Action in the Modal
+
+A confirmation modal will appear. The modal will indicate whether the action is a **Delete** or a **Void** based on your workspace settings.
+
+- If the modal says **Delete** — the record will be permanently removed. This cannot be undone.
+- If the modal says **Void** — the record will be soft-deleted and can be restored later.
+
+Click the confirmation button to proceed, or click **Cancel** to abort without making any changes.
+
+> ⚠️ **Important:** In Delete mode, once confirmed, the record is permanently removed and cannot be recovered. If your team requires the ability to restore records, ask your administrator to switch the workspace to Void mode.
+
+---
+
+### Step 5 (Void mode only): View Voided Records with the Show Voided Toggle
+
+After voiding a record, it is hidden from the default table view. To reveal voided records:
+
+1. In the data grid, locate the **Show Voided** toggle in the table toolbar
+2. Click the toggle to enable it
+3. Voided records will appear in the grid with a **gray background**, visually distinguishing them from active records
+4. The **edit icon is hidden** on voided rows — only the Unvoid action is available
+5. Click the **Show Voided** toggle again to hide voided records and return to the default view
+
+---
+
+### Step 6 (Void mode only): Unvoid a Record
+
+To restore a voided record to active status:
+
+1. Enable the **Show Voided** toggle to surface voided records in the grid (see Step 5)
+2. Locate the voided record (identified by its gray background)
+3. Click the **Unvoid icon** on the right side of the record row
+4. The record is immediately restored to active status, removed from the gray styling, and the edit icon becomes available again
+
+> 💡 **Tip:** No confirmation modal is shown for the Unvoid action — the record is restored immediately upon clicking the icon.
+
+---
+
+## What to Expect
+
+| Action | Outcome |
+|--------|---------|
+| Trash icon clicked → Delete confirmed | Record is permanently removed from the table and cannot be recovered |
+| Trash icon clicked → Void confirmed | Record is soft-deleted, hidden from the default view, and marked with a gray background when Show Voided is enabled |
+| Show Voided enabled | Voided records appear in the grid with a gray background; edit icons are hidden on those rows |
+| Unvoid icon clicked | Record is immediately restored to active status; gray background is removed; edit icon becomes available |
+| Show Voided disabled | Voided records are hidden from view; only active records are displayed |
+
+---
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|--------------|----------|
+| Trash icon is not visible on record rows | Your role is Viewer, which does not have edit permissions | Contact your vault admin to request Contributor or higher access |
+| No confirmation modal appears | An unexpected error or browser issue | Refresh the page and try again; contact support if the issue persists |
+| Voided records are not appearing after enabling Show Voided | Toggle may not have applied yet due to a sync delay | Wait a moment and try toggling it off and back on again |
+| Unvoid icon is not visible on a voided record | The Show Voided toggle may not be enabled | Enable the Show Voided toggle to reveal voided records and their Unvoid icons |
+| Modal says "Delete" but the team expected "Void" | Workspace Record Deletion Mode is set to Delete | Ask your workspace administrator to change the Record Deletion Mode setting to Void |
+
+---
+
+## Related Articles
+
+- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
+- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
+- [Editing Table Display Names](/graphium/data-records/editing-table-display-names)
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
+- [Managing Vault Access and Permissions]
+
+---
+
+*Questions? Reach out to the Graphium AI team or open a ticket in the #product-support Slack channel.*

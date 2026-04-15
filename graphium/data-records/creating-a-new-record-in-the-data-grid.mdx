@@ -1,0 +1,102 @@
+---
+title: "Creating a New Record in the Data Grid"
+description: "New records can be added to any vault table directly from the Data Grid using the table's default form."
+icon: "database"
+---
+
+## Overview
+
+New records can be added to any vault table directly from the Data Grid using the table's default form. Clicking the **+ Add** button opens a slide-in side panel with a dynamic form that automatically generates input fields based on the table's schema. Once submitted, the new record appears in the table immediately.
+
+## When to Use This
+
+Use this feature when you need to:
+
+- Enter a new record into a vault table manually
+- Log a new entry in a clinical, operational, or data capture workflow
+- Add a record to a table whose data is not managed by an external integration
+- Test or populate a table with data during setup or development
+
+## Prerequisites
+
+- You must have **Admin**, **Builder**, or **Contributor** access to the vault — Viewer-role users cannot create records and will not see the Add button
+- The vault table must have a schema defined (at least one property) so the form has fields to render
+- Tables marked **Managed by an integration** (e.g., Graphium EMR) may not support manual record creation — check the table header for this badge
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Vault Table
+
+Navigate to the vault that contains the table where you want to add a record. Select the table from the vault sidebar. The **Data** tab opens by default, displaying the data grid.
+
+### Step 2: Click the Add Button
+
+In the table header bar, click the **+ Add {singular}** button. The button label uses the table's configured singular name — for example, **+ Add Procedure** or **+ Add Patient**.
+
+> 💡 **Tip:** If you don't see the Add button, your role may be Viewer, or the table may be managed by an external integration. Check with your vault administrator.
+
+### Step 3: Fill In the Form Fields
+
+A **slide-in side panel** opens from the right side of the screen. The panel contains a form with input fields dynamically generated from the table's schema — every property defined in the schema appears as a field in the form.
+
+Fill in the fields for the new record. The form supports all property types used in Graphium vault tables:
+
+| Field Type | How to Fill It In |
+|------------|--------------------|
+| **Text** | Click the field and type |
+| **Number** | Click the field and enter a numeric value |
+| **Date** | Click the field to open a date picker |
+| **Time** | Click the field to open a time picker |
+| **Date & Time** | Click the field to select both a date and time |
+| **Boolean** | Toggle the switch or checkbox on or off |
+| **Select from List** | Click the field to choose an option from the dropdown |
+| **Image** | Click to upload or capture an image |
+| **Signature** | Draw your signature in the signature field |
+| **Reference** | Click to search for and link a record from another table |
+| **Auto ID** | Automatically assigned — no input required |
+| **Formula** | Computed from other field values — displayed as read-only |
+
+> 💡 **Tip:** Required fields must be filled in before the form can be submitted. Leave optional fields blank if the information is not yet available — you can always edit the record later.
+
+> **Note:** Auto ID fields are assigned by the system and do not appear as editable inputs. Formula fields display a computed value based on other fields and cannot be edited directly.
+
+### Step 4: Submit the Record
+
+When you have finished filling in the form, click the **Save** (or **Submit**) button in the panel footer.
+
+- If all required fields are valid, the record is created and the table list refreshes to show the new entry
+- If any required fields are missing or invalid, **inline error messages** appear next to the affected fields — correct them and try submitting again
+
+> 💡 **Tip:** You can dismiss the panel without saving by clicking **Cancel** or clicking outside the panel. No record will be created.
+
+## What to Expect
+
+| Outcome | Details |
+|---------|---------|
+| **Successful submission** | The side panel closes, the table refreshes, and the new record appears as a row in the data grid |
+| **Validation error** | The panel stays open and inline error messages appear next to fields that need attention |
+| **Cancel / dismiss** | The panel closes with no record created and no data saved |
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|--------------|----------|
+| The **+ Add** button is not visible | Your role is Viewer, or the table is managed by an external integration | Request Contributor or higher access from your vault administrator, or confirm whether the table supports manual record creation |
+| The form panel does not open after clicking **+ Add** | A temporary loading issue | Wait a moment and try again; refresh the page if the problem persists |
+| A field type shows a placeholder instead of an input | The field type is not yet fully supported in the default form (e.g., Reference fields are still in progress) | Leave the field blank for now; full support will be available once the feature ships |
+| Required fields are not highlighted after a failed submit | A display or validation sync issue | Scroll through the full form to check for any error messages and correct them before resubmitting |
+| The new record does not appear in the grid after saving | The table list refresh may have failed | Reload the page — the record was saved and will appear after a fresh data load |
+| A formula field is not calculating correctly | The fields it depends on may be empty | Fill in the source fields that the formula references; the computed value will update automatically |
+
+## Related Articles
+
+- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
+- [Editing a Record in the Data Grid](/graphium/data-records/editing-a-record-in-the-data-grid)
+- [Deleting and Voiding Records in the Data Grid](/graphium/data-records/deleting-and-voiding-records-in-the-data-grid)
+- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+
+---
+
+*Questions? Reach out to the Graphium AI team or open a ticket in the #product-support Slack channel.*

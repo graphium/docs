@@ -1,0 +1,89 @@
+---
+title: "Enabling a Table for Contributor Mode"
+description: "Each table in a vault can be independently enabled or disabled for Contributor Mode."
+icon: "database"
+---
+
+## Overview
+
+Each table in a vault can be independently enabled or disabled for Contributor Mode. When a table is enabled for Contributor Mode, it becomes visible to workspace members who are using the Contributor Mode view. Tables that are disabled are hidden from that view entirely.
+
+This setting lives in the **Settings** tab of the table view and is controlled with a single checkbox — **Enable for Contributor Mode**. Changes take effect immediately and sync to the sidebar without a page reload.
+
+> **Note:** The Settings tab — and this setting — is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users cannot see or change this setting.
+
+---
+
+## Before You Begin
+
+- You must have an **ADMIN** or **BUILDER** role in the vault
+- Navigate to the table you want to configure
+- Confirm you are in the table view with the **Data**, **Schema**, and **Settings** tabs visible in the top-right of the content area
+
+---
+
+## How to Enable a Table for Contributor Mode
+
+1. Open the table you want to make available in Contributor Mode.
+
+2. Click the **Settings** tab in the top-right area of the table view (alongside the Data and Schema tabs).
+
+3. Scroll to the **Enable for Contributor Mode** section.
+
+4. Check the **Enable for Contributor Mode** checkbox.
+
+5. The change saves immediately — no additional save button is required. The sidebar updates automatically to reflect the change.
+
+Tables with this setting enabled will now appear in the sidebar when any workspace member switches to Contributor Mode.
+
+---
+
+## How to Disable a Table for Contributor Mode
+
+1. Open the table you want to hide from Contributor Mode.
+
+2. Click the **Settings** tab in the top-right of the table view.
+
+3. Scroll to the **Enable for Contributor Mode** section.
+
+4. Uncheck the **Enable for Contributor Mode** checkbox.
+
+5. The change saves immediately. The table is removed from the Contributor Mode sidebar view without a page reload.
+
+> **Note:** Disabling a table for Contributor Mode does not delete the table or affect its data in any way. ADMIN and BUILDER users can still access the table normally in Builder Mode.
+
+---
+
+## What Happens After You Change This Setting
+
+- The sidebar's Contributor Mode view updates within approximately one second of the change
+- **Enabled tables** appear in the sidebar when any user (ADMIN, BUILDER, CONTRIBUTOR, or VIEWER) switches to Contributor Mode
+- **Disabled tables** are hidden from the Contributor Mode sidebar view — they remain fully accessible in Builder Mode
+- The setting is per-table — each table in a vault has its own independent Contributor Mode setting
+- New tables default to **disabled** (unchecked) and must be explicitly enabled
+
+---
+
+## Understanding Contributor Mode
+
+Contributor Mode is a simplified view of the workspace designed for users who only need to work with specific tables. When a workspace member switches to Contributor Mode from the sidebar, the tables list collapses to show only tables that have **Enable for Contributor Mode** turned on.
+
+ADMIN and BUILDER users can toggle between Builder Mode (all tables visible) and Contributor Mode (only enabled tables) at any time using the mode toggle in the sidebar. This is useful for previewing exactly what Contributor-role users see.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Settings tab is not visible | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN — only ADMIN and BUILDER users can access table settings |
+| Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed yet | Wait a moment and check again; refresh the page if it persists |
+| Table still appears in Contributor Mode after disabling | Sidebar may not have refreshed yet | Wait a moment and check again; refresh the page if it persists |
+| Checkbox is visible but greyed out | Role or permissions issue | Confirm your role with your vault admin |
+| Change reverts after switching tabs | Connectivity or save error | Re-check the checkbox and ensure a stable network connection |
+
+---
+
+## Related Articles
+
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
