@@ -151,7 +151,7 @@
     }
   },
   "logo": {
-    "light": "/logo/dark.svg",
+    "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
