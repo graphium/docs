@@ -6,13 +6,27 @@
    Row 2 (tabs):                standard navy #162032
    ══════════════════════════════════════════════ */
 
-/* Lock the entire navbar to dark navy on scroll */
+/* Lock the entire navbar to dark navy on scroll.
+   Mintlify injects inline background + backdrop-filter when scrolled,
+   so we target every possible state and kill the backdrop. */
 #navbar,
 #navbar[style],
-#navbar[class] {
+#navbar[class],
+header,
+header[style] {
   background-color: #080D18 !important;
+  background: #080D18 !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Mintlify sometimes uses a ::before pseudo for the scroll blur overlay */
+#navbar::before,
+header::before {
+  display: none !important;
+  background: none !important;
 }
 
 /* Tab row sits just below — slightly lighter navy for contrast */
