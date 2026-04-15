@@ -1,24 +1,58 @@
 /* Graphium AI — custom theme overrides */
 
-/* ── Navbar: dark navy matching Graphium banner ── */
-#navbar {
-  background-color: #0F172A;
-  border-bottom: none;
+/* ══════════════════════════════════════════════
+   NAVBAR — always dark, never changes on scroll
+   Row 1 (logo/search/actions): deeper navy #080D18
+   Row 2 (tabs):                standard navy #162032
+   ══════════════════════════════════════════════ */
+
+/* Lock the entire navbar to dark navy on scroll */
+#navbar,
+#navbar[style],
+#navbar[class] {
+  background-color: #080D18 !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
-/* Nav links and tab text on dark background */
-#navbar a,
-#navbar [class*="text"] {
-  color: rgba(255, 255, 255, 0.6);
+/* Tab row sits just below — slightly lighter navy for contrast */
+#navbar + [role="tablist"],
+#navbar ~ [role="tablist"],
+[data-testid="tabs-nav"],
+.nav-tabs-row {
+  background-color: #162032 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* ── Sidebar: light slate background ── */
+/* Tab text on dark background */
+[role="tablist"] [role="tab"],
+[role="tablist"] a {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+[role="tablist"] [role="tab"][data-state="active"],
+[role="tablist"] [role="tab"].active,
+[role="tablist"] a[aria-current] {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Nav links and support text on dark background */
+#navbar a:not([class*="btn"]):not([class*="button"]) {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+#navbar a:hover:not([class*="btn"]):not([class*="button"]) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* ══════════════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════════════ */
 #sidebar-content {
   background-color: #F8FAFC;
   border-right: 1px solid #E2E8F0;
 }
 
-/* Sidebar group headings: muted slate, not colored */
+/* Group headings: muted slate */
 #sidebar-content .group-heading,
 #sidebar-content [data-heading] {
   color: #94A3B8;
@@ -28,45 +62,32 @@
   letter-spacing: 0.08em;
 }
 
-/* ── Content area: clean white ── */
+/* ══════════════════════════════════════════════
+   CONTENT AREA
+   ══════════════════════════════════════════════ */
 #content-area {
   background-color: #FFFFFF;
 }
 
-/* ── Callouts: color-coded by type ── */
+/* ══════════════════════════════════════════════
+   CALLOUTS — color-coded by type
+   ══════════════════════════════════════════════ */
+[data-callout="info"],    [class*="callout-info"]    { background: #EFF6FF; border-left-color: #3B82F6; color: #1E40AF; }
+[data-callout="tip"],     [class*="callout-tip"]     { background: #ECFEFF; border-left-color: #0891B2; color: #155E75; }
+[data-callout="warning"], [class*="callout-warning"] { background: #FFF7ED; border-left-color: #F97316; color: #9A3412; }
 
-/* Info — blue */
-[data-callout="info"],
-[class*="callout-info"] {
-  background: #EFF6FF;
-  border-left-color: #3B82F6;
-  color: #1E40AF;
-}
-
-/* Tip — cyan */
-[data-callout="tip"],
-[class*="callout-tip"] {
-  background: #ECFEFF;
-  border-left-color: #0891B2;
-  color: #155E75;
-}
-
-/* Warning — orange */
-[data-callout="warning"],
-[class*="callout-warning"] {
-  background: #FFF7ED;
-  border-left-color: #F97316;
-  color: #9A3412;
-}
-
-/* ── Code blocks: dark navy for contrast ── */
+/* ══════════════════════════════════════════════
+   CODE BLOCKS — dark navy for contrast on white
+   ══════════════════════════════════════════════ */
 pre,
 code {
   background-color: #0F172A !important;
   border-color: #E2E8F0;
 }
 
-/* ── Footer ── */
+/* ══════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════ */
 footer {
   background-color: #F8FAFC;
   border-top: 1px solid #E2E8F0;
