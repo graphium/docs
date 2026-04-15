@@ -3,184 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graphium AI Docs – Navbar Preview</title>
+<title>Graphium AI Docs – All White Theme Preview</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --navy-deep:  #080D18;
-    --navy:       #0F172A;
-    --navy-tabs:  #162032;
-    --cyan:       #0891B2;
-    --cyan-dim:   rgba(8, 145, 178, 0.1);
-    --slate-600:  #475569;
-    --slate-500:  #64748B;
-    --slate-400:  #94A3B8;
-    --slate-200:  #E2E8F0;
-    --slate-100:  #F1F5F9;
-    --slate-50:   #F8FAFC;
-    --white:      #FFFFFF;
+    --navy:      #0F172A;
+    --cyan:      #0891B2;
+    --cyan-dim:  rgba(8, 145, 178, 0.08);
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748B;
+    --slate-400: #94A3B8;
+    --slate-200: #E2E8F0;
+    --slate-100: #F1F5F9;
+    --slate-50:  #F8FAFC;
+    --white:     #FFFFFF;
   }
-
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
     background: var(--white);
-    color: var(--slate-600);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    color: var(--slate-700);
+    display: flex; flex-direction: column; height: 100vh; overflow: hidden;
   }
 
-  /* ═══════════════════════════════════════════
-     TWO-ROW NAVBAR — fixed, never changes
-  ═══════════════════════════════════════════ */
+  /* Navbar — dark navy */
   #navbar {
-    flex-shrink: 0;
     background: var(--navy);
-    /* fix: never becomes white on scroll */
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    flex-shrink: 0;
   }
-
-  /* ROW 1: Logo + Search + Actions
-     Slightly deeper navy for contrast */
   .navbar-top {
     height: 52px;
-    background: var(--navy-deep);
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; padding: 0 24px; gap: 16px;
   }
-
-  /* Logo — force white/teal version */
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    height: 26px;
-    flex-shrink: 0;
-  }
+  .nav-logo { display: flex; align-items: center; height: 26px; flex-shrink: 0; }
   .nav-logo svg { height: 26px; width: auto; }
-
   .navbar-search {
-    flex: 1;
-    max-width: 260px;
-    margin: 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 6px 10px;
-    color: rgba(255,255,255,0.35);
-    font-size: 13px;
+    flex: 1; max-width: 260px; margin: 0 16px;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 6px 10px;
+    color: rgba(255,255,255,0.35); font-size: 13px;
   }
-
-  .navbar-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .nav-link {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-  }
+  .navbar-actions { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+  .nav-link { font-size: 13px; color: rgba(255,255,255,0.5); }
   .nav-btn {
-    padding: 5px 14px;
-    background: var(--cyan);
-    color: white;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
+    padding: 5px 14px; background: var(--cyan);
+    color: white; border-radius: 6px; font-size: 13px; font-weight: 500;
   }
-
-  /* ROW 2: Tab navigation
-     Slightly lighter navy to distinguish from row 1 */
   .navbar-tabs {
-    height: 38px;
-    background: var(--navy-tabs);
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    gap: 2px;
+    height: 38px; background: #162032;
+    display: flex; align-items: center; padding: 0 24px; gap: 2px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-  .nav-tab {
-    padding: 5px 14px;
-    font-size: 13px;
-    border-radius: 5px;
-    color: rgba(255,255,255,0.45);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .nav-tab.active {
-    color: var(--white);
-    background: rgba(255,255,255,0.08);
-  }
-  .nav-tab:hover:not(.active) { color: rgba(255,255,255,0.7); }
+  .nav-tab { padding: 5px 14px; font-size: 13px; border-radius: 5px; color: rgba(255,255,255,0.45); }
+  .nav-tab.active { color: white; background: rgba(255,255,255,0.08); }
 
-  /* ═══════════════════════════════════════════
-     PAGE LAYOUT
-  ═══════════════════════════════════════════ */
+  /* Layout */
   .layout { display: flex; flex: 1; overflow: hidden; }
 
-  /* Sidebar */
+  /* Sidebar — clean white */
   #sidebar {
-    width: 248px;
-    background: var(--slate-50);
+    width: 248px; background: var(--white);
     border-right: 1px solid var(--slate-200);
-    overflow-y: auto;
-    padding: 16px 0;
-    flex-shrink: 0;
+    overflow-y: auto; padding: 16px 0; flex-shrink: 0;
   }
   .sidebar-section { margin-bottom: 20px; }
   .sidebar-group-label {
-    padding: 4px 16px 6px;
-    font-size: 10.5px; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase;
-    color: var(--slate-400);
+    padding: 4px 16px 6px; font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; color: var(--slate-400);
   }
   .sidebar-item {
-    padding: 6px 16px;
-    font-size: 13px;
-    color: var(--slate-600);
-    cursor: pointer;
-    border-left: 2px solid transparent;
+    padding: 6px 16px; font-size: 13px; color: var(--slate-600);
+    cursor: pointer; border-left: 2px solid transparent;
   }
-  .sidebar-item:hover { color: #0F172A; background: var(--slate-100); }
+  .sidebar-item:hover { color: var(--navy); background: var(--slate-50); }
   .sidebar-item.active {
-    color: var(--cyan);
-    background: var(--cyan-dim);
-    border-left-color: var(--cyan);
-    font-weight: 500;
+    color: var(--cyan); background: var(--cyan-dim);
+    border-left-color: var(--cyan); font-weight: 500;
   }
 
-  /* Content */
-  #content {
-    flex: 1; overflow-y: auto;
-    padding: 40px 56px;
-    background: var(--white);
-  }
+  /* Content — pure white */
+  #content { flex: 1; overflow-y: auto; padding: 40px 56px; background: var(--white); }
   .content-inner { max-width: 720px; }
-
   .breadcrumb { font-size: 12px; color: var(--slate-400); margin-bottom: 12px; }
-  h1 { font-size: 28px; font-weight: 700; color: #0F172A; margin-bottom: 12px; }
+  h1 { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
   .lead { font-size: 15px; color: var(--slate-500); margin-bottom: 28px; line-height: 1.65; }
-  h2 {
-    font-size: 17px; font-weight: 600; color: #182C49;
-    margin: 28px 0 10px; padding-bottom: 6px;
-    border-bottom: 1px solid var(--slate-200);
-  }
-
-  .callout {
-    padding: 14px 16px; border-radius: 8px; border-left: 3px solid;
-    margin: 16px 0; font-size: 13.5px; line-height: 1.6;
-  }
+  h2 { font-size: 17px; font-weight: 600; color: #182C49; margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--slate-200); }
+  .callout { padding: 14px 16px; border-radius: 8px; border-left: 3px solid; margin: 16px 0; font-size: 13.5px; line-height: 1.6; }
   .callout-title { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
   .callout-info    { background: #EFF6FF; border-color: #3B82F6; color: #1E40AF; }
   .callout-info .callout-title { color: #2563EB; }
@@ -188,62 +97,37 @@
   .callout-tip .callout-title  { color: var(--cyan); }
   .callout-warning { background: #FFF7ED; border-color: #F97316; color: #9A3412; }
   .callout-warning .callout-title { color: #EA580C; }
-
   .code-block {
-    background: #0F172A; border: 1px solid var(--slate-200); border-radius: 8px;
+    background: var(--navy); border: 1px solid var(--slate-200); border-radius: 8px;
     padding: 16px; margin: 16px 0;
     font-family: 'Menlo','Monaco',monospace; font-size: 12.5px; line-height: 1.6; color: #94A3B8;
   }
   .k { color: #22D3EE; } .s { color: #86EFAC; }
+  .content-divider { height: 1px; background: var(--slate-200); margin: 32px 0; }
 
-  #toc {
-    width: 200px; padding: 40px 0 0 24px; flex-shrink: 0;
-    font-size: 12px; border-left: 1px solid var(--slate-200);
-  }
+  /* TOC */
+  #toc { width: 200px; padding: 40px 0 0 24px; flex-shrink: 0; font-size: 12px; border-left: 1px solid var(--slate-200); }
   .toc-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-400); margin-bottom: 10px; }
-  .toc-item { padding: 4px 0; color: var(--slate-400); cursor: pointer; }
+  .toc-item { padding: 4px 0; color: var(--slate-400); }
   .toc-item.active { color: var(--cyan); font-weight: 500; }
-
-  /* annotation callout for preview */
-  .annotation {
-    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
-    background: #0F172A; color: #CBD5E1;
-    border: 1px solid rgba(8,145,178,0.3);
-    border-radius: 8px; padding: 10px 20px;
-    font-size: 12px; white-space: nowrap;
-    display: flex; gap: 24px;
-  }
-  .annotation span { color: #22D3EE; font-weight: 600; }
 </style>
 </head>
 <body>
 
 <div id="navbar">
-  <!-- ROW 1: deeper navy — logo, search, actions -->
   <div class="navbar-top">
     <div class="nav-logo">
-      <!-- Real Graphium dark logo (white text + teal icon) -->
       <svg viewBox="0 0 132 39" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
         <g transform="matrix(0.714699,0,0,0.714699,-71.3364,-453.839)">
           <g>
-            <g transform="matrix(1,0,0,1,129.179,673.595)">
-              <path d="M0,-22.262L-5.399,-25.379L-17.738,-18.255L-17.738,-4.007L-5.399,3.117L6.94,-4.008L6.94,-18.255L4.363,-19.742L-5.399,-14.106L-5.399,-7.919L1.54,-11.925L1.54,-7.125L-5.399,-3.118L-12.339,-7.125L-12.339,-15.138L0,-22.262Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,123.713,675.532)">
-              <path d="M0,6.763L-12.273,-0.322L-12.273,5.866L0.067,12.99L22.634,-0.039L22.634,-6.227L0.067,6.801L0,6.763Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,113.552,678.587)">
-              <path d="M0,-36.276L-12.34,-29.152L-12.34,-3.094L-6.981,0L-6.981,-26.058L-6.914,-26.096L5.359,-33.182L0,-36.276Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,123.78,666.776)">
-              <path d="M0,-30.37L-5.361,-27.275L-5.362,-27.274L-0.002,-24.18L17.208,-14.247L17.208,0L22.567,-3.094L22.567,-17.341L0,-30.37Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/>
-            </g>
+            <g transform="matrix(1,0,0,1,129.179,673.595)"><path d="M0,-22.262L-5.399,-25.379L-17.738,-18.255L-17.738,-4.007L-5.399,3.117L6.94,-4.008L6.94,-18.255L4.363,-19.742L-5.399,-14.106L-5.399,-7.919L1.54,-11.925L1.54,-7.125L-5.399,-3.118L-12.339,-7.125L-12.339,-15.138L0,-22.262Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/></g>
+            <g transform="matrix(1,0,0,1,123.713,675.532)"><path d="M0,6.763L-12.273,-0.322L-12.273,5.866L0.067,12.99L22.634,-0.039L22.634,-6.227L0.067,6.801L0,6.763Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/></g>
+            <g transform="matrix(1,0,0,1,113.552,678.587)"><path d="M0,-36.276L-12.34,-29.152L-12.34,-3.094L-6.981,0L-6.981,-26.058L-6.914,-26.096L5.359,-33.182L0,-36.276Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/></g>
+            <g transform="matrix(1,0,0,1,123.78,666.776)"><path d="M0,-30.37L-5.361,-27.275L-5.362,-27.274L-0.002,-24.18L17.208,-14.247L17.208,0L22.567,-3.094L22.567,-17.341L0,-30.37Z" style="fill:rgb(14,116,144);fill-rule:nonzero;"/></g>
           </g>
           <g transform="matrix(1,0,0,1,-14.5048,454.985)">
             <path d="M180.607,218.253C178.63,218.253 176.9,217.804 175.416,216.907C173.932,216.009 172.779,214.754 171.958,213.142C171.137,211.531 170.726,209.649 170.726,207.498C170.726,205.349 171.147,203.451 171.989,201.802C172.831,200.154 174.035,198.864 175.601,197.932C177.168,196.999 179.027,196.533 181.18,196.533C183.621,196.533 185.65,197.117 187.266,198.284C188.881,199.451 189.922,201.074 190.388,203.152L186.34,203.152C186.042,202.123 185.454,201.316 184.576,200.729C183.697,200.142 182.56,199.848 181.165,199.848C179.75,199.848 178.534,200.158 177.518,200.778C176.502,201.398 175.729,202.279 175.197,203.423C174.665,204.566 174.399,205.928 174.399,207.51C174.399,209.099 174.666,210.461 175.2,211.593C175.734,212.726 176.492,213.587 177.474,214.176C178.456,214.765 179.604,215.059 180.92,215.059C182.879,215.059 184.36,214.513 185.363,213.421C186.367,212.329 186.957,210.896 187.133,209.125L181.706,209.125L181.706,206.4L190.768,206.4L190.768,217.893L187.453,217.893L187.168,215.002C186.71,215.698 186.178,216.289 185.574,216.776C184.969,217.264 184.262,217.632 183.452,217.88C182.643,218.129 181.694,218.253 180.607,218.253Z" style="fill:white;fill-rule:nonzero;"/>
             <path d="M192.862,217.893L192.862,202.788L196.073,202.788L196.4,205.596C196.763,204.931 197.215,204.364 197.755,203.894C198.295,203.425 198.927,203.063 199.652,202.809C200.377,202.555 201.182,202.428 202.068,202.428L202.068,206.223L200.825,206.223C200.212,206.223 199.638,206.295 199.105,206.441C198.572,206.587 198.107,206.826 197.71,207.159C197.313,207.491 197.006,207.945 196.788,208.519C196.571,209.094 196.462,209.81 196.462,210.668L196.462,217.893L192.862,217.893Z" style="fill:white;fill-rule:nonzero;"/>
-            <path d="M208.266,218.253C207.022,218.253 205.99,218.045 205.171,217.63C204.352,217.215 203.743,216.658 203.344,215.958C202.945,215.258 202.745,214.493 202.745,213.663C202.745,212.71 202.99,211.883 203.479,211.182C203.968,210.48 204.693,209.935 205.653,209.545C206.613,209.155 207.794,208.96 209.196,208.96L212.999,208.96C212.999,208.153 212.889,207.487 212.67,206.961C212.45,206.435 212.11,206.039 211.649,205.774C211.187,205.51 210.592,205.377 209.863,205.377C209.046,205.377 208.346,205.565 207.765,205.941C207.184,206.316 206.826,206.876 206.691,207.621L203.155,207.621C203.268,206.543 203.628,205.619 204.236,204.848C204.843,204.077 205.639,203.481 206.624,203.06C207.608,202.639 208.692,202.428 209.875,202.428C211.292,202.428 212.502,202.671 213.506,203.156C214.509,203.641 215.275,204.336 215.805,205.242C216.334,206.148 216.599,207.241 216.599,208.522L216.599,217.893L213.529,217.893L213.168,215.476C212.962,215.875 212.704,216.243 212.397,216.58C212.089,216.917 211.734,217.211 211.332,217.46C210.93,217.71 210.474,217.905 209.965,218.044C209.457,218.183 208.89,218.253 208.266,218.253ZM209.059,215.415C209.633,215.415 210.148,215.306 210.604,215.088C211.06,214.87 211.452,214.571 211.78,214.189C212.108,213.808 212.364,213.373 212.548,212.884C212.733,212.395 212.846,211.88 212.887,211.339L212.887,211.282L209.583,211.282C208.868,211.282 208.285,211.371 207.833,211.55C207.381,211.729 207.053,211.976 206.848,212.291C206.642,212.607 206.54,212.97 206.54,213.381C206.54,213.808 206.641,214.175 206.844,214.479C207.046,214.784 207.337,215.016 207.715,215.176C208.094,215.335 208.542,215.415 209.059,215.415Z" style="fill:white;fill-rule:nonzero;"/>
-            <path d="M218.392,224.493L218.392,202.788L221.603,202.788L221.988,204.975C222.306,204.522 222.693,204.101 223.149,203.712C223.606,203.323 224.155,203.012 224.796,202.778C225.438,202.545 226.181,202.428 227.025,202.428C228.453,202.428 229.709,202.774 230.793,203.465C231.877,204.156 232.73,205.097 233.352,206.288C233.974,207.479 234.285,208.842 234.285,210.376C234.285,211.886 233.97,213.236 233.341,214.427C232.712,215.618 231.853,216.553 230.765,217.233C229.677,217.913 228.432,218.253 227.029,218.253C225.884,218.253 224.886,218.036 224.036,217.602C223.186,217.169 222.504,216.56 221.992,215.776L221.992,224.493L218.392,224.493ZM226.28,215.119C227.122,215.119 227.871,214.92 228.527,214.52C229.182,214.121 229.695,213.563 230.066,212.846C230.437,212.129 230.623,211.298 230.623,210.353C230.623,209.406 230.437,208.572 230.066,207.852C229.695,207.132 229.182,206.571 228.527,206.167C227.871,205.763 227.122,205.562 226.28,205.562C225.425,205.562 224.67,205.763 224.015,206.167C223.36,206.571 222.849,207.131 222.482,207.847C222.116,208.564 221.933,209.395 221.933,210.341C221.933,211.288 222.116,212.121 222.482,212.84C222.849,213.559 223.36,214.118 224.015,214.519C224.67,214.919 225.425,215.119 226.28,215.119Z" style="fill:white;fill-rule:nonzero;"/>
             <path d="M235.702,217.893L235.702,196.293L239.302,196.293L239.302,205.114C239.799,204.288 240.476,203.634 241.334,203.152C242.192,202.669 243.167,202.428 244.261,202.428C245.487,202.428 246.53,202.68 247.39,203.184C248.249,203.689 248.904,204.437 249.355,205.431C249.805,206.425 250.03,207.655 250.03,209.123L250.03,217.893L246.46,217.893L246.46,209.467C246.46,208.171 246.187,207.181 245.641,206.496C245.094,205.812 244.265,205.469 243.153,205.469C242.431,205.469 241.776,205.644 241.189,205.993C240.602,206.343 240.14,206.845 239.805,207.499C239.47,208.153 239.302,208.95 239.302,209.889L239.302,217.893L235.702,217.893Z" style="fill:white;fill-rule:nonzero;"/>
             <path d="M251.963,217.893L251.963,202.788L255.563,202.788L255.563,217.893L251.963,217.893ZM253.769,200.37C253.104,200.37 252.558,200.168 252.133,199.763C251.708,199.359 251.495,198.853 251.495,198.245C251.495,197.629 251.708,197.125 252.133,196.732C252.558,196.339 253.104,196.143 253.769,196.143C254.431,196.143 254.978,196.339 255.409,196.732C255.84,197.125 256.055,197.629 256.055,198.245C256.055,198.853 255.84,199.359 255.409,199.763C254.978,200.168 254.431,200.37 253.769,200.37Z" style="fill:white;fill-rule:nonzero;"/>
             <path d="M263.291,218.253C262.083,218.253 261.045,218.006 260.177,217.513C259.308,217.019 258.644,216.28 258.184,215.295C257.724,214.31 257.493,213.09 257.493,211.636L257.493,202.788L261.081,202.788L261.081,211.265C261.081,212.566 261.359,213.548 261.913,214.214C262.468,214.879 263.298,215.212 264.404,215.212C265.128,215.212 265.775,215.042 266.345,214.701C266.915,214.361 267.364,213.868 267.692,213.223C268.02,212.578 268.184,211.789 268.184,210.857L268.184,202.788L271.784,202.788L271.784,217.893L268.598,217.893L268.336,215.385C267.88,216.262 267.218,216.959 266.351,217.477C265.484,217.994 264.464,218.253 263.291,218.253Z" style="fill:white;fill-rule:nonzero;"/>
@@ -252,20 +136,16 @@
         </g>
       </svg>
     </div>
-
     <div class="navbar-search">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       Search docs...
       <span style="margin-left:auto;font-size:11px;background:rgba(255,255,255,0.08);padding:1px 6px;border-radius:3px;color:rgba(255,255,255,0.3);">⌘K</span>
     </div>
-
     <div class="navbar-actions">
       <span class="nav-link">Support</span>
       <div class="nav-btn">Open App</div>
     </div>
   </div>
-
-  <!-- ROW 2: slightly lighter navy — tab navigation -->
   <div class="navbar-tabs">
     <div class="nav-tab active">Guides</div>
     <div class="nav-tab">Graphium AI</div>
@@ -324,6 +204,8 @@
         <div class="callout-title">⚠ Warning</div>
         After 5 failed attempts your account will be temporarily locked.
       </div>
+      <div class="content-divider"></div>
+      <div style="font-size:12px;color:#94A3B8;">Last updated: April 2026</div>
     </div>
   </main>
 
@@ -333,12 +215,6 @@
     <div class="toc-item">Steps</div>
     <div class="toc-item">Troubleshooting</div>
   </aside>
-</div>
-
-<!-- annotation -->
-<div class="annotation">
-  <div>Row 1 <span>#080D18</span> — logo · search · actions</div>
-  <div>Row 2 <span>#162032</span> — Guides · Graphium AI · API tabs</div>
 </div>
 </body>
 </html>
