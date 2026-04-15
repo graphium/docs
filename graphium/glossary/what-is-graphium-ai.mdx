@@ -1,0 +1,134 @@
+---
+title: "What is Graphium AI?"
+description: "If you run a healthcare organization -- a hospital, surgery center, or multi-site practice -- you already live this reality: your data is everywhere."
+icon: "book-open"
+---
+
+## The Problem You Already Know About
+
+If you run a healthcare organization -- a hospital, surgery center, or multi-site practice -- you already live this reality: your data is everywhere. Case volumes sit in an EMR. Provider schedules live in a spreadsheet someone emailed last Tuesday. Patient satisfaction scores are buried in a survey platform nobody logs into. Billing status? Ask three people, get three answers.
+
+The tools you have today are passive. Your EMR shows you numbers. Your spreadsheets hold rows. Your dashboards display charts. But none of them connect the dots across systems, and none of them do anything about what they find. You are the integration layer. You are the one pulling reports from four systems, pasting them into a fifth, and squinting at the result to figure out which facility had late starts last week, or which department had the highest readmission rate and why.
+
+That gap -- between seeing data and acting on it -- is where most of the wasted hours live.
+
+## How Graphium AI Is Different
+
+Graphium AI is a data workspace that brings your information together and puts AI to work on it.
+
+Three things make it different from the dashboards and spreadsheets you are used to:
+
+**Vaults as a unified, secure workspace.** Instead of scattering data across disconnected tools, you organize everything into vaults -- project workspaces that hold your tables, workflows, and automations in one place. A vault for Community Surgery Center. A vault for Memorial Hospital. Each one is self-contained, and you can set up the same table structure across vaults so your data stays consistent. Access is controlled per vault -- you add people only to the vaults they need, and nothing else.
+
+**Connections to external systems.** Vaults don't live in isolation. They connect to your EMR (Cerner, Epic, Graphium EMR), your file servers (FTP/SFTP), Google Sheets, survey tools, and more. Data flows in and out. When a case is created in your EMR, Graphium knows. When a new file lands on your SFTP server, Graphium can pick it up. Connections are not just for reading -- they can trigger actions in those external systems too, like pushing an update back to your EMR or adding a row to a shared spreadsheet. You control exactly which connection capabilities are exposed to each AI assistant, so the right tools are available to the right agents.
+
+**AI assistants that understand your specific data and act on it.** This is the part that matters most. Each vault can have AI assistants that are scoped to your data -- not a generic chatbot, but an assistant that knows your case volumes, your provider list, your billing pipeline. You can ask it a question in plain English ("Show me today's case volume by facility") and get a real answer with charts and tables. You can configure it to run nightly reports, flag compliance issues, or monitor for anomalies -- without writing code. And your team does not have to open Graphium to use them -- deploy assistants to Slack, Microsoft Teams, or SMS so people can interact with them wherever they already work.
+
+## Core Concepts
+
+Graphium is organized as a clear hierarchy. Here is how the pieces fit together, from the top down.
+
+### Workspace
+
+A workspace is the top-level container. It represents your practice, company, or group. If you work with Urban Health Partners, that is your workspace. If you also consult for Apex Radiology, that is a separate workspace. You can belong to multiple workspaces and switch between them from the header dropdown.
+
+Each workspace has its own set of vaults, assistants, settings, and users. Nothing leaks between workspaces.
+
+### Vault
+
+A vault is your project workspace. It is the central organizing unit in Graphium -- the place where data, structure, automation, and AI come together for a specific purpose. You might have one vault per facility, one per department, or one per project. A typical healthcare group might have vaults named "Cases - Community Surgery Center," "Cases - Memorial Hospital," and "Cases - St. Luke's."
+
+Vaults hold tables (your data), connections (links to external systems), workflows (automated processes), tasks (action items), and AI assistants (intelligent agents scoped to the vault's data).
+
+### Tables
+
+Tables are the structured data inside a vault. Think of them like database tables, but with hierarchical schemas that can nest fields into groups. A single vault might have tables for Cases, Procedures, Providers, Surgeons, Surgical Locations, and more. Each table has its own schema defining what fields it contains and what types those fields are. Crucially, tables can be linked together using Reference fields -- so a case record points to a provider record in the Providers table rather than duplicating that data. This lets you normalize information from different systems and relate it across tables, giving your AI assistants richer context when they analyze your data.
+
+### Connections
+
+Connections are integrations with external systems -- your EMR, file servers, spreadsheets, survey tools. They live under the Automations section of a vault and enable data to flow in and out. A connection to Epic lets you send and receive HL7 messages. A connection to Google Sheets lets you push rows or pull updates. Connections can also be made available to AI assistants as tools, so the assistant can take actions in external systems on your behalf.
+
+### AI Assistants
+
+AI assistants are configurable, vault-scoped agents that interact with your data through natural language. Each assistant has a role -- Data Analyst, Operations Helper, Compliance Monitor, or whatever you can imagine -- and is configured with specific table access permissions, tools, and actions. You chat with them like a colleague. They respond with charts, tables, statistics, and recommendations grounded in your actual data.
+
+Assistants can also be deployed to external channels like Microsoft Teams, Slack, or SMS, so your team can interact with them where they already work.
+
+### Workflows
+
+Workflows are automated processes that trigger based on events in the vault. When a new record lands in the Cases table, a workflow might check for missing fields and create a task if something is incomplete. Workflows run in the background -- you configure them once, and they keep working. Each workflow tracks its run count and can be toggled active or inactive.
+
+### Tasks
+
+Tasks are action items that surface issues needing human attention. They can be generated by workflows, AI assistants, or created manually. Each task has a priority (Urgent, High, Medium, Low), an assignee, a linked record, and a source. Examples: "Provider signature missing," "Duplicate case detected," "Procedure duration calculation error." Tasks give you a single place to see what needs fixing, who is responsible, and how old the issue is.
+
+## How It All Fits Together
+
+Here is a text diagram showing the hierarchy:
+
+```
+Workspace (e.g., Urban Health Partners)
+|
++-- Vault (e.g., Cases - Community Surgery Center)
+|   |
+|   +-- Tables
+|   |   +-- Cases (2,847 records)
+|   |   +-- Procedures
+|   |   +-- Providers
+|   |   +-- Surgeons
+|   |   +-- Surgical Locations
+|   |   +-- ...
+|   |
+|   +-- AI Assistants
+|   |   +-- Data Analyst
+|   |   +-- Operations Helper
+|   |   +-- Compliance Monitor
+|   |
+|   +-- Automations
+|   |   +-- Connections (Epic, FTP, Neomatic, ...)
+|   |   +-- Workflows (Case Review Alert, Missing Info, ...)
+|   |
+|   +-- Tasks
+|   |   +-- "Provider signature missing" (Low)
+|   |   +-- "Duplicate case detected" (Medium)
+|   |   +-- ...
+|   |
+|   +-- Settings
+|       +-- General (name, description)
+|       +-- Access & Permissions (Admin, Builder, Contributor, Viewer)
+|
++-- Vault (e.g., Cases - Memorial Hospital)
+|   +-- (same structure)
+|
++-- Vault (e.g., Cases - St. Luke's)
+    +-- (same structure)
+```
+
+The pattern is straightforward: your workspace contains vaults, each vault contains tables and automations, AI assistants work across the tables in their vault, and tasks surface what needs attention.
+
+## Quick Start Walkthrough
+
+Getting oriented in Graphium takes about five minutes. Here is the path:
+
+**1. Sign in and pick your workspace.**
+After signing in, you land on your default workspace. If you belong to multiple workspaces (say, Urban Health Partners and Graphium Corporate), use the dropdown in the header to switch between them. You will also see a global search bar, notifications, and help -- all available from the top navigation.
+
+**2. Browse your vaults.**
+The main workspace shows two tabs: Vaults and Assistants. Start with Vaults. You will see your vault cards in a grid (Card View) or a list (Table View) -- toggle between them with the view switcher. Each card shows the vault name, description, record count, and last updated date.
+
+If you are new and want to explore before building anything, open a Sample Vault. It comes pre-loaded with demo data so you can see how tables, forms, and workflows work without setting up anything yourself.
+
+**3. Open a vault.**
+Click into a vault -- say, "Cases - Community Surgery Center." The vault detail view opens with a sidebar on the left. The sidebar lists your sections: AI Assistant, Tables (with an expandable list of all tables), Tasks (with a count badge), Automations (with a count badge), and Settings. The sidebar can be collapsed to icon-only mode if you need more screen space.
+
+**4. Browse tables.**
+Expand the Tables section in the sidebar and click on a table -- Cases, for example. You will see the Data tab by default, showing records in a tabular format with pagination ("Showing 50 of 300 records"). Switch to the Schema tab to see how the table is structured -- fields like Patient Name, Case Date, Procedure Duration, Provider, and how they are organized into groups like Patient Demographics.
+
+**5. Ask the AI assistant a question.**
+Click AI Assistant in the sidebar. You will see a chat interface with suggested prompts to get you started. Try something like: "Can you give me a summary of today's cases?" or "Show me the average procedure duration by provider this month." The assistant responds with data tables, charts, key metrics, and recommendations -- all pulled from the actual data in your vault.
+
+That is the basic loop: vault holds your data, tables give it structure, and the AI assistant helps you understand and act on it. From there, you can set up connections to pull data from your EMR, build workflows to automate repetitive checks, and configure assistant actions to run reports on a schedule.
+
+## What Comes Next
+
+The rest of this documentation walks through each concept in depth. Start with **Vaults** to understand how to organize your workspaces, then move to **Tables & Schemas** to learn how your data is structured. From there, explore AI Assistants, Connections, Workflows, and Tasks as your needs grow.

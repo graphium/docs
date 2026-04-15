@@ -1,0 +1,88 @@
+---
+title: "Smart Photo Capture"
+description: "Smart Photo Capture lets you digitize paper forms by simply photographing them with your phone or camera."
+icon: "clipboard"
+---
+
+## Overview
+
+Smart Photo Capture lets you digitize paper forms by simply photographing them with your phone or camera. Graphium AI analyzes the image, identifies each field, and extracts the data automatically — no manual typing required. This is one of Graphium's most powerful features for high-volume paper form digitization.
+
+## When to Use This
+
+Use Smart Photo Capture whenever your team receives physical paper forms that need to be entered into the system — such as patient intake forms, field inspection sheets, delivery receipts, or paper surveys.
+
+## Prerequisites
+
+- You are signed in to Graphium AI (mobile browser or app)
+- The relevant Vault and Photo Form have already been set up by an administrator (see [Designing Forms](/graphium/forms/designing-forms))
+- You have a mobile device with a working camera, or access to a flatbed scanner
+
+## Tips for a Great Photo
+
+The quality of your photo directly affects extraction accuracy. Before capturing:
+
+- **Lay the form flat** on a clean, solid-color surface
+- **Use good lighting** — natural daylight or a well-lit desk works best; avoid shadows across the form
+- **Avoid glare** from overhead lights or windows
+- **Frame the form fully** — all four corners of the document should be visible in the viewfinder
+- **Hold the camera still** — blurry images lead to extraction errors
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Vault and Select the Form
+
+In Graphium AI on your mobile device, navigate to the relevant **Vault**, then tap the **Forms** tab. Select the **Photo Form** that matches the paper form you're holding.
+
+### Step 2: Tap "Capture Photo"
+
+Tap the **Capture Photo** button to open the camera interface (or **Upload Photo** if you have a scan already saved to your device).
+
+### Step 3: Position and Photograph the Form
+
+Frame the paper form within the camera view using the on-screen guides. Once it's centered and in focus, tap to capture the photo. Graphium will display a preview — if the image is blurry, shadowed, or cut off, retake it before proceeding.
+
+> 💡 **Tip:** If the form has multiple pages, capture each page as a separate submission or use the multi-page option if available in your form settings.
+
+### Step 4: Review AI-Extracted Data
+
+After capturing, Graphium AI processes the image and displays the extracted field values alongside the original photo. Review each field carefully:
+
+- Values shown in **green** were extracted with high confidence
+- Values shown in **yellow** were uncertain and need your review
+- Values shown in **red** were not extracted and require manual entry
+
+### Step 5: Correct Any Errors
+
+Tap any field to edit its value. Correct any misread characters, dates, or numbers. Pay special attention to handwritten sections, which are more prone to variation.
+
+> 💡 **Tip:** If the same field is consistently misread across multiple submissions, ask your administrator to re-annotate the bounding box in the Photo Form Designer with a tighter area.
+
+### Step 6: Submit
+
+Once all fields are verified, tap **Submit**. The record is saved to the Vault and becomes immediately available in the **Table View** for your team.
+
+## What to Expect
+
+Submitted records appear in the Vault's Table View within seconds of submission. If a **Workflow** is connected to the Vault, it may trigger automatically — for example, routing the record for a supervisor's review or exporting it to an external system via a **Connection**.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Most fields are red (not extracted) | Photo is blurry, dark, or misaligned | Retake the photo in better lighting and hold the camera steady |
+| Handwritten values are consistently wrong | Handwriting is very stylized | Manually correct and submit; report to your admin to improve the model |
+| Form not available in the mobile view | Form is inactive | Ask your administrator to activate the form in the Forms Manager |
+| Photo upload button is missing | Wrong form type selected | Ensure you've selected the Photo Form, not the Keyboard form |
+| Submission fails | Poor network connection | Check your internet connection and try submitting again; data is saved locally if offline and will sync when reconnected |
+
+## Related Articles
+
+- [Designing Forms](/graphium/forms/designing-forms)
+- [Working with Vaults](/graphium/vaults/working-with-vaults)
+- [Viewing Data in Table View]
+- [Building Workflows](/graphium/automations/building-workflows)
+
+---
+
+*Questions? Reach out to your Graphium AI administrator or open a ticket in your internal support channel.*

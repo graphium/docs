@@ -1,0 +1,108 @@
+---
+title: "Connections"
+description: "Connections are how your vault talks to the outside world."
+icon: "book-open"
+---
+
+Connections are how your vault talks to the outside world. They're bidirectional data pipelines that link Graphium to the external systems your organization already runs on -- your EMR, your file servers, your spreadsheets, your accounting software, your communication tools. Data flows in, data flows out, and the vault becomes the central hub where everything meets.
+
+This isn't one-way data import. A connection to Epic can receive HL7 messages from the EMR *and* send them back. A connection to Google Sheets can pull rows into a table *and* push updated data back to the sheet. The bidirectional design means Graphium doesn't just consume your data -- it participates in your data ecosystem.
+
+---
+
+## Where Connections Live
+
+You'll find connections inside any vault under **Automations** in the sidebar. Click into Automations and you'll see two sections: **Connections** and **Workflows**. Connections manage the external system links themselves; workflows use those connections to automate processes (covered separately).
+
+The Connections tab shows each configured connection as a card with its name, type, status indicator, and last sync time. A green status badge means the connection is live and communicating. Each connection has an enabled/disabled toggle -- useful when you need to pause data flow during maintenance without deleting the configuration entirely.
+
+To add a new connection, click the **+ Add Connection** button at the top of the list. You'll select the connection type, provide the necessary credentials or configuration details, and Graphium establishes the link. Once connected, the system begins syncing based on the connection's configured behavior.
+
+---
+
+## Connection Types
+
+Graphium supports a broad catalog of connection types. Here's what each one does and why you'd use it.
+
+### EMR/EHR (Epic, Graphium EMR)
+
+These are the clinical backbone connections. An Epic connection enables HL7 messaging between Graphium and your facility's electronic medical record -- case data, patient demographics, procedure details, and clinical documentation flow in real time as cases are created, updated, and signed. Graphium EMR provides the clinical documentation layer, syncing case records with their full clinical context. If your operation depends on the clinical record being current and complete, these connections are where that starts.
+
+### File Servers (FTP/SFTP)
+
+For organizations that still operate on file-based workflows -- and many do -- FTP/SFTP connections handle document exchange with external systems. Upload files to a remote server, download incoming documents, and react when new files appear. This is especially common at surgical facilities where charge tickets, reports, or scheduling documents are exchanged as files between systems that don't share an API.
+
+### Spreadsheets (Google Sheets)
+
+The spreadsheet connection exists because real operations run on spreadsheets, even when they probably shouldn't. Google Sheets connections provide bidirectional sync, letting you pull spreadsheet data into Graphium tables and push structured data back out. This is the bridge for teams that aren't ready to abandon their tracking sheets -- billing coordinators who have a case status spreadsheet going back two years, or operations managers with a provider scheduling sheet that everyone knows how to use. Graphium meets them where they are.
+
+### Databases (PostgreSQL)
+
+Direct database connectivity for when you need to read from or write to a relational database. This is the connection type for product and operational data that lives in PostgreSQL -- customer records, subscription data, internal metrics, or any structured data that your engineering team manages in a database rather than a SaaS tool.
+
+### CRM (HubSpot, Salesforce)
+
+CRM connections bring customer relationship data into Graphium -- contacts, companies, deals, lifecycle stages, and the full arc of your sales pipeline. For a SaaS operation like Graphium Corporate, this means deal data from HubSpot or Salesforce flows into vaults where AI assistants can analyze win rates, pipeline health, and customer engagement alongside financial and operational data. For a clinical organization, CRM data might track referring physician relationships or facility partnerships.
+
+### Accounting (QuickBooks Online)
+
+The accounting connection pulls financial data from QuickBooks Online -- revenue, expenses, invoicing, payments. This is how the finance team gets AI-powered visibility into the numbers without exporting CSVs. Revenue data syncs into Graphium tables where assistants can calculate margins, flag overdue invoices, and generate the financial summaries that leadership actually reads.
+
+### Survey Tools (Graphium Surveys)
+
+Graphium Surveys connections bring patient satisfaction, NPS scores, and feedback data into the vault. Create surveys from within Graphium and capture completions as structured records. For a healthcare organization, this means post-procedure patient experience data lives alongside the clinical and financial data for the same case -- a complete picture from OR to follow-up.
+
+### Medical Devices (Neomatic)
+
+Neomatic connections stream real-time physiological data from OR vitals monitors into Graphium. This is device-level data -- heart rate, blood pressure, SpO2, and other intraoperative signals. The data serves as an independent validation source: if the charge ticket says the procedure started at 10:15 AM but the vitals monitor shows physiological data beginning at 10:14 AM, you have corroboration. When the timestamps don't agree, the AI notices.
+
+### Communication (Slack, Microsoft Teams, Twilio SMS)
+
+Communication connections turn Graphium into a participant in your team's messaging infrastructure. Slack and Microsoft Teams connections let AI assistants post notifications, summaries, and alerts directly into the channels where your team already works. Twilio SMS connections enable text-based interactions for mobile-first users and time-sensitive alerts. These connections are what make autonomous actions (like a weekly financial summary) actually reach the people who need them.
+
+---
+
+## Connection Actions
+
+Each connection type exposes a specific set of **actions** -- the events it can react to and the operations it can perform. Actions are the verbs of the connection system. Here are the actions available for each type:
+
+- **Epic**: *Send HL7 Message to EMR*, *Received HL7 Message from EMR*
+- **FTP/SFTP**: *Upload File*, *Download File*, *Delete File*, *Move File*, *New File Uploaded*, *File Modified*, *File Deleted*
+- **Graphium EMR**: *Create Case*, *Update Case*, *Case Created*, *Case Updated*, *Case Signed*
+- **Google Sheets**: *Add Row*, *Update Row*, *Delete Row*, *Create Sheet*, *Row Added*, *Row Updated*, *Sheet Modified*
+- **Graphium Surveys**: *Create Survey*, *Survey Completed*
+- **Neomatic**: *Data Received*, *Run Query*
+
+Some actions are operations you initiate (Send HL7 Message, Upload File, Add Row) and others are events you react to (Received HL7 Message, New File Uploaded, Case Signed). This distinction matters because it determines how the action gets used downstream.
+
+---
+
+## How Actions Are Used
+
+Connection actions show up in two places across Graphium.
+
+First, they appear in the **Tools tab** of AI assistant configuration. When you give an assistant access to a connection action, the assistant can invoke that action during a conversation or as part of an autonomous task. An assistant with access to the Epic "Send HL7 Message to EMR" action can push data back to the EMR when you ask it to. An assistant with access to Google Sheets "Add Row" can log a summary into a shared spreadsheet as part of its workflow.
+
+Second, event-based actions are available as **workflow triggers**. When a new HL7 message arrives from Epic, when a file is uploaded to the SFTP server, when a survey is completed -- these events can kick off automated workflows that process the incoming data, create tasks, or notify team members.
+
+This dual exposure -- to assistants and to workflows -- is what makes connections more than just data sync. They're active participants in your automation layer.
+
+---
+
+## Managed Tables
+
+When a connection owns the schema of a table, that table displays a **"Managed by [Source]"** badge (for example, "Managed by Graphium EMR"). This means the table's structure -- its fields, types, and hierarchy -- is defined by the external system, not by you. The schema becomes read-only in Graphium because changes need to happen at the source.
+
+You can still read and work with the data in a managed table. AI assistants can query it, workflows can react to new records in it, and you can view it in the Data tab like any other table. You just can't restructure it from within Graphium, because the external system is the source of truth for that schema.
+
+---
+
+## Putting It Together
+
+Consider a surgery center running on Graphium. The operations team sets up a vault called "Cases -- Community Surgery Center" and configures two connections:
+
+An **Epic connection** links the facility's EMR. As cases are documented throughout the day, HL7 messages flow into the vault in real time -- patient demographics, procedure codes, procedure durations, provider assignments. The Cases table, managed by Epic, fills with structured clinical records. When the AI assistant detects a data quality issue, it can send a corrected message back to the EMR through the same connection.
+
+A **Google Sheets connection** links the billing coordinator's tracking spreadsheet -- the one she's maintained for two years and isn't giving up. Case status updates, billing notes, and payment confirmations sync bidirectionally. The data from the spreadsheet flows into a Graphium table where it can be cross-referenced with the clinical data from Epic. Meanwhile, any updates the assistant makes to case status push back to the spreadsheet so the coordinator's workflow doesn't change.
+
+Two connections, two data sources, one unified vault. The AI assistant sees both, correlates across them, and catches the discrepancies that neither system would surface on its own.
