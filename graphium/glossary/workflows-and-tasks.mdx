@@ -1,0 +1,141 @@
+---
+title: "Workflows & Tasks"
+description: "Workflows and tasks are two sides of the same coin."
+icon: "book-open"
+---
+
+Workflows and tasks are two sides of the same coin. Workflows are the automated processes that watch your data and react to what happens. Tasks are the action items that result when something needs a human being to step in. Together, they form the backbone of how Graphium keeps things from falling through the cracks.
+
+Both live inside a vault. You configure workflows to monitor conditions and fire when something happens. When they find an issue -- or when an AI assistant detects something off -- a task gets created. That task sits in a prioritized list until someone resolves it.
+
+---
+
+## Workflows
+
+### What They Are
+
+A workflow is an automated process that triggers based on events or schedules within your vault. You set the conditions, and Graphium handles the rest. When a new case record appears, a workflow can check for missing fields. When a subscription gets cancelled in an external system, a workflow can fire an alert. When Monday morning rolls around, a workflow can compile last week's financial summary and send it out.
+
+Workflows run in the background. You configure them once, turn them on, and they keep working -- tracking every run so you can see how active they are.
+
+### Where They Live
+
+You will find workflows under **Automations** in the vault sidebar, alongside Connections. Click into the **Workflows** tab to see the full list.
+
+The workflow listing shows each workflow as a card with its name, a description of its trigger, whether it is active or inactive, its run count, and a toggle to enable or disable it. At the top you will see the total runs across all workflows in the vault, giving you a quick sense of how much automation is happening.
+
+### Trigger Types
+
+Every workflow starts with a trigger -- the event that kicks it off. There are three types:
+
+**New Record.** Fires when a record is added to a specific table. For example, "New Record in Cases" triggers every time a new case lands in the Cases table. This is the most common trigger for data quality checks and notification workflows.
+
+**Connection Event.** Fires when something happens in an external system connected to your vault. For example, "Graphium DB Subscription Cancelled" fires when a subscription cancellation event comes through from your database connection, or "HubSpot Deal Won" fires when a sales deal closes. These let your vault react to things happening outside of Graphium.
+
+**Schedule.** Fires on a recurring time-based schedule. "Every Monday at 8:00 AM" or "Daily at 6:00 AM." Use these for periodic reports, routine checks, and anything that needs to happen at regular intervals regardless of what is going on with the data.
+
+### Creating and Managing Workflows
+
+Click the **"+ New Workflow"** button at the top of the workflows listing. You will configure a trigger, give the workflow a name, and activate it. Once created, a workflow can be enabled or disabled with the toggle on its card -- useful when you need to pause something temporarily without deleting the configuration.
+
+Each workflow card displays its run count, so you can monitor how often it fires. A workflow with zero runs after a week might mean the trigger condition never occurs, or it might mean something is misconfigured. A workflow with hundreds of runs tells you it is doing real work.
+
+### Examples from the Prototype
+
+Here is what workflows look like in practice across two different vault types -- a clinical practice management vault and a SaaS operations vault:
+
+**Clinical practice management:**
+
+- **Case Review Alert** -- Triggers on new record in Cases. 387 runs. Every time a new case is entered, this workflow checks it against review criteria and flags anything that needs a second look.
+- **Missing Info Notification** -- Triggers on new record in Cases. Catches submissions that are missing required fields before they get deep into the billing pipeline.
+- **Weekly Financial Summary** -- Scheduled every Monday at 8:00 AM. Compiles the prior week's billing and financial data into a summary.
+- **Daily Schedule Notification** -- Scheduled daily at 6:00 AM. Sends the day's schedule to relevant team members before the first case starts.
+
+**SaaS operations:**
+
+- **Churn Alert** -- Triggered by Graphium DB Subscription Cancelled event. When a customer cancels, this workflow immediately flags it for the account team.
+- **New Customer Onboarding Kickoff** -- Triggered by HubSpot Deal Won event. A closed deal automatically starts the onboarding process.
+- **At-Risk Customer Alert** -- Scheduled daily at 9:00 AM. Checks customer health metrics each morning and flags accounts that are trending downward.
+- **NPS Detractor Follow-Up** -- Triggered by Graphium Surveys Survey Completed event. When a survey comes back with a low score, this workflow routes it to the right person for follow-up.
+
+---
+
+## Tasks
+
+### What They Are
+
+Tasks are prioritized action items that need human attention. They are the things Graphium surfaces when automation alone is not enough -- when a person needs to look at something, make a judgment call, or take a manual action.
+
+Tasks can come from anywhere: an AI assistant detecting an anomaly in your data, a workflow flagging a missing field, a data quality check catching a duplicate, or manual creation by a team member. The point is to give you one place to see everything that needs fixing, who is responsible, and how long it has been waiting.
+
+### Where They Live
+
+The **Tasks** section sits in the vault sidebar with a count badge showing how many open tasks exist. Click into it and you get two views:
+
+- **All Tasks** -- Every open task in the vault, with a count.
+- **My Tasks** -- Just the ones assigned to you.
+
+Both views default to filtering by **Status: Open**, so you are looking at what still needs attention, not the entire history.
+
+### Task Anatomy
+
+Each task contains several pieces of information:
+
+**Title and description.** The title tells you what happened at a glance. The description provides the full context -- for example, "Procedure duration of 950 minutes exceeds expected threshold for procedure code 00142. This may indicate a documentation error or an unusually complex case requiring clinical review."
+
+**Priority.** Four levels, color-coded:
+- **Urgent** (red) -- needs attention now
+- **High** (orange) -- needs attention soon
+- **Medium** (yellow) -- important but not time-sensitive
+- **Low** (blue) -- handle when you can
+
+**Linked record.** A direct link to the relevant data -- for instance, "View Case #43891." One click takes you to the actual case, so you are not hunting through tables to find what the task is about.
+
+**Assignee(s) and count.** Who is responsible, and how many people are assigned.
+
+**Age.** How long since the task was created. A task that has been sitting for 30 minutes feels different from one that has been open for two days.
+
+**Source.** Where the task came from -- which form, sync, or system generated it. This helps you understand patterns. If all your urgent tasks come from the same form, that form might need attention.
+
+### Actions
+
+Every task offers two actions:
+
+- **Resolve** -- Mark the task as handled. You have reviewed it, fixed the issue, or determined no action is needed.
+- **Reassign** -- Route the task to someone else. Maybe it landed with the wrong person, or it requires a different skill set.
+
+### How Tasks Get Generated
+
+Tasks do not just appear at random. They are created by specific processes within your vault:
+
+**AI assistants detecting anomalies.** An assistant analyzing case data might flag a procedure duration of 950 minutes -- far outside the expected range. The assistant can distinguish between a documentation issue (someone entered minutes instead of the actual time) and a genuine clinical outlier, and the task description will reflect that distinction.
+
+**Workflows flagging conditions.** A workflow triggered by a new case submission can check for required fields and create an urgent task if the provider signature is missing or a procedure code is blank.
+
+**Data quality issues.** Duplicate detection catches cases that look like they might be entered twice. A medium-priority task gets created so someone can verify whether it is a real duplicate or two similar-but-distinct cases.
+
+**Compliance concerns.** The Compliance Monitor assistant can flag providers who are trending below MIPS benchmarks, creating tasks for review before the reporting period closes.
+
+### Examples
+
+Here is a representative sample of tasks you might see in the task list:
+
+- **"Missing required field in case record"** (Urgent) -- A case was submitted without a required field.
+- **"Data sync workflow failed"** (High) -- A connection to an external system failed during sync.
+- **"Duplicate case detected"** (Medium) -- Two records look suspiciously similar.
+- **"Procedure duration calculation error"** (Urgent) -- The recorded time is outside plausible range.
+- **"Provider signature missing"** (Low) -- A case is complete except for the provider's signature.
+- **"Review Dr. Martinez MIPS-456 compliance"** (High) -- A provider's quality metrics need review before reporting.
+- **"Schedule QBR with Allied Health Collective"** (Medium) -- A quarterly business review needs to be arranged with a client account.
+
+### A Day in the Task List
+
+Here is how this plays out in practice. A billing coordinator at a clinical practice opens Graphium on a Tuesday morning and clicks into the Tasks section. Three items were flagged overnight:
+
+1. An urgent task: "Procedure duration calculation error" on Case #43891. The AI assistant caught that the recorded procedure duration was 950 minutes -- over 15 hours -- for a routine procedure. The coordinator clicks "View Case #43891," sees the time entry, realizes it should have been 95 minutes, corrects it, and resolves the task.
+
+2. A high-priority task: "Missing required field in case record." A case synced from the EMR is missing the provider assignment. The coordinator opens the linked case, adds the correct provider from the Providers table, and resolves the task.
+
+3. A medium-priority task: "Duplicate case detected." Two case records have the same patient and date. The coordinator checks both, confirms one is a duplicate entry, merges the data, and resolves the task.
+
+Three issues. Three linked records. No digging through spreadsheets or emailing someone to ask "which case was this about?" The task list is where problems surface, and the linked records are how you fix them.

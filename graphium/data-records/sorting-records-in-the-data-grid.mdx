@@ -1,0 +1,66 @@
+---
+title: "Sorting Records in the Data Grid"
+description: "Every column header in the data grid is clickable."
+icon: "database"
+---
+
+## Overview
+
+Every column header in the data grid is clickable. Clicking a header sorts all records in the table by that column in ascending order. Clicking the same header a second time reverses the sort to descending. The active sort column is marked with a directional arrow icon so you always know which column is sorted and in which direction.
+
+---
+
+## The Sort Indicator
+
+When a column is active for sorting, the column header displays an arrow icon immediately after the column name:
+
+| Indicator | Meaning |
+|-----------|---------|
+| Column name + ↑ up-arrow icon | Ascending (A → Z, smallest → largest, oldest → newest) |
+| Column name + ↓ down-arrow icon | Descending (Z → A, largest → smallest, newest → oldest) |
+
+Columns that are not currently sorted display no indicator. Only one column can be sorted at a time.
+
+---
+
+## Sorting by a Column
+
+**Steps:**
+
+1. Open a vault, select a table from the left sidebar, and ensure you are on the **Data** tab.
+2. Locate the column you want to sort by in the grid header row.
+3. Click the column header. The grid reloads with records sorted by that column in **ascending** order. An ↑ up-arrow icon appears after the column name.
+4. To reverse the sort, click the same header again. The grid reloads in **descending** order and the indicator changes to a ↓ down-arrow icon.
+
+> **Tip:** You can sort by any column — text columns sort alphabetically, number columns sort numerically, and date columns sort chronologically.
+
+---
+
+## Changing the Sort Column
+
+To sort by a different column, simply click its header. The previous column's sort indicator clears and the new column becomes the active sort with an ascending ↑ up-arrow icon.
+
+---
+
+## Default Sort Order
+
+When no column sort is applied, records are displayed in the order they were created (oldest first). Sorting is session-based and does not persist when you navigate away from the table.
+
+---
+
+## Sort and Pagination
+
+Applying or changing a sort resets pagination to the first page. The grid reloads from the beginning with the new sort applied. The footer count updates to reflect the first batch of the re-sorted result set (for example, *"Showing 50 of 300 records"*). You can then scroll down to continue loading additional records in the new sort order.
+
+---
+
+## Permissions
+
+All vault member roles — **Admin**, **Builder**, **Contributor**, and **Viewer** — can sort records by clicking column headers.
+
+---
+
+## Related Articles
+
+- [Loading More Records in the Data Grid](/graphium/data-records/loading-more-records-in-the-data-grid)
+- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)

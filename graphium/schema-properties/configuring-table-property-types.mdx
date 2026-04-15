@@ -1,0 +1,237 @@
+---
+title: "Configuring Table Property Types"
+description: "Every table in Graphium is defined by a schema — the list of properties (fields) that describe what data the table holds."
+icon: "sliders"
+---
+
+## Overview
+
+Every table in Graphium is defined by a schema — the list of properties (fields) that describe what data the table holds. When you add a new property, you choose a **property type** that determines how its value is stored, validated, and displayed across the platform.
+
+This article covers how to configure each of the nine simple property types:
+
+| Type | Use it for |
+|------|-----------|
+| **Text** | Names, identifiers, freeform alphanumeric values |
+| **Number** | Quantities, durations, measurements |
+| **Date** | Calendar dates |
+| **Time** | Time-of-day values |
+| **Date/Time** | Combined date and time |
+| **Boolean** | Yes/No or true/false flags |
+| **Image** | Photos or scanned documents |
+| **Signature** | Digital signature capture |
+| **Object** | A named container that groups related child properties |
+
+These types require no additional configuration beyond a name, optional description, and an internal name. Other property types — Auto ID, Formula, Select from List, and Table Record — have additional setup steps covered in separate articles.
+
+---
+
+## Opening the Schema Editor
+
+1. Open a vault and select a table from the sidebar.
+2. Click the **Schema** tab in the top-right corner of the main content area.
+3. The schema view lists all existing properties. At the top right, click **+ Add Field** to open the Add Property modal.
+
+> **Read-only schemas:** Tables whose structure is managed by an external connection (such as Graphium EMR) display a **Read-only** badge. You cannot add, remove, or rename properties in a read-only schema. To add custom tracking fields for a read-only table, create a separate table and use a Table Record reference to link back to it.
+
+---
+
+## The Add Property Form
+
+When you click **+ Add Field**, the **Add Property** modal opens with the following fields:
+
+### Name *(required)*
+The display label shown throughout the platform — in the schema list, data grid column headers, and form fields. Enter a clear, human-readable name (e.g., *Date of Birth*, *Procedure Duration*).
+
+### Description *(optional)*
+Additional context about the property's purpose. Supports up to 128 characters. This text is visible to builders and admins when reviewing the schema.
+
+### Internal Name *(auto-generated, editable)*
+The machine-readable identifier used in expressions, API calls, and data storage. Graphium auto-generates this from the display name — spaces become underscores and letters are lowercased (e.g., `date_of_birth`, `procedure_duration`). You can manually override it before saving. The internal name cannot be changed after the property is created.
+
+> Internal names are used when referencing a property in Formula expressions.
+
+### Property Type *(required)*
+A dropdown with a search bar. Click **Select…** and choose from the full list of available types. See the sections below for guidance on each of the nine simple types.
+
+### Allow Multiple Values *(optional)*
+A checkbox beneath the property type. When enabled, the property stores an array of values instead of a single value. For example, enabling this on a Text property creates a `Text[]` field that can hold several entries — useful for procedure codes, tags, or multi-select freeform text. In the schema list, multi-value properties display their type with a `[]` suffix (e.g., `Text[]`, `Number[]`).
+
+> The "Allow multiple values" setting cannot be changed after the property is created.
+
+---
+
+## Selecting and Configuring Each Type
+
+### Text
+
+**What it is:** A plain text string. Use it for names, freeform identifiers, notes, and any value that doesn't fit a more specific type.
+
+**Examples:** Patient Name, MRN, Gender, Insurance carrier
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Text**.
+3. Optionally enable **Allow multiple values** if the field will hold more than one text entry.
+4. Click **Add**.
+
+No additional configuration is required. Once saved, Text properties appear with a **T** icon in the schema list.
+
+---
+
+### Number
+
+**What it is:** A numeric value — either integer or decimal. Use it for quantities, durations, measurements, and any field where arithmetic or comparison operations will be needed.
+
+**Examples:** Procedure Duration (minutes), Base Units, Anesthesia Time, Dosage Amount
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Number**.
+3. Optionally enable **Allow multiple values** if the field will hold more than one number.
+4. Click **Add**.
+
+No additional configuration is required. Number properties appear with a **#** icon in the schema list.
+
+---
+
+### Date
+
+**What it is:** A calendar date (no time component). Use it for anything tied to a specific day.
+
+**Examples:** Case Date, Date of Birth, Discharge Date
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Date**.
+3. Optionally enable **Allow multiple values**.
+4. Click **Add**.
+
+No additional configuration is required. Date properties appear with a **calendar** icon in the schema list.
+
+---
+
+### Time
+
+**What it is:** A time-of-day value, separate from any date. Use it when you need to record a clock time without associating it with a specific calendar date.
+
+**Examples:** Start Time, End Time, Scheduled Time
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Time**.
+3. Optionally enable **Allow multiple values**.
+4. Click **Add**.
+
+No additional configuration is required. Time properties appear with a **clock** icon in the schema list.
+
+---
+
+### Date/Time
+
+**What it is:** A combined date and time value. Use it when both the calendar date and the time of day are relevant and should be stored together.
+
+**Examples:** Created At, Submitted At, Event Start
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Date/Time**.
+3. Optionally enable **Allow multiple values**.
+4. Click **Add**.
+
+No additional configuration is required. Date/Time properties appear with a **calendar** icon in the schema list.
+
+---
+
+### Boolean
+
+**What it is:** A true/false flag. Use it for yes/no conditions, binary status indicators, and any field where the only meaningful values are two opposing states.
+
+**Examples:** Verified, Active, Consented, Requires Follow-up
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Boolean**.
+3. Optionally enable **Allow multiple values** (uncommon for Boolean fields).
+4. Click **Add**.
+
+No additional configuration is required.
+
+---
+
+### Image
+
+**What it is:** A field for storing photographs, scanned documents, or any visual record attached to a data entry.
+
+**Examples:** Charge Ticket (a photo of the paper charge ticket), Consent Form Scan, Wound Photo
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Image**.
+3. Optionally enable **Allow multiple values** if the record may have more than one image.
+4. Click **Add**.
+
+No additional configuration is required.
+
+---
+
+### Signature
+
+**What it is:** A digital signature capture field. Use it for compliance and authorization workflows where a provider or patient needs to sign off on a record.
+
+**Examples:** Provider Signature, Patient Authorization, Attending Physician Sign-off
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name**.
+2. From the **Property type** dropdown, select **Signature**.
+3. Click **Add**.
+
+No additional configuration is required. Signature properties do not support multiple values.
+
+---
+
+### Object
+
+**What it is:** A named container that holds child properties, creating a hierarchical nesting structure within the schema. An Object property does not store data itself — it organizes related fields together so the schema is self-documenting and easier to navigate.
+
+**Examples:** Patient Demographics (containing Date of Birth, Gender, Insurance), Address (containing Street, City, State, Zip)
+
+When an Object property is expanded in the schema list, its children are shown indented beneath it. Nested properties are identified by a `parentPropertyId` pointing to the Object's UUID, which is used in expressions and API operations.
+
+**How to configure:**
+1. In the Add Property modal, enter a **Name** for the group (e.g., *Patient Demographics*).
+2. From the **Property type** dropdown, select **Object**.
+3. Click **Add**. The Object property appears in the schema list with a **folder** icon.
+4. To add child properties to the Object, click the expand arrow to the left of the Object row, then click **+ Add Field** and add each child property in turn. Each child will automatically be nested under the Object in the schema.
+
+> Object properties do not support the "Allow multiple values" option.
+
+---
+
+## Editing a Property
+
+To edit an existing property, click the **Edit** button on the right side of its row in the schema list. The property name becomes an inline text input directly in the row — type a new name and press **Enter** to save, or **Escape** to cancel.
+
+> **Important:** Once a table has been published, only the property **name** and **description** can be edited. The property type, internal name, and "allow multiple values" setting are locked after publication. Properties can still be archived (set to inactive) at any time without deleting their data.
+
+---
+
+## Permissions
+
+| Action | Required Role |
+|--------|--------------|
+| View schema | Any vault member |
+| Add or edit properties | Vault Admin or Builder |
+| Add or edit template properties | Graphium Representative with Vault Table Template Update permission |
+
+---
+
+## Related Articles
+
+- Configuring a Select from List Property (AI-56)
+- Configuring a Reference Property (AI-53)
+- Configuring a Formula Property (AI-54)
+- Configuring an Auto ID Property (AI-55)
+- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+- [Managing Properties in a Vault](/graphium/schema-properties/managing-properties-in-a-vault)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)
