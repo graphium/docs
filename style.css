@@ -1,44 +1,35 @@
-/* Graphium AI — custom theme overrides */
+/* Graphium AI — custom theme overrides
+   Strategy: dark mode is the base (keeps navbar naturally dark),
+   content area + sidebar are overridden back to white/light. */
 
 /* ══════════════════════════════════════════════
-   NAVBAR — always dark, never changes on scroll
-   Row 1 (logo/search/actions): deeper navy #080D18
-   Row 2 (tabs):                standard navy #162032
+   NAVBAR — two-row contrast
+   Mintlify's dark mode keeps the navbar dark natively.
+   We only need to adjust the two sub-rows.
    ══════════════════════════════════════════════ */
 
-/* Lock the entire navbar to dark navy on scroll.
-   Mintlify injects inline background + backdrop-filter when scrolled,
-   so we target every possible state and kill the backdrop. */
+/* Logo/search/actions row: deepest navy */
 #navbar,
 #navbar[style],
-#navbar[class],
 header,
 header[style] {
   background-color: #080D18 !important;
   background: #080D18 !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
-/* Mintlify sometimes uses a ::before pseudo for the scroll blur overlay */
-#navbar::before,
-header::before {
-  display: none !important;
-  background: none !important;
-}
-
-/* Tab row sits just below — slightly lighter navy for contrast */
+/* Tab row: slightly lighter navy */
 #navbar + [role="tablist"],
 #navbar ~ [role="tablist"],
-[data-testid="tabs-nav"],
-.nav-tabs-row {
+[role="tablist"] {
   background-color: #162032 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Tab text on dark background */
+/* Tab text */
 [role="tablist"] [role="tab"],
 [role="tablist"] a {
   color: rgba(255, 255, 255, 0.5) !important;
@@ -50,59 +41,100 @@ header::before {
   background: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Nav links and support text on dark background */
-#navbar a:not([class*="btn"]):not([class*="button"]) {
-  color: rgba(255, 255, 255, 0.55) !important;
+/* ══════════════════════════════════════════════
+   CONTENT + PAGE BACKGROUND — override to white
+   Dark mode sets these dark; we bring them back.
+   ══════════════════════════════════════════════ */
+
+html,
+body {
+  background-color: #FFFFFF !important;
 }
-#navbar a:hover:not([class*="btn"]):not([class*="button"]) {
-  color: rgba(255, 255, 255, 0.85) !important;
+
+main,
+#content-area,
+[role="main"],
+article {
+  background-color: #FFFFFF !important;
+  color: #334155 !important;
+}
+
+/* Headings */
+main h1, main h2, main h3, main h4 {
+  color: #0F172A !important;
+}
+
+/* Body text */
+main p, main li, main td {
+  color: #475569 !important;
 }
 
 /* ══════════════════════════════════════════════
-   SIDEBAR
+   SIDEBAR — light background
    ══════════════════════════════════════════════ */
-#sidebar-content {
-  background-color: #F8FAFC;
-  border-right: 1px solid #E2E8F0;
+#sidebar-content,
+[data-sidebar],
+aside {
+  background-color: #F8FAFC !important;
+  border-right: 1px solid #E2E8F0 !important;
 }
 
-/* Group headings: muted slate */
+/* Sidebar text */
+#sidebar-content a,
+aside a {
+  color: #475569 !important;
+}
+
+#sidebar-content a:hover,
+aside a:hover {
+  color: #0F172A !important;
+  background-color: #F1F5F9 !important;
+}
+
+/* Active sidebar item */
+#sidebar-content a[data-active="true"],
+#sidebar-content a[aria-current],
+aside a[data-active="true"],
+aside a[aria-current] {
+  color: #0891B2 !important;
+  background-color: rgba(8, 145, 178, 0.08) !important;
+  border-left-color: #0891B2 !important;
+}
+
+/* Sidebar group headings */
 #sidebar-content .group-heading,
-#sidebar-content [data-heading] {
-  color: #94A3B8;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-}
-
-/* ══════════════════════════════════════════════
-   CONTENT AREA
-   ══════════════════════════════════════════════ */
-#content-area {
-  background-color: #FFFFFF;
+#sidebar-content [data-heading],
+aside [class*="group"] {
+  color: #94A3B8 !important;
 }
 
 /* ══════════════════════════════════════════════
    CALLOUTS — color-coded by type
    ══════════════════════════════════════════════ */
-[data-callout="info"],    [class*="callout-info"]    { background: #EFF6FF; border-left-color: #3B82F6; color: #1E40AF; }
-[data-callout="tip"],     [class*="callout-tip"]     { background: #ECFEFF; border-left-color: #0891B2; color: #155E75; }
-[data-callout="warning"], [class*="callout-warning"] { background: #FFF7ED; border-left-color: #F97316; color: #9A3412; }
+[data-callout="info"]    { background: #EFF6FF !important; border-left-color: #3B82F6 !important; color: #1E40AF !important; }
+[data-callout="tip"]     { background: #ECFEFF !important; border-left-color: #0891B2 !important; color: #155E75 !important; }
+[data-callout="warning"] { background: #FFF7ED !important; border-left-color: #F97316 !important; color: #9A3412 !important; }
 
 /* ══════════════════════════════════════════════
-   CODE BLOCKS — dark navy for contrast on white
+   CODE BLOCKS — keep dark for contrast
    ══════════════════════════════════════════════ */
-pre,
-code {
+pre, pre code {
   background-color: #0F172A !important;
-  border-color: #E2E8F0;
+  color: #94A3B8 !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+  border: 1px solid #E2E8F0 !important;
 }
 
 /* ══════════════════════════════════════════════
    FOOTER
    ══════════════════════════════════════════════ */
 footer {
-  background-color: #F8FAFC;
-  border-top: 1px solid #E2E8F0;
+  background-color: #F8FAFC !important;
+  border-top: 1px solid #E2E8F0 !important;
+  color: #64748B !important;
 }
