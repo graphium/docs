@@ -10,12 +10,12 @@
   "background": {
     "decoration": "gradient",
     "color": {
-      "light": "#F0F9FF",
+      "light": "#F8FAFC",
       "dark": "#0F172A"
     }
   },
   "appearance": {
-    "default": "dark"
+    "default": "light"
   },
   "favicon": "/favicon.svg",
   "navigation": {
