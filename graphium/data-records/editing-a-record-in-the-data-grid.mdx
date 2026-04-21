@@ -1,27 +1,28 @@
 ---
 title: "Editing a Record in the Data Grid"
-description: "Any existing vault record can be edited directly from the Data Grid using the table's default form view."
+description: "Any existing vault record can be edited directly from the Data Grid using the table's default form."
 icon: "database"
 ---
 
 ## Overview
 
-Any existing vault record can be edited directly from the Data Grid using the table's default form view. Clicking the edit icon on a record row opens a pre-populated form where you can update field values and save changes. After saving, the record detail surface refreshes automatically to reflect the latest values and the record's updated completion percentage.
+Any existing vault record can be edited directly from the Data Grid using the table's default form. Clicking the **Edit** button on a record row opens a pre-populated slide-in side panel where you can update field values and save changes. After saving, the data grid refreshes to reflect the latest values and the record's updated completion percentage.
 
 ## When to Use This
 
 Use this feature when you need to:
-
 - Correct or update information on an existing vault record
 - Fill in fields that were left blank when the record was first created
-- Update a record's status, values, or data as part of an ongoing workflow
+- Update a record's values as part of an ongoing clinical, operational, or data capture workflow
 - Improve a record's completion percentage by populating incomplete fields
 
 ## Prerequisites
 
-- You must have **Admin**, **Builder**, or **Contributor** access to the vault — Viewer-role users cannot edit records
+- You must have **Admin**, **Builder**, or **Contributor** access to the vault — Viewer-role users cannot edit records and will not see the Edit button
 - The vault table must contain at least one existing record
 - The table must have a default form configured (most tables include one by default)
+- Your ability to edit records is also controlled at the table level. If your administrator has set a table's access to **Off** or **Read-only**, the Edit button will not be shown even if your vault role would otherwise allow it
+- Tables marked **Managed by an integration** (e.g., Graphium EMR) may have fields that cannot be edited manually — check the table header for this badge
 
 ## Step-by-Step Instructions
 
@@ -29,70 +30,78 @@ Use this feature when you need to:
 
 Navigate to the vault that contains the record you want to edit. Select the table from the vault sidebar. The **Data** tab opens by default, showing all records in the data grid.
 
-> 💡 **Tip:** Use the **Filter** button in the table header bar to search or narrow down records before locating the one you want to edit.
+> 💡 **Tip:** Use the **Filter** button in the table header bar to narrow down records before locating the one you want to edit. Note that filtering on Reference property columns is not currently supported.
 
 ### Step 2: Locate the Record Row
 
 Find the record you want to edit in the data grid. Each row represents a single record, with the record's field values displayed across the columns.
 
-### Step 3: Click the Edit Icon
+### Step 3: Click the Edit Button
 
-Click the **edit icon** (✏️) on the far right of the record row. This opens the record's default form view, pre-populated with all of the record's current field values.
+Click the **Edit** button on the right side of the record row. A **slide-in side panel** opens from the right side of the screen, pre-populated with all of the record's current field values.
 
-> 💡 **Tip:** The edit icon is only visible to users with Admin, Builder, or Contributor roles. If you don't see it, check your vault access level with your administrator.
+> 💡 **Tip:** The Edit button is only visible to users with Admin, Builder, or Contributor roles when the table-level access allows edits. If you don't see it, check your vault access level and table access level with your administrator.
 
 ### Step 4: Update Field Values
 
-Edit any fields you want to change within the form. The default form includes all fields defined in the table's schema. Supported field types include:
+Edit any fields you want to change within the form. The form shows all fields defined in the table's schema. Supported field types include:
 
 | Field Type | How to Edit |
 |------------|-------------|
 | **Text** | Click the field and type new content |
 | **Number** | Click the field and enter a numeric value |
-| **Date / Time** | Click the field to open a date or time picker |
-| **Select from List** | Click the field to open the option dropdown and select a value |
-| **Boolean** | Toggle the checkbox or switch on or off |
+| **Date** | Uses your browser's native date picker. Appearance and shortcuts vary by browser. |
+| **Time** | Uses your browser's native time picker |
+| **Date & Time** | Uses your browser's native date-time picker |
+| **Boolean** | Toggle the switch or checkbox on or off |
+| **Select from List** | Click the field to choose an option from the dropdown |
+| **Image** | Click to upload or capture a replacement image |
 | **Signature** | Clear the existing signature and re-sign if needed |
+| **Reference** | Click to search records in the referenced table, then select one. The correct record ID and display value are saved together. |
+| **Auto ID** | Automatically assigned — cannot be edited |
+| **Formula** | Computed from other field values — displayed as read-only |
 
-> 💡 **Tip:** Fields marked as required must be filled in before the form can be submitted. Required fields are typically indicated with an asterisk (*) or highlighted when left empty.
+> 💡 **Tip:** Required fields must be filled in before the form can be submitted. Required fields are typically indicated with an asterisk (*) or highlighted when left empty.
+
+> **Note:** Formula fields display a computed value based on other fields and cannot be edited directly. To change what a formula shows, update the source fields that the formula references.
 
 ### Step 5: Save the Record
 
-When you have finished making changes, click the **Save** button to submit the edits.
+When you have finished making changes, click the **Save** button in the panel footer.
 
-- The form will close and the record detail view will refresh automatically
-- The record's updated field values will be displayed in the data grid and record detail surface
-- The record's **completion percentage** will update to reflect how fully the record's fields are now populated
+- If all required fields are valid, the record is updated and the panel closes
+- The data grid refreshes to display the record's latest saved values
+- The record's **completion percentage** updates to reflect how fully the record's fields are now populated
 
-> ⚠️ **Important:** If the system is unable to refresh the record after saving (e.g., due to a network issue), a visible **error state** will be shown. Your changes are still saved — the error only indicates that the latest values could not be fetched for display. Refreshing the page will resolve this.
+> 💡 **Tip:** You can dismiss the panel without saving by clicking **Cancel** or clicking outside the panel. No changes will be applied to the record.
 
 ## What to Expect
 
-After saving a record edit:
-
 | Outcome | Details |
 |---------|---------|
-| **Record detail refreshes** | The form closes and the data grid and record detail view update to show the latest saved values |
+| **Successful save** | The side panel closes, the data grid refreshes, and the record's updated field values are shown in the row |
 | **Completion percentage updates** | The record's completion percentage recalculates based on how many fields are now populated |
-| **Error state (if applicable)** | If the post-save fetch fails, an error message is shown. The edit was saved — only the display refresh failed. Reload the page to see updated values. |
-| **No change on Cancel** | If you close or cancel the form without saving, no changes are applied to the record |
+| **Validation error** | The panel stays open and inline error messages appear next to fields that need attention |
+| **Cancel / dismiss** | The panel closes with no changes applied to the record |
 
 ## Common Issues & Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|--------------|----------|
-| Edit icon is not visible on record rows | Your role is Viewer, which does not have edit permissions | Contact your vault administrator to request Contributor or higher access |
-| Form opens but fields appear greyed out or locked | The field may be managed by an external integration (e.g., Graphium EMR) or set to read-only in the schema | Contact your administrator to confirm whether the field is editable |
-| Error message appears after saving | The post-save data refresh failed, usually due to a temporary network issue | Your edit was saved. Reload the page to see the updated record values |
-| Completion percentage did not change after saving | Not all required or tracked fields were populated, or the refresh failed | Ensure all relevant fields have values and reload the page if needed |
+| The **Edit** button is not visible on record rows | Your role is Viewer, or your table-level access is set to Off or Read-only | Contact your vault administrator to request Contributor or higher access, or to adjust table-level access |
+| Form opens but certain fields appear greyed out or locked | The field may be managed by an external integration (e.g., Graphium EMR), set to read-only in the schema, or is an Auto ID or Formula field | Contact your administrator to confirm whether the field is editable; Auto ID and Formula fields are never editable |
+| Required fields are not highlighted after a failed submit | A display or validation sync issue | Scroll through the full form to check for any error messages and correct them before resubmitting |
+| Completion percentage did not change after saving | Not all tracked fields were populated, or the field you edited was already filled in | Ensure any blank schema fields that should be populated are filled in and save again |
 | Changes are not appearing in the data grid | A display refresh may not have triggered | Reload the page to force the data grid to re-fetch the latest record data |
-| Form does not open when clicking edit | A temporary loading issue | Wait a moment and try clicking the edit icon again; refresh the page if the problem persists |
+| Form does not open when clicking Edit | A temporary loading issue | Wait a moment and try clicking Edit again; refresh the page if the problem persists |
 
 ## Related Articles
 
 - [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
-- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
+- [Creating a New Record in the Data Grid](/graphium/data-records/creating-a-new-record-in-the-data-grid)
 - [Deleting and Voiding Records in the Data Grid](/graphium/data-records/deleting-and-voiding-records-in-the-data-grid)
+- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
+- [Record Detail View — Values and Completion Percentage](/graphium/data-records/record-detail-view-values-and-completion-percentage)
 - [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
 - [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
 
