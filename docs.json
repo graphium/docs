@@ -50,24 +50,21 @@
               "graphium/getting-started/requesting-a-password-reset",
               "graphium/getting-started/navigating-workspaces",
               "graphium/getting-started/editing-workspace-settings",
+              "graphium/vaults/inviting-a-user-to-the-workspace",
+              "graphium/vaults/checking-workspace-invitation-status",
+              "graphium/vaults/viewing-workspace-members",
+              "graphium/vaults/removing-a-workspace-member",
               "graphium/getting-started/viewing-your-profile",
               "graphium/getting-started/editing-your-profile",
               "graphium/getting-started/logging-out-of-graphium-ai"
             ]
           },
           {
-            "group": "The Interface",
-            "pages": [
-              "graphium/navigation/navigating-your-vault-using-the-sidebar",
-              "graphium/navigation/adding-a-new-table-from-the-sidebar",
-              "graphium/navigation/expanding-and-collapsing-the-tables-list",
-              "graphium/navigation/resizing-the-sidebar"
-            ]
-          },
-          {
             "group": "Vaults",
             "pages": [
               "graphium/vaults/working-with-vaults",
+              "graphium/navigation/navigating-your-vault-using-the-sidebar",
+              "graphium/navigation/resizing-the-sidebar",
               "graphium/vaults/creating-a-vault-from-scratch",
               "graphium/vaults/opening-a-vault-from-the-dashboard",
               "graphium/vaults/viewing-vaults-in-the-card-grid-layout",
@@ -75,10 +72,6 @@
               "graphium/vaults/vault-settings-general-configuration",
               "graphium/vaults/deleting-or-deactivating-a-vault",
               "graphium/vaults/understanding-vault-user-roles",
-              "graphium/vaults/inviting-a-user-to-the-workspace",
-              "graphium/vaults/checking-workspace-invitation-status",
-              "graphium/vaults/viewing-workspace-members",
-              "graphium/vaults/removing-a-workspace-member",
               "graphium/vaults/adding-a-user-to-a-vault",
               "graphium/vaults/viewing-all-users-with-vault-access",
               "graphium/vaults/changing-a-users-vault-role",
@@ -88,6 +81,8 @@
           {
             "group": "Data & Records",
             "pages": [
+              "graphium/navigation/adding-a-new-table-from-the-sidebar",
+              "graphium/navigation/expanding-and-collapsing-the-tables-list",
               "graphium/data-records/viewing-table-records-in-the-data-grid",
               "graphium/data-records/table-views-data-schema-and-settings",
               "graphium/data-records/renaming-a-table",
