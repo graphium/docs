@@ -138,6 +138,11 @@
       "href": "https://app.graphium.ai"
     }
   },
+  "search": {
+    "ai": {
+      "enabled": false
+    }
+  },
   "contextual": {
     "options": [
       "copy",
