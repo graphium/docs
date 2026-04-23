@@ -11,6 +11,7 @@
     "default": "light"
   },
   "favicon": "/favicon.svg",
+  "css": "/style.css",
   "navigation": {
     "groups": [
           {

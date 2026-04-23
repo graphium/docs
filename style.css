@@ -1,7 +1,11 @@
 /* Graphium AI — custom theme overrides */
 
-/* ── Navbar: dark navy on light mode site ─────────────────── */
-#navbar {
+/* ── Navbar: keep dark navy in light mode, including on scroll ─ */
+#navbar,
+#navbar[data-scrolled],
+#navbar[class*="scrolled"],
+header[id="navbar"],
+nav[id="navbar"] {
   background-color: #0F172A !important;
   background: #0F172A !important;
   backdrop-filter: none !important;
