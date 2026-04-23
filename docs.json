@@ -14,7 +14,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Graphium AI",
         "groups": [
           {
             "group": "Core Concepts",
@@ -36,12 +36,7 @@
             "pages": [
               "graphium/glossary/glossary"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Graphium AI",
-        "groups": [
+          },
           {
             "group": "Getting Started",
             "pages": [
