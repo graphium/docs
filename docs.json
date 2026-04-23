@@ -17,6 +17,12 @@
         "tab": "Graphium AI",
         "groups": [
           {
+            "group": "Reference",
+            "pages": [
+              "graphium/glossary/glossary"
+            ]
+          },
+          {
             "group": "Core Concepts",
             "pages": [
               "graphium/glossary/what-is-graphium-ai",
@@ -29,12 +35,6 @@
               "graphium/glossary/workflows-and-tasks",
               "graphium/glossary/access-and-permissions",
               "graphium/glossary/use-cases-overview"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "graphium/glossary/glossary"
             ]
           },
           {
