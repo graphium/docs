@@ -57,11 +57,8 @@
               "graphium/vaults/understanding-vault-metadata",
               "graphium/vaults/vault-settings-general-configuration",
               "graphium/vaults/deleting-or-deactivating-a-vault",
-              "graphium/vaults/understanding-vault-user-roles",
-              "graphium/vaults/adding-a-user-to-a-vault",
-              "graphium/vaults/viewing-all-users-with-vault-access",
-              "graphium/vaults/changing-a-users-vault-role",
-              "graphium/vaults/removing-a-user-from-the-vault"
+              "graphium/vaults/vault-user-roles-and-access",
+              "graphium/vaults/managing-vault-users"
             ]
           },
           {

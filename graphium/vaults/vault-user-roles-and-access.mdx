@@ -1,0 +1,75 @@
+---
+title: "Vault User Roles & Access"
+description: ""
+icon: "vault"
+---
+
+## Overview
+
+Every user with vault access is assigned one of four roles that controls what they can see and do inside the vault. Vault Admins can add workspace members, assign roles, and update them at any time from the **Access & Permissions → Users** tab in vault Settings.
+
+---
+
+## Vault Roles
+
+| Role | What They Can Do |
+|------|-----------------|
+| **Admin** | Full access to manage the vault, its users, and all data. Can change vault settings, add and remove users, change roles, create and modify tables, forms, and workflows, and add and edit records. |
+| **Builder** | Can create and modify tables, forms, and workflows. Can add and edit records but cannot manage vault users or settings. |
+| **Contributor** | Can add and edit data records but cannot modify vault structure. Cannot access vault settings or user management. |
+| **Viewer** | Read-only access. Can view records and data but cannot add, edit, or delete anything. |
+
+---
+
+## Adding a User to a Vault
+
+Only existing workspace members can be added to a vault. If someone needs to be invited to the workspace first, see [Managing Workspace Members](/graphium/getting-started/managing-workspace-members).
+
+1. Open the vault and click **Settings** in the left sidebar.
+2. Click **Access & Permissions**.
+3. Click the **Add User** button at the top of the Users tab.
+4. In the **Add Member** panel, search for the workspace member by name or email.
+5. Select the member from the search results.
+6. Choose their vault role from the dropdown (defaults to **Contributor**).
+7. Click **Add Member**.
+
+The person is added immediately and can access the vault on their next visit. No email notification is sent.
+
+---
+
+## Viewing & Changing a User's Role
+
+A user's current vault role is visible on every row of the **Access & Permissions → Users** tab. To navigate there:
+
+1. Open the vault and click **Settings** in the left sidebar.
+2. Click **Access & Permissions**.
+3. Each user row displays their current role in a dropdown selector.
+
+To change a role, use the role dropdown on the user's row. Only vault **Admins** can change roles. See [Managing Vault Users](/graphium/vaults/managing-vault-users) for details.
+
+---
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| Add users to the vault | ✅ | ❌ | ❌ | ❌ |
+| View Access & Permissions page | ✅ | ✅ | ❌ | ❌ |
+| Change a user's role | ✅ | ❌ | ❌ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| A workspace member doesn't appear in search | They may not be a workspace member yet | Invite them to the workspace first via Managing Workspace Members |
+| Add User button is not visible | You don't have the Admin role | Only vault Admins can add users; contact your vault Admin |
+| User was added but can't access the vault | They may need to refresh or sign out and back in | Ask the user to refresh their browser or sign in again |
+
+---
+
+## Related Articles
+
+- [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)
+- [Managing Vault Users](/graphium/vaults/managing-vault-users)

@@ -1,0 +1,78 @@
+---
+title: "Managing Vault Users"
+description: ""
+icon: "vault"
+---
+
+## Overview
+
+The **Access & Permissions** page in vault Settings is where Vault Admins manage who has access to the vault and what they can do. From here you can view all current users, change their roles, and remove them. Admins and Builders can view this page; only Admins can make changes.
+
+---
+
+## Viewing Vault Users
+
+1. Open the vault and click **Settings** in the left sidebar.
+2. Click **Access & Permissions**. The **Users** tab is selected by default.
+
+Each row in the user list shows:
+
+| Element | Description |
+|---------|-------------|
+| **Avatar** | A colored circle containing the user's initials |
+| **Name** | The user's full name |
+| **Status badge** | A **"Pending"** label appears if the user hasn't yet accepted their invitation |
+| **Email** | The user's email address |
+| **Role** | A dropdown showing the user's current vault role |
+| **Remove** | A trash icon to remove the user from the vault |
+
+---
+
+## Changing a User's Role
+
+1. From the **Access & Permissions → Users** tab, locate the user.
+2. Click the **role dropdown** on the right side of their row.
+3. Select the new role.
+
+The change takes effect immediately — no save button is needed and no notification is sent to the user. You can also change the role for a **Pending** user; the role set now will apply when they accept.
+
+> **Note:** A vault must always have at least one Admin. If you are the only Admin, you cannot change your own role to a lower level.
+
+---
+
+## Removing a User
+
+1. From the **Access & Permissions → Users** tab, locate the user.
+2. Click the **trash icon** on the right side of their row.
+
+The user is removed immediately with no confirmation dialog. Their vault access is revoked instantly, but their Graphium account remains active and they retain access to any other vaults they belong to. Any records or data they created remain intact. To restore access, use **Add User** to re-add them.
+
+You can also remove a **Pending** user — clicking the trash icon on a pending row cancels their invitation and invalidates their invitation link.
+
+---
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| View the Users list | ✅ | ✅ | ❌ | ❌ |
+| Change a user's role | ✅ | ❌ | ❌ | ❌ |
+| Remove a user from the vault | ✅ | ❌ | ❌ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Access & Permissions page is not visible | You don't have Admin or Builder role | Contact your vault Admin |
+| Role dropdown is greyed out | You don't have the Admin role | Only Admins can change roles |
+| Trash icon is not visible | You don't have the Admin role | Only Admins can remove users |
+| Accidentally removed a user | No confirmation dialog shown | Re-add them using the Add User form with the appropriate role |
+
+---
+
+## Related Articles
+
+- [Vault User Roles & Access](/graphium/vaults/vault-user-roles-and-access)
+- [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)
