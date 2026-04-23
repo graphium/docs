@@ -121,15 +121,7 @@
             ]
           }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Support",
-          "href": "mailto:support@graphium.ai",
-          "icon": "envelope"
-        }
-      ]
-    }
+    "global": {}
   },
   "logo": {
     "light": "/logo/dark.svg",
