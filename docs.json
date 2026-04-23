@@ -52,7 +52,6 @@
             "pages": [
               "graphium/vaults/working-with-vaults",
               "graphium/vaults/navigating-your-vault-using-the-sidebar",
-              "graphium/vaults/resizing-the-sidebar",
               "graphium/vaults/creating-a-vault-from-scratch",
               "graphium/vaults/opening-a-vault-from-the-dashboard",
               "graphium/vaults/viewing-vaults-in-the-card-grid-layout",
