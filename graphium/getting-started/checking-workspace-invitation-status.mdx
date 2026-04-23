@@ -1,6 +1,6 @@
 ---
 title: "Checking Workspace Invitation Status"
-description: "When a user is invited to the workspace, their invitation goes through a lifecycle from sent to accepted (or revoked)."
+description: ""
 icon: "rocket"
 ---
 
@@ -17,6 +17,10 @@ When a user is invited to the workspace, their invitation goes through a lifecyc
 
 The page has two sections: **Workspace Members** (accepted members) and **Pending Invitations** (outstanding invites).
 
+<Frame>
+  <img src="/images/graphium/getting-started/workspace-members.png" alt="Workspace members" />
+</Frame>
+
 ---
 
 ## Member Status Values
@@ -26,6 +30,7 @@ Active members appear in the **Workspace Members** table. Each row shows a statu
 | Status | What it means |
 |--------|--------------|
 | **Active** | The member has accepted their invitation and has an active account. They can log in and use Graphium normally. |
+| **Pending** | An invitation has been sent to this user but has not yet been accepted. |
 | **Deactivated** | The member's access has been suspended. They cannot log in until reactivated. |
 
 ---
@@ -33,6 +38,10 @@ Active members appear in the **Workspace Members** table. Each row shows a statu
 ## Pending Invitations
 
 Invitations that have been sent but not yet accepted appear in the **Pending Invitations** section below the members table. Each row shows the invitee's email address, when the invite was sent, their assigned role, and a **Pending** status badge.
+
+<Frame>
+  <img src="/images/graphium/getting-started/pending-workspace-invite.png" alt="Pending workspace invite" />
+</Frame>
 
 From this section, Workspace Owners can:
 
@@ -43,9 +52,15 @@ Once an invitee accepts, they move from Pending Invitations into the Workspace M
 
 ---
 
-## What Invitees See
+## Troubleshooting
 
-When a workspace invitation is sent, the invitee receives an email with a link to accept the invitation. Clicking the link takes them through account creation (if they're new to Graphium) or directly into the workspace (if they already have an account).
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Pending Invitations section is empty | No invitations have been sent, or all have been accepted or revoked | Check the Workspace Members table to see if the invitee has already joined |
+| Invitee accepted but does not appear in Workspace Members | Page may not have refreshed | Refresh the page; if the issue persists, check the Pending Invitations section to confirm the invite was accepted |
+| Invitation status is not updating | Browser or connectivity issue | Refresh the page and check again |
+| Cannot see the Members & Invitations page | You may not have the Owner role | Only Workspace Owners can view invitation status; contact your workspace admin |
+| Need to resend an expired invitation | Invitation links expire after a set period | Click **Resend invitation** in the Pending Invitations section |
 
 ---
 
