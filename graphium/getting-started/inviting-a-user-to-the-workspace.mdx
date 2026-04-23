@@ -1,6 +1,6 @@
 ---
 title: "Inviting a User to the Workspace"
-description: "Workspace Owners can invite new members to the workspace from the **Members & Invitations** page in Workspace Settings."
+description: ""
 icon: "rocket"
 ---
 
@@ -10,11 +10,16 @@ Workspace Owners can invite new members to the workspace from the **Members & In
 
 ---
 
-## Steps
+## How to Send an Invite
 
 1. In the top navigation bar, click the **Workspace Settings** button next to the workspace name.
 2. Click **Members** in the left sidebar.
 3. In the **Invite New User** section at the top of the page, enter the email address of the person you want to invite.
+
+<Frame>
+  <img src="/images/graphium/getting-started/invite-workspace-user.png" alt="Invite workspace user" />
+</Frame>
+
 4. Select the role they should have from the role dropdown (defaults to **Member**).
 5. Click **Send Invite**.
 
@@ -22,13 +27,34 @@ An invitation email is sent to the address provided. The invitee appears in the 
 
 > **Note:** Only users who have not yet joined the workspace can be invited this way. To add an existing workspace member to a specific vault, see [Adding a User to a Vault](Adding%20a%20User%20to%20a%20Vault.md).
 
+<Frame>
+  <img src="/images/graphium/getting-started/workspace-members.png" alt="Workspace members" />
+</Frame>
+
 ---
 
 ## What Happens After Inviting
 
 - The invitee receives an email with a link to accept the invitation and create their account (if they don't have one).
+
+<Frame>
+  <img src="/images/graphium/getting-started/workspace-invitation-email.png" alt="Workspace invitation email" />
+</Frame>
+
 - Once accepted, they appear in the **Workspace Members** table with an **Active** status.
 - The invitation can be resent or revoked at any time from the **Pending Invitations** section. See [Checking Workspace Invitation Status](Checking%20Workspace%20Invitation%20Status.md) for details.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Invite button is not visible | You may not have the Owner role | Only Workspace Owners can send invitations; contact your workspace admin |
+| Invitee did not receive the email | Email routed to spam, or incorrect address entered | Ask the invitee to check their spam folder; resend or revoke the invitation and re-enter the correct address |
+| Invitation shows as Pending but invitee can't find the email | Email delivery delay or filtered | Resend the invitation from the Pending Invitations section |
+| "User already exists" or invitation fails to send | The email address is already associated with a workspace member | The user may already be a member; check the Workspace Members table |
+| Invitation link expired | Invitation links expire after a set period | Revoke the old invitation and send a new one |
 
 ---
 
