@@ -50,10 +50,7 @@
               "graphium/getting-started/requesting-a-password-reset",
               "graphium/getting-started/navigating-workspaces",
               "graphium/getting-started/editing-workspace-settings",
-              "graphium/getting-started/inviting-a-user-to-the-workspace",
-              "graphium/getting-started/checking-workspace-invitation-status",
-              "graphium/getting-started/viewing-workspace-members",
-              "graphium/getting-started/removing-a-workspace-member",
+              "graphium/getting-started/managing-workspace-members",
               "graphium/getting-started/viewing-your-profile",
               "graphium/getting-started/editing-your-profile",
               "graphium/getting-started/logging-out-of-graphium-ai"
