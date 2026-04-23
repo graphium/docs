@@ -1,12 +1,12 @@
 ---
-title: "Your Profile"
+title: "Your Profile & Account"
 description: ""
 icon: "rocket"
 ---
 
 ## Overview
 
-Your profile is accessible from the top-right corner of the navigation bar on every page in Graphium AI. The profile block shows your display name and email address and serves as the entry point for viewing your account details, editing your information, and logging out.
+Your profile and account controls are accessible from the top-right corner of the navigation bar on every page in Graphium AI. From here you can view your account details, edit your display name and email address, and log out of the application.
 
 ---
 
@@ -24,7 +24,7 @@ Your profile is accessible from the top-right corner of the navigation bar on ev
 
 ## Editing Your Profile
 
-1. Click your **name or avatar** in the top-right corner of the navigation bar to open the profile block.
+1. Click your **name or avatar** to open the profile block.
 2. Click **Edit Profile**. The profile editing view opens.
 
 <Frame>
@@ -32,9 +32,7 @@ Your profile is accessible from the top-right corner of the navigation bar on ev
 </Frame>
 
 3. Update the **Username**, **Email**, or both fields as needed.
-4. Click **Save**. Your changes are reflected in the navigation bar and profile block immediately.
-
-The Edit Profile form contains two fields:
+4. Click **Save**. Your changes are reflected across the application immediately.
 
 | Field | Description |
 |-------|-------------|
@@ -47,17 +45,27 @@ The Edit Profile form contains two fields:
 
 ---
 
+## Logging Out
+
+1. Click your **name or avatar** in the top-right corner to open the profile block.
+2. Click **Log Out** (shown in red at the bottom of the menu).
+3. Your session is cleared and you are redirected to the Graphium AI sign-in page.
+
+No application data is deleted when you log out — your vaults, tables, and records remain intact. After logout, you will not be able to navigate back to any protected page without signing in again.
+
+---
+
 ## Permissions
 
-All authenticated users can view and edit their own profile, regardless of their role within a workspace.
+All authenticated users can view and edit their own profile and log out, regardless of their role.
 
-| Role | Can View & Edit Profile |
-|------|------------------------|
-| Workspace Owner | ✅ |
-| Workspace Manager | ✅ |
-| Form Editor | ✅ |
-| Form Viewer | ✅ |
-| Integration Manager | ✅ |
+| Role | Can View & Edit Profile | Can Log Out |
+|------|------------------------|-------------|
+| Workspace Owner | ✅ | ✅ |
+| Workspace Manager | ✅ | ✅ |
+| Form Editor | ✅ | ✅ |
+| Form Viewer | ✅ | ✅ |
+| Integration Manager | ✅ | ✅ |
 
 ---
 
@@ -71,10 +79,12 @@ All authenticated users can view and edit their own profile, regardless of their
 | Changes are not saving | Network issue or invalid field value | Check your internet connection and ensure all fields are valid, then try again |
 | Updated name is not reflected in the navigation bar | Browser cache or display delay | Refresh the page; your updated name should appear after a successful save |
 | Email change is not taking effect | New email may require verification | Check your inbox for a verification email and follow the link to confirm |
-| Save button does nothing | Browser compatibility issue | Try in a different browser or incognito/private window |
+| Log Out option is not visible | Clicking the wrong area of the nav bar | Click your name or avatar in the top-right corner, not the workspace name on the left |
+| Clicked Log Out but nothing happened | Network issue prevented the logout request | Wait a moment and try again; closing your browser will also end your local session |
+| Logged out unexpectedly | Session expired due to inactivity | Sign in again to continue |
 
 ---
 
 ## Related Articles
 
-- [Logging Out of Graphium AI](/graphium/getting-started/logging-out-of-graphium-ai)
+- [Signing In with Email and Password](/graphium/getting-started/signing-in-with-email-and-password)
