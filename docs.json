@@ -51,13 +51,13 @@
             "group": "Vaults",
             "pages": [
               "graphium/vaults/working-with-vaults",
-              "graphium/vaults/navigating-your-vault-using-the-sidebar",
               "graphium/vaults/viewing-and-opening-vaults",
-              "graphium/vaults/understanding-vault-metadata",
               "graphium/vaults/vault-settings-general-configuration",
-              "graphium/vaults/deleting-or-deactivating-a-vault",
               "graphium/vaults/vault-user-roles-and-access",
-              "graphium/vaults/managing-vault-users"
+              "graphium/vaults/managing-vault-users",
+              "graphium/vaults/navigating-your-vault-using-the-sidebar",
+              "graphium/vaults/understanding-vault-metadata",
+              "graphium/vaults/deleting-or-deactivating-a-vault"
             ]
           },
           {
