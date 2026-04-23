@@ -12,10 +12,7 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Graphium AI",
-        "groups": [
+    "groups": [
           {
             "group": "Reference",
             "pages": [
@@ -122,8 +119,6 @@
               "graphium/ai-assistant/using-ai-assistants"
             ]
           }
-        ]
-      }
     ],
     "global": {
       "anchors": [
@@ -136,7 +131,7 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
+    "light": "/logo/dark.svg",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
