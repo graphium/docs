@@ -58,12 +58,12 @@ The vault description is optional and is managed from the General Settings page.
 
 1. Open the vault and click **Settings** in the left sidebar.
 2. Under **General Settings**, locate the **Vault Information** card.
-3. Click into the **Description** textarea and type or update the description.
+3. Click into the **Description** text area and type or update the description.
 
 > 💡 **Tip:** Descriptions have a maximum length of 500 characters. A good description helps new team members quickly understand what data or workflows a vault contains.
 
 4. Click away (blur the field) to save. The description is saved automatically.
-5. To **remove the description entirely**, clear the textarea and click away. The field saves as empty (null), effectively clearing it.
+5. To **remove the description entirely**, clear the text area and click away. The field saves as empty (null), effectively clearing it.
 
 <Frame>
   <img src="/images/graphium/vaults/vault-settings.png" alt="Vault settings" />
@@ -82,6 +82,10 @@ The vault icon and color are set from the **General Settings** page and help vis
 
 Changes save automatically when you click an icon or color — no Save button is required.
 
+<Frame>
+  <img src="/images/graphium/vaults/vault-settings.png" alt="Vault settings" />
+</Frame>
+
 ---
 
 ## Troubleshooting
@@ -93,7 +97,7 @@ Changes save automatically when you click an icon or color — no Save button is
 | Name change reverts immediately after saving | API error or validation failure | Check that the name is not empty and is under 255 characters. Try again — if it persists, check your network connection |
 | Vault name field won't save when empty | Empty names are not allowed | Enter at least one character before saving |
 | Icon/color changes are lost when I click outside the popover | Popover was dismissed without clicking Done | Reopen the popover by clicking the vault icon and reapply your changes, then click **Done** |
-| Description is not saving | Possible network issue | Ensure you clicked away from the textarea to trigger the save. Reload the page and try again |
+| Description is not saving | Possible network issue | Ensure you clicked away from the text area to trigger the save. Reload the page and try again |
 | "Insufficient permissions" error | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN or WORKSPACE OWNER to adjust your permissions |
 
 ---
