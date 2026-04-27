@@ -21,16 +21,7 @@ Every user with vault access is assigned one of four roles that controls what th
 
 ---
 
-## Viewing Vault Users
-
-1. Open the vault and click **Settings** in the left sidebar.
-2. Click **Access & Permissions**. The **Users** tab is selected by default.
-
-Each row in the user list shows the user's avatar, full name, email, current role, a **Pending** badge if they haven't accepted their invitation, and a trash icon to remove them.
-
----
-
-## Adding a User
+## Adding a Vault User
 
 Only existing workspace members can be added to a vault. If someone needs to be invited to the workspace first, see [Managing Workspace Members](/graphium/getting-started/managing-workspace-members).
 
@@ -41,16 +32,33 @@ Only existing workspace members can be added to a vault. If someone needs to be 
 
 The person is added immediately and can access the vault on their next visit. No email notification is sent.
 
+<Frame>
+  <img src="/images/graphium/vaults/add-vault-user.png" alt="Add vault user" />
+</Frame>
+
 ---
 
-## Changing a User's Role
+## Changing a User's Vault Role
 
 1. From the **Access & Permissions → Users** tab, locate the user.
 2. Click the **role dropdown** on the right side of their row and select the new role.
 
-The change takes effect immediately with no notification sent. You can also change the role for a **Pending** user.
+The change takes effect immediately with no notification sent.
 
 > **Note:** A vault must always have at least one Admin. If you are the only Admin, you cannot change your own role to a lower level.
+
+<Frame>
+  <img src="/images/graphium/vaults/update-user-role.png" alt="Update user role" />
+</Frame>
+
+---
+
+## Viewing Vault Users
+
+1. Open the vault and click **Settings** in the left sidebar.
+2. Click **Access & Permissions**. The **Users** tab is selected by default.
+
+Each row in the user list shows the user's avatar, full name, email, current role, and a trash icon to remove them.
 
 ---
 
@@ -59,7 +67,7 @@ The change takes effect immediately with no notification sent. You can also chan
 1. From the **Access & Permissions → Users** tab, locate the user.
 2. Click the **trash icon** on the right side of their row.
 
-The user is removed immediately with no confirmation dialog. Their Graphium account remains active and they retain access to any other vaults they belong to. Any records they created remain intact. To restore access, use **Add User** to re-add them. You can also remove a **Pending** user this way, which cancels their invitation.
+The user is removed immediately with no confirmation dialog. Their Graphium account remains active and they retain access to any other vaults they belong to. Any records they created remain intact. To restore access, use **Add User** to re-add them.
 
 ---
 
