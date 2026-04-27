@@ -1,57 +1,39 @@
 ---
-title: "Adding a New Table from the Sidebar"
-description: "The **+** button in the TABLES section of the vault sidebar lets ADMIN and BUILDER users create a new empty table instantly."
+title: "Adding a Table"
+description: ""
 icon: "database"
 ---
 
 ## Overview
 
-The **+** button in the TABLES section of the vault sidebar lets ADMIN and BUILDER users create a new empty table instantly. Clicking it requires no dialog or configuration — the table is created immediately, added to the sidebar list, and you are automatically taken to the new table's Data view where you can rename it and begin building its schema.
+The **+** button in the TABLES section of the vault sidebar lets ADMIN and BUILDER users create a new table.
 
 > **Note:** The + button is only visible to users with an **ADMIN** or **BUILDER** role. CONTRIBUTOR and VIEWER users do not see this button and cannot create tables.
-
----
-
-## Before You Begin
-
-- You must have an **ADMIN** or **BUILDER** role in the vault
-- Open the vault you want to add a table to
-- Confirm the vault sidebar is visible with the TABLES section shown
 
 ---
 
 ## How to Add a New Table
 
 1. In the vault sidebar, locate the **TABLES** section header.
-
 2. Click the **+** button on the right side of the TABLES header.
-
-3. A new table named **Untitled Table** is created immediately. It appears in the TABLES list in the sidebar, highlighted in teal to indicate it is the active selection.
-
-4. The main content area automatically navigates to the new table's **Data** view.
-
-5. The table name at the top of the content area is pre-selected in an inline text field, ready to be renamed. Type the name you want to use and press **Enter**, or click away from the field to save it.
+3. A **Create Table** modal opens. Enter a **Table Name** (required) — placeholder text shows examples like *"Contacts, Tasks, Inventory"*.
+4. Optionally add a **Description** to explain what the table will store.
+5. Click **+ Create Table**.
 
 ---
 
 ## What Happens After the Table Is Created
 
-- The new table appears at the bottom of the TABLES list in the sidebar
-- The sidebar highlights the table in teal, indicating it is the currently active table
-- The Data view opens for the new table — it is empty with no records
-- The table name is immediately editable inline — you do not need to navigate anywhere else to rename it
-- The table exists in the vault's schema and is ready for fields and records to be added
+- The modal closes and you are automatically navigated to the new table's Data view
+- The new table appears at the top of the TABLES list in the sidebar, highlighted in teal
+- The Data view opens showing *"No records yet"* — the table is empty and ready for records
+- The **+ Add [Table Name]** button appears in the top-right, ready for adding records
 
 ---
 
 ## Renaming the Table
 
-When a new table is created, its name is automatically selected so you can rename it right away:
-
-1. Type the name you want for the table.
-2. Press **Enter** or click anywhere outside the name field to save.
-
-If you navigate away before renaming, the table will remain named **Untitled Table**. You can rename it at any time from the table's **Settings** tab under the **Table Names** section, or by clicking the table name in the content area header.
+Since the name is set during creation, renaming is done afterwards by clicking the **pencil icon (✏️)** next to the table name in the content header, or via **Settings → Table Names**.
 
 ---
 
@@ -60,14 +42,12 @@ If you navigate away before renaming, the table will remain named **Untitled Tab
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
 | The + button is not visible in the TABLES header | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN — only ADMIN and BUILDER users can create tables |
-| Clicking + does nothing | Temporary UI issue | Refresh the page and try again |
+| + Create Table button is greyed out | Table Name field is empty | Enter a table name before clicking + Create Table |
 | The table name did not save after typing | The field may not have lost focus | Press Enter or click outside the name field to confirm the rename |
-| The new table does not appear in the sidebar | The sidebar may need to refresh | Scroll down in the TABLES list or refresh the page |
+| The new table does not appear in the sidebar | The sidebar may need to refresh | Scroll up in the TABLES list or refresh the page |
 
 ---
 
 ## Related Articles
 
-- [Navigating Your Vault Using the Sidebar](/graphium/navigation/navigating-your-vault-using-the-sidebar)
-- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
-- [Editing Table Display Names](/graphium/data-records/editing-table-display-names)
+- [Table Settings](/graphium/data-records/table-settings)
