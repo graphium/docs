@@ -1,28 +1,19 @@
 ---
 title: "Vault Settings"
-description: "Graphium AI lets you personalize each vault's identity by editing its name, adding a description, and choosing a custom icon and color."
+description: ""
 icon: "vault"
 ---
 
 ## Overview
 
-Graphium AI lets you personalize each vault's identity by editing its name, adding a description, and choosing a custom icon and color. These settings help your team quickly identify vaults at a glance and keep the workspace organized. All four settings are accessible to users with an **ADMIN** or **BUILDER** vault role.
-
-## When to Use This
-
-Use this article when you need to:
-
-- Rename a vault after its purpose or content changes
-- Add or update a description to help team members understand what a vault is for
-- Assign a recognizable icon and color to distinguish vaults on the dashboard
-- Make a combined icon and color change in a single step
+Graphium AI lets you personalize each vault's identity by editing its name, adding a description, and choosing a custom icon and color. These settings help your team quickly identify vaults at a glance and keep the workspace organized.
 
 ## Prerequisites
 
 - You must have an existing vault in Graphium AI
 - You must have the **ADMIN** or **BUILDER** role in that vault
-  - CONTRIBUTOR and VIEWER roles can view the vault name, icon, and color, but cannot make changes
-- Access the vault settings by opening your vault and clicking **Settings** in the left sidebar
+
+> **Note:** CONTRIBUTOR and VIEWER roles can view the vault name, icon, and color, but cannot make changes.
 
 ---
 
@@ -42,6 +33,10 @@ The vault name can be updated in two ways: directly from the vault header (quick
 5. Press **Enter** to save the new name. The header updates immediately.
 6. Press **Escape** to cancel and revert to the original name without saving.
 
+<Frame>
+  <img src="/images/graphium/vaults/vault-name-header.png" alt="Vault name header" />
+</Frame>
+
 ### Option B: Edit from General Settings
 
 1. Open the vault and click **Settings** in the left sidebar.
@@ -51,9 +46,13 @@ The vault name can be updated in two ways: directly from the vault header (quick
 
 > 💡 **Tip:** If you clear the Vault Name field entirely, the save will be blocked — the name is required. An inline error will appear to prompt you to enter a value.
 
+<Frame>
+  <img src="/images/graphium/vaults/vault-settings.png" alt="Vault settings" />
+</Frame>
+
 ---
 
-## Adding or Editing the Vault Description
+## Editing the Vault Description
 
 The vault description is optional and is managed from the General Settings page.
 
@@ -66,84 +65,26 @@ The vault description is optional and is managed from the General Settings page.
 4. Click away (blur the field) to save. The description is saved automatically.
 5. To **remove the description entirely**, clear the textarea and click away. The field saves as empty (null), effectively clearing it.
 
----
-
-## Selecting a Vault Icon
-
-The vault icon is displayed in the vault header and on the dashboard. It is set using the icon/color popover, which is accessed directly from the vault header.
-
-1. Open the vault you want to update.
-2. Click the **vault icon** in the top-left of the vault header (the colored square with a symbol inside).
-3. The icon/color popover opens with two sections: **Icon** and **Color**.
-4. In the **Icon** section, select from the six available icons:
-
-| Icon | Represents |
-|------|-----------|
-| Document / Clipboard | Documents, records |
-| Clock | Time-based or scheduling workflows |
-| Shield-Check | Compliance, verification, approvals |
-| Database / Storage | Data-heavy vaults (default) |
-| Bolt / Lightning | Automations, quick-action workflows |
-| People | Contacts, HR, team-related data |
-
-5. As you click an icon, a preview updates immediately in the popover — the selected icon is highlighted with a teal border.
-6. When satisfied with your selection, click **Done**. The icon updates in the vault header.
-
-> 💡 **Tip:** You can change both the icon and the color before clicking **Done** — they are saved together in a single update. See the section below.
-
-> ⚠️ **Note:** Clicking outside the popover without clicking **Done** will discard any pending icon or color changes.
+<Frame>
+  <img src="/images/graphium/vaults/vault-settings.png" alt="Vault settings" />
+</Frame>
 
 ---
 
-## Selecting a Vault Color
+## Selecting a Vault Icon & Color
 
-The vault color changes the background of the vault icon in the header and on the dashboard, making it easy to visually distinguish vaults.
+The vault icon and color are set from the **General Settings** page and help visually distinguish vaults on the dashboard.
 
-1. Open the vault you want to update.
-2. Click the **vault icon** in the top-left of the vault header.
-3. The icon/color popover opens.
-4. In the **Color** section, select from the six available colors:
+1. Open the vault and click **Settings** in the left sidebar.
+2. Click **General Settings**.
+3. In the **Vault Icon** section, click any of the 7 available icons to select it — the selected icon is highlighted with a teal background.
+4. In the **Vault Color** section, click any of the 6 available colors — the selected color is highlighted with a border.
 
-| Color | Hex Value |
-|-------|-----------|
-| Blue (default) | `#3B82F6` |
-| Teal | `#0D9488` |
-| Purple | `#8B5CF6` |
-| Coral | `#EF6C54` |
-| Green | `#22C55E` |
-| Pink | `#EC4899` |
-
-5. The selected color is highlighted with a border. The vault icon in the header updates immediately as a live preview.
-6. Click **Done** to save. The color is applied to the vault icon across all views.
-
-> 💡 **Tip:** New vaults default to **Blue** if no color has been set. If a vault does not display a color, it will fall back to blue automatically.
+Changes save automatically when you click an icon or color — no Save button is required.
 
 ---
 
-## Changing Icon and Color Together
-
-The icon and color popover allows you to update both settings before saving, so only one change is sent to the system:
-
-1. Click the vault icon in the header to open the popover.
-2. Select your desired icon from the **Icon** row.
-3. Select your desired color from the **Color** row.
-4. Click **Done**. Both the icon and color are saved in a single update.
-
----
-
-## What to Expect
-
-After completing these steps:
-
-- **Name changes** update immediately in the vault header and on the workspace dashboard. If the API request fails, the original name is automatically restored and an error notification appears.
-- **Description changes** save silently on blur. Clearing the field removes the description.
-- **Icon and color changes** take effect in the vault header and on the dashboard as soon as you click **Done**. Changes preview live in the popover before saving.
-
-If you have a **CONTRIBUTOR** or **VIEWER** role, the pencil icon and clickable vault icon are hidden — these settings can only be viewed, not changed.
-
----
-
-## Common Issues & Troubleshooting
+## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
@@ -159,8 +100,8 @@ If you have a **CONTRIBUTOR** or **VIEWER** role, the pencil icon and clickable 
 
 ## Related Articles
 
-- [Working with Vaults](/graphium/vaults/working-with-vaults)
-- [Creating a Vault from Scratch](/graphium/vaults/creating-a-vault-from-scratch)
+- [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
+- [Deleting or Deactivating a Vault](/graphium/vaults/deleting-or-deactivating-a-vault)
 
 ---
 
