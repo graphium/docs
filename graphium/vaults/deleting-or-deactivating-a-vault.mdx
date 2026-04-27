@@ -1,6 +1,6 @@
 ---
 title: "Deleting or Deactivating a Vault"
-description: "From the **Danger Zone** section of Vault Settings, Workspace Owners can permanently delete a vault or deactivate it."
+description: ""
 icon: "vault"
 ---
 
@@ -22,7 +22,11 @@ From the **Danger Zone** section of Vault Settings, Workspace Owners can permane
 2. In the left sidebar, click **Settings**.
 3. Under **General Settings**, scroll down to the **Danger Zone** section.
 
-The Danger Zone is labeled in red and appears below the Vault Information fields (Vault Name and Description).
+The Danger Zone is labeled in red and appears below the Vault Information fields.
+
+<Frame>
+  <img src="/images/graphium/vaults/danger-zone.png" alt="Danger zone" />
+</Frame>
 
 ---
 
@@ -32,7 +36,17 @@ Deletion is only available when the vault contains **no tables**. If the vault h
 
 1. Open the vault and navigate to **Settings → General Settings → Danger Zone**.
 2. Click **Delete Vault**. A confirmation dialog appears.
+
+<Frame>
+  <img src="/images/graphium/vaults/delete-vault.png" alt="Delete vault" />
+</Frame>
+
 3. Read the confirmation warning carefully. Deletion is **permanent** — all vault data will be removed and cannot be recovered.
+
+<Frame>
+  <img src="/images/graphium/vaults/delete-vault-warning.png" alt="Delete vault warning" />
+</Frame>
+
 4. Confirm the deletion. You are returned to the workspace dashboard.
 
 The deleted vault no longer appears on the dashboard.
@@ -47,7 +61,16 @@ Deactivation is available when the vault contains **one or more tables**. Deacti
 
 1. Open the vault and navigate to **Settings → General Settings → Danger Zone**.
 2. Click **Deactivate Vault**. A confirmation dialog appears.
+
+<Frame>
+  <img src="/images/graphium/vaults/deactivate-vault.png" alt="Deactivate vault" />
+</Frame>
+
 3. Confirm the deactivation. The vault is marked as inactive and is no longer visible on the dashboard by default.
+
+<Frame>
+  <img src="/images/graphium/vaults/deactivate-vault-warning.png" alt="Deactivate vault warning" />
+</Frame>
 
 The vault and its tables, records, and configuration remain intact. Workspace Owners can restore the vault at any time by reactivating it.
 
@@ -63,6 +86,10 @@ By default, the dashboard only shows active vaults. To see deactivated vaults:
 
 Inactive vaults are visually distinguished from active vaults in the list.
 
+<Frame>
+  <img src="/images/graphium/vaults/inactive-vaults-toggle.png" alt="Inactive vaults toggle" />
+</Frame>
+
 ---
 
 ## Reactivating a Vault
@@ -75,7 +102,16 @@ To restore a deactivated vault:
 4. In the left sidebar, click **Settings**.
 5. Under **General Settings**, scroll to the **Danger Zone** section.
 6. Click **Reactivate Vault**. A confirmation dialog appears.
+
+<Frame>
+  <img src="/images/graphium/vaults/reactivate-vault.png" alt="Reactivate vault" />
+</Frame>
+
 7. Confirm the reactivation. The vault is restored to active status and appears on the dashboard again.
+
+<Frame>
+  <img src="/images/graphium/vaults/reactivate-vault-warning.png" alt="Reactivate vault warning" />
+</Frame>
 
 ---
 
@@ -93,9 +129,19 @@ The Danger Zone and its controls are not visible to any role other than Workspac
 
 ---
 
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Danger Zone is not visible | You don't have the Workspace Owner role | Contact your Workspace Owner |
+| Delete Vault button is not available | The vault contains one or more tables | Delete all tables first, or use Deactivate instead |
+| Deactivate Vault button is not available | The vault has no tables — Delete option shows instead | Use Delete Vault if you want to permanently remove it |
+| Deactivated vault is not visible on the dashboard | Show inactive vaults toggle is off | Enable the **Show inactive vaults** toggle on the dashboard |
+| Reactivate Vault button is not visible | The vault is not deactivated | Only deactivated vaults show the Reactivate option |
+
+---
+
 ## Related Articles
 
-- [Vault Settings — General Configuration](/graphium/vaults/vault-settings-general-configuration)
-- [Working with Vaults](/graphium/vaults/working-with-vaults)
-- [Creating a Vault from Scratch](/graphium/vaults/creating-a-vault-from-scratch)
-- [Viewing Vaults in the Card Grid Layout](/graphium/vaults/viewing-vaults-in-the-card-grid-layout)
+- [Vault Settings](/graphium/vaults/vault-settings-general-configuration)
+- [Accessing Vaults](/graphium/vaults/viewing-and-opening-vaults)
