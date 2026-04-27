@@ -1,74 +1,64 @@
 ---
 title: "Enabling a Table for Contributor Mode"
-description: "Each table in a vault can be independently enabled or disabled for Contributor Mode."
+description: ""
 icon: "database"
 ---
 
 ## Overview
 
-Each table in a vault can be independently enabled or disabled for Contributor Mode. When a table is enabled for Contributor Mode, it becomes visible to workspace members who are using the Contributor Mode view. Tables that are disabled are hidden from that view entirely.
+Each table in a vault can be independently enabled or disabled for Contributor Mode. When enabled, the table becomes visible to users in Contributor Mode. Tables that are disabled are hidden from that view entirely.
 
-This setting lives in the **Settings** tab of the table view and is controlled with a single checkbox — **Enable for Contributor Mode**. Changes take effect immediately and sync to the sidebar without a page reload.
+This setting is controlled by the **Enable for Contributor Mode** checkbox in the **Settings** tab of the table view. Changes take effect immediately.
 
-> **Note:** The Settings tab — and this setting — is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users cannot see or change this setting.
+> **Note:** The Settings tab is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users cannot see or change this setting.
 
 ---
 
-## Before You Begin
+## Builder Mode vs Contributor Mode
 
-- You must have an **ADMIN** or **BUILDER** role in the vault
-- Navigate to the table you want to configure
-- Confirm you are in the table view with the **Data**, **Schema**, and **Settings** tabs visible in the top-right of the content area
+Graphium AI has two sidebar modes, toggled using the **Builder / Contributor** switch at the bottom of the vault sidebar.
+
+**Builder Mode** is the default for ADMIN and BUILDER users. It shows:
+- All tables listed in the sidebar regardless of their Contributor Mode setting
+- Full access to Data, Schema, and Settings tabs on every table
+- The ability to add, rename, and configure tables
+
+**Contributor Mode** is a simplified view designed for users who only need to view and edit data without modifying the vault structure. In Contributor Mode:
+- The TABLES section in the sidebar is hidden unless a table has been explicitly enabled for Contributor Mode
+- Only tables with **Enable for Contributor Mode** checked appear in the sidebar
+- The Schema and Settings tabs are not accessible
+
+ADMIN and BUILDER users can switch between modes at any time using the toggle — this is useful for previewing exactly what Contributor-role users see.
 
 ---
 
 ## How to Enable a Table for Contributor Mode
 
 1. Open the table you want to make available in Contributor Mode.
+2. Click the **Settings** tab in the top-right area of the table view.
+3. Check the **Enable for Contributor Mode** checkbox.
 
-2. Click the **Settings** tab in the top-right area of the table view (alongside the Data and Schema tabs).
-
-3. Scroll to the **Enable for Contributor Mode** section.
-
-4. Check the **Enable for Contributor Mode** checkbox.
-
-5. The change saves immediately — no additional save button is required. The sidebar updates automatically to reflect the change.
-
-Tables with this setting enabled will now appear in the sidebar when any workspace member switches to Contributor Mode.
+The change saves immediately. The table will now appear in the sidebar when any user switches to Contributor Mode.
 
 ---
 
 ## How to Disable a Table for Contributor Mode
 
-1. Open the table you want to hide from Contributor Mode.
+1. Open the table and click the **Settings** tab.
+2. Uncheck the **Enable for Contributor Mode** checkbox.
 
-2. Click the **Settings** tab in the top-right of the table view.
-
-3. Scroll to the **Enable for Contributor Mode** section.
-
-4. Uncheck the **Enable for Contributor Mode** checkbox.
-
-5. The change saves immediately. The table is removed from the Contributor Mode sidebar view without a page reload.
-
-> **Note:** Disabling a table for Contributor Mode does not delete the table or affect its data in any way. ADMIN and BUILDER users can still access the table normally in Builder Mode.
+The table is removed from the Contributor Mode sidebar view immediately. ADMIN and BUILDER users can still access the table normally in Builder Mode.
 
 ---
 
-## What Happens After You Change This Setting
+## Permissions
 
-- The sidebar's Contributor Mode view updates within approximately one second of the change
-- **Enabled tables** appear in the sidebar when any user (ADMIN, BUILDER, CONTRIBUTOR, or VIEWER) switches to Contributor Mode
-- **Disabled tables** are hidden from the Contributor Mode sidebar view — they remain fully accessible in Builder Mode
-- The setting is per-table — each table in a vault has its own independent Contributor Mode setting
-- New tables default to **disabled** (unchecked) and must be explicitly enabled
-
----
-
-## Understanding Contributor Mode
-
-Contributor Mode is a simplified view of the workspace designed for users who only need to work with specific tables. When a workspace member switches to Contributor Mode from the sidebar, the tables list collapses to show only tables that have **Enable for Contributor Mode** turned on.
-
-ADMIN and BUILDER users can toggle between Builder Mode (all tables visible) and Contributor Mode (only enabled tables) at any time using the mode toggle in the sidebar. This is useful for previewing exactly what Contributor-role users see.
+| Role | Can Change This Setting |
+|------|------------------------|
+| Admin | ✅ |
+| Builder | ✅ |
+| Contributor | ❌ |
+| Viewer | ❌ |
 
 ---
 
@@ -76,14 +66,13 @@ ADMIN and BUILDER users can toggle between Builder Mode (all tables visible) and
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| Settings tab is not visible | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN — only ADMIN and BUILDER users can access table settings |
-| Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed yet | Wait a moment and check again; refresh the page if it persists |
-| Table still appears in Contributor Mode after disabling | Sidebar may not have refreshed yet | Wait a moment and check again; refresh the page if it persists |
-| Checkbox is visible but greyed out | Role or permissions issue | Confirm your role with your vault admin |
-| Change reverts after switching tabs | Connectivity or save error | Re-check the checkbox and ensure a stable network connection |
+| Settings tab is not visible | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault Admin — only ADMIN and BUILDER users can access table settings |
+| Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
+| Table still appears in Contributor Mode after disabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
 
 ---
 
 ## Related Articles
 
 - [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
+- [Table Settings](/graphium/data-records/table-settings)

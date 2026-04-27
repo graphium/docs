@@ -59,21 +59,23 @@
             ]
           },
           {
-            "group": "Data & Records",
+            "group": "Tables",
             "pages": [
               "graphium/data-records/adding-a-new-table-from-the-sidebar",
-              "graphium/data-records/expanding-and-collapsing-the-tables-list",
-              "graphium/data-records/viewing-table-records-in-the-data-grid",
               "graphium/data-records/table-views-data-schema-and-settings",
-              "graphium/data-records/renaming-a-table",
-              "graphium/data-records/editing-table-display-names",
-              "graphium/data-records/selecting-a-table-icon",
+              "graphium/data-records/table-settings",
               "graphium/data-records/configuring-default-table-properties",
-              "graphium/data-records/enabling-a-table-for-contributor-mode",
+              "graphium/data-records/enabling-a-table-for-contributor-mode"
+            ]
+          },
+          {
+            "group": "Records",
+            "pages": [
+              "graphium/data-records/viewing-table-records-in-the-data-grid",
               "graphium/data-records/creating-a-new-record-in-the-data-grid",
               "graphium/data-records/editing-a-record-in-the-data-grid",
-              "graphium/data-records/deleting-and-voiding-records-in-the-data-grid",
               "graphium/data-records/record-detail-view-values-and-completion-percentage",
+              "graphium/data-records/deleting-and-voiding-records-in-the-data-grid",
               "graphium/data-records/filtering-records-in-the-data-grid",
               "graphium/data-records/sorting-records-in-the-data-grid",
               "graphium/data-records/loading-more-records-in-the-data-grid"
