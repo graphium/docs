@@ -1,6 +1,6 @@
 ---
-title: "Table Views — Data, Schema, and Settings"
-description: "Every table in Graphium AI has three views accessible from the top-right corner of the table area: **Data**, **Schema**, and **Settings**."
+title: "Navigating Your Table"
+description: ""
 icon: "database"
 ---
 
@@ -12,17 +12,13 @@ The three tabs appear in every table regardless of size or content:
 
 | Tab | Icon | What it's for |
 |-----|------|---------------|
-| **Data** | Grid icon | View, add, and edit records in the table |
-| **Schema** | Layers icon | Define and manage the table's fields (columns) |
-| **Settings** | Gear icon | Configure table names, deletion behaviour, visible columns, and data sync |
+| **Data** | Layers icon | View, add, and edit records (rows) in the table |
+| **Schema** | Paper icon | Define and manage the table's fields (columns) |
+| **Settings** | Gear icon | Configure table names, visible columns, and AI validation |
 
----
-
-## When to Use This
-
-- You're adding or editing records in a table → use the **Data** tab
-- You need to add a new field, change a field type, or mark a field as required → use the **Schema** tab
-- You want to rename the record type, change how deletions work, hide a column from the default view, or connect an external data source → use the **Settings** tab
+<Frame>
+  <img src="/images/graphium/tables/table-settings-tab.png" alt="Table settings tab" />
+</Frame>
 
 ---
 
@@ -33,18 +29,7 @@ The three tabs appear in every table regardless of size or content:
 
 ---
 
-## How to Switch Between Tabs
-
-1. Open a vault and click a table name in the left sidebar.
-2. The table loads in the **Data** tab by default.
-3. In the top-right corner of the table area, locate the three tabs: **Data**, **Schema**, and **Settings**.
-4. Click any tab to switch to it instantly — the view updates without a full page reload.
-
-> **Tip:** The active tab is highlighted. You can switch tabs at any time without losing unsaved changes you may have started in the Data tab.
-
----
-
-## The Data Tab (Default)
+## The Data Tab
 
 The Data tab is the default view whenever you open a table. It displays your records in a grid where each row is a record and each column corresponds to a field defined in the schema.
 
@@ -53,12 +38,13 @@ The Data tab is the default view whenever you open a table. It displays your rec
 - A checkbox column on the left for bulk selection
 - A **+ Add Item** button in the top-right to create new records
 - A record count at the bottom (e.g., "Showing 50 of 120 records")
+- A filter icon for filtering records
+- An edit icon for editing records
+- A trash icon for voiding or deleting records
 
-**What you can do:**
-- Browse, search, and filter records
-- Click a row to open the record detail panel
-- Use **+ Add Item** to create new records
-- Select multiple rows using the checkboxes for bulk actions
+<Frame>
+  <img src="/images/graphium/tables/data-view.png" alt="Data view" />
+</Frame>
 
 ---
 
@@ -70,25 +56,13 @@ The Schema tab is where the structure of your table is defined. Every field (col
 - A **"Schema — N fields"** heading showing the total field count
 - A **Search properties...** bar to quickly find a specific field
 - An **+ Add Field** button to create new fields
-- A list of all fields, each showing:
-  - A drag handle (⠿) for reordering
+- A list of all added fields, each showing:
   - The field type icon (e.g., **T** for Text)
   - The field name
   - The data type label (e.g., "Text")
-  - **Edit** and **Delete** (🗑) action buttons
-
-**Default fields on every new table:**
-
-| Field | Type | Notes |
-|-------|------|-------|
-| Name | Text | Required — cannot be deleted |
-| Description | Text | Optional |
-
-**What you can do:**
-- Add new fields with **+ Add Field**
-- Edit a field's name, type, or validation rules via **Edit**
-- Delete optional fields via the trash icon
-- Drag fields to reorder them — this affects column order in the Data tab
+  - If a field is Required
+  - Pencil icon — edit a field's name, type, or validation rules
+  - Trash icon — delete fields
 
 > **Note:** Editing or deleting fields requires BUILDER or ADMIN role. VIEWERs and CONTRIBUTORs can view the schema but cannot modify it.
 
@@ -96,7 +70,7 @@ The Schema tab is where the structure of your table is defined. Every field (col
 
 ## The Settings Tab
 
-The Settings tab contains configuration options that control how the table behaves across your vault. It is divided into four sections.
+The Settings tab contains configuration options that control how the table behaves across your vault.
 
 ### Table Names
 
@@ -107,6 +81,10 @@ Set the singular and plural display names for records in this table. These names
 | Singular Name | Item | Patient, Invoice, Submission |
 | Plural Name | Items | Patients, Invoices, Submissions |
 
+<Frame>
+  <img src="/images/graphium/tables/table-display-names.png" alt="Table display names" />
+</Frame>
+
 ### Enable for Contributor Mode
 
 A checkbox that controls whether this table is visible and editable in Contributor Mode. Contributor Mode is a simplified interface intended for users who only need to view and enter data, without access to vault structure or configuration.
@@ -114,39 +92,22 @@ A checkbox that controls whether this table is visible and editable in Contribut
 - **Unchecked (default):** The table is not shown in Contributor Mode
 - **Checked:** Contributors can view and edit records in this table through the simplified Contributor interface
 
-### Record Deletion Mode
-
-Controls what happens to records when a user deletes them from this table. Select one of two options:
-
-| Option | Behaviour |
-|--------|-----------|
-| **Permanent Delete** (default) | Records are immediately and permanently removed from the database. This action cannot be undone. |
-| **Archive** | Records are hidden from the main table view but preserved in an archive. Archived records can be restored at any time. |
-
-> **Recommendation:** Use **Archive** for tables where accidental deletion could cause data loss (e.g., patient records, submitted forms). Use **Permanent Delete** for tables where storage cleanup is a priority.
+<Frame>
+  <img src="/images/graphium/tables/enable-contributor-mode.png" alt="Enable contributor mode" />
+</Frame>
 
 ### Default Table Properties
 
-Controls which fields (columns) are visible in the Data tab by default, and in what order. All fields are listed here with drag handles for reordering.
+Controls which fields (columns) are visible in the Data tab by default, and in what order.
 
-- Click **×** next to a field to hide it from the default Data view
-- Drag the handle (⠿) to change column order
-- Fields hidden here still exist in the schema — they can be re-added or accessed from the record detail panel
+- Click the trash icon next to a field to hide it from the default Data view
+- Drag the arrows up or down to change column order
 
-### Data Sync
+Fields hidden here still exist in the schema — they can be re-added or accessed from the record detail panel.
 
-Connect this table to an external data source to keep records in sync automatically. Supported sources include Google Sheets, databases, and other connected systems.
+### AI Validation
 
-When no sync is configured, this section shows an empty state with a **+ Set Up Sync** button. Once a sync is configured, connection status and sync controls appear here.
-
----
-
-## What to Expect
-
-- Switching between tabs is **instant** — there is no full page reload
-- Your position in the Data tab (scroll position, selected rows) is preserved when you switch to Schema or Settings and return
-- Changes made in Schema (adding/editing fields) are reflected immediately in the Data tab column headers
-- Changes made in Settings (Table Names, Record Deletion Mode, Default Table Properties) take effect as soon as they are saved
+When enabled, any time a row is added or updated in this table, the validation prompt will run automatically and the validation status of the row will be updated accordingly.
 
 ---
 
@@ -157,12 +118,10 @@ When no sync is configured, this section shows an empty state with a **+ Set Up 
 | Tabs not visible | You may be viewing a different part of the UI | Make sure you have a specific table open — tabs only appear in the table view, not on the vault home screen |
 | Schema or Settings changes are greyed out | Your role is VIEWER or CONTRIBUTOR | Ask a vault ADMIN or BUILDER to make the change |
 | A field is missing from the Data tab columns | It may be hidden in Default Table Properties | Go to Settings → Default Table Properties and re-add the field |
-| Deleted a record accidentally | Record Deletion Mode was set to Permanent Delete | Enable Archive mode going forward via Settings → Record Deletion Mode |
-| Data Sync section is missing | The Data Sync feature may not be enabled for your workspace | Contact your workspace administrator |
 
 ---
 
 ## Related Articles
 
-- [Renaming a Table](/graphium/data-records/renaming-a-table)
-- [Vault Settings — General Configuration](/graphium/vaults/vault-settings-general-configuration)
+- [Table Settings](/graphium/data-records/table-settings)
+- [Tables & Schemas](/graphium/glossary/tables-and-schemas)
