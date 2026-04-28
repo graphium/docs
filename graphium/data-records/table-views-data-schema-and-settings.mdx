@@ -54,15 +54,15 @@ The Schema tab is where the structure of your table is defined. Every field (col
 
 **What you'll see:**
 - A **"Schema — N fields"** heading showing the total field count
-- A **Search properties...** bar to quickly find a specific field
+- A **Search fields...** bar to quickly find a specific field
 - An **+ Add Field** button to create new fields
 - A list of all added fields, each showing:
   - The field type icon (e.g., **T** for Text)
   - The field name
-  - The data type label (e.g., "Text")
   - If a field is Required
+  - The data type label (e.g., "Text")
   - Pencil icon — edit a field's name, type, or validation rules
-  - Trash icon — delete fields
+  - Trash icon — archive or delete fields
 
 > **Note:** Editing or deleting fields requires BUILDER or ADMIN role. VIEWERs and CONTRIBUTORs can view the schema but cannot modify it.
 
@@ -105,9 +105,23 @@ Controls which fields (columns) are visible in the Data tab by default, and in w
 
 Fields hidden here still exist in the schema — they can be re-added or accessed from the record detail panel.
 
+<Frame>
+  <img src="/images/graphium/tables/default-table-properties.png" alt="Default table properties" />
+</Frame>
+
 ### AI Validation
 
 When enabled, any time a row is added or updated in this table, the validation prompt will run automatically and the validation status of the row will be updated accordingly.
+
+**Using the Validation Prompt**
+
+Describe what makes a valid record in this table in plain language. The AI will use this to evaluate each row and assign a validation status.
+
+> **Example:** *"Validate that the patient has a valid date of birth, a non-empty name, and that the procedure field is one of the approved procedure types."*
+
+<Frame>
+  <img src="/images/graphium/tables/table-ai-validation.png" alt="Table AI validation" />
+</Frame>
 
 ---
 
@@ -118,6 +132,8 @@ When enabled, any time a row is added or updated in this table, the validation p
 | Tabs not visible | You may be viewing a different part of the UI | Make sure you have a specific table open — tabs only appear in the table view, not on the vault home screen |
 | Schema or Settings changes are greyed out | Your role is VIEWER or CONTRIBUTOR | Ask a vault ADMIN or BUILDER to make the change |
 | A field is missing from the Data tab columns | It may be hidden in Default Table Properties | Go to Settings → Default Table Properties and re-add the field |
+| AI Validation status is not updating on existing rows | AI Validation only triggers when a row is added or updated | Edit and save an existing row to trigger validation |
+| AI Validation section is not visible in Settings | The feature may not be enabled for your workspace | Contact your workspace administrator |
 
 ---
 
