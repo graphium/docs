@@ -1,6 +1,6 @@
 ---
 title: "Configuring Default Table Properties"
-description: "The **Default Table Properties** setting controls which fields appear as columns when someone opens a table in the Data view, and the order those columns app..."
+description: ""
 icon: "database"
 ---
 
@@ -14,14 +14,6 @@ Fields removed from the default list are hidden from the data grid — but they 
 
 ---
 
-## Before You Begin
-
-- You must have an **ADMIN** or **BUILDER** role in the vault
-- Navigate to the table you want to configure
-- Confirm you are in the table view with the **Data**, **Schema**, and **Settings** tabs visible in the top-right of the content area
-
----
-
 ## Accessing Default Table Properties
 
 1. Open the table you want to configure.
@@ -32,6 +24,10 @@ Fields removed from the default list are hidden from the data grid — but they 
 
 4. The **Default Table Properties** section displays a list of all fields currently set to appear in the default table view. The section description reads: *"Select which properties appear in the table view by default. Drag to reorder."*
 
+<Frame>
+  <img src="/images/graphium/tables/default-table-properties.png" alt="Default table properties" />
+</Frame>
+
 ---
 
 ## Reordering Fields
@@ -40,7 +36,7 @@ The order of fields in the Default Table Properties list determines the left-to-
 
 1. In the **Default Table Properties** list, locate the field you want to move.
 
-2. Click and hold the **drag handle** (the six-dot icon ⠿) on the left side of the field row.
+2. Click and hold the arrows on the left side of the field row.
 
 3. Drag the field up or down to your desired position.
 
@@ -50,21 +46,7 @@ When you return to the **Data** tab, the column order will match the order set h
 
 ---
 
-## Removing a Field from the Default View
-
-Removing a field hides it as a column in the default data grid. The field still exists in the table's schema and all existing record data is preserved.
-
-1. In the **Default Table Properties** list, find the field you want to hide.
-
-2. Click the **✕** button on the right side of that field row.
-
-3. The field is removed from the list and will no longer appear as a column in the default Data view.
-
-> **Important:** Removing a field here only affects the default view. It does not delete the field or any data stored in it.
-
----
-
-## Adding a Field Back
+## Adding a Field to the Default View
 
 Fields that have been removed from the default view can be re-added at any time.
 
@@ -74,6 +56,24 @@ Fields that have been removed from the default view can be re-added at any time.
 
 3. Use the drag handle to reorder it if needed.
 
+<Frame>
+  <img src="/images/graphium/tables/add-default-property.png" alt="Add default property" />
+</Frame>
+
+---
+
+## Removing a Field from the Default View
+
+Removing a field hides it as a column in the default data grid. The field still exists in the table's schema and all existing record data is preserved.
+
+1. In the **Default Table Properties** list, find the field you want to hide.
+
+2. Click the trash icon on the right side of that field row.
+
+3. The field is removed from the list and will no longer appear as a column in the default Data view.
+
+> **Important:** Removing a field here only affects the default view. It does not delete the field or any data stored in it.
+
 ---
 
 ## What Happens After You Save
@@ -82,12 +82,6 @@ Fields that have been removed from the default view can be re-added at any time.
 - The updated field order and visibility applies to all users who open the table
 - No page reload is needed
 - If a field is later deleted from the table's **Schema**, it is automatically removed from the Default Table Properties list
-
----
-
-## Default Behavior for New Tables
-
-When a table has no Default Table Properties configured (i.e., the setting has never been changed), all fields defined in the table's schema are shown as columns in the Data view. Changes only take effect once you explicitly modify the list.
 
 ---
 
@@ -105,6 +99,5 @@ When a table has no Default Table Properties configured (i.e., the setting has n
 
 ## Related Articles
 
-- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
-- [Editing Table Display Names](/graphium/data-records/editing-table-display-names)
-- [Enabling a Table for Contributor Mode](/graphium/data-records/enabling-a-table-for-contributor-mode)
+- [Table Settings](/graphium/data-records/table-settings)
+- [Tables & Schemas](/graphium/glossary/tables-and-schemas)
