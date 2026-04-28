@@ -6,52 +6,75 @@ icon: "database"
 
 ## Overview
 
-Each table in Graphium AI has a set of configurable settings accessible from the **Settings** tab in the table view. From here you can rename the table, update its display names, assign an icon, and more.
+Each table in Graphium AI has a set of configurable settings accessible from the **Settings** tab in the table view. From here you can rename the table, update its display names, assign an icon, and control Contributor Mode visibility.
 
 > **Note:** The Settings tab is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users cannot access these settings.
 
 ---
 
+## Builder Mode vs Contributor Mode
+
+Graphium AI has two sidebar modes, toggled using the **Builder / Contributor** switch at the bottom of the vault sidebar.
+
+**Builder Mode** is the default for ADMIN and BUILDER users. It shows all tables in the sidebar, full access to Data, Schema, and Settings tabs, and the ability to add, rename, and configure tables.
+
+**Contributor Mode** is a simplified view designed for users who only need to view and edit data. Only tables with **Enable for Contributor Mode** checked appear in the sidebar. The Schema and Settings tabs are not accessible.
+
+ADMIN and BUILDER users can switch between modes at any time to preview what Contributor-role users see.
+
+---
+
 ## Renaming a Table
 
-The table name can be updated directly from the table header without leaving the page.
-
-1. Open the table you want to rename.
-2. Click the **pencil icon (✏️)** to the right of the table name in the header.
-3. The name becomes an editable text field. Type the new name.
-4. Press **Enter** to save, or **Escape** to cancel.
-
-The name updates instantly in the header and sidebar. Clicking outside the field also saves the name.
+1. Open the table and click the **pencil icon (✏️)** to the right of the table name in the header.
+2. Type the new name and press **Enter** to save, or **Escape** to cancel.
 
 ---
 
 ## Editing Table Display Names
 
-Each table has a **Singular Name** and **Plural Name** that appear throughout the interface — for example, in the "Add [Name]" button and table headers.
-
 1. Open the table and click the **Settings** tab.
 2. In the **Table Names** section, update the **Singular Name** and **Plural Name** fields.
 3. Click or tab out of the field to save automatically.
-
-New tables default to **Item** (singular) and **Items** (plural). Both fields are required.
 
 ---
 
 ## Selecting a Table Icon
 
-Each table can be assigned an icon that appears next to its name in the sidebar.
+1. Open the table and click the **Settings** tab.
+2. In the **Table Icon** section, click any of the 7 available icons. Click **Default** to remove a custom icon.
+
+---
+
+## Enabling a Table for Contributor Mode
 
 1. Open the table and click the **Settings** tab.
-2. In the **Table Icon** section, click any of the 7 available icons to select it.
+2. Check the **Enable for Contributor Mode** checkbox to make the table visible in Contributor Mode, or uncheck it to hide it.
 
-The selected icon is highlighted with a teal border and updates in the sidebar immediately. Click **Default** to remove a custom icon.
+Changes save immediately with no save button required.
 
 ---
 
 ## Permissions
 
+**Mode Capabilities:**
+
+| Feature | Builder Mode | Contributor Mode |
+|---------|-------------|-----------------|
+| Who has access | ADMIN, BUILDER | ADMIN, BUILDER, CONTRIBUTOR, VIEWER |
+| Tables visible in sidebar | All tables | Only tables with "Enable for Contributor Mode" checked |
+| Data tab | ✅ | ✅ |
+| Schema tab | ✅ | ❌ |
+| Settings tab | ✅ | ❌ |
+| Add, rename, and configure tables | ✅ | ❌ |
+| View and edit records | ✅ | ✅ |
+
+**Role-Based Actions:**
+
 | Action | Admin | Builder | Contributor | Viewer |
 |--------|-------|---------|-------------|--------|
+| Toggle between Builder and Contributor Mode | ✅ | ✅ | ❌ | ❌ |
+| Enable/disable Contributor Mode for a table | ✅ | ✅ | ❌ | ❌ |
 | Rename a table | ✅ | ✅ | ❌ | ❌ |
 | Edit display names | ✅ | ✅ | ❌ | ❌ |
 | Select a table icon | ✅ | ✅ | ❌ | ❌ |
@@ -62,10 +85,12 @@ The selected icon is highlighted with a teal border and updates in the sidebar i
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| Pencil icon not visible next to table name | You have a CONTRIBUTOR or VIEWER role | Contact your vault Admin to request a higher role |
-| Settings tab is not visible | You have a CONTRIBUTOR or VIEWER role | Contact your vault Admin — only ADMIN and BUILDER users can access table settings |
+| Pencil icon not visible next to table name | CONTRIBUTOR or VIEWER role | Contact your vault Admin to request a higher role |
+| Settings tab is not visible | CONTRIBUTOR or VIEWER role | Contact your vault Admin — only ADMIN and BUILDER users can access table settings |
 | Name reverts after saving | Network or save error | Check your connection and try again |
-| Display name not updating in the interface | Page may need refreshing | Refresh the page — the change is saved and will display correctly |
+| Display name not updating in the interface | Page may need refreshing | Refresh the page |
+| Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
+| Table still appears in Contributor Mode after disabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
 
 ---
 
@@ -73,4 +98,3 @@ The selected icon is highlighted with a teal border and updates in the sidebar i
 
 - [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
 - [Configuring Default Table Properties](/graphium/data-records/configuring-default-table-properties)
-- [Enabling a Table for Contributor Mode](/graphium/data-records/enabling-a-table-for-contributor-mode)
