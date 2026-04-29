@@ -70,10 +70,10 @@
           {
             "group": "Records",
             "pages": [
-              "graphium/data-records/viewing-table-records-in-the-data-grid",
               "graphium/data-records/creating-and-editing-records",
-              "graphium/data-records/deleting-and-voiding-records-in-the-data-grid",
-              "graphium/data-records/filtering-and-sorting-records"
+              "graphium/data-records/viewing-table-records-in-the-data-grid",
+              "graphium/data-records/filtering-and-sorting-records",
+              "graphium/data-records/deleting-and-voiding-records-in-the-data-grid"
             ]
           },
           {
