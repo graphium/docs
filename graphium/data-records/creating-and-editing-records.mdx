@@ -1,0 +1,98 @@
+---
+title: "Creating and Editing Records"
+description: ""
+icon: "grid"
+---
+
+## Overview
+
+Records can be added and updated directly from the Data Grid using a slide-in form panel. Clicking **Add {singular}** opens a blank form for new entries; clicking **Edit** on any row opens the same form pre-populated with that record's current values. The record detail view shows field values and a completion percentage indicating how fully the record has been filled in.
+
+---
+
+## Creating a Record
+
+1. Open the vault table and ensure you are on the **Data** tab.
+2. Click the **+ Add {singular}** button in the table header. The button label uses the table's configured singular name — for example, **Add Patient** or **Add Procedure**.
+3. A slide-in panel opens from the right with a form generated from the table's schema. Fill in the fields for the new record.
+4. Click **Save**. The panel closes and the new record appears in the data grid.
+
+> **Note:** Click **Show additional fields** at the bottom of the form to reveal fields not shown by default.
+
+> **Tip:** Click **Cancel** or outside the panel to dismiss without saving. No record will be created.
+
+---
+
+## Editing a Record
+
+1. Locate the record you want to edit in the data grid.
+2. Click the **Edit** button on the right side of the record row.
+3. A slide-in panel opens pre-populated with the record's current field values.
+4. Update the fields as needed and click **Save**.
+
+After saving, the data grid refreshes to show the updated values and the record's completion percentage recalculates.
+
+> **Tip:** Use the **Filter** button to narrow down records before locating the one you want to edit.
+
+---
+
+## Record Detail View & Completion Percentage
+
+Click any row in the data grid to open the record detail view — a read-only surface showing the record's current field values and a **completion percentage** (0–100%).
+
+The completion percentage reflects how many user-editable fields have been populated. Auto ID and Formula fields are excluded from this calculation.
+
+- A record with 5 of 10 user-editable fields filled in shows **50% complete**
+- A fully populated record shows **100% complete**
+- A brand-new record with no values shows **0% complete**
+
+To edit from the detail view, click the **Edit** button to open the slide-in form.
+
+---
+
+## Field Types
+
+Both the create and edit forms support all Graphium field types:
+
+| Field Type | How to Fill It In |
+|------------|-------------------|
+| **Text** | Click and type |
+| **Number** | Enter a numeric value |
+| **Date / Time / Date & Time** | Uses browser's native date/time picker |
+| **Boolean** | Toggle on or off |
+| **Select from List** | Choose from dropdown |
+| **Image** | Upload or capture an image |
+| **Signature** | Draw in the signature field |
+| **Reference** | Search and select a record from the referenced table |
+| **Auto ID** | Automatically assigned — no input required |
+| **Formula** | Computed and read-only |
+
+---
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| View record detail | ✅ | ✅ | ✅ | ✅ |
+| Create a record | ✅ | ✅ | ✅ | ❌ |
+| Edit a record | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Add or Edit button is not visible | Your role is Viewer, or table access is read-only | Contact your vault Admin to request Contributor or higher access |
+| Form opens but fields are greyed out | Field is managed by an integration, Auto ID, or Formula | Auto ID and Formula fields cannot be edited directly |
+| Record does not appear after saving | Grid refresh may not have triggered | Reload the page — the record was saved and will appear after reload |
+| Completion percentage did not update | Not all user-editable fields were populated | Open the record and fill in remaining blank fields |
+| Validation errors after submit | Required fields are missing or invalid | Scroll through the form to find and fix highlighted errors |
+
+---
+
+## Related Articles
+
+- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
+- [Deleting and Voiding Records in the Data Grid](/graphium/data-records/deleting-and-voiding-records-in-the-data-grid)
+- [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)

@@ -71,13 +71,9 @@
             "group": "Records",
             "pages": [
               "graphium/data-records/viewing-table-records-in-the-data-grid",
-              "graphium/data-records/creating-a-new-record-in-the-data-grid",
-              "graphium/data-records/editing-a-record-in-the-data-grid",
-              "graphium/data-records/record-detail-view-values-and-completion-percentage",
+              "graphium/data-records/creating-and-editing-records",
               "graphium/data-records/deleting-and-voiding-records-in-the-data-grid",
-              "graphium/data-records/filtering-records-in-the-data-grid",
-              "graphium/data-records/sorting-records-in-the-data-grid",
-              "graphium/data-records/loading-more-records-in-the-data-grid"
+              "graphium/data-records/filtering-and-sorting-records"
             ]
           },
           {

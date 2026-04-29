@@ -1,0 +1,78 @@
+---
+title: "Filtering and Sorting Records"
+description: ""
+icon: "grid"
+---
+
+## Overview
+
+The data grid supports filtering and sorting to help you find and organize records. Filters narrow down which records are shown based on property values. Sorting orders records by any column. Both can be used together and are available to all vault roles.
+
+---
+
+## Filtering Records
+
+### Opening the Filter Panel
+
+1. Open a vault table and ensure you are on the **Data** tab.
+2. Click the **Filter** button in the table header bar.
+3. The filter panel opens above the data grid.
+
+Clicking **Filter** again hides the panel. Active filter conditions remain applied even when the panel is closed.
+
+### Adding a Filter Condition
+
+1. In the filter panel, click the **property dropdown** and select the property to filter by.
+2. Click the **operator dropdown** and select the comparison operator (e.g., equals, contains, is empty).
+3. Enter or select a value in the value field that appears.
+4. The grid updates automatically to show only matching records.
+
+### Adding Multiple Conditions
+
+Click **+ Add condition** to add another filter row. Each additional condition is labeled **"And"** — a record must satisfy every condition to appear. Repeat to add as many conditions as needed.
+
+### Removing a Filter Condition
+
+Click the **×** button at the right end of any condition row to remove it. If all conditions are removed, all records are shown again.
+
+### Saved Filters
+
+Click the **Saved Filters** button in the filter panel header to save the current filter set or load a previously saved one. Saved filters can be reused across sessions without rebuilding conditions each time.
+
+---
+
+## Sorting Records
+
+Click any column header to sort records by that column in ascending order. Click the same header again to reverse to descending. The active sort column shows an arrow indicator (↑ ascending, ↓ descending).
+
+- Only one column can be sorted at a time
+- Clicking a new column header clears the previous sort
+- Applying a sort resets pagination to the first page
+- When no sort is applied, records appear in creation order (oldest first)
+- Sorting is session-based and does not persist when you navigate away
+
+> **Tip:** Text columns sort alphabetically, number columns sort numerically, and date columns sort chronologically.
+
+---
+
+## Permissions
+
+All vault roles — **Admin**, **Builder**, **Contributor**, and **Viewer** — can apply filters and sort records. Filters are per-session and do not affect what other users see.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Filter panel does not open | Temporary UI issue | Refresh the page and try again |
+| Expected records are not showing | An active filter is hiding them | Open the filter panel and check for active conditions; remove any that are excluding the records you need |
+| Sort does not persist after navigating away | Sorting is session-based | Re-apply the sort after returning to the table |
+| Filtering on a Reference column is not working | Reference column filtering may not be supported | Filter by a different property type |
+
+---
+
+## Related Articles
+
+- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
+- [Creating and Editing Records](/graphium/data-records/creating-and-editing-records)
