@@ -6,7 +6,7 @@ icon: "grid"
 
 ## Overview
 
-The data grid supports filtering and sorting to help you find and organize records. Filters narrow down which records are shown based on property values. Sorting orders records by any column. Both can be used together and are available to all vault roles.
+Tables support filtering and sorting to help you find and organize records. Filters narrow down which records are shown based on property values. Sorting orders records by any column. Both can be used together and are available to all vault roles.
 
 ---
 
@@ -20,12 +20,20 @@ The data grid supports filtering and sorting to help you find and organize recor
 
 Clicking **Filter** again hides the panel. Active filter conditions remain applied even when the panel is closed.
 
+<Frame>
+  <img src="/images/graphium/records/record-filter-panel.png" alt="Record filter panel" />
+</Frame>
+
 ### Adding a Filter Condition
 
 1. In the filter panel, click the **property dropdown** and select the property to filter by.
 2. Click the **operator dropdown** and select the comparison operator (e.g., equals, contains, is empty).
 3. Enter or select a value in the value field that appears.
 4. The grid updates automatically to show only matching records.
+
+<Frame>
+  <img src="/images/graphium/records/record-filter-conditional.png" alt="Record filter conditional" />
+</Frame>
 
 ### Adding Multiple Conditions
 
@@ -35,9 +43,17 @@ Click **+ Add condition** to add another filter row. Each additional condition i
 
 Click the **×** button at the right end of any condition row to remove it. If all conditions are removed, all records are shown again.
 
+<Frame>
+  <img src="/images/graphium/records/remove-record-filter.png" alt="Remove record filter" />
+</Frame>
+
 ### Saved Filters
 
 Click the **Saved Filters** button in the filter panel header to save the current filter set or load a previously saved one. Saved filters can be reused across sessions without rebuilding conditions each time.
+
+<Frame>
+  <img src="/images/graphium/records/saved-record-filter.png" alt="Saved record filter" />
+</Frame>
 
 ---
 
@@ -52,6 +68,10 @@ Click any column header to sort records by that column in ascending order. Click
 - Sorting is session-based and does not persist when you navigate away
 
 > **Tip:** Text columns sort alphabetically, number columns sort numerically, and date columns sort chronologically.
+
+<Frame>
+  <img src="/images/graphium/records/sort-record.png" alt="Sort record" />
+</Frame>
 
 ---
 
@@ -74,5 +94,4 @@ All vault roles — **Admin**, **Builder**, **Contributor**, and **Viewer** — 
 
 ## Related Articles
 
-- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
 - [Creating and Editing Records](/graphium/data-records/creating-and-editing-records)
