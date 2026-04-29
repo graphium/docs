@@ -1,6 +1,6 @@
 ---
 title: "Viewing Records"
-description: "The **Data** tab is the default view when you open any vault table."
+description: ""
 icon: "grid"
 ---
 
@@ -14,32 +14,6 @@ The **Data** tab is the default view when you open any vault table. It renders t
 
 The Data tab opens automatically when you select a table from the vault sidebar. You can also switch to it at any time by clicking the **Data** tab in the top-right corner of the table view.
 
-The three tabs in the table view are:
-
-| Tab | Purpose |
-|-----|---------|
-| **Data** | Records data grid (this view) |
-| **Schema** | View and manage the table's property definitions |
-| **Settings** | Table configuration, display names, and data sync |
-
----
-
-## The Table Header Bar
-
-Directly above the grid, a header bar provides context and quick actions for the table:
-
-| Element | Description |
-|---------|-------------|
-| **Table name** + pencil icon | The table's display name. Click the pencil to rename it. |
-| **"Schema from {template} template"** badge | Shown when the table's schema is inherited from a shared template. The badge links to the template. |
-| **"Managed by {integration}"** badge | Shown when the table's records are managed by an external system (e.g., Graphium EMR). Indicates external ownership of the data. |
-| **+ Add {singular}** button | Opens a new record form. Visible to Admin, Builder, and Contributor roles only. The button label uses the table's configured singular name (e.g., "+ Add Procedure"). |
-| **Import** button | Allows bulk importing records into the table. Visible to Admin, Builder, and Contributor roles only. |
-| **Filter** button | Opens the filter panel above the data grid to add and manage filter conditions. Visible to all roles. |
-| **Data / Schema / Settings** tabs | Switch between the three table views. |
-
-> **Note:** The "Schema from" badge and "Managed by" badge are each only shown when applicable to the table. Many tables display neither.
-
 ---
 
 ## The Column Header Row
@@ -49,6 +23,10 @@ The first row of the grid is the column header row. It contains:
 - **Select-all checkbox** (far left) — Selects or deselects all currently visible rows. Visible to Admin, Builder, and Contributor roles only.
 - **Column names** — Derived from the table's schema. When the table has a configured set of default visible fields, only those columns appear, in the configured order. Otherwise all schema properties are shown.
 - **Sort indicator** — The active sort column displays an arrow icon after its name (↑ for ascending, ↓ for descending). Unsorted columns show no indicator. Click any column header to sort by it; click again to reverse.
+
+<Frame>
+  <img src="/images/graphium/records/column-header-row.png" alt="Column header row" />
+</Frame>
 
 ---
 
@@ -61,6 +39,7 @@ Each row below the header represents one record. From left to right, a row conta
 | **Row checkbox** | Selects the individual row. Visible to Admin, Builder, and Contributor roles only. |
 | **Data cells** | One cell per column, displaying the value stored for that property on this record. Long text values may wrap across multiple lines within the cell. |
 | **Edit button** (far right) | Opens the record detail view to edit the record. Visible to Admin, Builder, and Contributor roles only. |
+| **Delete/Void button** (far right) | Remove a record from the vault table based on the workspace Record Deletion setting. |
 
 ---
 
@@ -76,11 +55,15 @@ The footer counter reads "Showing Y of Y records" once all records have been loa
 
 > **Note:** The grid loads the first 50 records on open, then automatically loads additional records in batches of 50 as you scroll down — no button click required.
 
+<Frame>
+  <img src="/images/graphium/records/table-footer.png" alt="Table footer" />
+</Frame>
+
 ---
 
 ## Empty State
 
-When a table contains no records, the grid displays an empty state message — "No {plural} found" — in place of the data rows, using the table's configured plural name (e.g., "No Procedures found"). Admin, Builder, and Contributor users also see the **+ Add {singular}** button in the empty state, prompting them to add the first record.
+When a table contains no records, the grid displays an empty state message — *"No records yet"* — in place of the data rows.
 
 ---
 
@@ -113,9 +96,18 @@ Columns are derived from the table's schema and display values according to thei
 
 ---
 
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Data tab is not visible | You may not have a table open | Select a table from the vault sidebar to open the data grid |
+| Expected records are missing | A filter may be active | Check the Filter panel for active conditions and clear them if needed |
+| Columns appear in unexpected order | Default Table Properties may be configured | Go to Settings → Default Table Properties to review column visibility and order |
+| Edit button is not visible on rows | Your role is Viewer | Contact your vault Admin to request a higher access level |
+
+---
+
 ## Related Articles
 
-- [Creating and Editing Records](/graphium/data-records/creating-and-editing-records)
-- [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)
-- [Deleting and Voiding Records in the Data Grid](/graphium/data-records/deleting-and-voiding-records-in-the-data-grid)
+- [Tables & Schemas](/graphium/glossary/tables-and-schemas)
 - [Navigating Your Table](/graphium/data-records/table-views-data-schema-and-settings)
