@@ -8,7 +8,7 @@ icon: "database"
 
 A Formula property computes a value automatically by evaluating an expression against the other properties in the same vault table record. Instead of asking users to enter a value manually, the system calculates it at the time the record is created or updated.
 
-Formula properties are useful for combining existing field values into a derived output — for example, concatenating a company name and invoice number into a formatted label, or building a summary from multiple fields.
+Formula properties are useful for combining existing field values into a derived output — for example, concatenating a company name and invoice number into a formatted label, or building a summary from multiple fields. Only users with a **Builder** or **Admin** vault role can add or edit Formula properties.
 
 ---
 
@@ -38,19 +38,16 @@ The **Add Property** modal opens.
 
 In the **Property type** dropdown, search for or select **Formula**.
 
-> Formula appears with a **New** badge in the property type list.
-
-Once selected, a **Formula Configuration** panel appears directly below the Property type field.
-
 <Frame>
   <img src="/images/graphium/tables/formula-property-type.png" alt="Formula property type" />
 </Frame>
 
-### Step 4 — Choose an expression mode
+### Step 4 — Write the Expression
 
-Template mode is the available expression mode. It uses `{{internal_name}}` placeholders to insert property values into a text string.
+Once selected, a **Formula Configuration** panel appears directly below the Property type field. Template mode is the available expression mode — it uses `{{internal_name}}` placeholders to insert property values into a text string.
 
-**Example:**
+Type your expression into the text area:
+
 ```
 {{company_name}} — {{invoice_number}}
 ```
@@ -61,17 +58,13 @@ With a record where `company_name` is "Water Company" and `invoice_number` is "I
 - Internal names are snake_case, e.g., `company_name`, `invoice_number`
 - Any text outside `{{ }}` is treated as a literal string and included as-is
 
-### Step 5 — Write the expression
-
-Type your expression into the text area. The expression field is required — a validation error is shown if you attempt to save with an empty expression.
-
 > **Note:** The Allow Multiple Values option is not available for Formula properties. A formula always produces a single computed value.
 
 <Frame>
   <img src="/images/graphium/tables/formula-property-configuration.png" alt="Formula property configuration" />
 </Frame>
 
-### Step 6 — Add the property
+### Step 5 — Add the property
 
 Click **Add** to save the property. The formula expression is stored in the table schema and will be evaluated each time a record is created or updated.
 
@@ -104,14 +97,6 @@ After a property is published, you can edit it inline from the Schema tab by cli
 ## Deleting a Formula Property
 
 Deleting a Formula property removes it from the schema. Existing computed values stored on records are also removed. This action cannot be undone.
-
----
-
-## Permissions
-
-| Action | Role Required |
-|---|---|
-| Add or edit a Formula property on a vault table | Builder or Admin |
 
 ---
 
