@@ -6,7 +6,7 @@ icon: "database"
 
 ## Overview
 
-A **Reference** property (labeled **Table Record** in the UI) links each record in one table to a record in another table within the same vault. It is the equivalent of a foreign key in a relational database: instead of duplicating data across tables, a reference points to a single authoritative record elsewhere.
+A **Reference** property (labeled **Table Record** in the UI) links each record in one table to a record in another table within the same vault. It is the equivalent of a foreign key in a relational database: instead of duplicating data across tables, a reference points to a single authoritative record elsewhere. Only users with a **Builder** or **Admin** vault role can add or edit Reference properties.
 
 For example, a Cases table can have a Provider field that references the Providers table. Each case record then points to a specific provider record rather than storing the provider's name, credentials, or NPI number inline. If the provider record is updated, every case that references it automatically reflects the change.
 
@@ -81,16 +81,6 @@ To change which table a Table Record property points to:
 Deleting a Table Record property removes both the property from the schema and the underlying reference relationship between the two tables. This action cannot be undone. Archiving the property (setting it to inactive) is the reversible alternative — archived properties are hidden from default views but their data and relationship are preserved.
 
 See [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties) for the full deletion and archiving workflow.
-
----
-
-## Permissions
-
-| Action | Required Role |
-|--------|--------------|
-| View schema | Any vault member |
-| Add or edit a Table Record property | Vault Admin or Builder |
-| Add or edit a template Table Record property | Graphium Representative with Vault Table Template Update permission |
 
 ---
 
