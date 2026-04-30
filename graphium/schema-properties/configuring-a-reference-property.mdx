@@ -8,7 +8,7 @@ icon: "database"
 
 A **Reference** property (labeled **Table Record** in the UI) links each record in one table to a record in another table within the same vault. Instead of duplicating data across tables, a reference property points to a single authoritative record elsewhere. Only users with a **Builder** or **Admin** vault role can add or edit Reference properties.
 
-For example, an Invoices table can have a Contacts field that references an Invoice Contacts table. Each invoice record can then point to a specific invoice contact record rather than storing the contact's name, title, and phone number inline. If the invoice contact record is ever updated, every invoice that references it will automatically reflect the change.
+For example, an Invoices table can have an Invoice Contact field that references a Contacts table. Each record within the Invoices table can then point to a specific record from the Contacts table, rather than having to store the contact's name, title, and phone number inline. If the contact record is ever updated, every invoice record that references it will automatically reflect the change.
 
 ---
 
@@ -36,20 +36,16 @@ In the Add Property modal:
 
 From the **Property type** dropdown, select **Table Record**.
 
-A new required field appears immediately below:
-
-**Reference Table** *(required)*
-A searchable dropdown listing every other table in the vault. Use the **Search tables…** bar to filter by name. Select the table whose records this property will link to.
-
-> The current table is excluded from the list — a table cannot reference itself.
-
 <Frame>
   <img src="/images/graphium/tables/reference-property-type.png" alt="Reference property type" />
 </Frame>
 
 ### Step 4 — Configure the Reference Property
 
-Enable **Allow multiple values** if a single record should be able to link to more than one record in the referenced table. When enabled, the property stores an array of references (`Table Record[]`) rather than a single link.
+**Reference Table** *(required)*
+A searchable dropdown listing every other table in the vault. Use the **Search tables…** bar to filter by name. Select the table whose records this property will link to.
+
+> The current table is excluded from the list — a table cannot reference itself.
 
 <Frame>
   <img src="/images/graphium/tables/configure-reference-property.png" alt="Configure reference property" />
