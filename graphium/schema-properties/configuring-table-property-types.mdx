@@ -6,7 +6,7 @@ icon: "database"
 
 ## Overview
 
-This article is a reference guide for each simple property type in Graphium. For instructions on opening the schema editor and using the Add Property form, see [Adding Simple Table Property Types](/graphium/schema-properties/adding-simple-table-property-types).
+This article is a reference guide for each simple property type in Graphium AI. For instructions on opening the schema (property) editor and using the Add Property form, see [Adding Simple Table Property Types](/graphium/schema-properties/adding-simple-table-property-types).
 
 ---
 
@@ -24,6 +24,10 @@ This article is a reference guide for each simple property type in Graphium. For
 
 No additional configuration is required. Once saved, Text properties appear with a **T** icon in the schema list.
 
+<Frame>
+  <img src="/images/graphium/tables/add-text-property.png" alt="Add text property" />
+</Frame>
+
 ---
 
 ## Number
@@ -39,6 +43,10 @@ No additional configuration is required. Once saved, Text properties appear with
 4. Click **Add**.
 
 No additional configuration is required. Number properties appear with a **#** icon in the schema list.
+
+<Frame>
+  <img src="/images/graphium/tables/add-number-property.png" alt="Add number property" />
+</Frame>
 
 ---
 
@@ -56,6 +64,10 @@ No additional configuration is required. Number properties appear with a **#** i
 
 No additional configuration is required. Date properties appear with a **calendar** icon in the schema list.
 
+<Frame>
+  <img src="/images/graphium/tables/add-date-property.png" alt="Add date property" />
+</Frame>
+
 ---
 
 ## Time
@@ -71,6 +83,10 @@ No additional configuration is required. Date properties appear with a **calenda
 4. Click **Add**.
 
 No additional configuration is required. Time properties appear with a **clock** icon in the schema list.
+
+<Frame>
+  <img src="/images/graphium/tables/add-time-property.png" alt="Add time property" />
+</Frame>
 
 ---
 
@@ -104,6 +120,10 @@ No additional configuration is required. Date/Time properties appear with a **ca
 
 No additional configuration is required.
 
+<Frame>
+  <img src="/images/graphium/tables/add-boolean-property.png" alt="Add boolean property" />
+</Frame>
+
 ---
 
 ## Image
@@ -120,6 +140,10 @@ No additional configuration is required.
 
 No additional configuration is required.
 
+<Frame>
+  <img src="/images/graphium/tables/add-image-property.png" alt="Add image property" />
+</Frame>
+
 ---
 
 ## Signature
@@ -134,6 +158,10 @@ No additional configuration is required.
 3. Click **Add**.
 
 No additional configuration is required. Signature properties do not support multiple values.
+
+<Frame>
+  <img src="/images/graphium/tables/add-signature-property.png" alt="Add signature property" />
+</Frame>
 
 ---
 
@@ -153,6 +181,10 @@ No additional configuration is required. Signature properties do not support mul
 
 > **Note:** List options can be added or removed after the property is created by clicking **Edit** on the property row.
 
+<Frame>
+  <img src="/images/graphium/tables/add-list-property.png" alt="Add list property" />
+</Frame>
+
 ---
 
 ## Object
@@ -165,21 +197,50 @@ No additional configuration is required. Signature properties do not support mul
 1. In the Add Property modal, enter a **Name** for the group (e.g., *Patient Demographics*).
 2. From the **Property type** dropdown, select **Object**.
 3. Click **Add**. The Object property appears in the schema list with a **folder** icon.
+
+<Frame>
+  <img src="/images/graphium/tables/parent-object-property.png" alt="Parent object property" />
+</Frame>
+
 4. To add child properties, click the expand arrow next to the Object row, then click **+ Add Field** for each child property.
+
+<Frame>
+  <img src="/images/graphium/tables/add-child-property.png" alt="Add child property" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/tables/child-property-1.png" alt="Child property 1" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/tables/child-property-2.png" alt="Child property 2" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/tables/child-property-3.png" alt="Child property 3" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/tables/complete-object-property.png" alt="Complete object property" />
+</Frame>
 
 > Object properties do not support the "Allow multiple values" option.
 
 ---
 
-## Editing a Property
+## Troubleshooting
 
-To edit an existing property, click the **Edit** button on its row in the schema list. You can update the name and description freely. The property type, internal name, and "allow multiple values" setting are locked after creation.
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Property type dropdown is empty | Schema may still be loading | Wait a moment and try again; refresh if it persists |
+| Select from List shows no options after saving | No list options were added before saving | Click Edit on the property and add at least one option |
+| Object children are not visible in the schema | The Object row may be collapsed | Click the expand arrow next to the Object property to reveal child properties |
+| Property type cannot be changed after creation | Property types are locked once created | Archive the existing property and create a new one with the correct type |
 
 ---
 
 ## Related Articles
 
-- [Adding Simple Table Property Types](/graphium/schema-properties/adding-simple-table-property-types)
 - [Configuring an Auto ID Property](/graphium/schema-properties/configuring-an-auto-id-property)
 - [Configuring a Reference Property](/graphium/schema-properties/configuring-a-reference-property)
 - [Configuring a Formula Property](/graphium/schema-properties/configuring-a-formula-property)
