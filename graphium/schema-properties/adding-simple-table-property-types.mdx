@@ -1,0 +1,72 @@
+---
+title: "Adding Simple Table Property Types"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+When you add a new property to a table, you choose a **property type** that determines how its value is stored, validated, and displayed. The simple property types require no additional configuration beyond a name, optional description, and internal name.
+
+| Type | Use it for |
+|------|-----------|
+| **Text** | Names, identifiers, freeform alphanumeric values |
+| **Number** | Quantities, durations, measurements |
+| **Date** | Calendar dates |
+| **Time** | Time-of-day values |
+| **Date/Time** | Combined date and time |
+| **Boolean** | Yes/No or true/false flags |
+| **Image** | Photos or scanned documents |
+| **Signature** | Digital signature capture |
+| **Select from List** | A value chosen from a predefined list of options |
+| **Object** | A named container that groups related child properties |
+
+Other property types — Auto ID, Formula, and Table Record — have additional setup steps covered in separate articles.
+
+---
+
+## Opening the Schema Editor
+
+1. Open a vault and select a table from the sidebar.
+2. Click the **Schema** tab in the top-right corner of the main content area.
+3. Click **+ Add Field** to open the Add Property modal.
+
+> **Read-only schemas:** Tables managed by an external connection display a **Read-only** badge. You cannot add, remove, or rename properties in a read-only schema.
+
+---
+
+## The Add Property Form
+
+When you click **+ Add Field**, the **Add Property** modal opens with the following fields:
+
+### Name *(required)*
+The display label shown throughout the platform — in the schema list, data grid column headers, and form fields.
+
+### Description *(optional)*
+Additional context about the property's purpose. Supports up to 128 characters.
+
+### Internal Name *(auto-generated, editable)*
+The machine-readable identifier used in expressions, API calls, and data storage. Auto-generated from the display name in snake_case (e.g., `date_of_birth`). Can be edited before saving but cannot be changed after the property is created.
+
+### Property Type *(required)*
+A dropdown with a search bar. Select from the full list of available types. See [Configuring Simple Table Property Types](/graphium/schema-properties/configuring-table-property-types) for details on each type.
+
+### Allow Multiple Values *(optional)*
+When enabled, the property stores an array of values instead of a single value (e.g., a Text property becomes `Text[]`). This setting cannot be changed after the property is created.
+
+---
+
+## Permissions
+
+| Action | Required Role |
+|--------|--------------|
+| View schema | Any vault member |
+| Add or edit properties | Vault Admin or Builder |
+
+---
+
+## Related Articles
+
+- [Configuring Simple Table Property Types](/graphium/schema-properties/configuring-table-property-types)
+- [Managing Table Properties](/graphium/schema-properties/managing-table-properties)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)

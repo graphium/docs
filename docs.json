@@ -64,6 +64,7 @@
               "graphium/data-records/adding-a-new-table-from-the-sidebar",
               "graphium/data-records/table-views-data-schema-and-settings",
               "graphium/data-records/table-settings",
+              "graphium/schema-properties/adding-simple-table-property-types",
               "graphium/schema-properties/configuring-table-property-types",
               "graphium/schema-properties/configuring-an-auto-id-property",
               "graphium/schema-properties/configuring-a-reference-property",
