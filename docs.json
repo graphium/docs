@@ -79,8 +79,7 @@
           {
             "group": "Schema & Properties",
             "pages": [
-              "graphium/schema-properties/managing-properties-in-a-vault",
-              "graphium/schema-properties/browsing-the-schema-property-list",
+              "graphium/schema-properties/managing-table-properties",
               "graphium/schema-properties/configuring-table-property-types",
               "graphium/schema-properties/configuring-an-auto-id-property",
               "graphium/schema-properties/configuring-a-reference-property",

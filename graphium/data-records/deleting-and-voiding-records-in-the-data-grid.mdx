@@ -1,6 +1,6 @@
 ---
 title: "Deleting and Voiding Records"
-description: "Graphium supports two ways to remove a record from a vault table — Delete (permanent hard delete) and Void (reversible soft delete)."
+description: ""
 icon: "grid"
 ---
 
@@ -16,14 +16,11 @@ Use this feature when you need to:
 - Restore a previously voided record back to active status
 - Audit or review voided records by toggling them into view
 
-This applies to any user who has edit access to a vault table and needs to manage record lifecycle within the data grid.
-
 ## Prerequisites
 
 - You must have **Admin**, **Builder**, or **Contributor** access to the vault — Viewer-role users cannot delete, void, or unvoid records
 - The vault table must have at least one record to act on
 - Your ability to delete or void records is also controlled at the table level. If your administrator has set a table's access to **Off** or **Read-only**, the Delete/Void and Unvoid buttons will not be shown even if your vault role would otherwise allow it
-- Your workspace administrator must have configured the **Record Deletion Mode** in workspace settings — either **Delete** or **Void** mode. Contact your admin if you are unsure which mode is active
 
 ## Step-by-Step Instructions
 
@@ -35,16 +32,22 @@ Navigate to the vault that contains the table you want to manage. Select the tab
 
 Find the record row you want to delete or void. Each row represents one record, with row-level action buttons on the right side of the row.
 
-> 💡 **Tip:** Use the **Filter** button in the table header bar to narrow down records if the table contains a large number of entries.
-
 ### Step 3: Click the Delete or Void Button
 
-Click the **Delete** or **Void** button on the right side of the record row. The label on the button depends on your workspace's Record Deletion Mode:
+Click the trash icon on the right side of the record row. The label on the button depends on your workspace's Record Deletion Mode:
 
 | Mode | Button label | What happens |
 |------|--------------|--------------|
 | **Delete** | Delete | Initiates a permanent hard delete of the record |
 | **Void** | Void | Initiates a soft delete (void) of the record |
+
+<Frame>
+  <img src="/images/graphium/records/delete-record.png" alt="Delete record" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/records/void-record.png" alt="Void record" />
+</Frame>
 
 ### Step 4: Confirm the Action in the Modal
 
@@ -67,6 +70,10 @@ After voiding a record, it is hidden from the default table view. To reveal void
 4. The **Edit button is hidden** on voided rows — only the Unvoid action is available
 5. Click the **Show Voided** toggle again to hide voided records and return to the default view
 
+<Frame>
+  <img src="/images/graphium/records/show-voided-record.png" alt="Show voided record" />
+</Frame>
+
 ### Step 6 (Void mode only): Unvoid a Record
 
 To restore a voided record to active status:
@@ -76,17 +83,9 @@ To restore a voided record to active status:
 3. Click the **Unvoid** button on the right side of the record row
 4. The record is immediately restored to active status, the gray styling is removed, and the Edit button becomes available again
 
-> 💡 **Tip:** No confirmation modal is shown for the Unvoid action — the record is restored immediately upon clicking **Unvoid**.
-
-## What to Expect
-
-| Action | Outcome |
-|--------|---------|
-| **Delete** button clicked → Delete confirmed | Record is permanently removed from the table and cannot be recovered |
-| **Void** button clicked → Void confirmed | Record is soft-deleted, hidden from the default view, and marked with a gray background when Show Voided is enabled |
-| **Show Voided** enabled | Voided records appear in the grid with a gray background; Edit buttons are hidden on those rows |
-| **Unvoid** button clicked | Record is immediately restored to active status; gray background is removed; Edit button becomes available |
-| **Show Voided** disabled | Voided records are hidden from view; only active records are displayed |
+<Frame>
+  <img src="/images/graphium/records/unvoid-record.png" alt="Unvoid record" />
+</Frame>
 
 ## Common Issues & Troubleshooting
 
@@ -100,13 +99,5 @@ To restore a voided record to active status:
 
 ## Related Articles
 
-- [Viewing Table Records in the Data Grid](/graphium/data-records/viewing-table-records-in-the-data-grid)
-- [Creating a New Record in the Data Grid](/graphium/data-records/creating-a-new-record-in-the-data-grid)
-- [Editing a Record in the Data Grid](/graphium/data-records/editing-a-record-in-the-data-grid)
-- [Filtering Records in the Data Grid](/graphium/data-records/filtering-records-in-the-data-grid)
-- [Editing Table Display Names](/graphium/data-records/editing-table-display-names)
-- [Table Views — Data, Schema, and Settings](/graphium/data-records/table-views-data-schema-and-settings)
-
----
-
-*Questions? Reach out to the Graphium AI team or open a ticket in the #product-support Slack channel.*
+- [Navigating Your Table](/graphium/data-records/table-views-data-schema-and-settings)
+- [Tables & Schemas](/graphium/glossary/tables-and-schemas)
