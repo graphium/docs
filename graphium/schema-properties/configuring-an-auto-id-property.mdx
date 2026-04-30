@@ -1,6 +1,6 @@
 ---
 title: "Configuring an Auto ID Property"
-description: "An Auto ID property automatically generates a unique, sequential identifier for every record added to a vault table."
+description: ""
 icon: "database"
 ---
 
@@ -8,25 +8,23 @@ icon: "database"
 
 An Auto ID property automatically generates a unique, sequential identifier for every record added to a vault table. When a new record is created, the system issues the next value in the sequence and formats it using the configured prefix, suffix, and number length — no manual entry required.
 
-Auto ID is useful for record identifiers that need to be human-readable, consistently formatted, and guaranteed unique — for example, case numbers (`CASE-000001`), invoice numbers (`INV-000042-2024`), or provider IDs (`PRV-0001`).
+Auto ID is useful for record identifiers that need to be human-readable, consistently formatted, and guaranteed unique — for example, case numbers (`CASE-000001`), invoice numbers (`INV-00001-2026`), or provider IDs (`PRV-0001`).
 
 Auto ID properties cannot store multiple values and are always system-managed. Once the starting number has been set and the property published, it cannot be changed.
 
 ---
 
-## Opening the Schema Editor
+## Configuring an Auto ID Property
+
+### Step 1 — Open the Schema Editor
 
 1. In the left sidebar, select the vault table you want to configure.
 2. Click the **Schema** tab at the top of the table view.
-3. Click **Add Field** in the top-right corner of the schema list.
+3. Click **+ Add Field** in the top-right corner of the schema list.
 
 The **Add Property** modal opens.
 
----
-
-## Configuring an Auto ID Property
-
-### Step 1 — Fill in the standard fields
+### Step 2 — Fill in the standard fields
 
 | Field | Required | Notes |
 |---|---|---|
@@ -34,7 +32,11 @@ The **Add Property** modal opens.
 | **Description** | No | Optional context about the property (0 / 128 characters) |
 | **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `case_id`). Locked after the property is published and cannot be changed |
 
-### Step 2 — Select the Auto ID type
+<Frame>
+  <img src="/images/graphium/tables/standard-property-fields.png" alt="Standard property fields" />
+</Frame>
+
+### Step 3 — Select the Auto ID type
 
 In the **Property type** dropdown, search for or select **Auto ID**.
 
@@ -42,40 +44,48 @@ In the **Property type** dropdown, search for or select **Auto ID**.
 
 Once selected, an **Auto ID Configuration** panel appears directly below the Property type field.
 
-### Step 3 — Configure the Auto ID settings
+<Frame>
+  <img src="/images/graphium/tables/autoid-property-type.png" alt="Auto ID property type" />
+</Frame>
+
+### Step 4 — Configure the Auto ID settings
 
 The Auto ID Configuration panel contains four fields:
 
 | Field | Required | Default | Description |
 |---|---|---|---|
-| **Prefix** | No | *(empty)* | Text prepended to every generated value (e.g., `CASE-`, `INV-`) |
-| **Suffix** | No | *(empty)* | Text appended to every generated value (e.g., `-2024`) |
+| **Prefix** | No | *(empty)* | Text prepended to every generated value (e.g., `INV-`) |
+| **Suffix** | No | *(empty)* | Text appended to every generated value (e.g., `-2026`) |
 | **Starting Number** | Yes | `1` | The first numeric value issued when the first record is created. **Cannot be changed after the property is published.** |
-| **Number Length (digits)** | Yes | `6` | The total number of digits in the numeric portion. Shorter values are zero-padded to this length (e.g., a length of 6 produces `000001`, `000042`) |
+| **Number Length (digits)** | Yes | `6` | The total number of digits in the numeric portion. Shorter values are zero-padded to this length |
+
+<Frame>
+  <img src="/images/graphium/tables/autoid-configuration-settings.png" alt="Auto ID configuration settings" />
+</Frame>
 
 #### Live Preview
 
 As you configure the fields, a **Preview** panel updates in real time:
 
-- **Current** — The value that will be issued to the first record (e.g., `CASE-000001-2024`)
-- **Next** — The value that will be issued to the second record (e.g., `CASE-000002-2024`)
+- **Current** — The value that will be issued to the first record (e.g., INV-00001-2026)
+- **Next** — The value that will be issued to the second record (e.g., INV-00002-2026)
 
-#### Formatting example
+#### Formatting Example
 
 With the following configuration:
 
 | Setting | Value |
 |---|---|
-| Prefix | `CASE-` |
-| Suffix | `-2024` |
+| Prefix | `INV-` |
+| Suffix | `-2026` |
 | Starting Number | `1` |
-| Number Length | `6` |
+| Number Length | `5` |
 
-The first record receives `CASE-000001-2024`, the second receives `CASE-000002-2024`, and so on.
+The first record receives INV-00001-2026, the second receives INV-00002-2026, and so on.
 
 > **Note:** The Allow Multiple Values option is not available for Auto ID properties. Each property always holds a single, system-generated value.
 
-### Step 4 — Add the property
+### Step 5 — Add the property
 
 Click **Add** to save the property. The system registers the Auto ID property in the table schema and creates an internal sequence tracker to manage numeric incrementation.
 
@@ -86,6 +96,10 @@ Click **Add** to save the property. The system registers the Auto ID property in
 - The Auto ID property appears as a new column in the data grid.
 - When a new record is created in the table, the system automatically generates the next formatted value and populates the field — no user input is needed or accepted.
 - Values are guaranteed to be unique: the sequence is incremented atomically, and a failed record creation rolls back the sequence so no numbers are skipped or duplicated.
+
+<Frame>
+  <img src="/images/graphium/tables/autoid-view.png" alt="Auto ID view" />
+</Frame>
 
 ---
 
@@ -115,15 +129,24 @@ Deleting an Auto ID property from the schema also removes the underlying sequenc
 
 ## Permissions
 
-| Action | Role required |
-|---|---|
-| Add or edit an Auto ID property on a vault table | Builder or Admin (vault table update permission) |
-| Add or edit an Auto ID property on a vault table template | Graphium Representative (vault table template update permission) |
+| Action | Role Required |
+|--------|--------------|
+| Add or edit an Auto ID property on a vault table | Builder or Admin |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Auto ID value is not generated on a new record | The property may not have been saved correctly | Check the schema to confirm the Auto ID property exists; if missing, re-add it |
+| Starting Number cannot be changed | It is locked after the property is first published | Archive the property and create a new one with the correct starting number |
+| Values have gaps in the sequence | A record creation may have failed and rolled back | This is expected behaviour — no numbers are duplicated |
+| Prefix or suffix changes aren't reflected on existing records | Changes only affect future records | Existing records retain the value issued at creation |
 
 ---
 
 ## Related Articles
 
-- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types)
-- [Configuring a Reference Property](/graphium/schema-properties/configuring-a-reference-property)
-- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+- [Configuring a Formula Property](/graphium/schema-properties/configuring-a-formula-property)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)
