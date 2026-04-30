@@ -15,29 +15,34 @@ When you add a new property to a table, you choose a **property type** that dete
 | **Date** | Calendar dates |
 | **Time** | Time-of-day values |
 | **Date/Time** | Combined date and time |
-| **Boolean** | Yes/No or true/false flags |
+| **Boolean** | Yes/No or true/false questions |
 | **Image** | Photos or scanned documents |
 | **Signature** | Digital signature capture |
 | **Select from List** | A value chosen from a predefined list of options |
-| **Object** | A named container that groups related child properties |
+| **Object** | A named parent group that contains related child properties |
 
-Other property types — Auto ID, Formula, and Table Record — have additional setup steps covered in separate articles.
+> **Note:** Other more complex property types — Auto ID, Formula, and Reference — have additional setup steps covered in separate articles.
 
 ---
 
-## Opening the Schema Editor
+## Opening the Schema (Property) Editor
 
 1. Open a vault and select a table from the sidebar.
 2. Click the **Schema** tab in the top-right corner of the main content area.
-3. Click **+ Add Field** to open the Add Property modal.
 
-> **Read-only schemas:** Tables managed by an external connection display a **Read-only** badge. You cannot add, remove, or rename properties in a read-only schema.
+<Frame>
+  <img src="/images/graphium/tables/schema-view.png" alt="Schema view" />
+</Frame>
 
 ---
 
 ## The Add Property Form
 
 When you click **+ Add Field**, the **Add Property** modal opens with the following fields:
+
+<Frame>
+  <img src="/images/graphium/tables/add-property-modal.png" alt="Add property modal" />
+</Frame>
 
 ### Name *(required)*
 The display label shown throughout the platform — in the schema list, data grid column headers, and form fields.
@@ -49,10 +54,15 @@ Additional context about the property's purpose. Supports up to 128 characters.
 The machine-readable identifier used in expressions, API calls, and data storage. Auto-generated from the display name in snake_case (e.g., `date_of_birth`). Can be edited before saving but cannot be changed after the property is created.
 
 ### Property Type *(required)*
-A dropdown with a search bar. Select from the full list of available types. See [Configuring Simple Table Property Types](/graphium/schema-properties/configuring-table-property-types) for details on each type.
+A dropdown with a search bar. Select from the full list of available types.
 
 ### Allow Multiple Values *(optional)*
-When enabled, the property stores an array of values instead of a single value (e.g., a Text property becomes `Text[]`). This setting cannot be changed after the property is created.
+When enabled, this field can hold a list of values instead of a single value.
+
+> **Note:** This setting cannot be changed after the property is created.
+
+### Required Value
+When enabled, this property must have a value before the record can be saved. Required properties display a red **Required** badge in the schema list.
 
 ---
 
@@ -65,8 +75,18 @@ When enabled, the property stores an array of values instead of a single value (
 
 ---
 
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| + Add Field button is not visible | Your role is Contributor or Viewer | Contact your vault Admin — only Admin and Builder users can add properties |
+| Add Property modal does not open | Temporary UI issue | Refresh the page and try again |
+| Internal Name field is greyed out after creation | Internal names are locked after the property is created | Archive the property and create a new one with the correct internal name |
+| Property does not appear in the schema list after adding | Page may need refreshing | Refresh the page — the property was saved and will appear after reload |
+
+---
+
 ## Related Articles
 
-- [Configuring Simple Table Property Types](/graphium/schema-properties/configuring-table-property-types)
 - [Managing Table Properties](/graphium/schema-properties/managing-table-properties)
 - [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)
