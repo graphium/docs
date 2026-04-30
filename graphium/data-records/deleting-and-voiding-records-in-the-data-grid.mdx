@@ -16,12 +16,6 @@ Use this feature when you need to:
 - Restore a previously voided record back to active status
 - Audit or review voided records by toggling them into view
 
-## Prerequisites
-
-- You must have **Admin**, **Builder**, or **Contributor** access to the vault — Viewer-role users cannot delete, void, or unvoid records
-- The vault table must have at least one record to act on
-- Your ability to delete or void records is also controlled at the table level. If your administrator has set a table's access to **Off** or **Read-only**, the Delete/Void and Unvoid buttons will not be shown even if your vault role would otherwise allow it
-
 ## Step-by-Step Instructions
 
 ### Step 1: Open the Vault Table
@@ -71,7 +65,7 @@ After voiding a record, it is hidden from the default table view. To reveal void
 5. Click the **Show Voided** toggle again to hide voided records and return to the default view
 
 <Frame>
-  <img src="/images/graphium/records/show-voided-record.png" alt="Show voided record" />
+  <img src="/images/graphium/records/show-voided-records.png" alt="Show voided records" />
 </Frame>
 
 ### Step 6 (Void mode only): Unvoid a Record
@@ -87,11 +81,22 @@ To restore a voided record to active status:
   <img src="/images/graphium/records/unvoid-record.png" alt="Unvoid record" />
 </Frame>
 
-## Common Issues & Troubleshooting
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| Delete a record | ✅ | ✅ | ✅ | ❌ |
+| Void a record | ✅ | ✅ | ✅ | ❌ |
+| Unvoid a record | ✅ | ✅ | ✅ | ❌ |
+| View voided records | ✅ | ✅ | ✅ | ❌ |
+
+> **Note:** Your ability to delete or void records is controlled at the workspace level. The vault table must contain at least one record to act on.
+
+## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|--------------|----------|
-| The **Delete** or **Void** button is not visible on record rows | Your role is Viewer, or your table-level access is set to Off or Read-only | Contact your vault administrator to request Contributor or higher access, or to adjust table-level access |
+| The Delete or Void button is not visible on record rows | Your role is Viewer | Contact your vault administrator to request a Contributor role or higher access |
 | No confirmation modal appears | An unexpected error or browser issue | Refresh the page and try again; contact support if the issue persists |
 | Voided records are not appearing after enabling Show Voided | Toggle may not have applied yet due to a sync delay | Wait a moment and try toggling it off and back on again |
 | **Unvoid** button is not visible on a voided record | The Show Voided toggle may not be enabled, or your role/table access does not permit unvoid | Enable the Show Voided toggle to reveal voided records; confirm your role and table access with your administrator |
