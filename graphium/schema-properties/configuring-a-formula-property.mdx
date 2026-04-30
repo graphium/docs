@@ -1,6 +1,6 @@
 ---
 title: "Configuring a Formula Property"
-description: "A Formula property computes a value automatically by evaluating an expression against the other properties in the same vault table record."
+description: ""
 icon: "database"
 ---
 
@@ -8,38 +8,33 @@ icon: "database"
 
 A Formula property computes a value automatically by evaluating an expression against the other properties in the same vault table record. Instead of asking users to enter a value manually, the system calculates it at the time the record is created or updated.
 
-Formula properties are useful for combining existing field values into a derived output — for example, concatenating a first and last name into a full name, calculating a total cost from quantity and unit price, or building a formatted summary from multiple fields.
-
-Formula expressions can be written in one of two modes:
-
-- **Template mode** — A text-interpolation syntax that inserts other property values into a string using `{{internal_name}}` placeholders. Best for building formatted text.
-- **JS mode** — A JavaScript expression evaluated against the record. Best for arithmetic and logic (e.g., `record.quantity * record.unit_price`).
-
-> **Note:** JS mode is a planned feature and may not be available in all environments. Template mode is the primary supported mode.
-
----
-
-## Opening the Schema Editor
-
-1. In the left sidebar, select the vault table you want to configure.
-2. Click the **Schema** tab at the top of the table view.
-3. Click **Add Field** in the top-right corner of the schema list.
-
-The **Add Property** modal opens.
+Formula properties are useful for combining existing field values into a derived output — for example, concatenating a company name and invoice number into a formatted label, or building a summary from multiple fields.
 
 ---
 
 ## Configuring a Formula Property
 
-### Step 1 — Fill in the standard fields
+### Step 1 — Open the Schema Editor
+
+1. In the left sidebar, select the vault table you want to configure.
+2. Click the **Schema** tab at the top of the table view.
+3. Click **+ Add Field** in the top-right corner of the schema list.
+
+The **Add Property** modal opens.
+
+### Step 2 — Fill in the standard fields
 
 | Field | Required | Notes |
 |---|---|---|
-| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Full Name`, `Total Cost`) |
+| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Invoice Label`) |
 | **Description** | No | Optional context about the property (0 / 128 characters) |
-| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `full_name`). Locked after the property is published and cannot be changed |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_label`). Locked after the property is published and cannot be changed |
 
-### Step 2 — Select the Formula type
+<Frame>
+  <img src="/images/graphium/tables/formula-property-standard-fields.png" alt="Formula property standard fields" />
+</Frame>
+
+### Step 3 — Select the Formula type
 
 In the **Property type** dropdown, search for or select **Formula**.
 
@@ -47,66 +42,34 @@ In the **Property type** dropdown, search for or select **Formula**.
 
 Once selected, a **Formula Configuration** panel appears directly below the Property type field.
 
-### Step 3 — Set the Result type
-
-Use the **Result** dropdown to specify the data type the expression will produce:
-
-| Result type | Use when the expression produces… |
-|---|---|
-| **Text** | A string value — the default; covers most text-combination use cases |
-| **Number** | A numeric value, such as a calculated total or average |
-| **Timestamp** | A date and time value |
-| **Boolean** | A true/false value |
-
-Choosing the correct Result type ensures the value is stored, sorted, and rendered correctly across the platform.
+<Frame>
+  <img src="/images/graphium/tables/formula-property-type.png" alt="Formula property type" />
+</Frame>
 
 ### Step 4 — Choose an expression mode
 
-Two mode tabs appear in the top-right corner of the expression panel:
+Template mode is the available expression mode. It uses `{{internal_name}}` placeholders to insert property values into a text string.
 
-#### Template mode
-
-Template mode is the default. It uses `{{internal_name}}` placeholders to insert property values into a text string.
-
-- Type `{{` to reference a property by its internal name
-- Surround with any static text or punctuation you need
-
-**Example expression:**
+**Example:**
 ```
-{{first_name}} {{last_name}}
+{{company_name}} — {{invoice_number}}
 ```
 
-With a record where `first_name` is `"John"` and `last_name` is `"Doe"`, the formula produces `"John Doe"`.
+With a record where `company_name` is "Water Company" and `invoice_number` is "INV-00001-2026", this produces "Water Company — INV-00001-2026".
 
-**Tips for Template mode:**
 - Use a property's **Internal Name** (shown in grey next to the property name in the schema list), not its display name
-- Internal names are snake_case, e.g., `substance_name`, `dea_schedule`
+- Internal names are snake_case, e.g., `company_name`, `invoice_number`
 - Any text outside `{{ }}` is treated as a literal string and included as-is
-- You can reference multiple properties in a single expression: `{{city}}, {{state}} {{zip}}`
-
-#### JS mode
-
-JS mode accepts a JavaScript expression evaluated against the current record. Property values are accessed via `record.internal_name`.
-
-**Example expression:**
-```
-record.quantity * record.unit_price
-```
-
-This produces the numeric product of the `quantity` and `unit_price` properties.
-
-> **Note:** JS mode is intended for numeric calculations and logical expressions. Formula evaluation is performed in a sandboxed environment and does not allow arbitrary code execution or access to external resources.
 
 ### Step 5 — Write the expression
 
-Type your expression into the text area. The placeholder text shows a mode-specific example:
-
-- Template mode placeholder: `e.g., {{first_name}} {{last_name}}`
-- JS mode placeholder: `e.g., record.quantity * record.unit_price`
-
-The expression field is required. A validation error is shown if you attempt to save with an empty expression.
+Type your expression into the text area. The expression field is required — a validation error is shown if you attempt to save with an empty expression.
 
 > **Note:** The Allow Multiple Values option is not available for Formula properties. A formula always produces a single computed value.
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-configuration.png" alt="Formula property configuration" />
+</Frame>
 
 ### Step 6 — Add the property
 
@@ -118,7 +81,10 @@ Click **Add** to save the property. The formula expression is stored in the tabl
 
 - The Formula property appears as a new column in the data grid.
 - When a new record is created, the system retrieves the current values of the referenced properties, evaluates the expression, and stores the computed result in the formula field automatically.
-- If a referenced property has no value at the time of record creation, it is treated as an empty string (in Template mode) or `null` / `0` (in JS mode depending on the expression).
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-view.png" alt="Formula property view" />
+</Frame>
 
 ---
 
@@ -131,11 +97,7 @@ After a property is published, you can edit it inline from the Schema tab by cli
 | Name | Yes |
 | Description | Yes |
 | Internal Name | No — locked permanently after first publish |
-| Result type | Yes |
-| Expression mode | Yes |
 | Expression | Yes — the updated expression applies to new records only; existing records retain their previously computed value |
-
-> If you change the Property type away from Formula, the expression configuration is removed from the property definition.
 
 ---
 
@@ -147,16 +109,26 @@ Deleting a Formula property removes it from the schema. Existing computed values
 
 ## Permissions
 
-| Action | Role required |
+| Action | Role Required |
 |---|---|
-| Add or edit a Formula property on a vault table | Builder or Admin (vault table update permission) |
-| Add or edit a Formula property on a vault table template | Graphium Representative (vault table template update permission) |
+| Add or edit a Formula property on a vault table | Builder or Admin |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Formula field is empty on a record | A referenced property had no value when the record was created | Edit the record to populate the referenced fields and save again |
+| Formula output is not what was expected | Internal name in the expression may be incorrect | Check the internal name of the referenced property in the Schema tab and update the expression |
+| Formula property is not visible in the data grid | Property may be hidden in Default Table Properties | Go to Settings → Default Table Properties and re-add the field |
+| Expression field shows a validation error | The expression is empty or malformed | Ensure the expression is filled in and uses valid `{{internal_name}}` syntax |
 
 ---
 
 ## Related Articles
 
-- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types)
-- [Configuring a Reference Property](/graphium/schema-properties/configuring-a-reference-property)
+- [Adding a Table](/graphium/data-records/adding-a-new-table-from-the-sidebar)
+- [Table Settings](/graphium/data-records/table-settings)
 - [Configuring an Auto ID Property](/graphium/schema-properties/configuring-an-auto-id-property)
-- [Browsing the Schema Property List](/graphium/schema-properties/browsing-the-schema-property-list)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties)
