@@ -10,7 +10,7 @@ An Auto ID property automatically generates a unique, sequential identifier for 
 
 Auto ID is useful for record identifiers that need to be human-readable, consistently formatted, and guaranteed unique — for example, case numbers (`CASE-000001`), invoice numbers (`INV-00001-2026`), or provider IDs (`PRV-0001`).
 
-Auto ID properties cannot store multiple values and are always system-managed. Once the starting number has been set and the property published, it cannot be changed.
+Auto ID properties cannot store multiple values and are always system-managed. Once the starting number has been set and the property published, it cannot be changed. Only users with a **Builder** or **Admin** vault role can add or edit Auto ID properties.
 
 ---
 
@@ -28,9 +28,9 @@ The **Add Property** modal opens.
 
 | Field | Required | Notes |
 |---|---|---|
-| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Case ID`) |
+| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Invoice Number`) |
 | **Description** | No | Optional context about the property (0 / 128 characters) |
-| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `case_id`). Locked after the property is published and cannot be changed |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_number`). Locked after the property is published and cannot be changed |
 
 <Frame>
   <img src="/images/graphium/tables/standard-property-fields.png" alt="Standard property fields" />
@@ -124,14 +124,6 @@ After a property is published, you can edit it inline from the Schema tab by cli
 ## Deleting an Auto ID Property
 
 Deleting an Auto ID property from the schema also removes the underlying sequence tracker. This action cannot be undone. Existing record data for that property is also removed.
-
----
-
-## Permissions
-
-| Action | Role Required |
-|--------|--------------|
-| Add or edit an Auto ID property on a vault table | Builder or Admin |
 
 ---
 
