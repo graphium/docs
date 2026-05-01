@@ -70,7 +70,6 @@
               "graphium/schema-properties/configuring-a-reference-property",
               "graphium/schema-properties/configuring-a-formula-property",
               "graphium/data-records/configuring-default-table-properties",
-              "graphium/schema-properties/managing-table-properties",
               "graphium/schema-properties/deleting-archiving-and-unarchiving-properties"
             ]
           },
