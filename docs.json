@@ -80,7 +80,7 @@
               "graphium/data-records/filtering-and-sorting-records",
               "graphium/data-records/deleting-and-voiding-records-in-the-data-grid"
             ]
-          },
+          }
     ],
     "global": {}
   },
