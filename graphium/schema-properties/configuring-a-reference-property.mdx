@@ -81,11 +81,9 @@ To edit a Reference property, click **Edit** on the property row in the schema l
 
 ---
 
-## Deleting a Reference Property
+## Archiving a Reference Property
 
-Deleting a reference (table record) property removes both the property from the schema and the underlying reference relationship between the two tables. This action cannot be undone. Archiving the property is the reversible alternative — archived properties are hidden from default views but their data and relationship are preserved.
-
-See [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-properties/deleting-archiving-and-unarchiving-properties) for the full deletion and archiving workflow.
+To remove a Reference property from active use, archive it from the Schema tab. Archiving is reversible — the property, its data, and the underlying reference relationship are all preserved. See [Adding Simple Table Properties](/graphium/schema-properties/adding-simple-table-property-types) for archiving and unarchiving instructions.
 
 ---
 
@@ -95,7 +93,7 @@ See [Deleting, Archiving, and Unarchiving Properties](/graphium/schema-propertie
 |-------|-------------|------------|
 | Referenced table does not appear in the dropdown | The table may not exist in the vault yet | Create the referenced table first before adding the Reference property |
 | Reference field shows a raw ID instead of a display value | The referenced record may have been deleted | Check the referenced table to confirm the record still exists |
-| Cannot change the referenced table after creation | Reference table is locked after the property is published | Archive the property and create a new one pointing to the correct table |
+| Cannot change the referenced table after creation | Reference table is locked after the property is saved | Archive the property and create a new one pointing to the correct table |
 
 ---
 

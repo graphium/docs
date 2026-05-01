@@ -30,7 +30,7 @@ The **Add Property** modal opens.
 |---|---|---|
 | **Name** | Yes | The display label shown in the data grid and forms (e.g., `Invoice Number`) |
 | **Description** | No | Optional context about the property (0 / 128 characters) |
-| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_number`). Locked after the property is published and cannot be changed |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_number`). Locked after the property is saved and cannot be changed |
 
 <Frame>
   <img src="/images/graphium/tables/standard-property-fields.png" alt="Standard property fields" />
@@ -56,7 +56,7 @@ The Auto ID Configuration panel contains four fields:
 |---|---|---|---|
 | **Prefix** | No | *(empty)* | Text prepended to every generated value (e.g., `INV-`) |
 | **Suffix** | No | *(empty)* | Text appended to every generated value (e.g., `-2026`) |
-| **Starting Number** | Yes | `1` | The first numeric value issued when the first record is created. **Cannot be changed after the property is published.** |
+| **Starting Number** | Yes | `1` | The first numeric value issued when the first record is created. **Cannot be changed after the property is saved.** |
 | **Number Length (digits)** | Yes | `6` | The total number of digits in the numeric portion. Shorter values are zero-padded to this length |
 
 <Frame>
@@ -105,13 +105,13 @@ Click **Add** to save the property. The system registers the Auto ID property in
 
 ## Editing an Auto ID Property
 
-After a property is published, you can edit it inline from the Schema tab by clicking **Edit** next to the property row. The following rules apply:
+After a property is saved, you can edit it inline from the Schema tab by clicking **Edit** next to the property row. The following rules apply:
 
 | Field | Editable after publish? |
 |---|---|
 | Name | Yes |
 | Description | Yes |
-| Internal Name | No — locked permanently after first publish |
+| Internal Name | No — locked permanently after first save |
 | Prefix | Yes |
 | Suffix | Yes |
 | Starting Number | **No** — locked permanently once the sequence is created |
@@ -121,9 +121,9 @@ After a property is published, you can edit it inline from the Schema tab by cli
 
 ---
 
-## Deleting an Auto ID Property
+## Archiving an Auto ID Property
 
-Deleting an Auto ID property from the schema also removes the underlying sequence tracker. This action cannot be undone. Existing record data for that property is also removed.
+To remove an Auto ID property from active use, archive it from the Schema tab. Archiving is reversible — the property definition and existing record values are preserved. See [Adding Simple Table Properties](/graphium/schema-properties/adding-simple-table-property-types) for archiving and unarchiving instructions.
 
 ---
 

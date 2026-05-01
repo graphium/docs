@@ -28,7 +28,7 @@ The **Add Property** modal opens.
 |---|---|---|
 | **Name** | Yes | The display label shown in the data grid and forms (e.g., `Invoice Label`) |
 | **Description** | No | Optional context about the property (0 / 128 characters) |
-| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_label`). Locked after the property is published and cannot be changed |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_label`). Locked after the property is saved and cannot be changed |
 
 <Frame>
   <img src="/images/graphium/tables/formula-property-standard-fields.png" alt="Formula property standard fields" />
@@ -83,20 +83,20 @@ Click **Add** to save the property. The formula expression is stored in the tabl
 
 ## Editing a Formula Property
 
-After a property is published, you can edit it inline from the Schema tab by clicking **Edit** next to the property row.
+After a property is saved, you can edit it inline from the Schema tab by clicking **Edit** next to the property row.
 
 | Field | Editable after publish? |
 |---|---|
 | Name | Yes |
 | Description | Yes |
-| Internal Name | No — locked permanently after first publish |
+| Internal Name | No — locked permanently after first save |
 | Expression | Yes — the updated expression applies to new records only; existing records retain their previously computed value |
 
 ---
 
-## Deleting a Formula Property
+## Archiving a Formula Property
 
-Deleting a Formula property removes it from the schema. Existing computed values stored on records are also removed. This action cannot be undone.
+To remove a Formula property from active use, archive it from the Schema tab. Archiving is reversible — the property and its computed values are preserved. See [Adding Simple Table Properties](/graphium/schema-properties/adding-simple-table-property-types) for archiving and unarchiving instructions.
 
 ---
 
