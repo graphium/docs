@@ -81,18 +81,6 @@
               "graphium/data-records/deleting-and-voiding-records-in-the-data-grid"
             ]
           },
-          {
-            "group": "Automations & Workflows",
-            "pages": [
-              "graphium/automations/building-workflows"
-            ]
-          },
-          {
-            "group": "AI Assistant",
-            "pages": [
-              "graphium/ai-assistant/using-ai-assistants"
-            ]
-          }
     ],
     "global": {}
   },
