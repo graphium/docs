@@ -1,5 +1,5 @@
 ---
-title: "Adding Simple Table Property Types"
+title: "Adding Simple Table Properties"
 description: ""
 icon: "database"
 ---
@@ -66,6 +66,16 @@ When enabled, this property must have a value before the record can be saved. Re
 
 ---
 
+## Editing an Existing Property
+
+1. Click the **Edit** button on the property's row in the Schema tab.
+2. Update the **display name**, **description**, or **Required** setting.
+3. Click **Save**.
+
+The internal name, property type, and "Allow multiple values" setting cannot be changed after creation. If you need to change these, archive the existing property and create a new one.
+
+---
+
 ## Permissions
 
 | Action | Required Role |
@@ -83,16 +93,6 @@ When enabled, this property must have a value before the record can be saved. Re
 | Add Property modal does not open | Temporary UI issue | Refresh the page and try again |
 | Internal Name field is greyed out after creation | Internal names are locked after the property is created | Archive the property and create a new one with the correct internal name |
 | Property does not appear in the schema list after adding | Page may need refreshing | Refresh the page — the property was saved and will appear after reload |
-
----
-
-## Editing an Existing Property
-
-1. Click the **Edit** button on the property's row in the Schema tab.
-2. Update the **display name**, **description**, or **Required** setting.
-3. Click **Save**.
-
-The internal name, property type, and "Allow multiple values" setting cannot be changed after creation. If you need to change these, archive the existing property and create a new one.
 
 ---
 
