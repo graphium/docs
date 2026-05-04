@@ -1,0 +1,70 @@
+---
+title: "Using the Connection Activity Log"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The Activity Log in the connection detail view gives you a real-time record of everything that has happened with a connection — including data syncs, triggered workflows, health checks, and errors. You can filter by event type and expand individual entries to see full details.
+
+## When to Use This
+
+Use this when investigating whether a connection is syncing correctly, diagnosing errors, or auditing which workflows have fired.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- At least one connection configured in the vault
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Connection Detail View
+
+Navigate to **Automations → Connections**, then click on a connection card or the ">" chevron to open its detail view.
+
+### Step 2: Review the Activity Log
+
+The right panel displays the **Activity Log** — a paginated list showing up to 15 entries per page with the following columns:
+
+| Column | Description |
+|--------|-------------|
+| **Time** | Date and timestamp of the event |
+| **Type** | Event type badge (see below) |
+| **Event** | Description of what happened |
+| **Workflow** | The workflow that fired, if applicable |
+
+**Event type badges:**
+
+| Type | Color | Description |
+|------|-------|-------------|
+| **trigger** | Blue | A workflow trigger was fired |
+| **action** | Green | A workflow action was executed |
+| **sync** | Teal | A data sync completed |
+| **log** | Grey | A health check or informational event |
+| **error** | Red | An error occurred (auto-recovered or requires attention) |
+
+### Step 3: Filter by Event Type
+
+Click the **All Types** dropdown in the top-right of the Activity Log panel and select a specific event type to narrow the log to only those entries.
+
+### Step 4: View Activity Details
+
+Click on any activity row to expand it and view the full event details — including the raw payload, affected records, and any error messages.
+
+### Step 5: Navigate Between Pages
+
+Use the **Previous** and **Next** buttons at the bottom of the log to move between pages. The entry count (e.g., *"15 of 15"*) shows how many entries are currently loaded.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button in the header |
+| Error entries appearing frequently | Authentication failure or external system issue | Review the error description and check the Authentication section |
+| Expected workflow is not appearing in the log | Workflow may not be configured for this connection | Review your workflow triggers |
+
+## Related Articles
+
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Testing a Connection](/graphium/automations/testing-a-connection)

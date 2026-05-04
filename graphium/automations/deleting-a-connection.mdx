@@ -1,0 +1,51 @@
+---
+title: "Deleting a Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+Deleting a connection permanently removes it from the vault and stops all associated data syncs. Any workflows that relied on the connection will no longer fire. This action cannot be undone.
+
+## When to Use This
+
+Use this when a connection is no longer needed and you want to remove it from the vault entirely. If you only need to pause syncing temporarily, use [Disable](/graphium/automations/enabling-and-disabling-an-automated-connection) instead.
+
+## Prerequisites
+
+- Admin or Builder vault role
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Connection Detail View
+
+Navigate to **Automations → Connections**, then click on the connection you want to delete.
+
+### Step 2: Open the Actions Menu
+
+Click the **"..."** menu button in the top-right corner of the connection detail view.
+
+### Step 3: Click Delete Connection
+
+Select **Delete Connection** from the dropdown (shown in red). A confirmation modal appears.
+
+### Step 4: Confirm Deletion
+
+Read the confirmation carefully, then confirm the action. The connection is permanently removed from the vault and the Data Connections list.
+
+## What to Expect
+
+After deletion, the connection no longer appears in the connections list. Any workflows configured to trigger from this connection will stop firing. Associated activity log entries are also removed.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Delete Connection option is not visible in the "..." menu | Insufficient vault role | Only Admin and Builder users can delete connections |
+| Workflows stopped working after deletion | They were relying on the deleted connection | Reconfigure the affected workflows with a new or existing connection |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Enabling and Disabling an Automated Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)

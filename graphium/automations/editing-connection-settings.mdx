@@ -1,0 +1,56 @@
+---
+title: "Editing Connection Settings"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+Connection settings — including the connection name, authentication credentials, and sync configuration — can be updated at any time from the left panel of the connection detail view. Changes take effect immediately.
+
+## When to Use This
+
+Use this when credentials have changed, you need to update the sync interval, or you want to rename a connection for clarity.
+
+## Prerequisites
+
+- Admin or Builder vault role
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Connection Detail View
+
+Navigate to **Automations → Connections**, then click on the connection you want to edit.
+
+### Step 2: Update the Connection Name
+
+Click into the **Connection Name** field and type a new name. Changes save automatically when you click away.
+
+### Step 3: Update Authentication
+
+In the **Authentication** section, update your credentials. For OAuth-based connections (such as Google Sheets), click the re-authenticate button to go through the authorization flow again.
+
+### Step 4: Adjust Sync Settings
+
+- Toggle **Auto-sync** on or off to control whether the connection syncs automatically
+- Change the **Interval** dropdown to set how frequently syncs occur (e.g., every 5 minutes)
+
+### Step 5: Update Connection-Specific Settings
+
+Scroll down to review and update any settings specific to this connection type (e.g., spreadsheet name, server path, or EMR endpoint).
+
+## What to Expect
+
+Most settings save automatically when you click away from a field. After updating authentication, run a **Test** to confirm the connection is still working correctly.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Authentication section is not editable | Connection may be in a disabled state | Re-enable the connection first, then update credentials |
+| Changes don't persist after saving | Brief connectivity issue | Refresh the page to confirm the changes were saved |
+
+## Related Articles
+
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Testing a Connection](/graphium/automations/testing-a-connection)

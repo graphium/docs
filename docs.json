@@ -91,7 +91,11 @@
               "graphium/automations/automated-connection-permissions",
               "graphium/automations/configuring-a-graphium-emr-connection",
               "graphium/automations/configuring-an-ftp-sftp-file-server-connection",
-              "graphium/automations/configuring-a-google-sheets-connection"
+              "graphium/automations/configuring-a-google-sheets-connection",
+              "graphium/automations/using-the-connection-activity-log",
+              "graphium/automations/testing-a-connection",
+              "graphium/automations/editing-connection-settings",
+              "graphium/automations/deleting-a-connection"
             ]
           }
     ],

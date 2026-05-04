@@ -1,0 +1,48 @@
+---
+title: "Testing a Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The Test button in the connection detail view runs a real-time health check against the external system to verify that the connection is active and authentication is valid.
+
+## When to Use This
+
+Use this after setting up a new connection, after updating authentication credentials, or when you suspect a connection may have stopped working.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- A connection configured in the vault
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Connection Detail View
+
+Navigate to **Automations → Connections**, then click on a connection to open its detail view.
+
+### Step 2: Click Test
+
+Click the **Test** button in the top-right header of the connection detail view. Graphium sends a health check request to the external system.
+
+### Step 3: Review the Result
+
+The result displays inline. A successful test confirms the connection is active and credentials are valid. A failed test indicates a connectivity or authentication issue.
+
+## What to Expect
+
+After clicking Test, a **log** event appears in the Activity Log confirming whether the health check passed or failed.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Test fails immediately | Authentication credentials are invalid or expired | Update credentials in the Authentication section and test again |
+| Test times out | External system is unreachable | Check that the external system is online and accessible |
+
+## Related Articles
+
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Editing Connection Settings](/graphium/automations/editing-connection-settings)
