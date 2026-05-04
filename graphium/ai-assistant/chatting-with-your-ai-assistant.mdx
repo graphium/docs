@@ -1,0 +1,70 @@
+---
+title: "Chatting with Your AI Assistant"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The AI Assistant chat interface lets you type natural language questions about your vault data and receive formatted responses in real time. Responses can include plain text, bullet points, bold text, tables, and structured summaries — making complex data easy to read at a glance.
+
+## When to Use This
+
+Use this whenever you want to ask questions about your data, request analysis, or get summaries without navigating the data grid manually.
+
+## Prerequisites
+
+- You must have access to the vault's AI Assistant
+- At least one AI Assistant must be configured in the vault
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Chat Input
+
+Navigate to **AI Assistant** in the vault sidebar. The input bar appears at the bottom of the screen with the placeholder text *"Ask a question about your data..."*
+
+### Step 2: Type Your Message
+
+Click the input bar and type your question or request. You can ask anything about your vault data — for example:
+- *"Show me today's case volume by facility"*
+- *"Which providers had the most cases this week?"*
+- *"Give me a summary of turnover times by OR room"*
+
+### Step 3: Send the Message
+
+Click the **send** button (arrow icon) on the right side of the input bar, or press **Enter** on your keyboard. The message is submitted and the AI begins generating a response.
+
+### Step 4: Read the Response
+
+The AI response appears in the chat area. Responses are formatted using markdown:
+
+- **Bold text** — for emphasis and key data points
+- **Bullet points** — for lists and summaries
+- **Tables** — for structured data comparisons
+- **Headers** — for organized multi-section responses
+
+### Step 5: Check the Timestamp
+
+Each message displays a timestamp (e.g., *8:30 AM*) directly below it, showing when the message was sent or the response was received.
+
+### Step 6: Continue the Conversation
+
+You can ask follow-up questions in the same conversation — the AI maintains context from previous messages in the thread.
+
+## What to Expect
+
+The AI responds based on the data it has been given access to via the Chat Context configuration. If a table is not enabled for the assistant, it will not be included in the AI's analysis. Use the ⚙ button to adjust what data the AI can access.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| AI response does not include expected data | The relevant table may not be enabled in Chat Context | Click the ⚙ button and enable the table under Table Access |
+| Send button is greyed out | The input field is empty | Type a message before clicking Send |
+| Response appears to be cut off | The response may be very long | Scroll down within the chat area to read the full response |
+
+## Related Articles
+
+- [The AI Assistant Welcome Screen](/graphium/ai-assistant/the-ai-assistant-welcome-screen)
+- [Switching Between AI Assistants](/graphium/ai-assistant/switching-between-ai-assistants)
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistant/configuring-chat-context-and-query-tools)

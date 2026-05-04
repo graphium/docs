@@ -82,6 +82,16 @@
             ]
           },
           {
+            "group": "AI Assistant",
+            "pages": [
+              "graphium/ai-assistant/the-ai-assistant-welcome-screen",
+              "graphium/ai-assistant/chatting-with-your-ai-assistant",
+              "graphium/ai-assistant/viewing-conversation-history",
+              "graphium/ai-assistant/switching-between-ai-assistants",
+              "graphium/ai-assistant/configuring-chat-context-and-query-tools"
+            ]
+          },
+          {
             "group": "Automated Connections",
             "pages": [
               "graphium/automations/viewing-automated-connections",

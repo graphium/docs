@@ -1,0 +1,82 @@
+---
+title: "Configuring Chat Context and Query Tools"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems.
+
+## When to Use This
+
+Use this before asking the AI a question to ensure it has access to the right data — or to expand its capabilities by enabling tools and connection actions.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- Access to the vault's AI Assistant
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Chat Context Panel
+
+In the chat input bar, click the **⚙ (settings) icon**. The **Chat Context** panel opens with three tabs.
+
+---
+
+### Tab 1: Table Access
+
+The first tab (grid icon) shows all tables in the vault. For each table you can:
+
+- Toggle the table **On** or **Off** to include or exclude it from the AI's context
+- Set the access level to **Read** (AI can read data) or **R/W** (AI can read and write data)
+
+Enable only the tables relevant to your question for more focused and accurate responses.
+
+---
+
+### Tab 2: General Tools
+
+The second tab (wrench icon) shows general-purpose tools the AI can use:
+
+| Tool | Description |
+|------|-------------|
+| **Web Search** | Search the internet for current information |
+| **Chart Generation** | Create visualizations and charts from data |
+| **Code Execution** | Run Python code for data analysis and calculations |
+| **Send Email** | Send emails to users, teams, or external contacts |
+
+Enable the tools that are relevant to your task before sending a message.
+
+---
+
+### Tab 3: Connection Actions
+
+The third tab (link icon) shows actions available from your vault's connected external systems, grouped by connection. For example:
+
+- **Graphium EMR connection**: Send HL7 Message to EHR, Received HL7 Message from EHR
+- **File Server connection**: Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted
+
+Enabling connection actions allows the AI to interact with external systems as part of its response.
+
+### Step 2: Close the Panel and Send Your Message
+
+Once you've configured the context, close the panel by clicking **✕** and type your question in the input bar. The AI will use only the tables, tools, and connection actions you have enabled.
+
+## What to Expect
+
+The AI's responses are limited to the data and tools you have enabled. If a table is toggled off, the AI will not include that data in its analysis. Changes to Chat Context apply only to the current conversation.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| AI response doesn't include expected table data | Table is toggled off in Table Access | Open Chat Context and enable the relevant table |
+| Connection actions are not visible | No connections have been configured for the vault | Set up connections in Automations → Connections first |
+| AI cannot write records despite R/W being enabled | Underlying permissions may restrict writes | Check your vault role and table-level access settings |
+
+## Related Articles
+
+- [Chatting with Your AI Assistant](/graphium/ai-assistant/chatting-with-your-ai-assistant)
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
