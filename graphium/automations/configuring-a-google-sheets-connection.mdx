@@ -1,0 +1,75 @@
+---
+title: "Configuring a Google Sheets Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The Google Sheets connection type links a vault to a Google Sheets spreadsheet, enabling automated reading, writing, and monitoring of spreadsheet data. It is useful for teams that manage data in Google Sheets and want to sync that data into Graphium vaults without manual imports.
+
+## When to Use This
+
+Use this when your team uses Google Sheets to collect or track data and you want Graphium to automatically pull rows into a table, push updated records back to the sheet, or trigger workflows when the sheet changes.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- A Google account with access to the target spreadsheet
+- Permission to authorize Graphium to access your Google Sheets
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Add Connection Picker
+
+Navigate to your vault → **Automations** → **Connections** and click **+ Add Connection**.
+
+### Step 2: Select Google Sheets
+
+Under the **Spreadsheet** category, select **Google Sheets**. Click **Details** to learn more, or click **+ Add Connection** to proceed.
+
+### Step 3: Enter a Connection Name
+
+Give the connection a descriptive name (e.g., *"Patient Intake Sheet"*) so it is easy to identify in the connections list.
+
+### Step 4: Authorize Google Access
+
+In the **Authentication** section, complete the Google OAuth flow:
+
+1. Click the authorization button to open the Google sign-in prompt
+2. Sign in with the Google account that has access to the target spreadsheet
+3. Grant Graphium the requested permissions to read and write to your sheets
+
+### Step 5: Configure Spreadsheet Settings
+
+Enter the specific spreadsheet details — such as the sheet name and data range — so Graphium knows which data to sync.
+
+### Step 6: Set Sync Settings
+
+Configure how often Graphium should sync with Google Sheets:
+
+- **Auto-sync** — toggle on to enable automatic syncing
+- **Interval** — set the sync frequency (e.g., every 5 minutes)
+
+### Step 7: Save the Connection
+
+Click **+ Add Connection** to save. The connection appears in the Data Connections list with a status badge.
+
+## What to Expect
+
+Once authorized, the status badge shows **"connected"**. Graphium can now read rows from and write rows to the connected sheet. Activity such as row added and row updated triggers appears in the connection's Activity Log.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| OAuth authorization fails | Google account lacks access to the sheet | Ensure the Google account used has at least viewer access to the target spreadsheet |
+| Status shows "connected" but no data syncs | Incorrect sheet name or range configured | Open the connection detail and verify the spreadsheet-specific settings |
+| Auth expires unexpectedly | Google token revoked | Re-authenticate via the Authentication section in the connection detail view |
+| Row changes in the sheet are not triggering workflows | Auto-sync is disabled | Open the connection detail and enable the Auto-sync toggle |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Enabling and Disabling an Automated Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)

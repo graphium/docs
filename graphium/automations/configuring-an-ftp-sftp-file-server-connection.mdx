@@ -1,0 +1,71 @@
+---
+title: "Configuring an FTP/SFTP File Server Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The FTP/SFTP File Server connection type links a vault to a remote file server, enabling automated file upload, download, and monitoring. It supports both FTP and SFTP protocols for transferring files to and from your organization's file infrastructure.
+
+## When to Use This
+
+Use this when your organization stores data files — such as exports, reports, or intake files — on an FTP or SFTP server and you want Graphium to automatically read from or write to that server.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- FTP or SFTP server hostname, port, username, and password or SSH key
+- Network access to the file server from Graphium
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Add Connection Picker
+
+Navigate to your vault → **Automations** → **Connections** and click **+ Add Connection**.
+
+### Step 2: Select SFTP File Server
+
+Under the **File Server** category, select **SFTP File Server**. Click **Details** to learn more, or click **+ Add Connection** to proceed.
+
+### Step 3: Enter a Connection Name
+
+Give the connection a descriptive name (e.g., *"Billing File Server"*) so it is easy to identify in the connections list.
+
+### Step 4: Configure Authentication
+
+Enter your server credentials in the **Authentication** section:
+
+- **Host** — the server hostname or IP address
+- **Port** — typically 22 for SFTP or 21 for FTP
+- **Username** — your server login
+- **Password or SSH Key** — your authentication method
+
+### Step 5: Set Sync Settings
+
+Configure how often Graphium should check the server for new or updated files:
+
+- **Auto-sync** — toggle on to enable automatic monitoring
+- **Interval** — set the check frequency (e.g., every 5 minutes)
+
+### Step 6: Save the Connection
+
+Click **+ Add Connection** to save. Use the **Test** button in the connection detail view to verify connectivity before relying on the connection in workflows.
+
+## What to Expect
+
+Once connected, the status badge shows **"connected"**. Workflows can now use this connection to trigger on new files detected on the server or to push files from Graphium to the server. All file transfer activity appears in the connection's Activity Log.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Status shows "error" after setup | Incorrect host, port, or credentials | Double-check server details in the Authentication section |
+| Connection times out during Test | Firewall or network restriction | Confirm the server allows inbound connections from Graphium's IP range |
+| Files are not being detected | Incorrect directory path configured | Review the server-specific settings in the connection detail view |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Enabling and Disabling an Automated Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)

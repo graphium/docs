@@ -1,0 +1,66 @@
+---
+title: "Configuring a Graphium EMR Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The Graphium EMR connection type links a vault to the Graphium EMR system, enabling automated reading of encounters, providers, facilities, and related clinical data. It is used in healthcare settings to synchronize case and patient data between Graphium and your EMR without manual data entry.
+
+## When to Use This
+
+Use this when your organization uses Graphium EMR and you want to automatically pull clinical data — such as cases, procedures, and provider information — into a vault.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- Valid Graphium EMR credentials
+- Access to the vault's Automations section
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Add Connection Picker
+
+Navigate to your vault → **Automations** → **Connections** and click **+ Add Connection**.
+
+### Step 2: Select Graphium EMR
+
+Under the **EMR / EHR** category, select **Graphium EMR**. Click **Details** to learn more about the connection type, or click **+ Add Connection** to proceed.
+
+### Step 3: Enter a Connection Name
+
+Give the connection a descriptive name (e.g., *"Memorial Hospital EMR"*) so it is easy to identify in the connections list.
+
+### Step 4: Configure Authentication
+
+Enter your Graphium EMR credentials in the **Authentication** section. These are stored securely using AES-256-GCM encryption.
+
+### Step 5: Set Sync Settings
+
+Configure how often Graphium should sync with the EMR:
+
+- **Auto-sync** — toggle on to enable automatic syncing
+- **Interval** — set the sync frequency (e.g., every 5 minutes)
+
+### Step 6: Save the Connection
+
+Click **+ Add Connection** to save. The connection appears in the Data Connections list with a status badge.
+
+## What to Expect
+
+Once connected, the status badge shows **"connected"** and data begins syncing based on your configured interval. All sync activity — including triggers, data syncs, and health checks — appears in the connection's Activity Log.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Status shows "error" after setup | Invalid EMR credentials | Re-enter authentication credentials in the connection detail view |
+| Data is not syncing | Auto-sync may be disabled | Open the connection detail and enable the Auto-sync toggle |
+| Auth error appears in Activity Log | Credentials expired or changed | Update authentication settings in the connection detail view |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)
+- [Enabling and Disabling an Automated Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)
