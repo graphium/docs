@@ -1,0 +1,53 @@
+---
+title: "Enabling and Disabling an Automated Connection"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+Each automated connection can be enabled or disabled without removing it. Disabling a connection pauses data sync while preserving the connection configuration. Re-enabling restores normal operation.
+
+## When to Use This
+
+Use this when you need to temporarily pause a connection's data sync — for example, during maintenance, testing, or if an external system is experiencing issues.
+
+## Prerequisites
+
+- Admin or Builder vault role
+- At least one connection must be configured in the vault
+
+## Step-by-Step Instructions
+
+### To Disable a Connection from the List or Card View
+
+1. Navigate to **Automations** → **Connections**.
+2. Locate the connection you want to disable.
+3. In card view, click the **green eye icon** in the bottom-right of the connection card. In list view, click the **eye icon** in the ENABLED column.
+4. The connection is disabled and the icon updates to reflect the disabled state.
+
+### To Disable a Connection from the Detail View
+
+1. Open the connection by clicking its card or row.
+2. In the connection detail header, click **Disable**.
+3. The connection is paused and the header updates to show the disabled status.
+
+### To Re-enable a Connection
+
+Follow the same steps above — clicking the eye icon or using the detail view toggles the connection back to enabled.
+
+## What to Expect
+
+When disabled, the connection no longer syncs data with the external system. The connection configuration is preserved and can be re-enabled at any time. The enabled/disabled state is visible in both card and list views.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Enable/disable icon is not clickable | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
+| Connection re-enables but status does not show "connected" | Authentication may have expired | Open the connection detail view and review the Authentication settings |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Opening an Automated Connection Detail View](/graphium/automations/opening-an-automated-connection-detail-view)

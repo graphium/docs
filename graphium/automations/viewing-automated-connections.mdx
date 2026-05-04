@@ -1,0 +1,55 @@
+---
+title: "Viewing Automated Connections in a Vault"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The Connections section in Automations gives you a complete view of all data connections configured for a vault. Each connection links Graphium to an external system — such as an EMR, file server, or spreadsheet — and allows data to flow in and out automatically. Connections are accessible to users with an Admin or Builder vault role.
+
+## When to Use This
+
+Use this when you need to see which external systems are connected to your vault, check the status or last activity of a connection, or navigate to a connection's detail view.
+
+## Prerequisites
+
+- You must be a member of the vault with an Admin or Builder role
+- The vault must have at least one connection configured
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Vault
+
+From the workspace dashboard, click the vault you want to view.
+
+### Step 2: Navigate to Automations
+
+In the left sidebar, click **Automations**. The sidebar expands to show **Connections** and **Workflows**.
+
+### Step 3: Click Connections
+
+Click **Connections** in the Automations sub-navigation. The **Data Connections** page opens showing all configured connections and a count (e.g., *"6 connections"*).
+
+If no connections have been added, the page displays: *"No connections yet — Connect to external databases or APIs to sync data with this vault."*
+
+## Switching Between Card and List View
+
+Use the view toggle in the top-right corner of the Data Connections page:
+
+- **Grid icon (⊞)** — card view (default): displays each connection as a card showing its icon, name, type, status badge, last activity, and enabled/disabled indicator
+- **List icon (☰)** — list view: displays connections in a table with columns for CONNECTION, TYPE, STATUS, LAST ACTIVITY, and ENABLED
+
+Click the **">"** chevron at the end of any list row — or anywhere on a card — to open the connection's detail view.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Connections page is not visible | Your vault role is Contributor or Viewer | Contact your vault Admin |
+| A connection you expected is not listed | It may have been removed or was never added | Check with your Admin or add it via + Add Connection |
+
+## Related Articles
+
+- [Adding a New Automated Connection](/graphium/automations/adding-a-new-automated-connection)
+- [Automated Connection Permissions](/graphium/automations/automated-connection-permissions)

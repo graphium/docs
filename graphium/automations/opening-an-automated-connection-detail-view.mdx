@@ -1,0 +1,63 @@
+---
+title: "Opening an Automated Connection Detail View"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+Each connection has a detail view that shows its full configuration, sync settings, and an activity log of all events triggered by the connection. This is where you can review, update, test, or disable a connection.
+
+## When to Use This
+
+Use this when you need to review a connection's configuration, investigate sync activity, test a connection, or update authentication settings.
+
+## Prerequisites
+
+- Admin or Builder vault role
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Data Connections Page
+
+Navigate to **Automations** → **Connections**.
+
+### Step 2: Open the Connection
+
+In card view, click anywhere on the connection card. In list view, click the **">"** chevron at the end of the connection's row. The connection detail view opens.
+
+### Step 3: Review the Detail View
+
+The detail view has two panels:
+
+**Left panel — Configuration:**
+- **Connection Name** — the display name for this connection
+- **Code Name** — the internal identifier used in workflows
+- **Authentication** — credentials and auth settings for the external system
+- **Sync Settings** — auto-sync toggle and sync interval
+- Connection-specific settings (vary by connection type)
+
+**Right panel — Activity Log:**
+
+| Column | Description |
+|--------|-------------|
+| **Time** | Timestamp of the event |
+| **Type** | Event type: trigger, action, sync, log, or error |
+| **Event** | Description of what happened |
+| **Workflow** | The workflow that fired, if applicable |
+
+## What to Expect
+
+The activity log shows up to 15 entries per page and can be filtered by event type using the **All Types** dropdown. Use **Search activity...** to find specific events. The header bar provides **Test** and **Disable** buttons, as well as a **"..."** menu for additional actions.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Detail view shows an error event | Authentication failure or external system issue | Review the Authentication section and re-enter credentials if needed |
+| Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button in the header |
+
+## Related Articles
+
+- [Viewing Automated Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Enabling and Disabling an Automated Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)
