@@ -82,7 +82,7 @@
             ]
           },
           {
-            "group": "Connections",
+            "group": "Automated Connections",
             "pages": [
               "graphium/automations/viewing-automated-connections",
               "graphium/automations/adding-a-new-automated-connection",
