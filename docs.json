@@ -55,7 +55,8 @@
               "graphium/vaults/vault-settings-general-configuration",
               "graphium/vaults/vault-users-and-permissions",
               "graphium/vaults/navigating-your-vault-using-the-sidebar",
-              "graphium/vaults/deleting-or-deactivating-a-vault"
+              "graphium/vaults/deleting-or-deactivating-a-vault",
+              "graphium/vaults/switching-between-builder-and-contributor-mode"
             ]
           },
           {
@@ -92,7 +93,7 @@
             ]
           },
           {
-            "group": "Automated Connections",
+            "group": "Connections",
             "pages": [
               "graphium/automations/viewing-automated-connections",
               "graphium/automations/adding-a-new-automated-connection",
