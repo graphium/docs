@@ -84,8 +84,8 @@
           {
             "group": "Connections",
             "pages": [
-              "graphium/automations/viewing-automated-connections",
               "graphium/automations/adding-a-new-automated-connection",
+              "graphium/automations/viewing-automated-connections",
               "graphium/automations/enabling-and-disabling-an-automated-connection",
               "graphium/automations/opening-an-automated-connection-detail-view",
               "graphium/automations/automated-connection-permissions",
