@@ -6,9 +6,9 @@ icon: "book-open"
 
 ## Overview
 
-Tables are the structured data layer inside a vault. Each table represents a specific type of information -- Cases, Procedures, Providers, Surgeons -- with a defined schema that describes what fields exist and how they are organized.
+Tables are the structured data layer inside a vault. Each table represents a specific type of information -- Cases, Procedures, Providers, Surgeons -- with a defined schema that describes what properties (fields) exist and how they are organized.
 
-If you have worked with databases, the concept is familiar: rows are records, columns are fields. But Graphium tables have one important difference -- their schemas are hierarchical. Fields can be nested inside groups, creating a JSON-like structure where a top-level group called "Patient Demographics" can contain child fields like Date of Birth, Gender, and Insurance. This lets you model real-world data relationships without flattening everything into a single row of dozens of columns.
+If you have worked with databases, the concept is familiar: rows are records, columns are properties (fields). But Graphium tables have one important difference -- their schemas are hierarchical. Properties (fields) can be nested inside Object properties, creating a JSON-like structure where a top-level Object called "Patient Demographics" can contain child properties (fields) like Date of Birth, Gender, and Insurance. This lets you model real-world data relationships without flattening everything into a single row of dozens of columns.
 
 A single vault typically has many tables. The Community Surgery Center vault, for example, includes Cases (the primary data table), Procedures (reference data with CPT codes), Providers, Surgeons, Surgical Locations, Substances, Patient Allergies, Expenses, Key Metrics, and Invoices. Each table has its own schema, its own records, and its own settings.
 
@@ -26,13 +26,13 @@ Some tables also support adding records directly. Reference tables like Procedur
 
 ### Schema Tab
 
-The Schema tab shows the table's structure -- the list of properties (fields) that define what data the table holds. Each property is displayed with three attributes:
+The Schema tab shows the table's structure -- the list of properties (fields) that define what data the table holds. Each property (field) is displayed with three attributes:
 
 - **Name** -- The human-readable label (e.g., "Patient Name," "Case Date," "Patient Demographics")
 - **Key** -- The machine-readable identifier in snake_case (e.g., `patient_name`, `case_date`, `patient_demographics`)
 - **Type** -- The data type (Text, Number, Date, Group, Reference, etc.)
 
-The schema view is hierarchical. Group fields can be expanded to reveal their child fields, showing the nesting structure visually. A search bar at the top ("Search properties...") lets you filter the property list when you have a large schema.
+The schema view is hierarchical. Object properties can be expanded to reveal their child properties (fields), showing the nesting structure visually. A search bar at the top ("Search properties...") lets you filter the property (field) list when you have a large schema.
 
 The schema also displays metadata at the top: the total field count (e.g., "11 Fields"), whether the schema is read-only, and which connection manages it.
 
@@ -40,9 +40,9 @@ The schema also displays metadata at the top: the total field count (e.g., "11 F
 
 The Settings tab handles table-level configuration. This is where you manage the table's name, behavior, and integration details.
 
-## Field Types
+## Property Types
 
-Graphium supports a range of field types to model different kinds of data. Here is each type with a practical example from healthcare practice management.
+Graphium supports a range of property (field) types to model different kinds of data. Here is each type with a practical example from healthcare practice management.
 
 ### Text
 
@@ -74,11 +74,11 @@ A time-of-day value. Use it for timestamps within a day, separate from the date.
 - **Start Time** -- 07:30
 - **End Time** -- 09:15
 
-### Group
+### Object
 
-A container that holds child fields, creating the hierarchical nesting that makes Graphium schemas more expressive than flat spreadsheets. A group does not hold data itself -- it organizes related fields together.
+An Object property acts as a container that groups related child properties (fields) together, creating the hierarchical nesting that makes Graphium schemas more expressive than flat spreadsheets. An Object property does not hold data itself -- it organizes related properties together.
 
-- **Patient Demographics** (Group)
+- **Patient Demographics** (Object)
   - Date of Birth (Date)
   - Gender (Text)
   - Insurance (Text)
@@ -124,13 +124,13 @@ This means the fields, their names, their types, and their hierarchy are control
 
 If you need to add custom fields for your own tracking (fields that do not exist in the source system), the typical pattern is to create a separate table in the vault and use Reference fields to link back to the managed table.
 
-## Adding Tables and Fields
+## Adding Tables and Properties
 
 To add a new table, use the "+ Add Table" button in the vault's sidebar, under the Tables section. You will give the table a name and then start defining its schema by adding fields.
 
-When adding fields, you pick a name, a key (the snake_case identifier), and a type. You can nest fields inside Group fields to create hierarchy. The schema editor lets you reorder fields and add new ones at any level of the hierarchy.
+When adding fields, you pick a name, a key (the snake_case identifier), and a type. You can nest properties (fields) inside Object properties to create hierarchy. The schema editor lets you reorder fields and add new ones at any level of the hierarchy.
 
-You can also search your existing properties using the "Search properties..." bar at the top of the Schema tab -- useful when your table has dozens of fields and you need to find or verify a specific one.
+You can also search your existing properties (fields) using the "Search properties..." bar at the top of the Schema tab -- useful when your table has dozens of fields and you need to find or verify a specific one.
 
 ## Importing Records
 
@@ -151,7 +151,7 @@ A quality assurance team at Urban Health Partners needs to understand how patien
 
 At the top, they see "11 Fields" -- confirming this table has a manageable, well-defined structure.
 
-Scanning the property list, they see top-level fields like Case ID (Auto ID), Case Date (Date), and Procedure Duration (Number). Then they notice a Group field called Patient Demographics. Expanding it, they find Date of Birth (Date), Gender (Text), and Insurance (Text) nested inside. This tells them that patient demographic data is not scattered as loose columns -- it is logically grouped, which will matter when they configure the AI assistant to pull compliance reports filtered by insurance type.
+Scanning the property list, they see top-level properties (fields) like Case ID (Auto ID), Case Date (Date), and Procedure Duration (Number). Then they notice an Object property called Patient Demographics. Expanding it, they find Date of Birth (Date), Gender (Text), and Insurance (Text) nested inside. This tells them that patient demographic data is not scattered as loose columns -- it is logically grouped, which will matter when they configure the AI assistant to pull compliance reports filtered by insurance type.
 
 They also see a Provider field typed as Reference, pointing to the Providers table. This means provider details (name, credentials, NPI) are not duplicated in every case record -- instead, each case points to a single provider record, keeping the data clean.
 
