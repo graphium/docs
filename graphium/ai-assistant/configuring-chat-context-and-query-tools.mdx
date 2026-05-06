@@ -6,7 +6,7 @@ icon: "brain"
 
 ## Overview
 
-The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems.
+The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems. A badge on the ⚙ icon shows how many context items are currently enabled.
 
 ## When to Use This
 
@@ -17,61 +17,118 @@ Use this before asking the AI a question to ensure it has access to the right da
 - Admin or Builder vault role
 - Access to the vault's Home page
 
-## Step-by-Step Instructions
+---
 
-### Step 1: Open the Chat Context Panel
+## Opening the Chat Context Panel
 
-In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens with three tabs.
+In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three icon-based tabs and a **Clear all** button.
+
+The ⚙ icon displays a **badge** showing the total number of currently enabled context items across all three tabs (tables, tools, and connection actions). This gives you a quick at-a-glance count of what the AI has access to without opening the panel.
 
 ---
 
-### Tab 1: Table Access
+## Tab 1: Table Access
 
-The first tab (grid icon) shows all tables in the vault. For each table you can:
+The first tab (grid icon) shows all tables in the vault. Use this to control which tables the AI can query during the conversation.
 
-- Toggle the table **On** or **Off** to include or exclude it from the AI's context
-- Set the access level to **Read** (AI can read data) or **R/W** (AI can read and write data)
+### Enabling a Table
 
-Enable only the tables relevant to your question for more focused and accurate responses.
+1. Open the Chat Context panel and click the **Table Access** tab (grid icon).
+2. Find the table you want to enable.
+3. Click the toggle to turn it **On**.
+4. Set the access level:
+   - **Read** — The AI can read and query data from this table
+   - **R/W** — The AI can read and also write or update records in this table
+
+### Disabling a Table
+
+Click the toggle on any enabled table to turn it **Off**. The AI will no longer include that table's data in its responses.
+
+> **Tip:** Enable only the tables relevant to your question for more focused and accurate responses.
 
 ---
 
-### Tab 2: General Tools
+## Tab 2: General Tools
 
-The second tab (wrench icon) shows general-purpose tools the AI can use:
+The second tab (wrench icon) shows general-purpose tools the AI can use during a conversation. Toggle any tool on or off depending on what you need.
 
 | Tool | Description |
 |------|-------------|
-| **Web Search** | Search the internet for current information |
-| **Chart Generation** | Create visualizations and charts from data |
+| **Web Search** | Search the internet for current information to supplement vault data |
+| **Chart Generation** | Create visualizations and charts from data in the conversation |
 | **Code Execution** | Run Python code for data analysis and calculations |
 | **Send Email** | Send emails to users, teams, or external contacts |
 
+### Web Search Tool
+
+The **Web Search** tool allows the AI to search the internet in real time. Enable this when you want the AI to supplement your vault data with up-to-date external information — for example, pulling current clinical guidelines, regulatory requirements, or market benchmarks alongside your internal data.
+
+To enable Web Search:
+1. Open the Chat Context panel.
+2. Click the **General Tools** tab.
+3. Toggle **Web Search** on.
+
+The AI will automatically use web search when it determines that internet data would improve its response.
+
 ---
 
-### Tab 3: Connection Actions
+## Tab 3: Connection Actions
 
-The third tab (link icon) shows actions available from your vault's connected external systems, grouped by connection. For example:
+The third tab (link icon) shows actions available from your vault's connected external systems, grouped by connection. Enabling a connection action allows the AI to interact with that external system as part of its response.
 
-- **Graphium EMR connection**: Send HL7 Message to EHR, Received HL7 Message from EHR
-- **File Server connection**: Upload File, Download File, Delete File, Move File, and file event triggers
+**Examples by connection type:**
 
-### Step 2: Close and Send Your Message
+| Connection | Available Actions |
+|------------|------------------|
+| **Graphium EMR** | Send HL7 Message to EHR, Received HL7 Message from EHR |
+| **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted |
+| **Google Sheets** | Read rows, Write rows, Monitor for changes |
 
-Once configured, close the panel and type your question in the input bar. The AI will use only the tables, tools, and actions you have enabled.
+Toggle individual actions on or off within each connection group.
+
+---
+
+## Clearing All Context Items
+
+To reset the Chat Context and disable all enabled tables, tools, and connection actions at once:
+
+1. Open the Chat Context panel.
+2. Click the **Clear all** button at the top of the panel.
+3. All enabled items are toggled off immediately.
+
+> **Note:** This does not delete any data or affect your connections — it only resets what the AI has access to for the current conversation.
+
+---
+
+## Closing the Panel and Sending Your Message
+
+Once configured, close the panel by clicking outside it or pressing **Escape**. Type your question in the input bar and send it. The AI will use only the tables, tools, and actions you have enabled.
+
+---
 
 ## What to Expect
 
-Changes to Chat Context apply to the current conversation. If a table is toggled off, the AI will not include that data in its analysis.
+- The badge on the ⚙ icon updates in real time as you enable or disable items
+- Changes to Chat Context apply only to the current conversation
+- If a table is toggled off, the AI will not include that table's data in its analysis
+- Web Search results are cited in the AI's response when used
+
+---
 
 ## Common Issues & Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
 | AI response doesn't include expected table data | Table is toggled off in Table Access | Open Chat Context and enable the relevant table |
+| Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web Search is enabled in the General Tools tab |
 | Connection actions are not visible | No connections have been configured for the vault | Set up connections in the Connections section first |
+| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel to review or click Clear all to reset |
+| R/W access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
+
+---
 
 ## Related Articles
 
 - [Chatting with Your AI Assistant](/graphium/ai-assistant/chatting-with-your-ai-assistant)
 - [Viewing Connections in a Vault](/graphium/automations/viewing-automated-connections)
+- [Adding a New Connection](/graphium/automations/adding-a-new-automated-connection)
