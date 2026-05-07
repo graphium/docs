@@ -25,6 +25,24 @@ The header bar provides **Test** and **Disable** buttons, as well as a **"..."**
 
 ---
 
+## Enabling and Disabling a Connection
+
+Disabling a connection pauses data sync while preserving the configuration. Re-enabling restores normal operation. The enabled/disabled state is visible in both card and list views.
+
+**From the list or card view:**
+1. In the vault sidebar, click **Connections**.
+2. In card view, click the **green eye icon** in the bottom-right of the connection card. In list view, click the **eye icon** in the ENABLED column.
+3. The connection is disabled and the icon updates to reflect the disabled state.
+
+**From the detail view:**
+1. Open the connection by clicking its card or row.
+2. In the connection detail header, click **Disable**.
+3. The connection is paused and the header updates to show the disabled status.
+
+To re-enable, follow the same steps — clicking the eye icon or using the detail view toggles the connection back to enabled.
+
+---
+
 ## Editing Connection Settings
 
 Connection settings can be updated at any time from the left panel. Changes take effect immediately.
@@ -71,16 +89,6 @@ The Activity Log in the right panel gives you a real-time record of everything t
 
 ---
 
-## Deleting a Connection
-
-Deleting permanently removes the connection from the vault and stops all associated data syncs. Any workflows that relied on the connection will stop firing. This action cannot be undone. If you only need to pause syncing temporarily, use [Disable](/graphium/automations/enabling-and-disabling-an-automated-connection) instead.
-
-1. Open the connection detail view.
-2. Click the **"..."** menu in the top-right corner.
-3. Select **Delete Connection** (shown in red). A confirmation modal appears.
-4. Confirm the deletion. The connection is permanently removed.
-
----
 
 ## Troubleshooting
 
@@ -91,8 +99,8 @@ Deleting permanently removes the connection from the vault and stops all associa
 | Test times out | External system is unreachable | Check that the external system is online and accessible |
 | Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button |
 | Error entries appearing frequently | Authentication failure or external system issue | Review the error description and check the Authentication section |
-| Delete Connection is not visible in the "..." menu | Insufficient vault role | Only Admin and Builder users can delete connections |
-| Workflows stopped working after deletion | They were relying on the deleted connection | Reconfigure the affected workflows with a new or existing connection |
+| Enable/disable icon is not clickable | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
+| Connection re-enables but status does not show as healthy | Authentication may have expired | Open the connection detail view and review the Authentication settings |
 
 ---
 
