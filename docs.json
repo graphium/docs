@@ -85,7 +85,6 @@
             "group": "Connections",
             "pages": [
               "graphium/automations/adding-a-new-automated-connection",
-              "graphium/automations/viewing-automated-connections",
               "graphium/automations/working-with-a-connection",
               "graphium/automations/configuring-a-graphium-emr-connection",
               "graphium/automations/configuring-an-ftp-sftp-file-server-connection",
