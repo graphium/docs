@@ -6,7 +6,7 @@ icon: "link"
 
 ## Overview
 
-Each connection has a detail view that shows its full configuration, sync settings, and an activity log of all events triggered by the connection. From here you can review and update settings, test connectivity, investigate activity, and delete the connection when it's no longer needed. You must have an Admin or Builder vault role to access and manage connection details.
+Each connection has a detail view that shows its full configuration, sync settings, and an activity log of all events triggered by the connection. From here you can review and update settings, test connectivity, investigate activity, and disable the connection when it's no longer needed. You must have an Admin or Builder vault role to access and manage connection details.
 
 ## Opening a Connection
 
@@ -19,9 +19,15 @@ In the vault sidebar, click **Connections**. In card view, click anywhere on the
 - **Sync Settings** — auto-sync toggle and sync interval
 - Connection-specific settings (vary by connection type)
 
+<Frame>
+  <img src="/images/graphium/connections/open-connection.png" alt="Open connection" />
+</Frame>
+
 **Right panel — Activity Log:** shows all events triggered by the connection (see [Using the Activity Log](#using-the-activity-log) below).
 
-The header bar provides **Test** and **Disable** buttons, as well as a **"..."** menu for additional actions.
+<Frame>
+  <img src="/images/graphium/connections/connection-activity-log.png" alt="Connection activity log" />
+</Frame>
 
 ---
 
@@ -34,12 +40,20 @@ Disabling a connection pauses data sync while preserving the configuration. Re-e
 2. In card view, click the **green eye icon** in the bottom-right of the connection card. In list view, click the **eye icon** in the ENABLED column.
 3. The connection is disabled and the icon updates to reflect the disabled state.
 
+<Frame>
+  <img src="/images/graphium/connections/connection-disabled.png" alt="Connection disabled" />
+</Frame>
+
 **From the detail view:**
 1. Open the connection by clicking its card or row.
 2. In the connection detail header, click **Disable**.
 3. The connection is paused and the header updates to show the disabled status.
 
 To re-enable, follow the same steps — clicking the eye icon or using the detail view toggles the connection back to enabled.
+
+<Frame>
+  <img src="/images/graphium/connections/connection-enabled.png" alt="Connection enabled" />
+</Frame>
 
 ---
 
@@ -65,6 +79,10 @@ The **Test** button runs a real-time health check to verify the connection is ac
 2. Click the **Test** button in the top-right header.
 3. The result displays inline — a successful test confirms the connection is active; a failed test indicates a connectivity or authentication issue.
 
+<Frame>
+  <img src="/images/graphium/connections/testing-connection.png" alt="Testing a connection" />
+</Frame>
+
 After clicking Test, a **log** event appears in the Activity Log confirming whether the health check passed or failed.
 
 ---
@@ -82,6 +100,10 @@ The Activity Log in the right panel gives you a real-time record of everything t
 | **sync** | Teal | A data sync completed |
 | **log** | Grey | A health check or informational event |
 | **error** | Red | An error occurred (auto-recovered or requires attention) |
+
+<Frame>
+  <img src="/images/graphium/connections/connection-event-badges.png" alt="Connection event badges" />
+</Frame>
 
 - **Filter by type** — click the **All Types** dropdown and select a specific event type
 - **View details** — click any activity row to expand the full event details
@@ -122,6 +144,4 @@ Contributor and Viewer roles do not have access to the Connections section and c
 
 ## Related Articles
 
-- [Viewing Connections in a Vault](/graphium/automations/viewing-automated-connections)
-- [Enabling and Disabling a Connection](/graphium/automations/enabling-and-disabling-an-automated-connection)
-- [Adding a Connection](/graphium/automations/adding-a-new-automated-connection)
+- [Connections](/graphium/glossary/connections)
