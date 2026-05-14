@@ -88,24 +88,19 @@ Configure how often Graphium should sync with the EMR:
   <img src="/images/graphium/connections/auto-sync-settings.png" alt="Auto-sync settings" />
 </Frame>
 
-### Step 6: Save the Connection
-
-Click **+ Add Connection** to save. The connection appears in the Data Connections list with a status badge.
-
-<Frame>
-  <img src="/images/graphium/connections/connection-event-badges.png" alt="Connection event badges" />
-</Frame>
-
-## What to Expect
-
-Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. All sync activity — including triggers, data syncs, and health checks — appears in the connection's Activity Log.
-
 ## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
 | Status shows "error" after setup | Invalid EMR credentials | Re-enter authentication credentials in the connection detail view |
+| Connection status does not show "Healthy" after clicking Test | API key is incorrect, mistyped, or revoked | Re-copy the API key from the Graphium EMR Dashboard, paste it into the Authentication section, click Save, and click Test again |
+| API key was lost before it could be pasted into Graphium AI | API keys are only visible once at creation | Return to the Graphium EMR Dashboard, delete the previous key, and create a new one |
+| **API Keys** option is not visible under **Organization Settings** in the Graphium EMR Dashboard | Insufficient role within the Graphium EMR organization | Contact a Graphium EMR organization admin to grant API key permissions |
+| **Graphium EMR** option is missing from the **EMR / EHR** category when adding a connection | Connection type may not be enabled for your workspace | Contact [support@graphium.ai](mailto:support@graphium.ai) to confirm availability |
+| **+ Add Connection** button is not available in the vault sidebar | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
 | Data is not syncing | Auto-sync may be disabled | Open the connection detail and enable the Auto-sync toggle |
+| Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Click Test and resolve any authentication errors first, then enable Auto-sync |
+| Sync completes but no records appear in vault tables | Tables are not yet mapped to the Graphium EMR data source | Open the table settings and configure the EMR source mapping |
 | Auth error appears in Activity Log | Credentials expired or changed | Update authentication settings in the connection detail view |
 
 ## Related Articles
