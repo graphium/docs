@@ -92,13 +92,14 @@
             ]
           },
           {
-            "group": "AI Assistant",
+            "group": "AI Assistants",
             "pages": [
-              "graphium/ai-assistant/the-ai-assistant-welcome-screen",
-              "graphium/ai-assistant/chatting-with-your-ai-assistant",
-              "graphium/ai-assistant/viewing-conversation-history",
-              "graphium/ai-assistant/switching-between-ai-assistants",
-              "graphium/ai-assistant/configuring-chat-context-and-query-tools"
+              "graphium/ai-assistants/using-ai-assistants",
+              "graphium/ai-assistants/the-ai-assistant-welcome-screen",
+              "graphium/ai-assistants/chatting-with-your-ai-assistant",
+              "graphium/ai-assistants/viewing-conversation-history",
+              "graphium/ai-assistants/switching-between-ai-assistants",
+              "graphium/ai-assistants/configuring-chat-context-and-query-tools"
             ]
           }
     ],

@@ -21,19 +21,19 @@ Use this before asking the AI a question to ensure it has access to the right da
 
 ## Opening the Chat Context Panel
 
-In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three icon-based tabs and a **Clear all** button.
+In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three tabs — **Tables**, **Tools**, and **Connections** — and a **Clear all** button.
 
 The ⚙ icon displays a **badge** showing the total number of currently enabled context items across all three tabs (tables, tools, and connection actions). This gives you a quick at-a-glance count of what the AI has access to without opening the panel.
 
 ---
 
-## Tab 1: Table Access
+## Tables Tab — Table Access
 
-The first tab (grid icon) shows all tables in the vault. Use this to control which tables the AI can query during the conversation.
+The first tab (**Tables**) shows all tables in the vault. Use this to control which tables the AI can query during the conversation.
 
 ### Enabling a Table
 
-1. Open the Chat Context panel and click the **Table Access** tab (grid icon).
+1. Open the Chat Context panel and click the **Tables** tab.
 2. Find the table you want to enable.
 3. Click the toggle to turn it **On**.
 4. Set the access level:
@@ -44,47 +44,53 @@ The first tab (grid icon) shows all tables in the vault. Use this to control whi
 
 Click the toggle on any enabled table to turn it **Off**. The AI will no longer include that table's data in its responses.
 
-> **Tip:** Enable only the tables relevant to your question for more focused and accurate responses.
+<Tip>
+Enable only the tables relevant to your question for more focused and accurate responses.
+</Tip>
 
 ---
 
-## Tab 2: General Tools
+## Tools Tab — General Tools
 
-The second tab (wrench icon) shows general-purpose tools the AI can use during a conversation. Toggle any tool on or off depending on what you need.
+The second tab (**Tools**) shows general-purpose tools the AI can use during a conversation. Toggle any tool on or off depending on what you need.
 
 | Tool | Description |
 |------|-------------|
-| **Web Search** | Search the internet for current information to supplement vault data |
-| **Chart Generation** | Create visualizations and charts from data in the conversation |
+| **Web Search** | Search the internet for current information and external data |
+| **Chart Generation** | Create visualizations and charts from data |
 | **Code Execution** | Run Python code for data analysis and calculations |
-| **Send Email** | Send emails to users, teams, or external contacts |
+| **Send Email** | Send emails to users, teams, or external recipients |
 
 ### Web Search Tool
 
 The **Web Search** tool allows the AI to search the internet in real time. Enable this when you want the AI to supplement your vault data with up-to-date external information — for example, pulling current clinical guidelines, regulatory requirements, or market benchmarks alongside your internal data.
 
 To enable Web Search:
+
 1. Open the Chat Context panel.
-2. Click the **General Tools** tab.
+2. Click the **Tools** tab.
 3. Toggle **Web Search** on.
 
 The AI will automatically use web search when it determines that internet data would improve its response.
 
 ---
 
-## Tab 3: Connection Actions
+## Connections Tab — Connection Actions
 
-The third tab (link icon) shows actions available from your vault's connected external systems, grouped by connection. Enabling a connection action allows the AI to interact with that external system as part of its response.
+The third tab (**Connections**) shows actions available from your vault's connected external systems, grouped by connection. Enabling a connection action allows the AI to interact with that external system as part of its response.
 
 **Examples by connection type:**
 
 | Connection | Available Actions |
 |------------|------------------|
-| **Graphium EMR** | Send HL7 Message to EHR, Received HL7 Message from EHR |
+| **EHR (Epic)** | Send HL7 Message to EHR, Received HL7 Message from EHR |
 | **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted |
-| **Google Sheets** | Read rows, Write rows, Monitor for changes |
+| **OR Vitals Monitor** | Data Received from Device |
+| **Graphium EMR** | Create Case, Update Case, Case Created, Case Updated, Case Signed |
+| **Google Sheets** | Add Row, Update Row, Delete Row, Create Sheet, Row Added, Row Updated, Sheet Modified |
+| **Graphium Surveys** | Create Survey, Survey Completed |
 
-Toggle individual actions on or off within each connection group.
+The exact connections and actions you see depend on what your vault has configured. Toggle individual actions on or off within each connection group.
 
 ---
 
@@ -96,7 +102,9 @@ To reset the Chat Context and disable all enabled tables, tools, and connection 
 2. Click the **Clear all** button at the top of the panel.
 3. All enabled items are toggled off immediately.
 
-> **Note:** This does not delete any data or affect your connections — it only resets what the AI has access to for the current conversation.
+<Note>
+This does not delete any data or affect your connections — it only resets what the AI has access to for the current conversation.
+</Note>
 
 ---
 
@@ -119,8 +127,8 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
-| AI response doesn't include expected table data | Table is toggled off in Table Access | Open Chat Context and enable the relevant table |
-| Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web Search is enabled in the General Tools tab |
+| AI response doesn't include expected table data | Table is toggled off in Tables | Open Chat Context and enable the relevant table |
+| Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web Search is enabled in the Tools tab |
 | Connection actions are not visible | No connections have been configured for the vault | Set up connections in the Connections section first |
 | Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel to review or click Clear all to reset |
 | R/W access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
@@ -129,6 +137,6 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 
 ## Related Articles
 
-- [Chatting with Your AI Assistant](/graphium/ai-assistant/chatting-with-your-ai-assistant)
-- [Viewing Connections in a Vault](/graphium/automations/viewing-automated-connections)
-- [Adding a New Connection](/graphium/automations/adding-a-new-automated-connection)
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Connections](/graphium/glossary/connections)
+- [Adding a Connection](/graphium/automations/adding-a-new-automated-connection)

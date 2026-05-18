@@ -1,0 +1,75 @@
+---
+title: "Switching Between AI Assistants"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+Each vault can have multiple AI Assistants configured — each with a different focus, data access, and set of capabilities. You can switch between assistants at any time using the assistant selector in the chat input bar, browse all available assistants from the **Assistants** section in the vault sidebar, or pick one from the **AVAILABLE ASSISTANTS** cards on the vault Home page.
+
+## When to Use This
+
+Use this when you want to ask a question better suited to a specialized assistant — for example, switching to a Data Analyst for in-depth reporting, or an Operations Helper for workflow questions.
+
+## Prerequisites
+
+- The vault must have at least one AI Assistant configured
+- You must have access to the vault
+
+## Step-by-Step Instructions
+
+### Switch from the Chat Input Bar
+
+1. Open a vault. The Home page loads with the chat input bar visible.
+2. Click the **Choose assistant** icon (leftmost icon in the input bar). A popup appears showing the available assistants for this vault.
+3. The currently active assistant is highlighted.
+4. Click the assistant you want to use. The input bar updates to reflect the selection.
+5. Type your question and send it.
+
+The picker also includes a **Manage** link, which opens the **Assistants** page in the sidebar.
+
+### Switch from the Home Page
+
+On the vault Home page, the **AVAILABLE ASSISTANTS** section shows each configured assistant as a card. Click any card to start a new conversation with that assistant.
+
+### Browse Assistants from the Sidebar
+
+1. In the vault sidebar, click **Assistants**. The Assistants page opens, showing the total count and a card for each configured assistant.
+2. Each card shows the assistant's name, description, and the number of tables and connections it has access to.
+3. Click an assistant card to start a new conversation with it.
+4. To create a new assistant, click the **New Assistant** button at the top of the page (requires Admin or Builder role).
+
+### The General Assistant
+
+Every vault includes a **General** assistant by default. The General assistant has no specialized focus and can answer questions across whatever tables, tools, and connections are enabled in Chat Context. Use it when your question doesn't fit any of the specialized assistants, or when you're starting a quick one-off conversation.
+
+### Example Specialized Assistants
+
+Vaults can be configured with any number of specialized assistants. Common examples include:
+
+| Assistant | Focus |
+|-----------|-------|
+| **Data Analyst** | In-depth data analysis, reporting, and metrics |
+| **Operations Helper** | Operational workflows and process questions |
+| **Compliance Monitor** | Compliance checks and regulatory monitoring |
+
+The exact assistants in your vault depend on what your team has configured.
+
+## What to Expect
+
+Each assistant may have different table access, tools, and connection permissions. Switching assistants starts a new conversation with the selected one.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Only the General assistant appears in the selector | No specialized assistants are configured for this vault | Open the **Assistants** sidebar page and click **New Assistant** (Admin/Builder), or contact your vault Admin |
+| **New Assistant** button is missing | Your vault role does not permit assistant creation | Ask your vault Admin to grant Admin or Builder access |
+| Assistants section is not in the sidebar | The feature may not be enabled for this vault | Contact your workspace Admin |
+
+## Related Articles
+
+- [The AI Assistant Welcome Screen](/graphium/ai-assistants/the-ai-assistant-welcome-screen)
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
