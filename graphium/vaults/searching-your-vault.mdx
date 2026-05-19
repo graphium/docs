@@ -1,0 +1,176 @@
+---
+title: "Searching Your Vault"
+description: "Use the Global Search bar to instantly find records, tables, schema fields, and connections anywhere within your vault."
+icon: "magnifying-glass"
+---
+
+## Overview
+
+The vault search bar lets you find any data inside your vault without manually navigating through tabs or scrolling through tables. It is available from the top navigation header whenever you are inside a vault, and opens a full command palette overlay where you can search across records, tables, schema fields, and connections in one place.
+
+---
+
+## When to Use This
+
+Use vault search when you need to:
+
+- Quickly locate a specific patient record, case, or entry by name, ID, or any field value
+- Find a table by name without scrolling through the sidebar
+- Look up a schema field definition to check its type, description, or whether it is required
+- Navigate directly to a connection without going through the Automations tab
+
+---
+
+## Prerequisites
+
+- You must be an active member of the vault you want to search. All vault roles can use search: **ADMIN**, **BUILDER**, **CONTRIBUTOR**, and **VIEWER**.
+- You must be inside a vault — the search bar is not available on the workspace or vault list pages.
+
+---
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Search Overlay
+
+While inside a vault, open the search overlay using either method:
+
+- **Click the search bar** in the top navigation header. It displays your vault name as a placeholder — for example, *Search Cases - Community Surgery Center...*.
+- **Press `⌘K`** on Mac or **`Ctrl+K`** on Windows/Linux from anywhere inside the vault.
+
+The search overlay opens as a centered modal with a blurred backdrop. The search input is automatically focused.
+
+> **Note:** The search bar only appears when you are inside a vault. If you do not see it, navigate into a vault first.
+
+<Frame>
+  <img src="/images/graphium/navigation/vault-search-overlay.png" alt="Vault search overlay" />
+</Frame>
+
+---
+
+### Step 2: Type Your Search Query
+
+Begin typing in the search input. Results appear automatically as you type — no need to press Enter.
+
+> **Note:** A minimum of **3 characters** is required before results are shown. This keeps results relevant and reduces noise.
+
+Results are grouped by category: **Records**, **Schema**, **Tables**, and **Connections**. Each result row shows:
+
+- An **icon** identifying the category
+- A **title** — the primary name or matched value, with your search term highlighted in cyan
+- A **subtitle** — secondary context such as the source table, field type, or connection type
+- An optional **badge** — for example, *Required* on schema fields or *Healthy / Error* on connections
+
+<Frame>
+  <img src="/images/graphium/navigation/vault-search-results.png" alt="Search results grouped by category" />
+</Frame>
+
+---
+
+### Step 3: Filter by Category (Optional)
+
+A row of **category filter pills** appears above the results. Each pill shows the number of matches found in that category.
+
+- By default, the **All** pill is active and shows up to **5 results per category**.
+- Click any pill — **Records**, **Schema**, **Tables**, or **Connections** — to filter results to that category only. A focused category view shows up to **50 results**.
+- Click **All** again to return to the multi-category overview.
+
+> 💡 **Tip:** If you know what type of item you are looking for, select a category pill first. You will see far more results and can refine your query from there.
+
+<Frame>
+  <img src="/images/graphium/navigation/vault-search-category-pills.png" alt="Category filter pills" />
+</Frame>
+
+---
+
+### Step 4: Navigate to a Result
+
+**Using the mouse:** Click any result row to navigate directly to that item.
+
+**Using the keyboard:**
+
+| Key | Action |
+|-----|--------|
+| `↑` / `↓` | Move up or down through results |
+| `Enter` | Open the selected result |
+| `Esc` | Close the search overlay |
+
+The selected row is highlighted with a cyan left border and scrolls into view automatically.
+
+---
+
+### Step 5: Close the Search Overlay
+
+When you are done, close the overlay by pressing `Esc` or clicking anywhere outside it.
+
+---
+
+## What to Expect
+
+Where you land depends on the type of result you selected:
+
+| Result Type | What Happens |
+|-------------|--------------|
+| **Record** | The Tables tab opens, the matching table is selected, and a filter is applied so the record appears at the top of the list. A filter pill is visible in the table header — clear it to return to the full record list. |
+| **Schema field** | The Tables tab opens in schema view for the table that contains the field. |
+| **Table** | The Tables tab opens with that table selected and its data view loaded. |
+| **Connection** | The connection detail view opens directly. |
+
+> **Note:** Record search matches against **field values only** — not column names. For example, searching *Patient Name* will return schema results (the field definition), but not every record in the table. To find a specific record, search for the actual data value, such as a patient's name or MRN number.
+
+---
+
+## Recent Searches
+
+When you open the search overlay without typing anything, your **recent search history** for the current vault is displayed.
+
+- Recent searches are **per vault** — your history in one vault does not appear in another.
+- Up to **15 recent searches** are saved per vault. Older entries are dropped automatically as new ones are added.
+- Recent searches **sync across devices** — they are stored in your account, not your browser.
+- Click any recent search term to re-run it instantly.
+
+---
+
+## Permissions
+
+Search is available to all vault roles and is read-only — it does not create, edit, or delete any data.
+
+| Vault Role | Can Use Search |
+|------------|----------------|
+| ADMIN | ✅ |
+| BUILDER | ✅ |
+| CONTRIBUTOR | ✅ |
+| VIEWER | ✅ |
+
+Search results are always scoped to the vault you are currently viewing. Records, tables, schema, and forms return results from that vault only. Connections are scoped to your workspace and are visible from any vault within it.
+
+---
+
+## Coming Soon
+
+The following categories are planned and will be added to search results once each feature is fully available in Graphium AI:
+
+- **Forms** — search form names and descriptions
+- **Tasks** — search task titles and status
+- **Workflows** — search workflow names and trigger types
+- **AI Assistants** — search assistant names
+
+---
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| The search bar is not visible | You are not inside a vault | Navigate into a vault — the search bar only appears in the vault header |
+| No results appear after typing | Query is fewer than 3 characters | Type at least 3 characters before results will show |
+| Searching a column name returns no records | Record search matches values only, not column names | Search for the actual data value — e.g., a patient name or MRN — instead of the column label |
+| A record result opens the table but I can't find the record | The table view is filtered to show the matched record | Look for the filter pill in the table header; the record should appear at the top of the filtered list |
+| Category pills show 0 for every category | The vault may have very little data, or your query is too specific | Try a shorter or more general query; confirm you are searching the correct vault |
+
+---
+
+## Related Articles
+
+- [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
+- [Viewing and Opening Vaults](/graphium/vaults/viewing-and-opening-vaults)
+- [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)
+- [Working with a Connection](/graphium/automations/working-with-a-connection)
