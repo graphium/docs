@@ -98,10 +98,11 @@ Where you land depends on the type of result you selected:
 
 | Result Type | What Happens |
 |-------------|--------------|
-| **Record** | The Tables tab opens, the matching table is selected, and a filter is applied so the record appears at the top of the list. A filter pill is visible in the table header — clear it to return to the full record list. |
+| **Record** | The record opens directly in a detail panel where you can view and edit its fields. |
 | **Schema field** | The Tables tab opens in schema view for the table that contains the field. |
 | **Table** | The Tables tab opens with that table selected and its data view loaded. |
 | **Connection** | The connection detail view opens directly. |
+| **Assistant** | The AI Assistant page opens. |
 
 > **Note:** Record search matches against **field values only** — not column names. For example, searching *Patient Name* will return schema results (the field definition), but not every record in the table. To find a specific record, search for the actual data value, such as a patient's name or MRN number.
 
@@ -113,8 +114,9 @@ When you open the search overlay without typing anything, your **recent search h
 
 - Recent searches are **per vault** — your history in one vault does not appear in another.
 - Up to **15 recent searches** are saved per vault. Older entries are dropped automatically as new ones are added.
-- Recent searches **sync across devices** — they are stored in your account, not your browser.
+- Recent searches are stored in **your browser** — they are not synced across devices.
 - Click any recent search term to re-run it instantly.
+- Click **Clear all** to remove all recent searches for the current vault, or click **✕** next to any entry to remove it individually.
 
 ---
 
@@ -150,13 +152,14 @@ The following categories are planned and will be added to search results once ea
 | The search bar is not visible | You are not inside a vault | Navigate into a vault — the search bar only appears in the vault header |
 | No results appear after typing | Query is fewer than 3 characters | Type at least 3 characters before results will show |
 | Searching a column name returns no records | Record search matches values only, not column names | Search for the actual data value — e.g., a patient name or MRN — instead of the column label |
-| A record result opens the table but I can't find the record | The table view is filtered to show the matched record | Look for the filter pill in the table header; the record should appear at the top of the filtered list |
+| A record result does not open | The record may have been deleted or the vault data may have changed | Try searching again; if the problem persists, contact your vault admin |
 | Category pills show 0 for every category | The vault may have very little data, or your query is too specific | Try a shorter or more general query; confirm you are searching the correct vault |
 
 ---
 
 ## Related Articles
 
+- [Understanding Vault Search Results](/graphium/vaults/reading-vault-search-results)
 - [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
 - [Viewing and Opening Vaults](/graphium/vaults/viewing-and-opening-vaults)
 - [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)
