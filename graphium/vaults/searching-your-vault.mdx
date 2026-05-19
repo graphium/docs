@@ -6,7 +6,7 @@ icon: "vault"
 
 ## Overview
 
-The vault search bar lets you find any data inside your vault without manually navigating through tabs or scrolling through tables. It is available from the top navigation header whenever you are inside a vault, and opens a full command palette overlay where you can search across records, tables, schema fields, and connections in one place.
+The vault search bar lets you find any data inside your vault without manually navigating through tabs or scrolling through tables. It is available from the top navigation header whenever you are inside a vault, and opens a full command palette overlay where you can search across records, tables, schema fields, connections, and assistants in one place.
 
 ---
 
@@ -49,10 +49,10 @@ Begin typing in the search input. Results appear automatically as you type — n
 
 > **Note:** A minimum of **3 characters** is required before results are shown. This keeps results relevant and reduces noise.
 
-Results are grouped by category: **Records**, **Schema**, **Tables**, and **Connections**. Each result row shows:
+Results are grouped by category: **Records**, **Schema**, **Tables**, **Connections**, and **Assistants**. Each result row shows:
 
 - An **icon** identifying the category
-- A **title** — the primary name or matched value, with your search term highlighted in cyan
+- A **title** — the primary name or matched value, with your search term shown in **bold**
 - A **subtitle** — secondary context such as the source table, field type, or connection type
 - An optional **badge** — for example, *Required* on schema fields or *Healthy / Error* on connections
 
@@ -62,8 +62,8 @@ Results are grouped by category: **Records**, **Schema**, **Tables**, and **Conn
 
 A row of **category filter pills** appears above the results. Each pill shows the number of matches found in that category.
 
-- By default, the **All** pill is active and shows up to **5 results per category**.
-- Click any pill — **Records**, **Schema**, **Tables**, or **Connections** — to filter results to that category only. A focused category view shows up to **50 results**.
+- By default, the **All** pill is active and shows results across all categories.
+- Click any pill — **Records**, **Schema**, **Tables**, **Connections**, or **Assistants** — to filter results to that category only.
 - Click **All** again to return to the multi-category overview.
 
 > 💡 **Tip:** If you know what type of item you are looking for, select a category pill first. You will see far more results and can refine your query from there.
@@ -129,7 +129,7 @@ Search is available to all vault roles and is read-only — it does not create, 
 | CONTRIBUTOR | ✅ |
 | VIEWER | ✅ |
 
-Search results are always scoped to the vault you are currently viewing. Records, tables, schema, and forms return results from that vault only. Connections are scoped to your workspace and are visible from any vault within it.
+Search results are always scoped to the vault you are currently viewing. Records, tables, schema, and assistants return results from that vault only. Connections are scoped to your workspace and are visible from any vault within it.
 
 ---
 
@@ -140,7 +140,6 @@ The following categories are planned and will be added to search results once ea
 - **Forms** — search form names and descriptions
 - **Tasks** — search task titles and status
 - **Workflows** — search workflow names and trigger types
-- **AI Assistants** — search assistant names
 
 ---
 
