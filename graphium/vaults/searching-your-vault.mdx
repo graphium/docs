@@ -49,12 +49,7 @@ Begin typing in the search input. Results appear automatically as you type — n
 
 > **Note:** A minimum of **3 characters** is required before results are shown. This keeps results relevant and reduces noise.
 
-Results are grouped by category: **Records**, **Schema**, **Tables**, **Connections**, and **Assistants**. Each result row shows:
-
-- An **icon** identifying the category
-- A **title** — the primary name or matched value, with your search term shown in **bold**
-- A **subtitle** — secondary context such as the source table, field type, or connection type
-- An optional **badge** — for example, *Required* on schema fields or *Healthy / Error* on connections
+Results are grouped by category: **Records**, **Schema**, **Tables**, **Connections**, and **Assistants**. See [Anatomy of a Search Result](#anatomy-of-a-search-result) below for a full breakdown of what each part of a result row means.
 
 ---
 
@@ -92,9 +87,54 @@ When you are done, close the overlay by pressing `Esc` or clicking anywhere outs
 
 ---
 
-## What to Expect
+## Anatomy of a Search Result
 
-Where you land depends on the type of result you selected:
+Every result row contains the following elements:
+
+**Icon** — A category-specific icon on the left that identifies the result type at a glance.
+
+**Title** — The primary name or matched value. Any part of the title that matches your search query is shown in **bold** so you can see exactly why the result appeared.
+
+**Badge** (where applicable) — An inline label shown alongside the title. What the badge displays depends on the result category:
+
+- **Records** — shows the name of the field that contained the match (e.g., `(Additional Notes)`)
+- **Schema fields** — shows **Required** in red if the field is marked required
+- **Connections** — shows the connection health status: **Healthy** (green), **Unhealthy** (yellow), **Error** (red), or **Unknown** (gray)
+
+**Subtitle** — A secondary line of context showing where the item lives. Matched text in the subtitle is also shown in **bold**. The format varies by category:
+
+| Category | Subtitle Format |
+|----------|----------------|
+| **Records** | `{Table Name} › {Field}: {Value} · {Field}: {Value}` — shows up to two identifying fields (AUTO_ID fields like Patient ID or Case Number appear first if the table has them) |
+| **Schema** | `{Table Name} › {Field Type} · {Description}` — shows "No description" if no description has been set |
+| **Tables** | `{Description} · {X} records` |
+| **Connections** | `{Connection Type} · {Description}` |
+| **Assistants** | Assistant description |
+
+---
+
+## What Field Types Are Searchable
+
+Record search matches against field **values** only — not column names. The following field types are included in search:
+
+- **Text, Number, Auto ID, List Item**
+- **Signature** — matched by the signer's name
+- **Date, Time, and Date/Time** — supports partial and full matches in any format. For example: `Dec`, `December 14`, `December 14, 2026`, `2026-05-14`, or `05-`. Searching `2:30` matches both `2:30 AM` and `2:30 PM`.
+- **Object fields** — child property values are searchable at any level of nesting
+- **Collection fields** — values within any collection type are searchable, including collections nested inside objects
+
+The following field types are **excluded** from search:
+
+- Image
+- Boolean
+- Formula
+- Collection variants of the above
+
+---
+
+## Where Each Result Type Takes You
+
+What happens after you navigate to a result depends on the result category:
 
 | Result Type | What Happens |
 |-------------|--------------|
@@ -104,7 +144,17 @@ Where you land depends on the type of result you selected:
 | **Connection** | The connection detail view opens directly. |
 | **Assistant** | The AI Assistant page opens. |
 
-> **Note:** Record search matches against **field values only** — not column names. For example, searching *Patient Name* will return schema results (the field definition), but not every record in the table. To find a specific record, search for the actual data value, such as a patient's name or MRN number.
+> **Note:** Record search matches against **field values only** — not column names. To find a specific record, search for the actual data value, such as a patient's name or MRN number.
+
+### Records: Auto-Expanded Fields
+
+When a record is opened from search, the detail panel automatically expands all sections needed to show the matched value — including non-required fields and any nested objects or collections at any depth — so you land directly on the matched content without having to expand anything manually.
+
+This behaviour is specific to records opened from search. Records opened via the **Edit** button in the data grid open with non-required fields collapsed by default.
+
+**Example:** You search for *Leo Evans* and the result shows a match inside an Emergency Contacts › Contact Name field. Clicking the result opens the record, expands the additional fields section, expands the Emergency Contacts collection, and scrolls to show the Contact Name field containing *Leo Evans*.
+
+> **Note:** If you close the panel and reopen the same record using the **Edit** button, it returns to its default collapsed state.
 
 ---
 
@@ -152,15 +202,19 @@ The following categories are planned and will be added to search results once ea
 | The search bar is not visible | You are not inside a vault | Navigate into a vault — the search bar only appears in the vault header |
 | No results appear after typing | Query is fewer than 3 characters | Type at least 3 characters before results will show |
 | Searching a column name returns no records | Record search matches values only, not column names | Search for the actual data value — e.g., a patient name or MRN — instead of the column label |
-| A record result does not open | The record may have been deleted or the vault data may have changed | Try searching again; if the problem persists, contact your vault admin |
+| A record does not open | The record may have been deleted or the vault data may have changed | Try searching again; if the problem persists, contact your vault admin |
+| A record you expect isn't showing up | The matching value may be in an excluded field type (Image, Boolean, or Formula) | Try searching a different field value for that record, such as its name or ID |
+| Date searches return no results | The date format in your query may not match a supported format | Try alternative formats — e.g., `Dec 14` instead of `12/14`, or `2026-05-14` instead of `05/14/2026` |
+| Matched text is not highlighted in the title | The match occurred in the subtitle rather than the title | Check the subtitle line — matched text is bolded there too |
 | Category pills show 0 for every category | The vault may have very little data, or your query is too specific | Try a shorter or more general query; confirm you are searching the correct vault |
+| No results for a query you expect to work | Results may be filtered to a specific category pill | Click **All** to reset the category filter and see results across all categories |
 
 ---
 
 ## Related Articles
 
-- [Understanding Vault Search Results](/graphium/vaults/reading-vault-search-results)
 - [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
 - [Viewing and Opening Vaults](/graphium/vaults/viewing-and-opening-vaults)
 - [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)
+- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types)
 - [Working with a Connection](/graphium/automations/working-with-a-connection)
