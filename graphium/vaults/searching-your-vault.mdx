@@ -6,25 +6,22 @@ icon: "vault"
 
 ## Overview
 
-The vault search bar lets you find any data inside your vault without manually navigating through tabs or scrolling through tables. It is available from the top navigation header whenever you are inside a vault, and opens a full command palette overlay where you can search across records, tables, schema fields, connections, and assistants in one place.
+The vault search bar lets you find any data inside your vault without manually navigating through tabs or scrolling through tables. It is available from the top navigation header whenever you are inside a vault, and opens a full search window where you can search across records, tables, schema fields, connections, and assistants in one place. Search is available to all vault members — **ADMIN**, **BUILDER**, **CONTRIBUTOR**, and **VIEWER** — and can only be accessed from within a vault.
 
 ---
 
-## When to Use This
+## When to Search Your Vault
 
 Use vault search when you need to:
 
 - Quickly locate a specific patient record, case, or entry by name, ID, or any field value
 - Find a table by name without scrolling through the sidebar
 - Look up a schema field definition to check its type, description, or whether it is required
-- Navigate directly to a connection without going through the Automations tab
+- Navigate directly to a connection without going through the Connections tab
 
----
-
-## Prerequisites
-
-- You must be an active member of the vault you want to search. All vault roles can use search: **ADMIN**, **BUILDER**, **CONTRIBUTOR**, and **VIEWER**.
-- You must be inside a vault — the search bar is not available on the workspace or vault list pages.
+<Frame>
+  <img src="/images/graphium/vaults/vault-search-bar.png" alt="Vault search bar" />
+</Frame>
 
 ---
 
@@ -39,7 +36,9 @@ While inside a vault, open the search window using either method:
 
 The search window opens as a centered modal with a blurred backdrop. The search input is automatically focused.
 
-> **Note:** The search bar only appears when you are inside a vault. If you do not see it, navigate into a vault first.
+<Frame>
+  <img src="/images/graphium/vaults/vault-search-window.png" alt="Vault search window" />
+</Frame>
 
 ---
 
@@ -47,21 +46,29 @@ The search window opens as a centered modal with a blurred backdrop. The search 
 
 Begin typing in the search input. Results appear automatically as you type — no need to press Enter.
 
-> **Note:** A minimum of **3 characters** is required before results are shown. This keeps results relevant and reduces noise.
+> **Note:** A minimum of **2 characters** is required before results are shown. This keeps results relevant and reduces noise.
 
 Results are grouped by category: **Records**, **Schema**, **Tables**, **Connections**, and **Assistants**. See [What a Search Result Shows](#what-a-search-result-shows) below for a full breakdown of what each part of a result row means.
+
+<Frame>
+  <img src="/images/graphium/vaults/vault-search-query.png" alt="Vault search query results" />
+</Frame>
 
 ---
 
 ### Step 3: Filter by Category (Optional)
 
-A row of **category filter tabs** appears above the results. Each pill shows the number of matches found in that category.
+A row of **category filter tabs** appears above the results. Each tab shows the number of matches found in that category.
 
-- By default, the **All** pill is active and shows results across all categories.
-- Click any pill — **Records**, **Schema**, **Tables**, **Connections**, or **Assistants** — to filter results to that category only.
+- By default, the **All** tab is active and shows results across all categories.
+- Click any tab — **Records**, **Schema**, **Tables**, **Connections**, or **Assistants** — to filter results to that category only.
 - Click **All** again to return to the multi-category overview.
 
-> 💡 **Tip:** If you know what type of item you are looking for, select a category pill first. You will see far more results and can refine your query from there.
+> 💡 **Tip:** If you know what type of item you are looking for, select a category tab first. You will see far more results and can refine your query from there.
+
+<Frame>
+  <img src="/images/graphium/vaults/search-category-pills.png" alt="Search category filter tabs" />
+</Frame>
 
 ---
 
@@ -79,11 +86,15 @@ A row of **category filter tabs** appears above the results. Each pill shows the
 
 The selected row is highlighted with a cyan left border and scrolls into view automatically.
 
+<Frame>
+  <img src="/images/graphium/vaults/vault-search-query.png" alt="Vault search keyboard navigation" />
+</Frame>
+
 ---
 
 ### Step 5: Close the Search Window
 
-When you are done, close the overlay by pressing `Esc` or clicking anywhere outside it.
+When you are done, close the search window by pressing `Esc` or clicking anywhere outside it.
 
 ---
 
@@ -101,15 +112,7 @@ Every result row contains the following elements:
 - **Schema fields** — shows **Required** in red if the field is marked required
 - **Connections** — shows the connection health status: **Healthy** (green), **Unhealthy** (yellow), **Error** (red), or **Unknown** (gray)
 
-**Subtitle** — A secondary line of context showing where the item lives. Matched text in the subtitle is also shown in **bold**. The format varies by category:
-
-| Category | Subtitle Format |
-|----------|----------------|
-| **Records** | `{Table Name} › {Field}: {Value} · {Field}: {Value}` — shows up to two identifying fields (AUTO_ID fields like Patient ID or Case Number appear first if the table has them) |
-| **Schema** | `{Table Name} › {Field Type} · {Description}` — shows "No description" if no description has been set |
-| **Tables** | `{Description} · {X} records` |
-| **Connections** | `{Connection Type} · {Description}` |
-| **Assistants** | Assistant description |
+**Subtitle** — A secondary line of context showing where the item lives. Matched text in the subtitle is also shown in **bold**.
 
 ---
 
@@ -132,32 +135,6 @@ The following field types are **excluded** from search:
 
 ---
 
-## Where Each Result Type Takes You
-
-What happens after you navigate to a result depends on the result category:
-
-| Result Type | What Happens |
-|-------------|--------------|
-| **Record** | The record opens directly in a detail panel where you can view and edit its fields. |
-| **Schema field** | The Tables tab opens in schema view for the table that contains the field. |
-| **Table** | The Tables tab opens with that table selected and its data view loaded. |
-| **Connection** | The connection detail view opens directly. |
-| **Assistant** | The AI Assistant page opens. |
-
-> **Note:** Record search matches against **field values only** — not column names. To find a specific record, search for the actual data value, such as a patient's name or MRN number.
-
-### Records: Auto-Expanded Fields
-
-When a record is opened from search, the detail panel automatically expands all sections needed to show the matched value — including non-required fields and any nested objects or collections at any depth — so you land directly on the matched content without having to expand anything manually.
-
-This behaviour is specific to records opened from search. Records opened via the **Edit** button in the data grid open with non-required fields collapsed by default.
-
-**Example:** You search for *Leo Evans* and the result shows a match inside an Emergency Contacts › Contact Name field. Clicking the result opens the record, expands the additional fields section, expands the Emergency Contacts collection, and scrolls to show the Contact Name field containing *Leo Evans*.
-
-> **Note:** If you close the panel and reopen the same record using the **Edit** button, it returns to its default collapsed state.
-
----
-
 ## Recent Searches
 
 When you open the search window without typing anything, your **recent search history** for the current vault is displayed.
@@ -168,53 +145,30 @@ When you open the search window without typing anything, your **recent search hi
 - Click any recent search term to re-run it instantly.
 - Click **Clear all** to remove all recent searches for the current vault, or click **✕** next to any entry to remove it individually.
 
----
-
-## Permissions
-
-Search is available to all vault roles and is read-only — it does not create, edit, or delete any data.
-
-| Vault Role | Can Use Search |
-|------------|----------------|
-| ADMIN | ✅ |
-| BUILDER | ✅ |
-| CONTRIBUTOR | ✅ |
-| VIEWER | ✅ |
-
-Search results are always scoped to the vault you are currently viewing. Records, tables, schema, and assistants return results from that vault only. Connections are scoped to your workspace and are visible from any vault within it.
+<Frame>
+  <img src="/images/graphium/vaults/vault-search-history.png" alt="Vault search recent history" />
+</Frame>
 
 ---
 
-## Coming Soon
-
-The following categories are planned and will be added to search results once each feature is fully available in Graphium AI:
-
-- **Forms** — search form names and descriptions
-- **Tasks** — search task titles and status
-- **Workflows** — search workflow names and trigger types
-
----
-
-## Common Issues & Troubleshooting
+## Troubleshooting
 
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
 | The search bar is not visible | You are not inside a vault | Navigate into a vault — the search bar only appears in the vault header |
-| No results appear after typing | Query is fewer than 3 characters | Type at least 3 characters before results will show |
+| No results appear after typing | Query is fewer than 2 characters | Type at least 2 characters before results will show |
 | Searching a column name returns no records | Record search matches values only, not column names | Search for the actual data value — e.g., a patient name or MRN — instead of the column label |
 | A record does not open | The record may have been deleted or the vault data may have changed | Try searching again; if the problem persists, contact your vault admin |
 | A record you expect isn't showing up | The matching value may be in an excluded field type (Image, Boolean, or Formula) | Try searching a different field value for that record, such as its name or ID |
 | Date searches return no results | The date format in your query may not match a supported format | Try alternative formats — e.g., `Dec 14` instead of `12/14`, or `2026-05-14` instead of `05/14/2026` |
 | Matched text is not highlighted in the title | The match occurred in the subtitle rather than the title | Check the subtitle line — matched text is bolded there too |
-| Category pills show 0 for every category | The vault may have very little data, or your query is too specific | Try a shorter or more general query; confirm you are searching the correct vault |
-| No results for a query you expect to work | Results may be filtered to a specific category pill | Click **All** to reset the category filter and see results across all categories |
+| Category filter tabs show 0 for every category | The vault may have very little data, or your query is too specific | Try a shorter or more general query; confirm you are searching the correct vault |
+| No results for a query you expect to work | Results may be filtered to a specific category tab | Click **All** to reset the category filter and see results across all categories |
 
 ---
 
 ## Related Articles
 
-- [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
-- [Viewing and Opening Vaults](/graphium/vaults/viewing-and-opening-vaults)
 - [Filtering and Sorting Records](/graphium/data-records/filtering-and-sorting-records)
-- [Configuring Table Property Types](/graphium/schema-properties/configuring-table-property-types)
+- [Adding Simple Table Properties](/graphium/schema-properties/adding-simple-table-property-types)
 - [Working with a Connection](/graphium/automations/working-with-a-connection)
