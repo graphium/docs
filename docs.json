@@ -31,6 +31,7 @@
               "graphium/glossary/autonomous-actions",
               "graphium/glossary/channels",
               "graphium/glossary/workflows-and-tasks",
+              "graphium/glossary/playbooks",
               "graphium/glossary/access-and-permissions",
               "graphium/glossary/use-cases-overview"
             ]
@@ -90,6 +91,14 @@
               "graphium/automations/configuring-a-graphium-emr-connection",
               "graphium/automations/configuring-an-ftp-sftp-file-server-connection",
               "graphium/automations/configuring-a-google-sheets-connection"
+            ]
+          },
+          {
+            "group": "Playbooks",
+            "pages": [
+              "graphium/playbooks/creating-and-publishing-a-playbook",
+              "graphium/playbooks/running-and-testing-a-playbook",
+              "graphium/playbooks/using-approval-gates"
             ]
           },
           {

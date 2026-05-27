@@ -1,0 +1,52 @@
+---
+title: "Playbooks"
+description: ""
+icon: "vault"
+---
+
+## What Is a Playbook?
+
+A playbook is an automated AI workflow that runs inside your vault. You describe what you want to happen in plain language — across one or more steps — and Graphium AI executes those steps in sequence, using the tables, connections, and tools you grant it access to.
+
+Playbooks replace manual, repetitive processes: instead of pulling data from a spreadsheet, cross-referencing a patient list, and sending a summary email by hand, you write those steps once, publish the playbook, and let it run on demand or on a schedule.
+
+---
+
+## Key Concepts
+
+**Steps** — Each playbook is made up of one or more steps. A step is a plain-language instruction that tells the AI what to do at that point in the workflow. Steps run in order, and the output of one step can inform the next.
+
+**Trigger** — The trigger determines how a playbook starts. Playbooks support two trigger types:
+
+- **Manual** — A Builder clicks "Run" to start the playbook immediately.
+- **Scheduled** — The playbook runs automatically at a configured time and frequency (daily, weekly, etc.).
+
+**Version** — Every time you save a playbook, a new draft version is created. Versions are immutable snapshots. Publishing a version makes it the active one. You can view version history and roll back by publishing an older version.
+
+**Run** — A single execution of a playbook. Each run has a status, a log of what the AI did at each step, and a record of any tool calls or external actions taken.
+
+**Test Mode** — A dry-run execution that performs all steps but suppresses external actions (emails, connection writes, etc.) so you can safely verify a playbook before running it live.
+
+**Approval Gate** — A configurable pause point within a run. When a step or connection is set to require approval, the run stops and waits for a Builder to review and approve before continuing.
+
+---
+
+## Who Can Use Playbooks?
+
+Playbook access is role-based within a vault:
+
+| Role | Access |
+|------|--------|
+| **ADMIN** | Create, configure, publish, run, and delete playbooks |
+| **BUILDER** | Create, configure, publish, run, and delete playbooks |
+| **CONTRIBUTOR** | No access — Playbooks does not appear in the sidebar |
+| **VIEWER** | No access — Playbooks does not appear in the sidebar |
+
+---
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Using Approval Gates](/graphium/playbooks/using-approval-gates)
+- [Access and Permissions](/graphium/glossary/access-and-permissions)

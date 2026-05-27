@@ -1,0 +1,128 @@
+---
+title: "Using Approval Gates"
+description: ""
+icon: "vault"
+---
+
+## Overview
+
+Approval gates let you add human review checkpoints to a playbook run. When a run reaches an approval gate, it pauses and waits for a Builder to review and confirm before allowing the run to continue. This is useful any time a playbook's next action is irreversible — such as sending data to an external system or writing records — and you want a person to verify it first.
+
+---
+
+## When to Use Approval Gates
+
+Use approval gates when you need to:
+
+- Review AI output before it is sent to an external connection (such as an EMR or a Google Sheet)
+- Confirm that records are correct before they are written to a vault table
+- Add a mandatory sign-off step to a scheduled playbook so it does not act without oversight
+
+---
+
+## How Approval Gates Work
+
+Approval gates are configured on resources in the **Playbook Context** panel. When a run reaches an action covered by an approval gate, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
+
+Two resource types support approval gates:
+
+- **Tables** — Set a table's approval mode to **Requires Approval** to pause the run before any write action is taken on that table.
+- **Connections** — Set a connection's approval mode to **Requires Approval** to pause the run before any data is sent to or action is taken on that connection.
+
+---
+
+## Step-by-Step Instructions
+
+### Step 1: Open Playbook Context
+
+In the playbook editor, click **Playbook Context** at the top of the **Playbook Outline** on the left. The Playbook Context panel opens in the center column, showing all enabled tables, connections, and tools.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-context-panel.png" alt="Playbook Context panel" />
+</Frame>
+
+---
+
+### Step 2: Set a Resource to Requires Approval
+
+In the **Tables** or **Connections** section, find the resource you want to gate.
+
+Each resource shows its current approval mode — by default this is **Autonomous**, meaning the AI can act on it without pausing.
+
+Change the mode to **Requires Approval**. The run will now pause every time the AI is about to take an action on that resource, and wait for your review before proceeding.
+
+> **Note:** You can mix approval modes across resources. For example, you might allow the AI to read a table autonomously but require approval before it writes to a connection.
+
+<Frame>
+  <img src="/images/graphium/playbooks/requires-approval-toggle.png" alt="Requires Approval mode on a connection in Playbook Context" />
+</Frame>
+
+Save and publish the playbook for the approval gate to take effect on live runs.
+
+---
+
+### Step 3: Receive a Notification When Approval Is Needed
+
+When a live run hits an approval gate, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). The Builder responsible for the playbook also receives an **email notification** with a link to the run.
+
+> **Note:** Approval gates are skipped entirely in test mode. Notifications are only sent for live runs.
+
+---
+
+### Step 4: Resolve the Approval
+
+Open the playbook in the editor. In the **Run History** panel on the right, locate the run with **Pending Review** status.
+
+The run row shows:
+
+- The number of approvals needed (for example, *1 approval needed*)
+- An **Approve & Continue** button (cyan)
+- A **Deny** button
+
+<Frame>
+  <img src="/images/graphium/playbooks/approval-run-history.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
+</Frame>
+
+**To approve:** Click **Approve & Continue**. The run resumes from the point it was paused and continues to the next step.
+
+**To deny:** Click **Deny**. The run fails at that approval gate. Subsequent steps are marked as Skipped and the run does not continue.
+
+### Approving Multiple Gates at Once
+
+If multiple approvals are pending on the same run, the run row shows the total count (for example, *3 approvals needed*). An **Approve All & Continue** button appears, which resolves all pending approvals in one action and resumes the run.
+
+<Frame>
+  <img src="/images/graphium/playbooks/approve-all-button.png" alt="Approve All and Continue button for multiple pending approvals" />
+</Frame>
+
+---
+
+## Approval Gate Reference
+
+| Resource | Approval Mode | Effect |
+|----------|---------------|--------|
+| Table | Autonomous | AI can read and write without pausing |
+| Table | Requires Approval | Run pauses before any write to this table |
+| Connection | Autonomous | AI can send data and take actions without pausing |
+| Connection | Requires Approval | Run pauses before any action on this connection |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Run did not pause at the approval gate | The playbook is running in test mode | Approval gates are skipped in test mode — trigger a live run instead |
+| No email notification was received | The email may have been filtered, or the notification hasn't fired yet | Check your spam folder; if the run shows Pending Review in the history panel, the approval button is available there |
+| Approve & Continue button is not visible | You may not have Builder or Admin vault access | Approvals can only be resolved by users with Builder or Admin role |
+| Run shows Failed after denying | Expected behaviour | Denying an approval causes the run to fail at that gate — this is intentional |
+| Approval gate is firing but it wasn't configured | The connection or table may have been set to Requires Approval in a previous version | Open Playbook Context and check the approval mode on each enabled resource |
+
+---
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [What are Playbooks?](/graphium/glossary/playbooks)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)

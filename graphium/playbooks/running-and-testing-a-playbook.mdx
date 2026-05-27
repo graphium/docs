@@ -1,0 +1,133 @@
+---
+title: "Running and Testing a Playbook"
+description: ""
+icon: "vault"
+---
+
+## Overview
+
+Once a playbook is published, Builders can run it manually, test it safely in dry-run mode, or configure it to run automatically on a schedule. This article covers all three run modes and explains how to read the Run History panel to understand what the AI did during each execution.
+
+---
+
+## Running a Playbook Manually
+
+Manual runs let you trigger a playbook immediately on demand. The playbook must be published before it can be run.
+
+### How to Start a Manual Run
+
+Open the playbook from the Playbooks list. In the Playbook Outline on the left, click **Save & Test** to trigger a run. The run appears immediately in the **Run History** panel on the right.
+
+<Frame>
+  <img src="/images/graphium/playbooks/save-and-test-button.png" alt="Save and Test button in the Playbook Outline header" />
+</Frame>
+
+---
+
+## Reading the Run History
+
+The **Run History** panel on the right side of the editor shows all past and in-progress runs for the current playbook. Each run row shows:
+
+- **Date and time** — When the run started.
+- **Status badge** — The current state: **Completed** (green), **Pending Review** (orange), **Failed** (red), or **Cancelled**.
+- **Trigger type** — How the run was started: **Scheduled** or **Test**.
+- **Step progress** — How many steps completed out of the total (for example, *5/7 steps*).
+- **Execution time and total time** — How long the run took.
+
+<Frame>
+  <img src="/images/graphium/playbooks/run-history-panel.png" alt="Run History panel showing multiple runs with statuses" />
+</Frame>
+
+Click any run row to open the run detail and see a step-by-step breakdown of what the AI did, including tool calls, narration, and any errors.
+
+### Reading a Run Detail
+
+The run detail shows each step's completion status (pending → running → completed), the AI's narration for what it did, any tool calls it made and the results, and execution time per step.
+
+If a step **fails**, the run stops at that step and all subsequent steps are marked as **Skipped**. The error message is shown in the failed step's detail.
+
+### Cancelling a Run
+
+To cancel an in-progress run, open the run detail and click **Cancel Run**. Steps that already completed are not rolled back.
+
+---
+
+## Testing a Playbook in Dry-Run Mode
+
+Test mode lets you run a playbook without actually sending emails, writing to connections, or modifying vault tables. Use it to verify your playbook's logic before running it live.
+
+### How to Start a Test Run
+
+In the Playbook Outline, choose **Test** mode when triggering a run (rather than a live run). The playbook executes all steps but suppresses any external actions.
+
+<Frame>
+  <img src="/images/graphium/playbooks/test-mode-trigger.png" alt="Test mode option when triggering a run" />
+</Frame>
+
+### What Happens in Test Mode
+
+- All steps execute and the AI reasons through the workflow as normal.
+- **External actions are suppressed.** Any step that would send an email, post to a connection, or write to an external system instead logs: *"TEST MODE: Would have executed [action] on [connection name]."*
+- **Vault table writes are suppressed.** No records are created or modified.
+- **Approval gates are skipped.** The run does not pause for approval in test mode.
+- Test runs appear in the Run History panel with a **Test** badge so they are visually distinct from live runs.
+
+> **Note:** Test runs still read from your vault tables and connections. Only write actions and external outputs are suppressed.
+
+---
+
+## Running a Playbook on a Schedule
+
+Scheduled playbooks run automatically at a configured time and frequency — no manual trigger needed.
+
+### Configuring a Schedule
+
+In the playbook editor, click the trigger card in the Playbook Outline and set the trigger type to **Scheduled**. Configure:
+
+- **Frequency** — How often the playbook runs (for example, daily or weekly).
+- **Time** — The time of day the run should start.
+- **Timezone** — The timezone used to evaluate the scheduled time.
+
+Save and publish the playbook to activate the schedule. The first scheduled run fires at the next occurrence of your configured time.
+
+<Frame>
+  <img src="/images/graphium/playbooks/scheduled-trigger-config.png" alt="Scheduled trigger configuration" />
+</Frame>
+
+### Scheduled Run Behaviour
+
+- Scheduled runs appear in the Run History panel with a **Scheduled** trigger type.
+- If the playbook is **disabled**, scheduled runs will not fire until the playbook is re-enabled.
+- Multiple scheduled playbooks in the same vault can run concurrently without blocking each other.
+
+> 💡 **Tip:** Use test mode to verify your playbook's logic before publishing on a schedule. This prevents a misconfigured playbook from running live on a recurring basis.
+
+---
+
+## Run Status Reference
+
+| Status | Meaning |
+|--------|---------|
+| **Completed** | All steps finished successfully |
+| **Pending Review** | The run is paused at an approval gate awaiting a decision |
+| **Failed** | A step encountered an error and the run stopped |
+| **Cancelled** | The run was manually cancelled by a Builder |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Save & Test button is greyed out | The playbook has no steps with instructions | Add at least one step with instructions |
+| Run does not appear in history | A connection or network issue may have interrupted the request | Refresh the page and check again |
+| A step shows as Skipped | A previous step failed and the run stopped | Open the failed step's detail to read the error, then correct the step's instructions or resource access |
+| Scheduled playbook is not running | The playbook is disabled, or the schedule is not yet published | Confirm the playbook is enabled and that the scheduled trigger has been saved and published |
+
+---
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Using Approval Gates](/graphium/playbooks/using-approval-gates)
+- [What are Playbooks?](/graphium/glossary/playbooks)
