@@ -14,7 +14,7 @@ This isn't one-way data import. A connection to Epic can receive HL7 messages fr
 
 ## Where Connections Live
 
-You'll find connections inside any vault under **Automations** in the sidebar. Click into Automations and you'll see two sections: **Connections** and **Workflows**. Connections manage the external system links themselves; workflows use those connections to automate processes (covered separately).
+You'll find connections inside any vault under **Connections** in the sidebar. Connections manage the external system links themselves; playbooks use those connections to automate processes (see [What are Playbooks?](/graphium/glossary/playbooks)).
 
 The Connections tab shows each configured connection as a card with its name, type, status indicator, and last sync time. A green status badge means the connection is live and communicating. Each connection has an enabled/disabled toggle -- useful when you need to pause data flow during maintenance without deleting the configuration entirely.
 
@@ -85,9 +85,9 @@ Connection actions show up in two places across Graphium.
 
 First, they appear in the **Tools tab** of AI assistant configuration. When you give an assistant access to a connection action, the assistant can invoke that action during a conversation or as part of an autonomous task. An assistant with access to the Epic "Send HL7 Message to EMR" action can push data back to the EMR when you ask it to. An assistant with access to Google Sheets "Add Row" can log a summary into a shared spreadsheet as part of its workflow.
 
-Second, event-based actions are available as **workflow triggers**. When a new HL7 message arrives from Epic, when a file is uploaded to the SFTP server, when a survey is completed -- these events can kick off automated workflows that process the incoming data, create tasks, or notify team members.
+Second, event-based actions are available as **playbook triggers**. When a new HL7 message arrives from Epic, when a file is uploaded to the SFTP server, when a survey is completed -- these events can kick off playbooks that process the incoming data, create tasks, or notify team members.
 
-This dual exposure -- to assistants and to workflows -- is what makes connections more than just data sync. They're active participants in your automation layer.
+This dual exposure -- to assistants and to playbooks -- is what makes connections more than just data sync. They're active participants in your automation layer.
 
 ---
 
@@ -95,7 +95,7 @@ This dual exposure -- to assistants and to workflows -- is what makes connection
 
 When a connection owns the schema of a table, that table displays a **"Managed by [Source]"** badge (for example, "Managed by Graphium EMR"). This means the table's structure -- its fields, types, and hierarchy -- is defined by the external system, not by you. The schema becomes read-only in Graphium because changes need to happen at the source.
 
-You can still read and work with the data in a managed table. AI assistants can query it, workflows can react to new records in it, and you can view it in the Data tab like any other table. You just can't restructure it from within Graphium, because the external system is the source of truth for that schema.
+You can still read and work with the data in a managed table. AI assistants can query it, playbooks can react to new records in it, and you can view it in the Data tab like any other table. You just can't restructure it from within Graphium, because the external system is the source of truth for that schema.
 
 ---
 
