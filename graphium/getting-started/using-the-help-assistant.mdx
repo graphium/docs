@@ -1,0 +1,143 @@
+---
+title: "Using the Help Assistant"
+description: ""
+icon: "circle-question"
+---
+
+## Overview
+
+The Help Assistant is a built-in AI chat panel available from every page in Graphium. It answers questions about the Graphium platform in real time, drawing its responses from Graphium's published documentation and providing source links so you can read the full article if you need more detail.
+
+The Help Assistant is available to all authenticated users — no vault access is required.
+
+---
+
+## Opening and Closing the Help Panel
+
+### Opening the panel
+
+Click the **? (help) icon** in the global header at the top right of the screen. The Help panel slides out from the right side of the page.
+
+The panel stays open as you navigate around Graphium — you can keep it open while working in a vault, switching pages, or using other features without losing your conversation.
+
+<Frame>
+  <img src="/images/graphium/help/help-button-header.png" alt="Help icon in the global navigation header" />
+</Frame>
+
+**Keyboard shortcut:** Press **`⌘ Shift H`** on Mac or **`Ctrl Shift H`** on Windows/Linux to toggle the panel open or closed from anywhere in the dashboard.
+
+---
+
+### Closing the panel
+
+Close the Help panel using any of these methods:
+
+- Click the **✕** button in the top-right corner of the panel.
+- Click the **? (help) icon** in the header again to toggle it closed.
+- Press **`Esc`** when the panel is focused.
+
+Closing the panel does not end your conversation — when you reopen it during the same session, your previous messages are still there.
+
+---
+
+## Asking a Question
+
+### The empty state
+
+When you open the Help panel with no active conversation, you see:
+
+- The heading **"Ask anything about Graphium"** with the subtext *"Get quick answers from Graphium docs without leaving your workflow."*
+- Four **suggested questions** as clickable chips — for example, *"How do I create a vault?"*, *"What are connections?"*, *"What is the AI Assistant?"*, and *"How do I invite teammates?"*
+
+Click any suggested question to send it immediately, or type your own question in the input box.
+
+<Frame>
+  <img src="/images/graphium/help/help-panel-empty-state.png" alt="Help panel empty state showing suggested questions" />
+</Frame>
+
+---
+
+### Typing and sending a message
+
+1. Click the **"Ask a question..."** input at the bottom of the panel.
+2. Type your question in plain language — for example, *"How do I add a connection to my vault?"* or *"What is a schema property?"*
+3. Press **Enter** or click the **send button** (arrow icon) to submit.
+
+The assistant begins streaming a response immediately. You can see the response building in real time as it is generated.
+
+> **Note:** The Help Assistant only supports text questions. File, photo, and link attachments are not supported.
+
+---
+
+### Reading a response
+
+Responses appear under the **Graphium Help** label and support full markdown formatting — headings, numbered lists, bold text, code blocks, and inline links.
+
+<Frame>
+  <img src="/images/graphium/help/help-panel-response.png" alt="Help panel showing an assistant response with markdown formatting and source citations" />
+</Frame>
+
+---
+
+### Source citations
+
+Where available, each assistant response includes a **Sources** section below the message. Sources appear as clickable chips — each one shows the title of the relevant documentation article. Click a source chip to open the full article.
+
+<Frame>
+  <img src="/images/graphium/help/help-panel-sources.png" alt="Source citation chips below a help response" />
+</Frame>
+
+---
+
+## Continuing a Conversation
+
+You can ask follow-up questions in the same conversation — the assistant maintains context from previous messages within your active session.
+
+Your conversation persists as long as the Graphium dashboard tab remains open. If you close or refresh the page, log out, or switch to a different workspace or account, the conversation is cleared and the panel returns to its empty state the next time you open it.
+
+> 💡 **Tip:** If you want to start fresh without navigating away, click **+ New conversation** in the top-right corner of the panel. This clears the current thread immediately.
+
+---
+
+## PHI and Sensitive Information
+
+> ⚠️ **Important:** Do not include PHI, patient information, or personal identifiers in your questions.
+
+The Help Assistant is designed to answer questions about Graphium's features and how to use the platform — not to process patient data. Your questions are transmitted to an external AI service to generate responses. Including protected health information (PHI), patient names, medical record numbers, dates of birth, or other personal identifiers in your questions is not appropriate for this feature.
+
+This notice is displayed persistently at the bottom of the Help panel as a reminder.
+
+---
+
+## When the Help Assistant Is Unavailable
+
+In some situations the Help Assistant may not be available. When this happens, the panel displays an informational message before you start typing — you will not be able to send questions until the issue resolves.
+
+| Situation | What you see |
+|-----------|-------------|
+| The assistant service is temporarily unavailable | A message indicating the assistant is unavailable and to try again later |
+| You have sent too many questions in a short period | A message indicating you have reached the usage limit for your session, with guidance to wait before trying again |
+| The assistant is not yet configured for your environment | A message indicating the help feature is not currently available |
+
+If you see one of these states, closing and reopening the panel may resolve it if the issue was temporary. For persistent unavailability, contact your workspace Admin or [support@graphium.ai](mailto:support@graphium.ai).
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Help icon is not visible in the header | You may not be signed in to a workspace | Sign in and navigate to your workspace — the help icon appears in the global header once authenticated |
+| Panel opens but shows "unavailable" message | The help service is temporarily down or not configured | Try again in a few minutes; if the issue persists, contact support |
+| Response stopped mid-sentence | You may have closed and reopened the panel while a response was streaming, or there was a connection interruption | Click **+ New conversation** and ask your question again |
+| My previous conversation is gone | The page was refreshed, you logged out, or you switched workspaces | Help conversations are session-only — they do not persist across page loads or account changes |
+| I sent a question but got no response | Your question may have been blocked, or you may have reached the usage limit | Check for a rate limit message in the panel; if none is shown, try rephrasing and resending |
+| The keyboard shortcut is not working | Another application or browser shortcut may be intercepting it | Click the ? icon in the header directly to open the panel |
+
+---
+
+## Related Articles
+
+- [Navigating Workspaces](/graphium/getting-started/navigating-workspaces)
+- [What is Graphium AI?](/graphium/glossary/what-is-graphium-ai)
+- [Searching Your Vault](/graphium/vaults/searching-your-vault)
