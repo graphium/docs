@@ -1,0 +1,175 @@
+---
+title: "Managing Your AI Assistants"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The Assistants section of your vault is where Admins and Builders create, configure, edit, and delete the AI assistants available to your team. Each assistant is a distinct agent with its own name, icon, description, AI model, system prompt, tools, and channel deployments.
+
+This article covers how to view your assistants, create a new one, edit an existing one, duplicate it, and delete it.
+
+---
+
+## Viewing Your Assistants
+
+From within a vault, click **Assistants** in the left sidebar. The Assistants page opens, showing the total count and a card for each configured assistant.
+
+<Frame>
+  <img src="/images/graphium/assistant/assistants-list.png" alt="Assistants list page showing assistant cards" />
+</Frame>
+
+Each assistant card displays:
+
+- **Icon and color** — The visual identifier for the assistant
+- **Name** — The assistant's display name
+- **Description** — A brief summary of what the assistant does
+- **Resource counts** — How many tables, connections, and tools the assistant has access to
+
+Use the **grid/list toggle** in the top-right corner to switch between card grid and list view.
+
+If no assistants have been created yet, the page shows an empty state: *"No assistants yet — Create specialized AI assistants with custom prompts and data access to help with specific tasks."*
+
+---
+
+## Creating a New Assistant
+
+Only **ADMIN** and **BUILDER** vault members can create assistants. Contributors and Viewers do not have access to the Assistants page.
+
+### Step 1: Open the New Assistant editor
+
+On the Assistants page, click **+ New Assistant** in the top-right corner. The assistant editor opens.
+
+<Frame>
+  <img src="/images/graphium/assistant/new-assistant-editor.png" alt="New assistant editor with General tab open" />
+</Frame>
+
+---
+
+### Step 2: Name the assistant
+
+Click the **"Name your assistant..."** field at the top of the editor and type a name. Choose something descriptive that tells users what the assistant specialises in — for example, *Data Analyst*, *Operations Helper*, or *Compliance Monitor*.
+
+The name appears immediately in the **Test Chat** panel on the right so you can preview how it will look.
+
+---
+
+### Step 3: Configure the General settings
+
+The **General** tab contains the core configuration for the assistant.
+
+**Icon** — Choose one of six icons to represent the assistant visually. The icon appears on the assistant's card in the list and in the chat interface.
+
+**Color** — Choose a color for the assistant's icon background. Six options are available: teal, blue, purple, orange, green, and pink.
+
+**Description** — Enter a brief description of what this assistant does. This appears on the assistant card and in the Test Chat panel preview. Keep it concise — one to two sentences.
+
+**AI Model** — Select the AI model the assistant will use. The default is **Claude Sonnet 4** (Anthropic), which is marked **PHI Safe** and suited for complex analysis, coding, and creative tasks. Each model shows its provider, a description, context window size, and recommended use cases to help you choose.
+
+**System Prompt** — Write the instructions that define how the assistant behaves. This is the most important field — it tells the AI what expertise it has, what its focus is, how it should respond, and any constraints it should follow.
+
+> **Note:** Both the assistant **name** and **system prompt** are required. You cannot save an assistant without both.
+
+The helper text below the System Prompt field reads: *"The system prompt defines how the assistant behaves, what expertise it has, and how it should respond to users."*
+
+<Frame>
+  <img src="/images/graphium/assistant/assistant-general-tab.png" alt="General tab showing icon, color, description, AI model, and system prompt fields" />
+</Frame>
+
+---
+
+### Step 4: Configure Tools (optional)
+
+Click the **Tools** tab to configure which vault tables, connections, and general tools this assistant has access to by default. The tab shows a count badge of currently enabled items.
+
+Enabling resources here sets the assistant's default context — these are the tables and tools it can use in any conversation, unless overridden by the user's Chat Context settings.
+
+---
+
+### Step 5: Configure Channels (optional)
+
+Click the **Channels** tab to deploy this assistant to external messaging channels such as Slack, Teams, or SMS. Channel configuration is optional and can be added or changed after saving.
+
+---
+
+### Step 6: Test the assistant
+
+The **Test Chat** panel on the right side of the editor lets you send test messages to the assistant before saving. The panel updates in real time as you fill in the name, description, and configure tools — showing a preview of how the assistant will appear to users.
+
+Type a message in the **"Send a test message..."** input to verify the assistant responds as expected.
+
+<Frame>
+  <img src="/images/graphium/assistant/test-chat-panel.png" alt="Test Chat panel showing assistant name, description, and resource tags" />
+</Frame>
+
+---
+
+### Step 7: Save the assistant
+
+Click **Save** in the top-right header. The assistant is saved and added to the Assistants list. It is immediately available for use in conversations.
+
+---
+
+## Editing an Assistant
+
+To edit an existing assistant, open the Assistants list and click any assistant card. The same editor opens with the assistant's current configuration loaded.
+
+Make your changes across any of the three tabs, then click **Save** to apply them. Changes take effect immediately.
+
+> 💡 **Tip:** Use the Test Chat panel to verify your changes before saving — especially when updating the system prompt.
+
+<Frame>
+  <img src="/images/graphium/assistant/assistant-edit-screen.png" alt="Assistant editor showing an existing assistant's configuration" />
+</Frame>
+
+---
+
+## Duplicating an Assistant
+
+To create a copy of an existing assistant — useful for creating a variant with a different system prompt or tool configuration — open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Duplicate**.
+
+A copy of the assistant is created and added to the list. Open it to rename and adjust the configuration as needed.
+
+---
+
+## Deleting an Assistant
+
+> ⚠️ **Warning:** Deleting an assistant is permanent and cannot be undone. The assistant's conversation history may also be affected.
+
+To delete an assistant, open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Delete** (shown in red).
+
+<Frame>
+  <img src="/images/graphium/assistant/assistant-delete-menu.png" alt="Three-dot menu showing Duplicate and Delete options" />
+</Frame>
+
+Confirm the deletion when prompted. The assistant is removed from the list immediately and will no longer appear in the chat interface.
+
+---
+
+## Returning to the Chat
+
+From the assistant editor, click the **← back arrow** in the top-left to return to the Assistants list.
+
+To go back to the vault chat from the Assistants list, click **Home** in the vault sidebar. This returns you to the vault home page with the chat interface.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Save button does not work | Name or system prompt is missing | Both fields are required — check that both are filled in before saving |
+| Assistants page is not visible in the sidebar | Your vault role is Contributor or Viewer | Ask your vault Admin or Builder to adjust your access |
+| + New Assistant button is missing | Your vault role is Contributor or Viewer | Contact your vault Admin to request Builder or Admin access |
+| Deleted assistant still appears in chat selector | The page may be cached | Refresh the page — deleted assistants are removed immediately on the server |
+| Test Chat is not responding | The system prompt may be too vague, or the AI model may be temporarily unavailable | Try sending a more specific message, or check your internet connection and retry |
+
+---
+
+## Related Articles
+
+- [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants)
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)
