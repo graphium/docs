@@ -17,23 +17,23 @@
           {
             "group": "Reference",
             "pages": [
-              "graphium/glossary/glossary",
-              "graphium/glossary/what-is-graphium-ai",
+              "graphium/reference/glossary",
+              "graphium/reference/what-is-graphium-ai",
               "graphium/getting-started/using-the-help-assistant"
             ]
           },
           {
             "group": "Core Concepts",
             "pages": [
-              "graphium/glossary/vaults",
-              "graphium/glossary/tables-and-schemas",
-              "graphium/glossary/connections",
-              "graphium/glossary/ai-assistants",
-              "graphium/glossary/autonomous-actions",
-              "graphium/glossary/channels",
-"graphium/glossary/playbooks",
-              "graphium/glossary/access-and-permissions",
-              "graphium/glossary/use-cases-overview"
+              "graphium/reference/vaults",
+              "graphium/reference/tables-and-schemas",
+              "graphium/reference/connections",
+              "graphium/reference/ai-assistants",
+              "graphium/reference/autonomous-actions",
+              "graphium/reference/channels",
+"graphium/reference/playbooks",
+              "graphium/reference/access-and-permissions",
+              "graphium/reference/use-cases-overview"
             ]
           },
           {
@@ -86,11 +86,11 @@
           {
             "group": "Connections",
             "pages": [
-              "graphium/automations/adding-a-new-automated-connection",
-              "graphium/automations/working-with-a-connection",
-              "graphium/automations/configuring-a-graphium-emr-connection",
-              "graphium/automations/configuring-an-ftp-sftp-file-server-connection",
-              "graphium/automations/configuring-a-google-sheets-connection"
+              "graphium/connections/adding-a-new-automated-connection",
+              "graphium/connections/working-with-a-connection",
+              "graphium/connections/configuring-a-graphium-emr-connection",
+              "graphium/connections/configuring-an-ftp-sftp-file-server-connection",
+              "graphium/connections/configuring-a-google-sheets-connection"
             ]
           },
           {
