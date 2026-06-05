@@ -18,10 +18,10 @@ For a published playbook, the **Run History** panel on the right side of the edi
 - **Run** (play icon) — Starts a live run immediately. The playbook executes all steps and takes real actions.
 
 <Frame>
-  <img src="/images/graphium/playbooks/run-history-panel.png" alt="Run History panel showing Test and Run buttons" />
+  <img src="/images/graphium/playbooks/test-run-buttons.png" alt="Run History panel showing Test and Run buttons" />
 </Frame>
 
-A "Test run started" or confirmation toast appears when the run is queued. The new run appears at the top of the Run History list with a **Pending** status while it executes.
+A "Test run started" popup appears when the test run is queued. The test run appears at the top of the Run History list with a Running status while it executes.
 
 > **Note:** The **Save & Test** button in the Playbook Outline header is only available in edit/draft mode. For a published playbook, use the **Test** and **Run** buttons in the Run History panel instead.
 
@@ -35,6 +35,10 @@ Test mode executes all steps but suppresses any real-world side effects:
 - **Vault table writes are suppressed.** No records are created or modified.
 - **Approval gates are skipped.** The run does not pause for approval in test mode.
 - Test runs appear in the Run History panel with a **Test** badge (yellow) so they are visually distinct from live runs.
+
+<Frame>
+  <img src="/images/graphium/playbooks/test-playbook.png" alt="Test mode run in progress in the Run History panel" />
+</Frame>
 
 > **Note:** Test runs still read from your vault tables and connections. Only write actions and external outputs are suppressed.
 
@@ -51,6 +55,10 @@ Clicking **Run** starts a live execution where the playbook performs real action
 - If a step **fails**, the run stops at that point and all subsequent steps are marked as **Skipped**.
 - Live runs appear in the Run History with their trigger type — **Manual**, **Scheduled**, **Record Added**, **Connection Event**, etc.
 
+<Frame>
+  <img src="/images/graphium/playbooks/run-playbook.png" alt="Live run in progress in the Run History panel" />
+</Frame>
+
 > ⚠️ **Note:** Live runs take real actions immediately. Use **Test** mode first to verify your playbook's logic before running it live.
 
 ---
@@ -66,7 +74,7 @@ The **Run History** panel shows all past and in-progress runs for the current pl
 - **Execution time** — How long the run took (for example, *20s*).
 
 <Frame>
-  <img src="/images/graphium/playbooks/run-history-list.png" alt="Run History panel showing completed Manual and Test runs" />
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing completed Manual and Test runs" />
 </Frame>
 
 ---
@@ -83,7 +91,7 @@ Click any run row to expand its detail inline within the Run History panel. The 
 If a step **fails**, the run stops at that step and all subsequent steps are marked as **Skipped**. The error message is shown in the failed step's narration.
 
 <Frame>
-  <img src="/images/graphium/playbooks/run-detail-view.png" alt="Run detail showing step tabs and AI narration" />
+  <img src="/images/graphium/playbooks/playbook-run-detail.png" alt="Run detail showing step tabs and AI narration" />
 </Frame>
 
 ---
@@ -109,7 +117,7 @@ In the playbook editor, click the trigger card in the Playbook Outline and selec
 Save and publish the playbook to activate the schedule. The first scheduled run fires at the next occurrence of your configured time.
 
 <Frame>
-  <img src="/images/graphium/playbooks/scheduled-trigger-config.png" alt="Scheduled trigger configuration showing Frequency, Time, and Time Zone fields" />
+  <img src="/images/graphium/playbooks/schedule-playbook-trigger.png" alt="Scheduled trigger configuration showing Frequency, Time, and Time Zone fields" />
 </Frame>
 
 ### Scheduled Run Behaviour
@@ -147,5 +155,4 @@ Save and publish the playbook to activate the schedule. The first scheduled run 
 ## Related Articles
 
 - [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
-- [Using Approval Gates](/graphium/playbooks/using-approval-gates)
-- [What are Playbooks?](/graphium/core-concepts/playbooks)
+- [Playbooks](/graphium/core-concepts/playbooks)
