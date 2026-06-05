@@ -6,122 +6,107 @@ icon: "play"
 
 ## Overview
 
-In addition to manual and scheduled triggers, playbooks can fire automatically in response to external events — without anyone clicking a button or waiting for a scheduled time. Two trigger types enable this:
+In addition to manual and scheduled triggers, playbooks can fire automatically in response to events — either when something changes in a connected external system, or when a record is created, updated, or deleted inside your vault.
 
-- **Connection triggers** — the playbook fires when something happens in a connected external system, such as a new row being added to a Google Sheet, a case being created in your EMR, or a file arriving on an SFTP server.
-- **Vault event triggers** — the playbook fires when a record is created, updated, or deleted in a specific vault table.
-
-Both trigger types are configured in the playbook editor and become active as soon as the playbook is published.
+Both types are configured through the same **Choose a Trigger** modal in the playbook editor. Once configured and published, these playbooks run automatically with no manual action required.
 
 ---
 
-## Connection Triggers
+## Choosing a Trigger
 
-A connection trigger links your playbook to a specific event on one of your vault's external connections. When that event occurs, the connection sends a notification to Graphium and a playbook run starts automatically with the event data available to the AI.
+To set or change a playbook's trigger, click the **trigger card** in the Playbook Outline on the left. If no trigger has been set yet, you will see an "**Add a trigger**" placeholder — click it to open the trigger picker.
 
-### Step 1: Select the Connection Trigger type
-
-In the playbook editor, click the **trigger card** in the Playbook Outline and select **Connection** as the trigger type.
+The **Choose a Trigger** modal opens with a searchable list of all available trigger types, grouped by category.
 
 <Frame>
-  <img src="/images/graphium/playbooks/connection-trigger-selection.png" alt="Connection trigger type selected in the trigger configuration panel" />
+  <img src="/images/graphium/playbooks/choose-trigger-modal.png" alt="Choose a Trigger modal showing General, Vault Events, and connection-specific trigger options" />
 </Frame>
 
----
+The modal is organized into three sections:
 
-### Step 2: Select a Connection and Trigger Event
+**GENERAL**
+- **Manual** — Run manually from the dashboard
+- **Scheduled** — Run on a recurring schedule
 
-Two dropdowns appear:
+**VAULT EVENTS**
+- **Record Added** — Triggers when a new record is created in a vault table
+- **Record Updated** — Triggers when a record is modified
+- **Record Deleted** — Triggers when a record is removed
 
-**Connection** — Select which vault connection the trigger should listen on. Only connections that have been enabled in the Playbook Context are available here. If the connection you need is not listed, open **Playbook Context** and toggle it on first.
+**[Connection name]** (one section per connected external service, e.g., GOOGLE SHEETS)
+- Each connection lists its specific trigger events — for example, New Row Added, Row Updated, New Worksheet, New Comment
 
-**Trigger event** — Select the specific event to listen for. Available events depend on the connection type. Examples:
-
-| Connection type | Example trigger events |
-|---|---|
-| Google Sheets | Row Added, Row Updated |
-| Graphium EMR | Case Created, Case Updated, Case Signed |
-| FTP/SFTP | New File Uploaded, File Modified |
-
-<Frame>
-  <img src="/images/graphium/playbooks/connection-trigger-event.png" alt="Selecting a connection and trigger event" />
-</Frame>
-
----
-
-### Step 3: Configure Trigger Parameters
-
-Most connection triggers require you to specify which resource to watch — for example, which spreadsheet and which sheet tab within it, or which facility within your EMR. These parameters are configured using dynamic dropdowns that load available options directly from the external service.
-
-Click each parameter dropdown to see the available options fetched from your connected account.
-
-<Frame>
-  <img src="/images/graphium/playbooks/connection-trigger-parameters.png" alt="Dynamic trigger parameter dropdowns" />
-</Frame>
-
-**Cascading parameters:** Some parameters depend on the value of a previous one. For example, selecting a Spreadsheet first loads the available Sheet tabs within that spreadsheet. Complete parameters in order from top to bottom — dependent dropdowns will load automatically once their parent value is selected.
-
-> **Note:** Parameter options are fetched live from your connected account. If you do not see the resource you expect, confirm that your connection has the correct permissions and try refreshing the options.
-
----
-
-### Step 4: Add a Description (Optional)
-
-You can add an optional **Description** to the trigger to document what event this playbook is listening for and why.
-
----
-
-### What Happens at Publish
-
-When you publish a playbook with a connection trigger, Graphium automatically **deploys** the trigger — registering it with the external service so it begins listening for the configured event. No manual setup is required outside Graphium.
-
-When you **disable** a connection-triggered playbook, the trigger is paused and the external service stops sending events. Re-enabling the playbook re-activates the trigger.
-
-> **Note:** If the trigger deployment fails (for example, if the connection's credentials have expired), the playbook will show an error state. Check the connection's status in the Connections section and re-publish once it is healthy.
+Use the **Search triggers...** bar at the top of the modal to filter by name if you have many connections configured.
 
 ---
 
 ## Vault Event Triggers
 
-A vault event trigger fires your playbook whenever a record change occurs in a specific vault table — without any external connection required.
+Vault event triggers fire when a record changes in a specific vault table. Select **Record Added**, **Record Updated**, or **Record Deleted** from the VAULT EVENTS section of the trigger picker.
 
-### Step 1: Select the Vault Event trigger type
+### Configuring a vault event trigger
 
-In the playbook editor, click the **trigger card** and select **Vault Event** as the trigger type.
+After selecting a vault event trigger, the **Trigger Configuration** panel opens with two fields:
 
----
+**Select table** — Choose which vault table to monitor. The playbook fires whenever the selected event occurs on any record in this table.
 
-### Step 2: Select a Table and Event Type
-
-**Table** — Select the vault table to monitor.
-
-**Event type** — Select which record change should fire the playbook:
-
-| Event type | When it fires |
-|---|---|
-| **Record Added** | A new record is created in the selected table |
-| **Record Updated** | An existing record's data is changed |
-| **Record Deleted** | A record is deleted from the table |
+**Description** — An optional field to document when and why this playbook runs.
 
 <Frame>
-  <img src="/images/graphium/playbooks/vault-event-trigger.png" alt="Vault event trigger configuration showing table and event type selection" />
+  <img src="/images/graphium/playbooks/vault-event-trigger-config.png" alt="Record Added trigger configuration showing the Select table dropdown" />
 </Frame>
 
-> 💡 **Tip:** Vault event triggers are powerful for real-time validation and alerting workflows — for example, automatically checking a new case record for completeness the moment it is created, or flagging an updated record that no longer meets compliance criteria.
+> 💡 **Tip:** Vault event triggers are effective for real-time validation workflows — for example, checking a new case record for completeness the moment it is created, or flagging an updated record that may no longer meet compliance criteria.
 
 ---
 
-### What Happens at Publish
+## Connection Event Triggers
 
-Vault event triggers become active immediately when the playbook is published. No external deployment is required — Graphium monitors the selected table directly. Disabling the playbook pauses the trigger; re-enabling it resumes monitoring.
+Connection event triggers fire when something happens in one of your vault's connected external systems. Each connection (Google Sheets, Graphium EMR, SFTP, etc.) lists its own specific trigger events in the **Choose a Trigger** modal under the connection's name.
+
+### Selecting a connection trigger
+
+Scroll to the section for the connection you want (for example, **GOOGLE SHEETS**) and click the specific event to listen for. Examples of available events:
+
+| Connection | Example trigger events |
+|---|---|
+| Google Sheets | New Row Added, Row Updated, New Comment, New Worksheet |
+| Google Sheets (polling) | New Row Added (Polling), Row Updated (Polling) |
+| Graphium EMR | Case Created, Case Updated, Case Signed |
+| FTP/SFTP | New File Uploaded, File Modified |
+
+> **Note:** Some events have a **(Polling)** variant alongside a standard webhook-based version. Polling triggers check the external service at regular intervals rather than receiving instant notifications. Use polling when the external system does not support webhooks.
+
+### Configuring connection trigger parameters
+
+After selecting a connection trigger event, the **Trigger Configuration** panel opens showing the trigger name, its required parameters, and a Description field.
+
+Parameters vary by connection and event. For example, selecting **New Row Added** from a Google Sheets connection shows:
+
+- **Spreadsheet** (required) — Select which spreadsheet to monitor from a dropdown of your connected Google Sheets files
+- **Worksheet(s)** (required) — Select which sheet tab within that spreadsheet to watch
+
+<Frame>
+  <img src="/images/graphium/playbooks/connection-trigger-config.png" alt="Connection Event trigger configuration showing Spreadsheet and Worksheet parameter dropdowns" />
+</Frame>
+
+Fill in all required parameters (marked with *) before saving and publishing.
+
+### Testing a connection trigger
+
+A **Test Trigger** button appears at the bottom of the Trigger Configuration panel. Use this to verify the trigger is correctly configured and that Graphium can connect to the external service before publishing the playbook.
 
 ---
 
-## Run History for Automatically Triggered Runs
+## What Happens at Publish
 
-Runs started by connection and vault event triggers appear in the **Run History** panel alongside manual and scheduled runs. Each row shows the trigger type so you can identify how the run was started.
+When you publish a playbook with a connection event trigger, Graphium automatically **deploys** the trigger — registering it with the external service so it begins listening for the configured event immediately.
 
-The event payload that triggered the run — for example, the row data from Google Sheets, the case record from the EMR, or the vault record that was created — is available to the AI during execution. You can reference it in your step instructions.
+When you **disable** a connection-triggered playbook, the trigger is paused and stops receiving events from the external service. Re-enabling the playbook reactivates the trigger.
+
+Vault event triggers become active on publish without any external deployment — Graphium monitors the selected table directly.
+
+> **Note:** If a connection trigger fails to deploy after publishing — for example, because the connection's credentials have expired — the playbook will show an error state. Check the connection's status in the **Connections** section and re-publish once it is healthy.
 
 ---
 
@@ -129,11 +114,11 @@ The event payload that triggered the run — for example, the row data from Goog
 
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
-| Playbook is not firing when expected | The playbook may be disabled, or the trigger may be in an error state | Check that the playbook is enabled and that the trigger card shows no error indicator |
-| Connection trigger shows an error state after publishing | The connection's credentials may have expired, or the external service rejected the deployment | Open Connections, verify the connection is healthy, then re-publish the playbook |
-| A vault event trigger did not fire for a specific record change | The trigger may be configured for a different table or event type | Open the trigger configuration and confirm the table and event type match the change you expected |
-| Parameter dropdowns are empty or not loading | The connection may not have permission to list those resources, or the connection credentials may have expired | Check the connection status and ensure it has the correct permissions for the resource you are trying to configure |
-| Duplicate runs are appearing for the same event | A known external service may be retrying its webhook delivery | Graphium deduplicates events automatically — if duplicates are appearing, contact support |
+| The connection I need is not listed in the trigger picker | The connection has not been added to this vault, or is not enabled in Playbook Context | Open the **Connections** section to add the connection, then enable it in **Playbook Context** |
+| Playbook is not firing when an external event occurs | The trigger may be in an error state, or the connection's credentials may have expired | Check that the playbook is enabled and that the connection is healthy in the Connections section |
+| A vault event trigger did not fire for a specific record change | The trigger may be configured for a different table or event type | Open the trigger configuration and confirm the table and event type match the expected change |
+| Required parameter dropdowns are empty | The connection may not have permission to list those resources, or credentials may have expired | Check the connection status and verify it has the correct permissions |
+| The playbook shows an error state after publishing | Trigger deployment to the external service failed | Open the Connections section, verify the connection is healthy, then re-publish |
 
 ---
 

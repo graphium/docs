@@ -89,12 +89,14 @@ Click the **trigger card** in the Playbook Outline (below Playbook Context) to o
   <img src="/images/graphium/playbooks/add-playbook-trigger.png" alt="Trigger card in the Playbook Outline" />
 </Frame>
 
-Select a trigger type:
+A **Choose a Trigger** modal opens with a searchable list of all available trigger types, grouped by category:
 
-- **Manual** — The playbook only runs when a Builder clicks **Save & Test** or triggers it manually. Use this for on-demand workflows.
-- **Scheduled** — The playbook runs automatically at a configured time. See [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook) for scheduling details.
-- **Connection** — The playbook fires automatically when an external connection event occurs — for example, when a new row is added to a Google Sheet, when a case is created in your EMR, or when a file arrives on an SFTP server. You select the connection, the event type, and configure any required parameters. See [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
-- **Vault Event** — The playbook fires automatically when a record is created, updated, or deleted in a specific vault table. You select the table and the event type. See [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
+- **Manual** — Run manually from the dashboard.
+- **Scheduled** — Run on a recurring schedule.
+- **Vault Events** (Record Added, Record Updated, Record Deleted) — Fire automatically when a record changes in a specific vault table.
+- **Connection events** (listed per connection, e.g., New Row Added from Google Sheets) — Fire automatically when something happens in a connected external system.
+
+Click the trigger you want to configure. For vault event and connection triggers, see [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
 
 <Frame>
   <img src="/images/graphium/playbooks/select-playbook-trigger.png" alt="Trigger type selection" />
