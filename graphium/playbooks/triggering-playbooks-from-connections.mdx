@@ -19,7 +19,7 @@ To set or change a playbook's trigger, click the **trigger card** in the Playboo
 The **Choose a Trigger** modal opens with a searchable list of all available trigger types, grouped by category.
 
 <Frame>
-  <img src="/images/graphium/playbooks/choose-trigger-modal.png" alt="Choose a Trigger modal showing General, Vault Events, and connection-specific trigger options" />
+  <img src="/images/graphium/playbooks/select-playbook-trigger.png" alt="Choose a Trigger modal showing General, Vault Events, and connection-specific trigger options" />
 </Frame>
 
 The modal is organized into three sections:
@@ -53,7 +53,7 @@ After selecting a vault event trigger, the **Trigger Configuration** panel opens
 **Description** — An optional field to document when and why this playbook runs.
 
 <Frame>
-  <img src="/images/graphium/playbooks/vault-event-trigger-config.png" alt="Record Added trigger configuration showing the Select table dropdown" />
+  <img src="/images/graphium/playbooks/vault-event-trigger.png" alt="Record Added trigger configuration showing the Select table dropdown" />
 </Frame>
 
 > 💡 **Tip:** Vault event triggers are effective for real-time validation workflows — for example, checking a new case record for completeness the moment it is created, or flagging an updated record that may no longer meet compliance criteria.
@@ -87,14 +87,10 @@ Parameters vary by connection and event. For example, selecting **New Row Added*
 - **Worksheet(s)** (required) — Select which sheet tab within that spreadsheet to watch
 
 <Frame>
-  <img src="/images/graphium/playbooks/connection-trigger-config.png" alt="Connection Event trigger configuration showing Spreadsheet and Worksheet parameter dropdowns" />
+  <img src="/images/graphium/playbooks/connection-event-trigger.png" alt="Connection Event trigger configuration showing Spreadsheet and Worksheet parameter dropdowns" />
 </Frame>
 
 Fill in all required parameters (marked with *) before saving and publishing.
-
-### Testing a connection trigger
-
-A **Test Trigger** button appears at the bottom of the Trigger Configuration panel. Use this to verify the trigger is correctly configured and that Graphium can connect to the external service before publishing the playbook.
 
 ---
 
@@ -124,7 +120,5 @@ Vault event triggers become active on publish without any external deployment �
 
 ## Related Articles
 
-- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
-- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
-- [What are Playbooks?](/graphium/core-concepts/playbooks)
+- [Playbooks](/graphium/core-concepts/playbooks)
 - [Working with a Connection](/graphium/connections/working-with-a-connection)
