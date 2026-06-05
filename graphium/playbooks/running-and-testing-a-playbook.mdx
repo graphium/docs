@@ -40,6 +40,21 @@ Test mode executes all steps but suppresses any real-world side effects:
 
 ---
 
+## What Happens in a Live Run
+
+Clicking **Run** starts a live execution where the playbook performs real actions:
+
+- All steps execute in sequence. The output of each step is passed to the next.
+- **External actions are real.** Any step that sends data to a connection, posts to Slack, writes to a Google Sheet, or updates an EMR record does so immediately.
+- **Vault table writes happen.** Records are created or modified as instructed.
+- **Approval gates are active.** If a resource is set to Requires Approval, the run pauses and waits for a Builder to review before continuing.
+- If a step **fails**, the run stops at that point and all subsequent steps are marked as **Skipped**.
+- Live runs appear in the Run History with their trigger type — **Manual**, **Scheduled**, **Record Added**, **Connection Event**, etc.
+
+> ⚠️ **Note:** Live runs take real actions immediately. Use **Test** mode first to verify your playbook's logic before running it live.
+
+---
+
 ## Reading the Run History
 
 The **Run History** panel shows all past and in-progress runs for the current playbook. Each run row shows:
