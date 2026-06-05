@@ -6,73 +6,76 @@ icon: "play"
 
 ## Overview
 
-Once a playbook is published, Builders can run it manually, test it safely in dry-run mode, or configure it to run automatically on a schedule. This article covers all three run modes and explains how to read the Run History panel to understand what the AI did during each execution.
+Once a playbook is published, Builders can run it immediately on demand, test it safely in dry-run mode before going live, or configure it to run automatically on a schedule. This article covers all three run modes and explains how to read the Run History panel to understand what the AI did during each execution.
 
 ---
 
-## Running a Playbook Manually
+## Running and Testing a Playbook
 
-Manual runs let you trigger a playbook immediately on demand. The playbook must be published before it can be run.
+For a published playbook, the **Run History** panel on the right side of the editor contains two buttons:
 
-### How to Start a Manual Run
-
-Open the playbook from the Playbooks list. In the Playbook Outline on the left, click **Save & Test** to trigger a run. The run appears immediately in the **Run History** panel on the right.
+- **Test** (flask icon) — Starts a dry-run test that executes all steps but suppresses external actions. Use this to verify your playbook before running it live.
+- **Run** (play icon) — Starts a live run immediately. The playbook executes all steps and takes real actions.
 
 <Frame>
-  <img src="/images/graphium/playbooks/save-and-test-button.png" alt="Save and Test button in the Playbook Outline header" />
+  <img src="/images/graphium/playbooks/run-history-panel.png" alt="Run History panel showing Test and Run buttons" />
 </Frame>
+
+A "Test run started" or confirmation toast appears when the run is queued. The new run appears at the top of the Run History list with a **Pending** status while it executes.
+
+> **Note:** The **Save & Test** button in the Playbook Outline header is only available in edit/draft mode. For a published playbook, use the **Test** and **Run** buttons in the Run History panel instead.
+
+---
+
+## What Happens in Test Mode
+
+Test mode executes all steps but suppresses any real-world side effects:
+
+- **External actions are suppressed.** Any step that would send an email, post to a connection, or write to an external system instead logs: *"TEST MODE: Would have executed [action] on [connection name]."*
+- **Vault table writes are suppressed.** No records are created or modified.
+- **Approval gates are skipped.** The run does not pause for approval in test mode.
+- Test runs appear in the Run History panel with a **Test** badge (yellow) so they are visually distinct from live runs.
+
+> **Note:** Test runs still read from your vault tables and connections. Only write actions and external outputs are suppressed.
 
 ---
 
 ## Reading the Run History
 
-The **Run History** panel on the right side of the editor shows all past and in-progress runs for the current playbook. Each run row shows:
+The **Run History** panel shows all past and in-progress runs for the current playbook. Each run row shows:
 
 - **Date and time** — When the run started.
-- **Status badge** — The current state: **Completed** (green), **Pending Review** (orange), **Failed** (red), or **Cancelled**.
-- **Trigger type** — How the run was started: **Scheduled** or **Test**.
-- **Step progress** — How many steps completed out of the total (for example, *5/7 steps*).
-- **Execution time and total time** — How long the run took.
+- **Status badge** — The current state: **Completed** (green), **Pending** (orange), **Failed** (red), or **Cancelled**.
+- **Trigger type** — How the run was started: **Manual** (plain text), **Test** (yellow badge), **Scheduled**, **Record Added**, **Connection Event**, etc.
+- **Step progress** — How many steps completed out of the total (for example, *2/2 steps*).
+- **Execution time** — How long the run took (for example, *20s*).
 
 <Frame>
-  <img src="/images/graphium/playbooks/run-history-panel.png" alt="Run History panel showing multiple runs with statuses" />
+  <img src="/images/graphium/playbooks/run-history-list.png" alt="Run History panel showing completed Manual and Test runs" />
 </Frame>
-
-Click any run row to open the run detail and see a step-by-step breakdown of what the AI did, including tool calls, narration, and any errors.
-
-### Reading a Run Detail
-
-The run detail shows each step's completion status (pending → running → completed), the AI's narration for what it did, any tool calls it made and the results, and execution time per step.
-
-If a step **fails**, the run stops at that step and all subsequent steps are marked as **Skipped**. The error message is shown in the failed step's detail.
-
-### Cancelling a Run
-
-To cancel an in-progress run, open the run detail and click **Cancel Run**. Steps that already completed are not rolled back.
 
 ---
 
-## Testing a Playbook in Dry-Run Mode
+## Reading a Run Detail
 
-Test mode lets you run a playbook without actually sending emails, writing to connections, or modifying vault tables. Use it to verify your playbook's logic before running it live.
+Click any run row to expand its detail inline within the Run History panel. The detail view shows:
 
-### How to Start a Test Run
+- **← All Runs** — Click to return to the run list.
+- **"Playbook triggered by [trigger type]"** — Confirms how the run was started.
+- **Numbered step tabs** — Click each step number to navigate between steps.
+- **AI narration per step** — A plain-language summary of what the AI did at each step, including any tool calls made and their results.
 
-In the Playbook Outline, choose **Test** mode when triggering a run (rather than a live run). The playbook executes all steps but suppresses any external actions.
+If a step **fails**, the run stops at that step and all subsequent steps are marked as **Skipped**. The error message is shown in the failed step's narration.
 
 <Frame>
-  <img src="/images/graphium/playbooks/test-mode-trigger.png" alt="Test mode option when triggering a run" />
+  <img src="/images/graphium/playbooks/run-detail-view.png" alt="Run detail showing step tabs and AI narration" />
 </Frame>
 
-### What Happens in Test Mode
+---
 
-- All steps execute and the AI reasons through the workflow as normal.
-- **External actions are suppressed.** Any step that would send an email, post to a connection, or write to an external system instead logs: *"TEST MODE: Would have executed [action] on [connection name]."*
-- **Vault table writes are suppressed.** No records are created or modified.
-- **Approval gates are skipped.** The run does not pause for approval in test mode.
-- Test runs appear in the Run History panel with a **Test** badge so they are visually distinct from live runs.
+## Cancelling a Run
 
-> **Note:** Test runs still read from your vault tables and connections. Only write actions and external outputs are suppressed.
+To cancel an in-progress run, open the run detail while the run is still executing and click **Cancel Run**. Steps that have already completed are not rolled back.
 
 ---
 
@@ -82,16 +85,16 @@ Scheduled playbooks run automatically at a configured time and frequency — no 
 
 ### Configuring a Schedule
 
-In the playbook editor, click the trigger card in the Playbook Outline and set the trigger type to **Scheduled**. Configure:
+In the playbook editor, click the trigger card in the Playbook Outline and select **Scheduled** from the Choose a Trigger modal. The Trigger Configuration panel shows:
 
-- **Frequency** — How often the playbook runs (for example, daily or weekly).
-- **Time** — The time of day the run should start.
-- **Timezone** — The timezone used to evaluate the scheduled time.
+- **Frequency** — How often the playbook runs (for example, Daily, Weekly).
+- **Time** — The time of day the run should start (for example, 09:00 AM).
+- **Time Zone** — The time zone used to evaluate the scheduled time.
 
 Save and publish the playbook to activate the schedule. The first scheduled run fires at the next occurrence of your configured time.
 
 <Frame>
-  <img src="/images/graphium/playbooks/scheduled-trigger-config.png" alt="Scheduled trigger configuration" />
+  <img src="/images/graphium/playbooks/scheduled-trigger-config.png" alt="Scheduled trigger configuration showing Frequency, Time, and Time Zone fields" />
 </Frame>
 
 ### Scheduled Run Behaviour
@@ -108,8 +111,8 @@ Save and publish the playbook to activate the schedule. The first scheduled run 
 
 | Status | Meaning |
 |--------|---------|
+| **Pending** | The run is queued and executing |
 | **Completed** | All steps finished successfully |
-| **Pending Review** | The run is paused at an approval gate awaiting a decision |
 | **Failed** | A step encountered an error and the run stopped |
 | **Cancelled** | The run was manually cancelled by a Builder |
 
@@ -119,9 +122,9 @@ Save and publish the playbook to activate the schedule. The first scheduled run 
 
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
-| Save & Test button is greyed out | The playbook has no steps with instructions | Add at least one step with instructions |
+| Test and Run buttons are greyed out | The playbook may not be published | Publish the playbook first — the Test and Run buttons are only active for published playbooks |
 | Run does not appear in history | A connection or network issue may have interrupted the request | Refresh the page and check again |
-| A step shows as Skipped | A previous step failed and the run stopped | Open the failed step's detail to read the error, then correct the step's instructions or resource access |
+| A step shows as Skipped | A previous step failed and the run stopped | Open the failed step's detail to read the AI narration, then correct the step's instructions or resource access |
 | Scheduled playbook is not running | The playbook is disabled, or the schedule is not yet published | Confirm the playbook is enabled and that the scheduled trigger has been saved and published |
 
 ---
