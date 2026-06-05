@@ -31,6 +31,48 @@ Two resource types support review checkpoints:
 
 ---
 
+## Adding a Review Checkpoint to a Step
+
+Review checkpoints are configured through the **Success Criteria** section inside each step's **Advanced Options**. After a step completes, the AI evaluates the success criteria conditions against its output. If a condition is met and the action is set to **Require Review**, the run pauses and waits for a Builder to confirm before continuing.
+
+### Step 1: Open Advanced Options on a Step
+
+In the playbook editor, click the step you want to add a review checkpoint to. The **Step Details** panel opens in the center column. Scroll down and click **Advanced Options** to expand it.
+
+<Frame>
+  <img src="/images/graphium/playbooks/advanced-options.png" alt="Advanced Options section expanded in Step Details" />
+</Frame>
+
+---
+
+### Step 2: Add a Success Criterion
+
+In the **Success Criteria** section, click **+ Add Criterion**. A new criterion row appears with:
+
+- A **text field** — describe the condition in plain language. The AI evaluates this description against its step output to determine whether to trigger the action.
+- Three **action buttons** — select what happens when the condition is met:
+  - **Fail Playbook** — the run stops and is marked as Failed
+  - **Stop Without Failure** — the run stops but is not marked as a failure
+  - **Require Review** — the run pauses and enters Pending Review status, waiting for a Builder to approve or deny
+
+<Frame>
+  <img src="/images/graphium/playbooks/success-criteria.png" alt="Success Criteria row showing condition text field and Require Review action selected" />
+</Frame>
+
+Select **Require Review** as the action. The button highlights to show it is active.
+
+> 💡 **Tip:** Write your condition in plain language that the AI can evaluate against its output — for example, *"Any encounter is missing required billing fields"* or *"The data contains values outside the expected range."*
+
+You can add multiple criteria to the same step by clicking **+ Add Criterion** again. Each criterion is evaluated independently. To remove a criterion, click the **✕** on the right side of the row.
+
+---
+
+### Step 3: Save and Publish
+
+Save and publish the playbook for the review checkpoint to take effect on live runs. The **Advanced Options** badge shows a count of configured criteria (for example, *1 criterion*) so you can see at a glance which steps have checkpoints configured.
+
+---
+
 ## Step-by-Step Instructions
 
 ### Step 1: Open Playbook Context
