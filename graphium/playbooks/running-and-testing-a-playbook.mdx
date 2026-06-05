@@ -33,7 +33,7 @@ Test mode executes all steps but suppresses any real-world side effects:
 
 - **External actions are suppressed.** Any step that would send an email, post to a connection, or write to an external system instead logs: *"TEST MODE: Would have executed [action] on [connection name]."*
 - **Vault table writes are suppressed.** No records are created or modified.
-- **Approval gates are skipped.** The run does not pause for approval in test mode.
+- **Review checkpoints are skipped.** The run does not pause for approval in test mode.
 - Test runs appear in the Run History panel with a **Test** badge (yellow) so they are visually distinct from live runs.
 
 <Frame>
@@ -51,7 +51,7 @@ Clicking **Run** starts a live execution where the playbook performs real action
 - All steps execute in sequence. The output of each step is passed to the next.
 - **External actions are real.** Any step that sends data to a connection, posts to Slack, writes to a Google Sheet, or updates an EMR record does so immediately.
 - **Vault table writes happen.** Records are created or modified as instructed.
-- **Approval gates are active.** If a resource is set to Requires Approval, the run pauses and waits for a Builder to review before continuing.
+- **Review checkpoints are active.** If a resource is set to Requires Review, the run pauses and waits for a Builder to review before continuing.
 - If a step **fails**, the run stops at that point and all subsequent steps are marked as **Skipped**.
 - Live runs appear in the Run History with their trigger type — **Manual**, **Scheduled**, **Record Added**, **Connection Event**, etc.
 

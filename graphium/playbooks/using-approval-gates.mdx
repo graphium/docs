@@ -1,18 +1,18 @@
 ---
-title: "Using Approval Gates"
+title: "Using Review Checkpoints"
 description: ""
 icon: "play"
 ---
 
 ## Overview
 
-Approval gates let you add human review checkpoints to a playbook run. When a run reaches an approval gate, it pauses and waits for a Builder to review and confirm before allowing the run to continue. This is useful any time a playbook's next action is irreversible — such as sending data to an external system or writing records — and you want a person to verify it first.
+Review checkpoints are pause points in a playbook run where a Builder must confirm before the run continues. When a run reaches a review checkpoint, it stops and waits for a Builder to review and approve before allowing the run to proceed. This is useful any time a playbook's next action is irreversible — such as sending data to an external system or writing records — and you want a person to verify it first.
 
 ---
 
-## When to Use Approval Gates
+## When to Use Review Checkpoints
 
-Use approval gates when you need to:
+Use review checkpoints when you need to:
 
 - Review AI output before it is sent to an external connection (such as an EMR or a Google Sheet)
 - Confirm that records are correct before they are written to a vault table
@@ -20,14 +20,14 @@ Use approval gates when you need to:
 
 ---
 
-## How Approval Gates Work
+## How Review Checkpoints Work
 
-Approval gates are configured on resources in the **Playbook Context** panel. When a run reaches an action covered by an approval gate, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
+Review checkpoints are configured on resources in the **Playbook Context** panel. When a run reaches an action covered by a review checkpoint, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
 
-Two resource types support approval gates:
+Two resource types support review checkpoints:
 
-- **Tables** — Set a table's approval mode to **Requires Approval** to pause the run before any write action is taken on that table.
-- **Connections** — Set a connection's approval mode to **Requires Approval** to pause the run before any data is sent to or action is taken on that connection.
+- **Tables** — Set a table's approval mode to **Requires Review** to pause the run before any write action is taken on that table.
+- **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before any data is sent to or action is taken on that connection.
 
 ---
 
@@ -43,39 +43,39 @@ In the playbook editor, click **Playbook Context** at the top of the **Playbook 
 
 ---
 
-### Step 2: Set a Resource to Requires Approval
+### Step 2: Set a Resource to Requires Review
 
 In the **Tables** or **Connections** section, find the resource you want to gate.
 
-Each resource shows its current approval mode — by default this is **Autonomous**, meaning the AI can act on it without pausing.
+Each resource shows its current approval mode as a badge — by default this is **Autonomous**, meaning the AI can act on it without pausing.
 
-Change the mode to **Requires Approval**. The run will now pause every time the AI is about to take an action on that resource, and wait for your review before proceeding.
+Click the **Autonomous** badge to toggle it to **Requires Review**. The run will now pause every time the AI is about to take an action on that resource, and wait for your review before proceeding. Click the badge again to switch it back to **Autonomous**.
 
-> **Note:** You can mix approval modes across resources. For example, you might allow the AI to read a table autonomously but require approval before it writes to a connection.
+> **Note:** You can mix approval modes across resources. For example, you might allow the AI to read a table autonomously but require review before it writes to a connection.
 
 <Frame>
-  <img src="/images/graphium/playbooks/requires-approval-toggle.png" alt="Requires Approval mode on a connection in Playbook Context" />
+  <img src="/images/graphium/playbooks/requires-approval-toggle.png" alt="Requires Review mode on a connection in Playbook Context" />
 </Frame>
 
-Save and publish the playbook for the approval gate to take effect on live runs.
+Save and publish the playbook for the review checkpoint to take effect on live runs.
 
 ---
 
-### Step 3: Receive a Notification When Approval Is Needed
+### Step 3: Receive a Notification When Review Is Needed
 
-When a live run hits an approval gate, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). The Builder responsible for the playbook also receives an **email notification** with a link to the run.
+When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). The Builder responsible for the playbook also receives an **email notification** with a link to the run.
 
-> **Note:** Approval gates are skipped entirely in test mode. Notifications are only sent for live runs.
+> **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
 
 ---
 
-### Step 4: Resolve the Approval
+### Step 4: Resolve the Review
 
 Open the playbook in the editor. In the **Run History** panel on the right, locate the run with **Pending Review** status.
 
 The run row shows:
 
-- The number of approvals needed (for example, *1 approval needed*)
+- The number of reviews needed (for example, *1 approval needed*)
 - An **Approve & Continue** button (cyan)
 - A **Deny** button
 
@@ -85,26 +85,26 @@ The run row shows:
 
 **To approve:** Click **Approve & Continue**. The run resumes from the point it was paused and continues to the next step.
 
-**To deny:** Click **Deny**. The run fails at that approval gate. Subsequent steps are marked as Skipped and the run does not continue.
+**To deny:** Click **Deny**. The run fails at that review checkpoint. Subsequent steps are marked as Skipped and the run does not continue.
 
-### Approving Multiple Gates at Once
+### Approving Multiple Checkpoints at Once
 
-If multiple approvals are pending on the same run, the run row shows the total count (for example, *3 approvals needed*). An **Approve All & Continue** button appears, which resolves all pending approvals in one action and resumes the run.
+If multiple reviews are pending on the same run, the run row shows the total count (for example, *3 approvals needed*). An **Approve All & Continue** button appears, which resolves all pending reviews in one action and resumes the run.
 
 <Frame>
-  <img src="/images/graphium/playbooks/approve-all-button.png" alt="Approve All and Continue button for multiple pending approvals" />
+  <img src="/images/graphium/playbooks/approve-all-button.png" alt="Approve All and Continue button for multiple pending reviews" />
 </Frame>
 
 ---
 
-## Approval Gate Reference
+## Review Checkpoint Reference
 
 | Resource | Approval Mode | Effect |
 |----------|---------------|--------|
 | Table | Autonomous | AI can read and write without pausing |
-| Table | Requires Approval | Run pauses before any write to this table |
+| Table | Requires Review | Run pauses before any write to this table |
 | Connection | Autonomous | AI can send data and take actions without pausing |
-| Connection | Requires Approval | Run pauses before any action on this connection |
+| Connection | Requires Review | Run pauses before any action on this connection |
 
 ---
 
@@ -112,11 +112,11 @@ If multiple approvals are pending on the same run, the run row shows the total c
 
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
-| Run did not pause at the approval gate | The playbook is running in test mode | Approval gates are skipped in test mode — trigger a live run instead |
+| Run did not pause at the review checkpoint | The playbook is running in test mode | Review checkpoints are skipped in test mode — trigger a live run instead |
 | No email notification was received | The email may have been filtered, or the notification hasn't fired yet | Check your spam folder; if the run shows Pending Review in the history panel, the approval button is available there |
-| Approve & Continue button is not visible | You may not have Builder or Admin vault access | Approvals can only be resolved by users with Builder or Admin role |
-| Run shows Failed after denying | Expected behaviour | Denying an approval causes the run to fail at that gate — this is intentional |
-| Approval gate is firing but it wasn't configured | The connection or table may have been set to Requires Approval in a previous version | Open Playbook Context and check the approval mode on each enabled resource |
+| Approve & Continue button is not visible | You may not have Builder or Admin vault access | Reviews can only be resolved by users with Builder or Admin role |
+| Run shows Failed after denying | Expected behaviour | Denying a review causes the run to fail at that checkpoint — this is intentional |
+| A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Context and check the approval mode on each enabled resource |
 
 ---
 

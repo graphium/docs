@@ -29,7 +29,7 @@ Playbooks replace manual, repetitive processes: instead of pulling data from a s
 
 **Test Mode** — A dry-run execution that performs all steps but suppresses external actions (emails, connection writes, etc.) so you can safely verify a playbook before running it live.
 
-**Approval Gate** — A configurable pause point within a run. When a step or connection is set to require approval, the run stops and waits for a Builder to review and approve before continuing.
+**Review Checkpoint** — A configurable pause point within a run. When a connection or table is set to Requires Review, the run stops and waits for a Builder to confirm before continuing.
 
 ---
 
@@ -51,5 +51,5 @@ Playbook access is role-based within a vault:
 - [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
 - [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
 - [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections)
-- [Using Approval Gates](/graphium/playbooks/using-approval-gates)
+- [Using Review Checkpoints](/graphium/playbooks/using-approval-gates)
 - [Access and Permissions](/graphium/core-concepts/access-and-permissions)
