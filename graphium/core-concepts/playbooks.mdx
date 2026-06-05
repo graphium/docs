@@ -16,10 +16,12 @@ Playbooks replace manual, repetitive processes: instead of pulling data from a s
 
 **Steps** — Each playbook is made up of one or more steps. A step is a plain-language instruction that tells the AI what to do at that point in the workflow. Steps run in order, and the output of one step can inform the next.
 
-**Trigger** — The trigger determines how a playbook starts. Playbooks support two trigger types:
+**Trigger** — The trigger determines how a playbook starts. Playbooks support four trigger types:
 
 - **Manual** — A Builder clicks "Run" to start the playbook immediately.
 - **Scheduled** — The playbook runs automatically at a configured time and frequency (daily, weekly, etc.).
+- **Connection** — The playbook fires automatically when an external connection event occurs, such as a new row added to a Google Sheet, a case created in an EMR, or a file arriving on an SFTP server. The trigger is deployed when the playbook is published and paused when it is disabled.
+- **Vault Event** — The playbook fires automatically when a record is created, updated, or deleted in a specific vault table.
 
 **Version** — Every time you save a playbook, a new draft version is created. Versions are immutable snapshots. Publishing a version makes it the active one. You can view version history and roll back by publishing an older version.
 
@@ -48,5 +50,6 @@ Playbook access is role-based within a vault:
 
 - [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
 - [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections)
 - [Using Approval Gates](/graphium/playbooks/using-approval-gates)
 - [Access and Permissions](/graphium/core-concepts/access-and-permissions)

@@ -93,6 +93,8 @@ Select a trigger type:
 
 - **Manual** — The playbook only runs when a Builder clicks **Save & Test** or triggers it manually. Use this for on-demand workflows.
 - **Scheduled** — The playbook runs automatically at a configured time. See [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook) for scheduling details.
+- **Connection** — The playbook fires automatically when an external connection event occurs — for example, when a new row is added to a Google Sheet, when a case is created in your EMR, or when a file arrives on an SFTP server. You select the connection, the event type, and configure any required parameters. See [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
+- **Vault Event** — The playbook fires automatically when a record is created, updated, or deleted in a specific vault table. You select the table and the event type. See [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
 
 <Frame>
   <img src="/images/graphium/playbooks/select-playbook-trigger.png" alt="Trigger type selection" />
@@ -151,6 +153,7 @@ Once published:
 - The playbook shows an **Enabled** badge in the list and in the editor header.
 - Manual playbooks are immediately available to run.
 - Scheduled playbooks begin running at the next configured time.
+- Connection and Vault Event playbooks are automatically deployed — the trigger is registered with the external service and begins listening for events immediately.
 
 <Frame>
   <img src="/images/graphium/playbooks/publish-playbook.png" alt="Publish button and Enabled badge" />
@@ -182,7 +185,7 @@ To edit an active playbook, open the playbook from the list, click **Edit** in t
 
 ## Disabling a Playbook
 
-To stop a playbook from running, disable it. A disabled playbook will not fire on schedule and cannot be triggered manually until re-enabled.
+To stop a playbook from running, disable it. A disabled playbook will not fire on schedule, cannot be triggered manually, and will not respond to connection or vault events until re-enabled. For connection-triggered playbooks, disabling also pauses the deployed trigger on the external service.
 
 <Frame>
   <img src="/images/graphium/playbooks/disable-playbook.png" alt="Disabling a playbook" />

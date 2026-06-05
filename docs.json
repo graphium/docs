@@ -95,6 +95,7 @@
             "group": "Playbooks",
             "pages": [
               "graphium/playbooks/creating-and-publishing-a-playbook",
+              "graphium/playbooks/triggering-playbooks-from-connections",
               "graphium/playbooks/running-and-testing-a-playbook",
               "graphium/playbooks/using-approval-gates"
             ]
