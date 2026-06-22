@@ -109,7 +109,8 @@
               "graphium/ai-assistants/viewing-conversation-history",
               "graphium/ai-assistants/switching-between-ai-assistants",
               "graphium/ai-assistants/managing-your-ai-assistants",
-              "graphium/ai-assistants/configuring-chat-context-and-query-tools"
+              "graphium/ai-assistants/configuring-chat-context-and-query-tools",
+              "graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant"
             ]
           }
     ],

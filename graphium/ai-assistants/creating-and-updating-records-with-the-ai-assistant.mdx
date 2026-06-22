@@ -1,0 +1,115 @@
+---
+title: "Creating and Updating Records with the AI Assistant"
+description: ""
+icon: "pen-to-square"
+---
+
+## Overview
+
+When a vault table is configured with **Read & Write** access, the AI assistant can do more than query your data — it can create new records and update existing ones directly from a conversation. You describe what you need in plain language, and the assistant handles the write.
+
+This is useful for capturing records on the fly, correcting data without leaving a chat, and running playbooks that write back to vault tables as part of an automated workflow.
+
+---
+
+## Enabling Write Access for a Table
+
+Write access is configured per table inside the assistant's **Tools** tab. Each vault table has three access levels:
+
+- **Off** — the assistant cannot see or use this table
+- **Read** — the assistant can query and report on data but cannot make any changes
+- **Read & Write** — the assistant can query data, create new records, and update existing records
+
+To enable write access:
+
+1. Open the assistant in the **Assistants** section of the vault sidebar.
+2. Click **Edit** and navigate to the **Tools** tab.
+3. Under **Table Access**, find the table you want to enable.
+4. Click **Read & Write** to select it.
+5. Save and publish the assistant.
+
+<Frame>
+  <img src="/images/graphium/assistant/table-access-read-write.png" alt="Table Access section showing Off, Read, and Read & Write options" />
+</Frame>
+
+> **Note:** Only Admins and Builders can configure an assistant's tools. Users interacting with the assistant in chat do not change these settings — they are fixed by whoever published the assistant.
+
+---
+
+## Creating a New Record
+
+To create a record, describe it in plain language. Include the field values you want to set:
+
+- *"Create a new patient named Maria Lopez with a date of birth of June 15, 1985."*
+- *"Add a new provider: Dr. James Rivera, specialty Cardiology."*
+- *"Create a patient record for Omar Patel. Status: Active. Date of birth: March 2, 1978."*
+
+The assistant confirms what it will create, writes the record, and reports back — including the record's assigned ID.
+
+<Frame>
+  <img src="/images/graphium/assistant/create-record-response.png" alt="AI assistant response confirming a new patient record was created" />
+</Frame>
+
+> 💡 **Tip:** You do not need to list every field — the assistant will populate required fields and leave optional ones blank. If a required field is missing and the assistant cannot infer it, it will ask you for the missing value before proceeding.
+
+---
+
+## Updating an Existing Record
+
+To update a record, identify the record you want to change and describe the update:
+
+- *"Update John Smith's phone number to 555-0199."*
+- *"Set the status on patient #PAT-4821 to Inactive."*
+- *"Change Dr. Rivera's specialty to Interventional Cardiology."*
+
+The assistant looks up the matching record, applies only the fields you specified, and confirms the change. Fields you do not mention are left exactly as they are.
+
+<Frame>
+  <img src="/images/graphium/assistant/update-record-response.png" alt="AI assistant response confirming a record update" />
+</Frame>
+
+> **Note:** If your description matches more than one record (for example, a common name with multiple results), the assistant will list the candidates and ask you to clarify before making any change.
+
+---
+
+## What the AI Can Write
+
+The assistant can write to most field types in a vault table:
+
+- **Text, number, date, time, and checkbox fields** — set or cleared by value
+- **Dropdown fields** — matched by label, case-insensitively (e.g., *"set status to active"* resolves to *Active*)
+- **Nested fields** — group fields like an address (street, city, state, zip) can be set or updated together
+- **List fields** — repeating groups like emergency contacts can be set as a complete list; the assistant replaces the entire list with what you describe
+- **Reference fields** — fields that link to another table (e.g., a patient's primary care provider linking to the Providers table) are matched by the referenced record's name or label
+
+**Fields the assistant cannot set:**
+- Auto-generated ID fields (assigned by the system on creation)
+- Read-only or formula fields
+
+---
+
+## What Happens When a Table Is Set to Read Only
+
+If a table's access is set to **Read**, the assistant will refuse any request to create or update records in that table. It will explain that it only has read access and cannot make changes — no partial writes will occur.
+
+This lets you give the assistant visibility into a table without the ability to modify it, which is useful for reference tables or tables you want to protect from accidental edits.
+
+---
+
+## Tips for Writing Effective Requests
+
+Write requests work best when they are specific and reference exact names or values from your data. A few guidelines:
+
+- **Name the record clearly.** Include enough detail to identify the right record — full name, record ID, or a unique field value.
+- **Describe only what should change.** You do not need to repeat fields that should stay the same. The assistant updates only the fields you mention.
+- **Use the field labels your table uses.** If a field is called *Primary Diagnosis*, refer to it that way rather than an abbreviation.
+- **For dropdowns, use the label exactly or close to it.** The assistant resolves dropdown values case-insensitively, but using the actual label value (e.g., *"Active"* not *"active patient"*) helps avoid mismatches.
+- **For list fields, describe the full intended list.** The assistant replaces the entire list, so include all entries you want — not just the ones being added or changed.
+
+---
+
+## Related Articles
+
+- [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants)
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [AI Assistants](/graphium/core-concepts/ai-assistants)
