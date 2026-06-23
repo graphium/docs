@@ -19,7 +19,9 @@
             "pages": [
               "graphium/reference/glossary",
               "graphium/reference/what-is-graphium-ai",
-              "graphium/reference/using-the-help-assistant"
+              "graphium/reference/using-the-help-assistant",
+              "graphium/reference/understanding-notifications",
+              "graphium/reference/managing-your-notifications"
             ]
           },
           {
