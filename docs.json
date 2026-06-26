@@ -89,8 +89,7 @@
               "graphium/connections/adding-a-new-automated-connection",
               "graphium/connections/working-with-a-connection",
               "graphium/connections/configuring-a-graphium-emr-connection",
-              "graphium/connections/configuring-an-sftp-key-based-auth-connection",
-              "graphium/connections/configuring-an-sftp-password-auth-connection",
+              "graphium/connections/configuring-an-sftp-connection",
               "graphium/connections/configuring-a-google-sheets-connection"
             ]
           },

@@ -1,0 +1,132 @@
+---
+title: "Configuring an SFTP Connection"
+description: ""
+icon: "link"
+---
+
+## Overview
+
+Graphium supports two SFTP connection types, both of which link a vault to a remote SFTP server for automated file upload, download, and monitoring:
+
+- **SFTP (Key-Based Auth)** — authenticates using an SSH private key. Use this when your server is configured for key-based authentication.
+- **SFTP (Password Auth)** — authenticates using a username and password. Use this when your server uses standard password-based credentials.
+
+The setup process is the same for both types. The only difference is the credentials you enter in Step 4.
+
+To configure either connection, you must have an Admin or Builder vault role with access to the vault's Connections section, valid server credentials, and network access to the file server from Graphium.
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Add Connection Picker
+
+In the vault sidebar, click **Connections**, then click **+ Add Connection**.
+
+<Frame>
+  <img src="/images/graphium/connections/connections-sidebar.png" alt="Connections sidebar" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/connections/add-connection.png" alt="Add connection" />
+</Frame>
+
+### Step 2: Select Your SFTP Connection Type
+
+Under the **File Server** category, you will see two SFTP options. Select the one that matches your server's authentication method:
+
+- **SFTP (Key-Based Auth)** — your server uses an SSH private key
+- **SFTP (Password Auth)** — your server uses a username and password
+
+Click **Details** to learn more about either type, or click **+ Add Connection** to proceed.
+
+<Frame>
+  <img src="/images/graphium/connections/add-sftp-connection.png" alt="SFTP connection types in the File Server category" />
+</Frame>
+
+### Step 3: Accept Pipedream Integration
+
+Graphium AI uses Pipedream to connect your SFTP server account. When the Pipedream Integration popup appears, simply click **Continue**.
+
+<Frame>
+  <img src="/images/graphium/connections/confirm-pipedream.png" alt="Confirm Pipedream integration" />
+</Frame>
+
+### Step 4: Configure SFTP Authentication
+
+Enter your server credentials in the Pipedream authentication form. The fields differ based on your connection type:
+
+**SFTP (Key-Based Auth)**
+
+- **Hostname** — The network address of the SFTP server (domain name or IP address). Your server administrator can provide this.
+- **Username** — The account name Graphium AI uses to log in. Your server administrator can provide this.
+- **Private Key** — The full contents of an SSH private key, including the `-----BEGIN…-----` and `-----END…-----` lines. The corresponding public key must already be installed in the `~/.ssh/authorized_keys` file on the server for this username. If you don't have a key pair yet, your server administrator can generate one and share the private key with you.
+
+**SFTP (Password Auth)**
+
+- **Hostname** — The network address of the SFTP server (domain name or IP address). Your server administrator can provide this.
+- **Username** — The account name Graphium AI uses to log in. Your server administrator can provide this.
+- **Password** — The password for the username above. Your server administrator can provide this.
+
+<Frame>
+  <img src="/images/graphium/connections/configure-pipedream-sftp.png" alt="Pipedream SFTP authentication form" />
+</Frame>
+
+### Step 5: Save the Connection
+
+If successful, you should see a **Successful Connection** notification appear from Pipedream. Simply click **Continue**.
+
+<Frame>
+  <img src="/images/graphium/connections/sftp-pipedream-successful.png" alt="SFTP Pipedream successful connection" />
+</Frame>
+
+Next, click the **Test** button in the top right corner to verify the connection. Ensure it shows **"Healthy"** — otherwise data will not sync or transfer correctly.
+
+<Frame>
+  <img src="/images/graphium/connections/sftp-healthy.png" alt="SFTP connection healthy status" />
+</Frame>
+
+### Step 6: Set Sync Settings
+
+Configure how often Graphium should check the server for new or updated files:
+
+- **Auto-sync** — toggle on to enable automatic monitoring
+- **Interval** — set the check frequency (e.g., every 5 minutes)
+
+<Frame>
+  <img src="/images/graphium/connections/auto-sync-settings.png" alt="Auto-sync settings" />
+</Frame>
+
+## What to Expect
+
+Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. Playbooks can now use this connection to trigger on new files detected on the server or to push files from Graphium to the server. All file transfer activity appears in the connection's Activity Log.
+
+**Available triggers:**
+- **Watch Remote Directory** — fires when a new file appears in the configured remote directory
+
+**Available actions:** Delete File, Download File, List Directory, Upload File
+
+**Next steps:**
+- Map vault tables to your SFTP data source so incoming files can flow into Graphium AI.
+- Set up playbooks or autonomous actions that react to new or updated files.
+- Ask your AI Assistant questions about the synced file data once tables are populated.
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Pipedream Integration popup does not appear | Browser is blocking popups for Graphium AI | Allow popups for the Graphium AI domain and retry Step 3 |
+| **"Successful Connection"** notification does not appear | Invalid credentials or server is unreachable | Confirm the hostname resolves, the server is online, and the credentials are correct |
+| Pipedream rejects the Private Key *(Key-Based Auth only)* | Key is passphrase-protected, in the wrong format, or the matching public key is not authorized | Generate a passphrase-less key in OpenSSH or PEM format and ask your server administrator to add the public key to `~/.ssh/authorized_keys` |
+| Status shows "error" after setup | Incorrect hostname, username, or credentials | Double-check server details in the Authentication section |
+| Connection times out during Test | Firewall or network restriction | Confirm the server allows inbound connections from Graphium's IP range |
+| Connection status does not show **"Healthy"** after clicking Test | Authentication succeeded but the session was rejected, or the configured directory is inaccessible | Verify the username has read/write access to the target directory and re-run Test |
+| SFTP option is missing from the **File Server** category | Connection type may not be enabled for your workspace | Contact [support@graphium.ai](mailto:support@graphium.ai) to confirm availability |
+| **+ Add Connection** button is not available | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
+| Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Resolve any authentication errors with Test first, then enable Auto-sync |
+| Files are not being detected | Incorrect directory path configured | Review the server-specific settings in the connection detail view |
+| Sync completes but no records appear in vault tables | Tables are not yet mapped to the SFTP data source | Open the table settings and configure the file source mapping |
+| Status flips between Healthy and Error intermittently | Server session timeouts, IP rotation, or rate limiting | Check the server's auth log for repeated failed logins and consider allowlisting Graphium's IP range |
+
+## Related Articles
+
+- [Connections](/graphium/core-concepts/connections)
+- [Adding a Connection](/graphium/connections/adding-a-new-automated-connection)
