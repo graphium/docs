@@ -105,7 +105,10 @@ Save and publish the playbook for the review checkpoint to take effect on live r
 
 ### Step 3: Receive a Notification When Review Is Needed
 
-When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). The Builder responsible for the playbook also receives an **email notification** with a link to the run.
+When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). Builders with access to the vault are notified in two ways:
+
+- **In-app notification** — An unread notification appears in the bell icon in the global navigation bar, indicating that a playbook run is awaiting approval. Click the notification to navigate directly to the Playbooks page.
+- **Email notification** — The Builder responsible for the playbook also receives an email with a link to the run.
 
 > **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
 
