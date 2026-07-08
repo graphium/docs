@@ -48,6 +48,14 @@
             ]
           },
           {
+            "group": "Billing & Subscription",
+            "pages": [
+              "graphium/billing/your-subscription-overview",
+              "graphium/billing/managing-billing-seats",
+              "graphium/billing/subscription-and-payment-settings"
+            ]
+          },
+          {
             "group": "Vaults",
             "pages": [
               "graphium/vaults/working-with-vaults",

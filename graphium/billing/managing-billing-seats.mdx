@@ -1,0 +1,113 @@
+---
+title: "Managing Billing Seats"
+description: "How Builder and Contributor billing seats work, how to assign them to workspace members, and what happens when seat capacity is reached."
+icon: "credit-card"
+---
+
+## Overview
+
+Graphium uses a **seat-based billing model** to determine how workspace members are billed. Each member is assigned either a **Builder** seat or a **Contributor** seat, and the workspace is billed based on the total seat capacity purchased — not per individual member change.
+
+Billing seat type is separate from vault role. A member's billing seat controls how they are billed; their vault role controls what they can do inside a specific vault.
+
+Only workspace **Owners** and **Admins** can manage billing seat assignments.
+
+---
+
+## Builder and Contributor Seats
+
+**Builder seats** are for members who create, configure, and manage workspace resources — such as building vaults, creating tables, setting up connections, publishing playbooks, and configuring AI assistants. Workspace Owners and Admins are always billed as Builder seats.
+
+**Contributor seats** are for members who use and interact with the workspace — such as reviewing data, chatting with AI assistants, and submitting records — without needing to build or configure workspace infrastructure.
+
+> **Note:** A member billed as a Contributor seat cannot be assigned a vault **Admin** or **Builder** role. If a Contributor-billed member needs vault Admin or Builder access, their billing seat must first be upgraded to Builder in workspace member settings.
+
+---
+
+## How Seat Capacity Works
+
+Rather than billing per member change, Graphium bills based on **purchased seat capacity** — the number of Builder and Contributor seats the workspace has bought.
+
+- When the workspace needs more seats, an admin increases the seat capacity from the Billing page. The change takes effect immediately and the saved payment method is charged for the prorated difference in the current billing period.
+- When the workspace reduces seat capacity, the change applies at the start of the next billing period. No refund is issued for the current period.
+- Assigning a member to a seat type within available capacity does not trigger a charge — capacity changes are the only billing event.
+
+The **Seat Composition** card on the Billing page shows the total capacity purchased for each seat type alongside how many seats are currently assigned to members.
+
+---
+
+## Viewing Seat Assignments
+
+To see each member's current billing seat type, open **Settings** from the workspace navigation and go to **Members**. Each member row displays their billing seat type alongside their workspace role.
+
+---
+
+## Assigning a Seat Type When Inviting a Member
+
+When inviting a new workspace member, you will be prompted to choose a billing seat type — Builder or Contributor — as part of the invitation flow. The seat type determines how the new member is billed once they accept the invitation.
+
+If no Builder or Contributor seat capacity is available when sending the invitation, Graphium will prompt you to add seat capacity from the Billing page before the invitation can be sent.
+
+---
+
+## Changing a Member's Seat Type
+
+To change an existing member's billing seat type:
+
+1. Open **Settings** from the workspace navigation.
+2. Go to **Members**.
+3. Find the member you want to update and open their settings.
+4. Change the **Billing Seat** field to the new seat type.
+5. Save the change.
+
+If the new seat type exceeds the workspace's available capacity, Graphium will display a prompt directing you to the Billing page to increase seat capacity before the change can be applied.
+
+> **Note:** Workspace Owners and Admins are always billed as Builder seats. Their billing seat type cannot be changed to Contributor.
+
+---
+
+## When Seat Capacity Is Exceeded
+
+If an action would result in more members being assigned to a seat type than the workspace has capacity for, Graphium blocks the action and displays a message explaining what happened. The message includes a link to the Billing page where you can purchase additional seat capacity.
+
+This applies to:
+
+- Changing a member's seat type in member settings
+- Inviting a new member as a specific seat type
+- Assigning a Contributor-billed member a vault role that requires Builder-level billing
+
+No charge is made when a blocked action is attempted — billing only changes when seat capacity is explicitly increased on the Billing page.
+
+---
+
+## Seats and Vault Roles
+
+Billing seats and vault roles are two separate concepts that work together:
+
+| | Billing Seat | Vault Role |
+|---|---|---|
+| **What it controls** | How the member is billed | What the member can do inside a specific vault |
+| **Where it's set** | Workspace member settings | Vault settings |
+| **Options** | Builder, Contributor | Admin, Builder, Contributor, Viewer |
+
+A member with a Contributor billing seat can hold Contributor or Viewer vault roles. To hold a vault Admin or Builder role, the member must have a Builder billing seat. If you try to assign a vault Admin or Builder role to a Contributor-billed member, Graphium will block the change and prompt you to update the member's billing seat first.
+
+---
+
+## Permissions
+
+| Action | Owner | Admin | Builder | Contributor |
+|--------|-------|-------|---------|-------------|
+| View billing seat assignments | ✅ | ✅ | ❌ | ❌ |
+| Change a member's billing seat type | ✅ | ✅ | ❌ | ❌ |
+| Increase or decrease seat capacity | ✅ | ✅ | ❌ | ❌ |
+| Invite a member with a chosen seat type | ✅ | ✅ | ❌ | ❌ |
+
+---
+
+## Related Articles
+
+- [Your Subscription Overview](/graphium/billing/your-subscription-overview)
+- [Subscription and Payment Settings](/graphium/billing/subscription-and-payment-settings)
+- [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)

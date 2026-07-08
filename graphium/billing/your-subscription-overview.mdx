@@ -1,0 +1,92 @@
+---
+title: "Your Subscription Overview"
+description: "How to view your workspace plan, Graphium Credits, and plan limits from the Billing page."
+icon: "credit-card"
+---
+
+## Overview
+
+The **Billing** page gives workspace Owners and Admins a single place to review the workspace's current subscription state — the active plan, billing period, seat counts, Graphium Credits balance, and the resource limits that apply to the workspace. Only users with a workspace **Owner** or **Admin** role can access the Billing page.
+
+---
+
+## Opening the Billing Page
+
+From anywhere in the application, click the **gear icon** (⚙️) in the top navigation bar to open workspace **Settings**. In the Settings sidebar, click **Billing**.
+
+If you do not see a Billing option in Settings, your workspace role does not include billing access. Contact your workspace Owner or Admin.
+
+---
+
+## Current Plan and Subscription Status
+
+The top section of the Billing page displays your workspace's active subscription:
+
+- **Plan name** — the name of the plan your workspace is currently on
+- **Subscription status** — whether the subscription is active, in a trial period, or pending a change
+- **Billing period** — the current billing cycle start and end dates
+
+If the workspace has not yet started a paid subscription, this section explains the current free or trial state and provides an entry point to review available plans.
+
+---
+
+## Seat Composition
+
+The Billing page shows the number of **Builder** and **Contributor** billing seats currently purchased for the workspace, along with how many are assigned to members. For more information on seat types and how to manage them, see [Managing Billing Seats](/graphium/billing/managing-billing-seats).
+
+---
+
+## Graphium Credits
+
+Graphium Credits are used to power AI features within the workspace, such as AI Assistant conversations and AI-driven playbook actions. The Credits section of the Billing page shows:
+
+- **Included credits** — credits bundled with the current plan that reset each billing period
+- **Purchased credits** — additional credits added on top of the plan's included balance
+- **Remaining balance** — a summary of total credits available and usage to date in the current period
+
+Credits are shared across the workspace and are consumed by all vault activity that uses AI features.
+
+---
+
+## Plan Limits and Entitlements
+
+Every subscription plan includes a set of workspace-level limits. The Billing page displays the current entitlement values for your plan, including:
+
+- Maximum number of vaults in the workspace
+- Maximum custom tables per vault
+- Maximum records per vault
+- Maximum active playbooks per vault
+- Maximum custom AI assistants per vault
+- Maximum connections per vault
+- Other limits defined by your current plan
+
+These values reflect what your workspace is entitled to based on the active subscription. If the workspace approaches or reaches a limit, Graphium displays an in-app prompt guiding you to the Billing page to review upgrade options. See [Plan Limits and Upgrade Guidance](/graphium/billing/subscription-and-payment-settings#plan-limits-and-upgrade-guidance) for more detail on how limit enforcement works.
+
+---
+
+## Payment and Invoice Management
+
+The right side of the Billing page includes a **Billing portal** card with an **Open billing portal** button. This opens your workspace's billing portal (managed by Stripe) where you can update your saved payment method, manage subscription settings, and download receipts.
+
+A **Recent Invoices** section also appears on the right side of the page, showing the most recent charges. Click **View all invoices** to open the full invoice history in the billing portal.
+
+Both of these routes to the billing portal return you to Graphium once you are done.
+
+---
+
+## Permissions
+
+| Action | Owner | Admin | Builder | Contributor |
+|--------|-------|-------|---------|-------------|
+| View the Billing page | ✅ | ✅ | ❌ | ❌ |
+| View plan, credits, and limits | ✅ | ✅ | ❌ | ❌ |
+| Access payment and invoice management | ✅ | ✅ | ❌ | ❌ |
+
+---
+
+## Related Articles
+
+- [Managing Billing Seats](/graphium/billing/managing-billing-seats)
+- [Subscription and Payment Settings](/graphium/billing/subscription-and-payment-settings)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)
+- [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)
