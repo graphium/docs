@@ -24,6 +24,14 @@
             ]
           },
           {
+            "group": "Billing & Subscription",
+            "pages": [
+              "graphium/billing/your-subscription-overview",
+              "graphium/billing/managing-billing-seats",
+              "graphium/billing/subscription-and-payment-settings"
+            ]
+          },
+          {
             "group": "Core Concepts",
             "pages": [
               "graphium/core-concepts/vaults",
@@ -45,14 +53,6 @@
               "graphium/getting-started/navigating-workspaces",
               "graphium/getting-started/editing-workspace-settings",
               "graphium/getting-started/managing-workspace-members"
-            ]
-          },
-          {
-            "group": "Billing & Subscription",
-            "pages": [
-              "graphium/billing/your-subscription-overview",
-              "graphium/billing/managing-billing-seats",
-              "graphium/billing/subscription-and-payment-settings"
             ]
           },
           {
