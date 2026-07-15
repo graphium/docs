@@ -57,13 +57,17 @@ When an action would exceed a plan limit, Graphium blocks the action and display
 
 Limits enforced this way include:
 
-- Total vault count in the workspace
+Workspace-level limits:
+- Total vault count
+- Active playbooks
+- Connections
+- Teams
+- Channel users
+
+Per-vault limits:
 - Custom tables per vault
 - Records per vault
-- Active playbooks per vault
 - Custom AI assistants per vault
-- Connections per vault
-- Teams
 
 > **Note:** Limit enforcement messages identify the specific resource that was blocked — you will not see a generic error. This makes it easier to understand what needs to change before the action can complete.
 
