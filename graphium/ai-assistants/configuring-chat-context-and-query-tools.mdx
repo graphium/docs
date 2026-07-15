@@ -21,7 +21,7 @@ Use this before asking the AI a question to ensure it has access to the right da
 
 ## Opening the Chat Context Panel
 
-In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three tabs — **Tables**, **Tools**, and **Connections** — and a **Clear all** button.
+In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with four tabs — **Tables**, **Tools**, **Connections**, and **Assistants** (coming soon).
 
 The ⚙ icon displays a **badge** showing the total number of currently enabled context items across all three tabs (tables, tools, and connection actions). This gives you a quick at-a-glance count of what the AI has access to without opening the panel.
 
@@ -56,10 +56,8 @@ The second tab (**Tools**) shows general-purpose tools the AI can use during a c
 
 | Tool | Description |
 |------|-------------|
-| **Web Search** | Search the internet for current information and external data |
-| **Chart Generation** | Create visualizations and charts from data |
-| **Code Execution** | Run Python code for data analysis and calculations |
-| **Send Email** | Send emails to users, teams, or external recipients |
+| **Charts** | Render bar, line, or pie charts inline |
+| **Web search** | Search the public web for current or external information |
 
 ### Web Search Tool
 
@@ -94,19 +92,6 @@ The exact connections and actions you see depend on what your vault has configur
 
 ---
 
-## Clearing All Context Items
-
-To reset the Chat Context and disable all enabled tables, tools, and connection actions at once:
-
-1. Open the Chat Context panel.
-2. Click the **Clear all** button at the top of the panel.
-3. All enabled items are toggled off immediately.
-
-<Note>
-This does not delete any data or affect your connections — it only resets what the AI has access to for the current conversation.
-</Note>
-
----
 
 ## Closing the Panel and Sending Your Message
 
@@ -130,7 +115,7 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 | AI response doesn't include expected table data | Table is toggled off in Tables | Open Chat Context and enable the relevant table |
 | Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web Search is enabled in the Tools tab |
 | Connection actions are not visible | No connections have been configured for the vault | Set up connections in the Connections section first |
-| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel to review or click Clear all to reset |
+| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel and toggle off any items you no longer need |
 | R/W access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
 
 ---
