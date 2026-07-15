@@ -107,7 +107,7 @@
               "graphium/playbooks/generating-a-playbook-with-ai",
               "graphium/playbooks/triggering-playbooks-from-connections",
               "graphium/playbooks/running-and-testing-a-playbook",
-              "graphium/playbooks/using-approval-gates"
+              "graphium/playbooks/using-review-checkpoints"
             ]
           },
           {

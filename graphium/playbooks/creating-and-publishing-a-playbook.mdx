@@ -16,7 +16,7 @@ This article walks through each part of that process.
 
 ### Step 1: Open the Playbooks Section
 
-From within your vault, select **Playbooks** in the left sidebar. If you do not see this option, confirm your vault role is **ADMIN** or **BUILDER** — Contributors and Viewers do not have access to Playbooks.
+From within your vault, select **Playbooks** in the left sidebar. If you do not see this option, confirm your vault role is **Admin** or **Builder** — Contributors and Viewers do not have access to Playbooks.
 
 Click **+ New Playbook** in the top-right corner of the Playbooks page.
 
@@ -124,9 +124,9 @@ Click **Playbook Context** at the top of the Playbook Outline to open the resour
 
 The Playbook Context panel is organized into three sections:
 
-**Tables** — Toggle on any vault tables the playbook needs to read from or write to. Each table shows its permission level (**Read** or **Read/Write**) and its approval mode (**Autonomous** or **Requires Approval**). Setting a table to **Requires Approval** causes the run to pause before any write action is taken on that table.
+**Tables** — Toggle on any vault tables the playbook needs to read from or write to. Each table shows its permission level (**Read** or **Read/Write**) and its approval mode (**Autonomous** or **Requires Review**). Setting a table to **Requires Review** causes the run to pause before any write action is taken on that table.
 
-**Connections** — Toggle on any vault connections the playbook needs to use. Like tables, each connection has an approval mode. Set a connection to **Requires Approval** if you want the run to pause before sending data to an external system.
+**Connections** — Toggle on any vault connections the playbook needs to use. Like tables, each connection has an approval mode. Set a connection to **Requires Review** if you want the run to pause before sending data to an external system.
 
 **Tools** — Toggle on any built-in tools the playbook may use during execution, such as Chart Generation or Web Search.
 
@@ -211,5 +211,5 @@ To stop a playbook from running, disable it. A disabled playbook will not fire o
 
 ## Related Articles
 
-- [Using Review Checkpoints](/graphium/playbooks/using-approval-gates)
+- [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
 - [Playbooks](/graphium/core-concepts/playbooks)
