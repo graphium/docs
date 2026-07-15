@@ -25,7 +25,7 @@ The three tabs appear in every table regardless of size or content:
 ## Prerequisites
 
 - You must be a member of the vault with at least **Viewer** permissions to navigate between tabs
-- **BUILDER** or **ADMIN** role is required to make changes in the Schema and Settings tabs
+- **Builder** or **Admin** role is required to make changes in the Schema and Settings tabs
 
 ---
 
@@ -34,13 +34,12 @@ The three tabs appear in every table regardless of size or content:
 The Data tab is the default view whenever you open a table. It displays your records in a grid where each row is a record and each column corresponds to a field defined in the schema.
 
 **What you'll see:**
-- Column headers matching your field names (e.g., NAME, DESCRIPTION, SOURCE, VERIFICATION)
-- A checkbox column on the left for bulk selection
-- A **+ Add Item** button in the top-right to create new records
+- Column headers matching your field names
+- A **+ Add [Table Name]** button in the top-right to create new records (e.g., "+ Add Patients")
+- A **Show Voided** toggle in the header row to include voided records in the view
 - A record count at the bottom (e.g., "Showing 50 of 120 records")
-- A filter icon for filtering records
-- An edit icon for editing records
-- A trash icon for voiding or deleting records
+- A filter button for filtering records
+- Per-row **Edit** link and trash icon for editing or voiding individual records
 
 <Frame>
   <img src="/images/graphium/tables/data-view.png" alt="Data view" />
@@ -53,7 +52,7 @@ The Data tab is the default view whenever you open a table. It displays your rec
 The Schema tab is where the structure of your table is defined. Every field (column) in your table appears here, showing its name, data type, and whether it's required.
 
 **What you'll see:**
-- A **"Schema — N fields"** heading showing the total field count
+- A **"Schema N fields"** heading showing the total field count
 - A **Search fields...** bar to quickly find a specific field
 - An **+ Add Field** button to create new fields
 - A list of all added properties (fields), each showing:
@@ -64,7 +63,7 @@ The Schema tab is where the structure of your table is defined. Every field (col
   - Pencil icon — edit a field's name, type, or validation rules
   - Trash icon — archive or delete fields
 
-> **Note:** Editing or deleting fields requires BUILDER or ADMIN role. VIEWERs and CONTRIBUTORs can view the schema but cannot modify it.
+> **Note:** Editing or deleting fields requires Builder or Admin role. Viewers and Contributors can view the schema but cannot modify it.
 
 <Frame>
   <img src="/images/graphium/tables/schema-view.png" alt="Schema view" />
@@ -138,7 +137,7 @@ Describe what makes a valid record in this table in plain language. The AI will 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
 | Tabs not visible | You may be viewing a different part of the UI | Make sure you have a specific table open — tabs only appear in the table view, not on the vault home screen |
-| Schema or Settings changes are greyed out | Your role is VIEWER or CONTRIBUTOR | Ask a vault ADMIN or BUILDER to make the change |
+| Schema or Settings changes are greyed out | Your role is Viewer or Contributor | Ask a vault Admin or Builder to make the change |
 | A field is missing from the Data tab columns | It may be hidden in Default Table Properties | Go to Settings → Default Table Properties and re-add the field |
 | AI Validation status is not updating on existing rows | AI Validation only triggers when a row is added or updated | Edit and save an existing row to trigger validation |
 | AI Validation section is not visible in Settings | The feature may not be enabled for your workspace | Contact your workspace administrator |

@@ -8,7 +8,7 @@ icon: "database"
 
 Each table in Graphium AI has a set of configurable settings accessible from the **Settings** tab in the table view. From here you can rename the table, update its display names, assign an icon, and control visibility.
 
-> **Note:** The Settings tab is only visible to **ADMIN** and **BUILDER** users. CONTRIBUTOR and VIEWER users cannot access these settings.
+> **Note:** The Settings tab is only visible to **Admin** and **Builder** users. Contributor and Viewer users cannot access these settings.
 
 <Frame>
   <img src="/images/graphium/tables/table-settings-tab.png" alt="Table settings tab" />
@@ -54,11 +54,11 @@ Each table in Graphium AI has a set of configurable settings accessible from the
 
 Graphium AI has two sidebar modes, toggled using the **Builder / Contributor** switch at the bottom of the vault sidebar.
 
-**Builder Mode** is the default for ADMIN and BUILDER users. It shows all tables in the sidebar, full access to Data, Schema, and Settings tabs, and the ability to add, rename, and configure tables.
+**Builder Mode** is the default for Admin and Builder users. It shows all tables in the sidebar, full access to Data, Schema, and Settings tabs, and the ability to add, rename, and configure tables.
 
 **Contributor Mode** is a simplified view designed for users who only need to view and edit data. Only tables with **Enable for Contributor Mode** checked appear in the sidebar. The Schema and Settings tabs are not accessible.
 
-ADMIN and BUILDER users can switch between modes at any time to preview what Contributor-role users see.
+Admin and Builder users can switch between modes at any time to preview what Contributor-role users see.
 
 ---
 
@@ -81,7 +81,7 @@ Changes save immediately with no save button required.
 
 | Feature | Builder Mode | Contributor Mode |
 |---------|-------------|-----------------|
-| Who has access | ADMIN, BUILDER | ADMIN, BUILDER, CONTRIBUTOR, VIEWER |
+| Who has access | Admin, Builder | Admin, Builder, Contributor, Viewer |
 | Tables visible in sidebar | All tables | Only tables with "Enable for Contributor Mode" checked |
 | Data tab | ✅ | ✅ |
 | Schema tab | ✅ | ❌ |
@@ -105,8 +105,8 @@ Changes save immediately with no save button required.
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| Pencil icon not visible next to table name | CONTRIBUTOR or VIEWER role | Contact your vault Admin to request a higher role |
-| Settings tab is not visible | CONTRIBUTOR or VIEWER role | Contact your vault Admin — only ADMIN and BUILDER users can access table settings |
+| Pencil icon not visible next to table name | Contributor or Viewer role | Contact your vault Admin to request a higher role |
+| Settings tab is not visible | Contributor or Viewer role | Contact your vault Admin — only Admin and Builder users can access table settings |
 | Name reverts after saving | Network or save error | Check your connection and try again |
 | Display name not updating in the interface | Page may need refreshing | Refresh the page |
 | Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
