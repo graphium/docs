@@ -30,9 +30,9 @@ Graphium supports a broad catalog of connection types. Here's what each one does
 
 These are the clinical backbone connections. An Epic connection enables HL7 messaging between Graphium and your facility's electronic medical record -- case data, patient demographics, procedure details, and clinical documentation flow in real time as cases are created, updated, and signed. Graphium EMR provides the clinical documentation layer, syncing case records with their full clinical context. If your operation depends on the clinical record being current and complete, these connections are where that starts.
 
-### File Servers (FTP/SFTP)
+### File Servers (SFTP)
 
-For organizations that still operate on file-based workflows -- and many do -- FTP/SFTP connections handle document exchange with external systems. Upload files to a remote server, download incoming documents, and react when new files appear. This is especially common at surgical facilities where charge tickets, reports, or scheduling documents are exchanged as files between systems that don't share an API.
+For organizations that still operate on file-based workflows -- and many do -- SFTP connections handle secure document exchange with external systems. Graphium supports two SFTP authentication methods: **Key-Based Auth** (using a private key file) and **Password Auth** (using a username and password). Both provide the same core file operations: uploading files to a remote server, downloading incoming documents, listing directory contents, and watching a remote directory for new arrivals. This is especially common at surgical facilities where charge tickets, reports, or scheduling documents are exchanged as files between systems that don't share an API.
 
 ### Spreadsheets (Google Sheets)
 
@@ -69,7 +69,7 @@ Communication connections turn Graphium into a participant in your team's messag
 Each connection type exposes a specific set of **actions** -- the events it can react to and the operations it can perform. Actions are the verbs of the connection system. Here are the actions available for each type:
 
 - **Epic**: *Send HL7 Message to EMR*, *Received HL7 Message from EMR*
-- **FTP/SFTP**: *Upload File*, *Download File*, *Delete File*, *Move File*, *New File Uploaded*, *File Modified*, *File Deleted*
+- **SFTP (Key-Based Auth / Password Auth)**: *Upload File*, *Download File*, *Delete File*, *List Directory*, *Watch Remote Directory*
 - **Graphium EMR**: *Create Case*, *Update Case*, *Case Created*, *Case Updated*, *Case Signed*
 - **Google Sheets**: *Add Row*, *Update Row*, *Delete Row*, *Create Sheet*, *Row Added*, *Row Updated*, *Sheet Modified*
 - **Graphium Surveys**: *Create Survey*, *Survey Completed*

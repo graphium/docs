@@ -16,29 +16,29 @@ This is the design principle: vaults give you isolation where you need it (separ
 
 When you open your workspace and click the Vaults tab, you see all your vaults listed in one view. There are two ways to browse them:
 
-**Card View** (the default) displays vaults as cards in a grid layout. Each card shows the vault's color-coded icon, name, description, record count (e.g., "2,847 records"), and last updated date. This view is good for scanning when you have a handful of vaults and want to see descriptions at a glance.
+**Card View** (the default) displays vaults as cards in a grid layout. Each card shows the vault's color-coded icon, name, description, record count, table count, and last updated date. This view is good for scanning when you have a handful of vaults and want to see descriptions at a glance.
 
 **Table View** switches to a list format -- one vault per row. This is more compact and works better when you have many vaults and want to sort or compare them quickly.
 
-Toggle between the two views using the view switcher in the top-right area of the listing page.
+Toggle between the two views using the view switcher in the top-right area of the listing page. You can also use the **Show inactive vaults** toggle to include vaults that have been deactivated.
 
 ## Creating a Vault
 
-Start with a blank vault and build your own tables, schemas, and playbooks from the ground up. Define your tables, add fields, configure connections, and shape the vault to fit your use case -- whether you are tracking cases, managing schedules, or monitoring compliance.
-
-**Explore a Sample Vault.** If you are new to Graphium and want to see how things work before committing to a setup, open a Sample Vault. These come pre-loaded with demo data -- actual records in the tables, pre-configured playbooks, example tasks -- so you can browse around, ask the AI assistant questions, and get a feel for the platform without touching real data.
+To create a new vault, click the **Create a Vault** card on the workspace home page. Build your tables, schemas, playbooks, and connections from the ground up -- shaping the vault to fit your use case, whether you are tracking cases, managing schedules, or monitoring compliance.
 
 ## The Vault Detail View
 
-Once you open a vault, you land in the vault detail view. The left side of the screen shows a sidebar with the vault's navigation sections:
+Once you open a vault, you land in the vault home. The left side of the screen shows a sidebar with the vault's navigation sections:
 
-**AI Assistant** -- Opens the chat interface for the vault's AI assistants. This is where you ask questions, get reports, and interact with the assistant in natural language.
+**Home** -- The vault's main page. Opens the AI chat interface where you can ask questions, get reports, and interact with your configured AI assistants. Recent conversations and available assistants are shown here.
 
 **Tables** -- An expandable list showing every table in the vault, with a count of tables. Click the section header to expand or collapse the list, then click a table name to open it. A vault like Community Surgery Center might show Cases, Procedures, Providers, Surgeons, Surgical Locations, Substances, Patient Allergies, Expenses, Key Metrics, and Invoices.
 
 **Tasks** -- Your action items queue, with a count badge showing how many tasks are open. Tasks include things like "Provider signature missing" or "Duplicate case detected," each with a priority level and assignee.
 
-**Connections** -- Links to external systems (EMR, spreadsheets, file servers, etc.), with a count badge. This is where you manage your Epic connection, your FTP sync, and any other external integrations.
+**Connections** -- Links to external systems (EMR, spreadsheets, file servers, etc.), with a count badge. This is where you manage your connections and any other external integrations.
+
+**Assistants** -- The list of AI assistants configured for this vault. This is where Admins and Builders create, edit, publish, and archive assistants.
 
 **Playbooks** -- Automated AI workflows configured to run on demand or on a schedule. This is where you create, edit, and monitor your playbooks and their run history.
 
@@ -69,7 +69,7 @@ This is where you control who can do what inside the vault. Graphium uses role-b
 - **Contributor** -- Can add and edit data, but cannot modify the vault's structure (schemas, playbooks, connections).
 - **Viewer** -- Read-only access. Can browse tables and view data, but cannot change anything.
 
-You invite users by email and assign them a role. Until they accept, they show a "Pending" status in the permissions list. You can reassign roles or remove users at any time.
+You invite users by email and assign them a role. Until they accept, they show a "Pending" status in the permissions list. You can reassign roles or deactivate users at any time.
 
 ## Scenario: Standing Up Four Facility Vaults
 

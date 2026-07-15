@@ -14,17 +14,15 @@ Each assistant is purpose-built for a specific job. You might have a Data Analys
 
 ## The Assistants Listing
 
-At the workspace level, Graphium provides an **Assistants** tab alongside the **Vaults** tab. This listing shows every assistant across all your vaults in one view. You'll see a summary line like "3 assistants across 1 vault" to orient you.
+Assistants live inside vaults. To view and manage the assistants for a vault, open the vault and click **Assistants** in the sidebar. The listing shows all assistants configured for that vault, along with a count (e.g., "2 assistants").
 
-Each assistant appears as a card showing its custom icon, name, associated vault, a brief description of what it does, and its active trigger count (the number of autonomous actions currently running). The Data Analyst card might read: "Analyzes case data, identifies operational inefficiencies, and generates performance reports for providers and facilities. 2 active triggers."
-
-You can toggle between **Card View** and **Table View** using the view switcher at the top of the listing -- the same pattern used on the Vaults page. Card view gives you the visual overview; table view gives you a sortable, scannable list.
+Each assistant appears as a card showing its custom icon, name, a brief description of what it does, and its table and connection counts. You can toggle between **Card View** and **Table View** using the view switcher at the top of the listing. Card view gives you the visual overview; table view gives you a sortable, scannable list.
 
 ---
 
 ## Creating and Configuring an Assistant
 
-When you create a new assistant, you'll work across four configuration tabs: General, Tools, Actions, and Channels.
+When you create a new assistant, you'll work across three configuration tabs: General, Tools, and Channels.
 
 ### General
 
@@ -34,7 +32,7 @@ Start with the **icon and color picker** -- choose a visual identity that makes 
 
 Add a **description** that explains the assistant's purpose in plain language. This description appears on the assistant card in the listing and helps your team understand what each assistant is for without opening it.
 
-Select the **AI model** that powers the assistant. The current default is GPT-4o with search capabilities. The model selection determines the assistant's underlying intelligence, reasoning ability, and context handling.
+Select the **AI model** that powers the assistant. The current default is Claude Sonnet 4, which is PHI Safe and optimized for everyday reasoning at production speed. The model selection determines the assistant's underlying intelligence, reasoning ability, and context handling.
 
 Then there's the **system prompt** -- and this is the most important field on the page. The system prompt is a block of text that tells the AI who it is, what it knows, how it should behave, and what its domain expertise covers. It's the difference between a generic AI that gives you textbook answers and a practice-specific intelligence that understands your operation.
 
@@ -46,23 +44,19 @@ The Tools tab controls what the assistant can see and do. It's divided into thre
 
 **Table Access** is a permission matrix listing every table in the vault. For each table, you set access to one of three levels:
 
-- **None** -- the assistant cannot see this table at all
+- **Off** -- the assistant cannot see this table at all
 - **Read** -- the assistant can query the table and include its data in responses
-- **Read + Write** -- the assistant can both query the table and create or modify records
+- **Read & Write** -- the assistant can both query the table and create or modify records
 
-This granularity matters. Your Data Analyst probably needs Read access to Cases, Providers, and Key Metrics, but shouldn't be writing to the Procedures reference table. Your Operations Helper might need Read + Write on a scheduling table but no access to financial data. You decide exactly what each assistant can touch.
+This granularity matters. Your Data Analyst probably needs Read access to Cases, Providers, and Key Metrics, but shouldn't be writing to the Procedures reference table. Your Operations Helper might need Read & Write on a scheduling table but no access to financial data. You decide exactly what each assistant can touch.
 
 **Connection Actions** lists the actions available from each connected system. If the vault has an Epic connection, you'll see "Send HL7 Message to EMR" and "Received HL7 Message from EMR" available to toggle on. If there's a Google Sheets connection, you'll see Add Row, Update Row, and the rest. Enabling a connection action gives the assistant the ability to interact with that external system -- not just read vault data, but reach out and do things in the tools your organization uses.
 
 **General Tools** provides additional built-in capabilities beyond table and connection access, such as search and web lookup functionality.
 
-### Actions
-
-The Actions tab is where you configure autonomous, scheduled or event-driven tasks that the assistant performs without being prompted. This is covered in detail in [Autonomous Actions](06-Autonomous-Actions.md).
-
 ### Channels
 
-The Channels tab lets you deploy the assistant as a bot on external communication platforms -- Microsoft Teams, Slack, or SMS. This is covered in detail in [Channels](07-Channels.md).
+The Channels tab lets you deploy the assistant as a bot on external communication platforms such as Microsoft Teams, Slack, or SMS, so users can interact with the assistant without opening Graphium directly.
 
 ---
 
@@ -70,7 +64,7 @@ The Channels tab lets you deploy the assistant as a bot on external communicatio
 
 While you're configuring an assistant, a **Test Chat** panel appears alongside the configuration tabs. This is your sandbox -- you can modify the system prompt, adjust table access, toggle connection actions, and then immediately test the assistant's responses without leaving the configuration screen.
 
-The test panel displays the assistant's card at the top with a quick summary of its current configuration: something like "3 tables, 2 tools, 1 action." This tells you at a glance what the assistant has access to. Below that, you get a standard chat interface where you can type prompts and see how the assistant responds with its current setup.
+The test panel displays the assistant's card (icon, name, description) and a chat input below it. Type any prompt to see how the assistant responds with its current configuration.
 
 This tight feedback loop -- change a setting, test the result -- means you can iterate on an assistant's behavior quickly. Adjust the system prompt to be more concise, test it. Give it access to another table, ask a question that requires that data, see if the response improves. You're shaping the assistant's capabilities in real time.
 
@@ -82,11 +76,12 @@ Once an assistant is configured and active, your team interacts with it through 
 
 ### Finding the Chat
 
-Inside any vault, the sidebar includes an **AI Assistant** section. Click into it and you'll see:
+Inside any vault, click **Home** in the sidebar to open the chat interface. From the Home page you'll see:
 
-- A **New Chat** button to start a fresh conversation
-- Your **conversation history**, organized by time: Today, Yesterday, Previous 7 Days
-- A list of **Available Assistants** configured for this vault (e.g., "Quality Analyst", "Patient Experience", "Data Analyst")
+- A chat input at the top to start a new conversation
+- **Recent Chats** showing your previous conversations
+- A **Try Asking** section with suggested prompts based on your vault data
+- An **Available Assistants** section listing every assistant configured for the vault (e.g., "Quality Analyst", "Patient Experience", "Data Analyst")
 
 If the vault has multiple assistants, you choose which one to talk to. The chat interface shows a **"Chatting with [Assistant Name]"** indicator at the bottom so you always know which assistant you're engaged with. You can switch between assistants at any time -- each maintains its own conversation history.
 
@@ -113,12 +108,12 @@ Ask the Quality Analyst "How are our providers performing on MACRA measures this
 
 A quality director at a multi-facility healthcare practice wants better visibility into provider performance and regulatory compliance. She creates a **Quality Analyst** assistant in the Cases vault.
 
-On the **General** tab, she gives it a blue shield icon, writes a description ("Analyzes provider performance against quality benchmarks and MACRA compliance measures"), selects GPT-4o as the model, and writes a system prompt that defines the assistant as a quality and compliance specialist focused on clinical practice metrics. The prompt instructs the assistant to always compare performance against CMS benchmarks, flag providers below the 75th percentile, and present findings with both data and actionable recommendations.
+On the **General** tab, she gives it a blue shield icon, writes a description ("Analyzes provider performance against quality benchmarks and MACRA compliance measures"), selects Claude Sonnet 4 as the model, and writes a system prompt that defines the assistant as a quality and compliance specialist focused on clinical practice metrics. The prompt instructs the assistant to always compare performance against CMS benchmarks, flag providers below the 75th percentile, and present findings with both data and actionable recommendations.
 
-On the **Tools** tab, she gives it Read access to the Cases table and the MACRA Measures table. She leaves the Expenses and Invoices tables at None -- this assistant doesn't need financial data. She enables the Google Sheets "Add Row" action so the assistant can log compliance findings to the quality tracking spreadsheet her team already uses.
+On the **Tools** tab, she gives it Read access to the Cases table and the MACRA Measures table. She leaves the Expenses and Invoices tables set to Off -- this assistant doesn't need financial data. She enables the Google Sheets "Add Row" action so the assistant can log compliance findings to the quality tracking spreadsheet her team already uses.
 
-She opens the **Test Chat** panel. The card shows "2 tables, 1 tool, 0 actions." She types: "Which providers had the lowest MIPS composite scores last month?" The assistant returns a ranked table of providers with their scores, highlights the two below benchmark, and recommends a documentation review for both. The system prompt is working -- the response is specific, actionable, and grounded in the actual data.
+She opens the **Test Chat** panel and types: "Which providers had the lowest MIPS composite scores last month?" The assistant returns a ranked table of providers with their scores, highlights the two below benchmark, and recommends a documentation review for both. The system prompt is working -- the response is specific, actionable, and grounded in the actual data.
 
-Satisfied with the configuration, she shares the vault with her quality team. The next morning, a quality coordinator opens the vault, clicks into the AI Assistant section, selects Quality Analyst from the available assistants, and asks: "Show me the trend in our overall MIPS score over the last six months." A line chart appears, a summary table with monthly scores follows, and the Key Insights section notes a dip in Q2 that correlates with the onboarding of three new providers, along with a recommendation to review their documentation training.
+Satisfied with the configuration, she shares the vault with her quality team. The next morning, a quality coordinator opens the vault, navigates to the Home page, selects Quality Analyst from Available Assistants, and asks: "Show me the trend in our overall MIPS score over the last six months." A line chart appears, a summary table with monthly scores follows, and the Key Insights section notes a dip in Q2 that correlates with the onboarding of three new providers, along with a recommendation to review their documentation training.
 
 The coordinator didn't build that report. She didn't export data to Excel. She asked a question and got an answer grounded in the practice's own data, shaped by the quality director's expertise encoded in the system prompt.
