@@ -23,7 +23,7 @@ Every user with vault access is assigned one of four roles that controls what th
 
 ## Adding a Vault User
 
-Only existing workspace members can be added to a vault. If someone needs to be invited to the workspace first, see [Managing Workspace Members](/graphium/getting-started/managing-workspace-members).
+You can add an existing workspace member by entering their email, or invite a brand-new user directly — they'll be added to both the workspace and the vault in one step. To manage workspace membership separately, see [Managing Workspace Members](/graphium/getting-started/managing-workspace-members).
 
 1. From the **Access & Permissions** page, click the **Add User** button.
 2. In the **Add Member** panel, search for the workspace member by name or email.
@@ -58,7 +58,7 @@ The change takes effect immediately with no notification sent.
 1. Open the vault and click **Settings** in the left sidebar.
 2. Click **Access & Permissions**. The **Users** tab is selected by default.
 
-Each row in the user list shows the user's avatar, full name, email, current role, and a trash icon to remove them.
+Each row in the user list shows the user's avatar, full name, email, current role, and a **Deactivate** button to suspend their access.
 
 <Frame>
   <img src="/images/graphium/vaults/vault-users.png" alt="Vault users" />
@@ -66,12 +66,13 @@ Each row in the user list shows the user's avatar, full name, email, current rol
 
 ---
 
-## Removing a Vault User
+## Deactivating a Vault User
 
 1. From the **Access & Permissions → Users** tab, locate the user.
-2. Click the **trash icon** on the right side of their row.
+2. Click the **Deactivate** button on the right side of their row.
+3. Confirm the action in the confirmation dialog that appears.
 
-The user is removed immediately with no confirmation dialog. Their Graphium account remains active and they retain access to any other vaults they belong to. Any records they created remain intact. To restore access, use **Add User** to re-add them.
+The user's vault access is immediately suspended. Their Graphium account remains active and they retain access to any other vaults they belong to. Any records they created remain intact. To restore access, use **Add User** to re-add them with the appropriate role.
 
 ---
 
@@ -95,7 +96,7 @@ The user is removed immediately with no confirmation dialog. Their Graphium acco
 | Add User button is not visible | You don't have the Admin role | Only vault Admins can add users |
 | User was added but can't access the vault | They may need to refresh | Ask the user to refresh their browser or sign in again |
 | Role dropdown is greyed out | You don't have the Admin role | Only Admins can change roles |
-| Accidentally removed a user | No confirmation dialog shown | Re-add them using the Add User button with the appropriate role |
+| Accidentally deactivated a user | — | Re-add them using the Add User button with the appropriate role |
 
 ---
 

@@ -16,23 +16,29 @@ The sidebar also shows your current location — the active section or table is 
 
 From top to bottom, the vault sidebar contains the following elements:
 
-**AI Assistant**
-A link to the vault's AI Assistant page, marked with a sparkle icon (✦).
+**Home**
+A link to the vault's Home page, which contains the AI chat interface, recent conversations, suggested prompts, and the list of available assistants.
 
 **Tables**
-A section labeled **TABLES** lists all your vault's tables. Each table is shown as a row with a table icon, the table name, and — when the table contains records — a numeric badge showing the table's total record count. An **+** button in the section header (visible to ADMIN and BUILDER users) lets you add a new table. If the vault has more tables than can fit on screen, a **"X More"** control lets you expand the full list, and a **"Show Less"** control collapses it again.
+A section labeled **TABLES** lists all your vault's tables. Each table is shown as a row with a table icon, the table name, and — when the table contains records — a numeric badge showing the table's total record count. A **+** button in the section header (visible to Admin and Builder users) lets you add a new table. If the vault has more tables than can fit on screen, a **"X More"** control lets you expand the full list, and a **"Show Less"** control collapses it again.
 
 **Tasks**
-A link to the vault's Tasks page, marked with a task/checkbox icon. A badge shows the number of open tasks.
+A link to the vault's Tasks page, marked with a checkbox icon. A badge shows the number of open tasks.
 
-**Automations**
-A link to the vault's Automations section, marked with a lightning bolt icon. A badge shows the number of active automations.
+**Connections**
+A link to the vault's Connections page, marked with a link icon. A badge shows the number of configured connections.
+
+**Assistants**
+A link to the vault's Assistants page, where you can create and manage the AI assistants configured for this vault.
+
+**Playbooks**
+A link to the vault's Playbooks section, marked with a book icon. A badge shows the number of active playbooks.
 
 **Settings**
 A link to the Vault Settings section, marked with a gear icon.
 
 **Builder / Contributor Mode Toggle**
-At the bottom of the sidebar, ADMIN and BUILDER users see a **Builder / Contributor** toggle that switches the sidebar view between the full builder view and a filtered contributor view.
+At the bottom of the sidebar, Admin and Builder users see a **Builder / Contributor** toggle that switches the sidebar view between the full builder view and a filtered contributor view.
 
 **Collapse Button**
 An icon-only button at the very bottom of the sidebar collapses it to a narrow icon-only view, hiding all text labels.
@@ -51,7 +57,7 @@ To open a specific table:
 2. If the table isn't visible, click **"X More"** to expand the full list.
 3. Click the table name. The table's Data view loads in the main content area, and the table is highlighted in the sidebar to show it's active.
 
-> **Note:** ADMIN and BUILDER users see all tables (including Draft tables). CONTRIBUTOR and VIEWER users see only tables that have been enabled for Contributor Mode.
+> **Note:** Admin and Builder users see all tables (including Draft tables). Contributor and Viewer users see only tables that have been enabled for Contributor Mode.
 
 <Frame>
   <img src="/images/graphium/vaults/tables-sidebar.png" alt="Table sidebar" />
@@ -59,17 +65,17 @@ To open a specific table:
 
 ---
 
-## Navigating to the AI Assistant
+## Navigating to Home
 
-To open the AI Assistant:
+To open the Home page:
 
-1. Click **AI Assistant** at the top of the sidebar (below the vault header).
-2. The AI Assistant page loads in the main content area and the sidebar item becomes active.
+1. Click **Home** at the top of the sidebar (below the vault header).
+2. The Home page loads in the main content area, showing the AI chat input, recent conversations, suggested prompts, and available assistants.
 
-The AI Assistant is visible to all vault roles: ADMIN, BUILDER, CONTRIBUTOR, and VIEWER.
+Home is visible to all vault roles: Admin, Builder, Contributor, and Viewer.
 
 <Frame>
-  <img src="/images/graphium/vaults/ai-assistant-sidebar.png" alt="AI Assistant sidebar" />
+  <img src="/images/graphium/vaults/ai-assistant-sidebar.png" alt="Home sidebar" />
 </Frame>
 
 ---
@@ -89,17 +95,38 @@ Tasks is visible to all vault roles. VIEWER users have read-only access.
 
 ---
 
-## Navigating to Automations
+## Navigating to Connections
 
-To open the Automations section:
+To open the Connections page:
 
-1. Click **Automations** in the sidebar. The Automations page loads in the main content area.
-2. The badge next to Automations shows the number of active automations.
+1. Click **Connections** in the sidebar. The Connections page loads in the main content area.
+2. The badge next to Connections shows the number of configured connections for this vault.
 
-> **Note:** Automations is only visible to **ADMIN** and **BUILDER** users. If you do not see it in your sidebar, your vault role is CONTRIBUTOR or VIEWER and you do not have access to this section.
+> **Note:** Connections is only visible to **Admin** and **Builder** users. If you do not see it in your sidebar, your vault role is Contributor or Viewer and you do not have access to this section.
+
+---
+
+## Navigating to Assistants
+
+To open the Assistants page:
+
+1. Click **Assistants** in the sidebar. The Assistants listing page loads, showing all AI assistants configured for this vault.
+
+> **Note:** Assistants is only visible to **Admin** and **Builder** users. If you do not see it in your sidebar, your vault role is Contributor or Viewer and you do not have access to this section.
+
+---
+
+## Navigating to Playbooks
+
+To open the Playbooks section:
+
+1. Click **Playbooks** in the sidebar. The Playbooks page loads in the main content area.
+2. The badge next to Playbooks shows the number of active playbooks.
+
+> **Note:** Playbooks is only visible to **Admin** and **Builder** users. If you do not see it in your sidebar, your vault role is Contributor or Viewer and you do not have access to this section.
 
 <Frame>
-  <img src="/images/graphium/vaults/tasks-automations-settings-sidebar.png" alt="Tasks, Automations, and Settings sidebar" />
+  <img src="/images/graphium/vaults/tasks-automations-settings-sidebar.png" alt="Tasks, Playbooks, and Settings sidebar" />
 </Frame>
 
 ---
@@ -123,14 +150,16 @@ To open Vault Settings:
 
 What you see in the sidebar depends on your vault role:
 
-| Sidebar Item | ADMIN | BUILDER | CONTRIBUTOR | VIEWER |
+| Sidebar Item | Admin | Builder | Contributor | Viewer |
 |---|---|---|---|---|
-| AI Assistant | ✅ | ✅ | ✅ | ✅ |
+| Home | ✅ | ✅ | ✅ | ✅ |
 | Tables (all) | ✅ | ✅ | — | — |
 | Tables (contributor-enabled only) | — | — | ✅ | ✅ (read-only) |
 | Add table (+) | ✅ | ✅ | ❌ | ❌ |
 | Tasks | ✅ | ✅ | ✅ | ✅ (read-only) |
-| Automations | ✅ | ✅ | ❌ | ❌ |
+| Connections | ✅ | ✅ | ❌ | ❌ |
+| Assistants | ✅ | ✅ | ❌ | ❌ |
+| Playbooks | ✅ | ✅ | ❌ | ❌ |
 | Settings | ✅ | ✅ | ❌ | ❌ |
 | Builder/Contributor mode toggle | ✅ | ✅ | ❌ | ❌ |
 
@@ -140,8 +169,8 @@ What you see in the sidebar depends on your vault role:
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| Automations or Settings not visible in sidebar | Your vault role is CONTRIBUTOR or VIEWER | Contact your vault ADMIN — these sections require ADMIN or BUILDER access |
-| A table you expect is not listed | The table may not be enabled for Contributor Mode | If you are a CONTRIBUTOR or VIEWER, ask an ADMIN or BUILDER to enable that table for Contributor Mode |
+| Connections, Assistants, Playbooks, or Settings not visible in sidebar | Your vault role is Contributor or Viewer | Contact your vault Admin — these sections require Admin or Builder access |
+| A table you expect is not listed | The table may not be enabled for Contributor Mode | If you are a Contributor or Viewer, ask an Admin or Builder to enable that table for Contributor Mode |
 | The sidebar is showing only icons | The sidebar has been collapsed | Click the **Expand** button at the bottom of the icon bar to restore the full sidebar |
 | Clicking a sidebar item does nothing | The destination page may still be loading | Wait a moment and try again; check your network connection if the issue persists |
 
