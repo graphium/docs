@@ -5,17 +5,15 @@ icon: "play"
 
 ## Overview
 
-Admins and Builders can create a playbook from the Playbooks section of any vault they have access to. When you start a new playbook, Graphium AI asks you to describe what you want it to do — it then generates a complete draft including a name, a trigger, and an ordered set of steps. From there, you review and refine the draft, connect the tables and tools each step needs, configure the trigger, and publish to make it active.
-
-This article walks through the complete workflow from creation to publish.
+Admins and Builders can create a playbook (workflow) from the Playbooks section of any vault they have access to. When you start a new playbook, Graphium AI asks you to describe what you want it to do. It then generates a complete draft including a name, a trigger, and an ordered set of steps. From there, you review and refine the draft, connect the tables and tools each step needs, configure the trigger, and publish to make it active.
 
 ---
 
 ## Step 1: Open the Playbooks Section
 
-From within your vault, select **Playbooks** in the left sidebar. If you do not see this option, confirm your vault role is **Admin** or **Builder** — Contributors and Viewers do not have access to Playbooks.
+From within your vault, select **Playbooks** in the left sidebar. If you do not see this option, confirm your vault role is **Admin** or **Builder** - Contributors and Viewers do not have access to Playbooks.
 
-Click **+ New Playbook** in the top-right corner of the Playbooks page.
+Click **+ New Playbook**.
 
 <Frame>
   <img src="/images/graphium/playbooks/create-playbook.png" alt="Playbooks page showing the + New Playbook button" />
@@ -68,7 +66,7 @@ The playbook opens in the editor as **v1 · Draft**, ready to review and refine.
 
 ---
 
-## Step 3: Understand the Playbook Editor
+## Step 3: Editing Your Playbook
 
 The playbook editor has three columns:
 
@@ -77,14 +75,14 @@ The playbook editor has three columns:
 - **Right column** — Shows all past and in-progress runs for this playbook.
 
 <Frame>
-  <img src="/images/graphium/playbooks/playbook-outline.png" alt="Playbook editor three-column layout" />
+  <img src="/images/graphium/playbooks/playbook-editor-layout.png" alt="Playbook editor three-column layout" />
 </Frame>
 
 ---
 
 ## Step 4: Review and Edit Your Steps
 
-The AI generates a step title and written instructions for each step, but does not automatically wire up data context. After generation, each step will show **"No tables, connections, or tools selected yet."** until you connect the resources each step needs.
+The AI generates a step title and written instructions for each step, but does not automatically wire up data context. After generation, each step will show **"No tables, connections, or tools selected yet."** until you connect the resources each step needs. See Step 6 below for configuring resources.
 
 Click a step in the **Playbook Outline** to open its Step Details panel. Each step has two fields:
 
@@ -211,7 +209,6 @@ Once published, you can edit, version, and disable your playbook. See [Managing 
 
 ## Related Articles
 
-- [Managing Your Playbooks](/graphium/playbooks/managing-your-playbooks)
 - [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
 - [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
 - [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections)
