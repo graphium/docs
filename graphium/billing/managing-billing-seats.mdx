@@ -27,8 +27,8 @@ Only workspace **Owners** and **Admins** can manage billing seat assignments.
 
 Rather than billing per member change, Graphium bills based on **purchased seat capacity** — the number of Builder and Contributor seats the workspace has bought.
 
-- When the workspace needs more seats, an admin increases the seat capacity from the Billing page. The change takes effect immediately and the saved payment method is charged for the prorated difference in the current billing period.
-- When the workspace reduces seat capacity, the change applies at the start of the next billing period. No refund is issued for the current period.
+- When the workspace needs more seats, an admin increases the seat capacity from the Billing page. A confirmation modal shows the new monthly total and an estimated proration charge before anything is committed. On confirm, the change takes effect immediately and the saved payment method is charged off-session — no external checkout redirect occurs.
+- When the workspace reduces seat capacity, an info modal confirms the change will take effect at the start of the next billing cycle. No refund is issued for the current period.
 - Assigning a member to a seat type within available capacity does not trigger a charge — capacity changes are the only billing event.
 
 The **Seat Composition** card on the Billing page shows the total capacity purchased for each seat type alongside how many seats are currently assigned to members.
