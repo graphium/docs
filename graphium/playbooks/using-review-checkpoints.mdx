@@ -73,37 +73,9 @@ Save and publish the playbook for the review checkpoint to take effect on live r
 
 ---
 
-## Step-by-Step Instructions
+## Resolving a Review Checkpoint
 
-### Step 1: Open Playbook Context
-
-In the playbook editor, click **Playbook Context** at the top of the **Playbook Outline** on the left. The Playbook Context panel opens in the center column, showing all enabled tables, connections, and tools.
-
-<Frame>
-  <img src="/images/graphium/playbooks/playbook-context-panel.png" alt="Playbook Context panel" />
-</Frame>
-
----
-
-### Step 2: Set a Resource to Requires Review
-
-In the **Tables** or **Connections** section, find the resource you want to gate.
-
-Each resource shows its current approval mode as a badge — by default this is **Autonomous**, meaning the AI can act on it without pausing.
-
-Click the **Autonomous** badge to toggle it to **Requires Review**. The run will now pause every time the AI is about to take an action on that resource, and wait for your review before proceeding. Click the badge again to switch it back to **Autonomous**.
-
-> **Note:** You can mix approval modes across resources. For example, you might allow the AI to read a table autonomously but require review before it writes to a connection.
-
-<Frame>
-  <img src="/images/graphium/playbooks/requires-approval-toggle.png" alt="Requires Review mode on a connection in Playbook Context" />
-</Frame>
-
-Save and publish the playbook for the review checkpoint to take effect on live runs.
-
----
-
-### Step 3: Receive a Notification When Review Is Needed
+### Step 1: Receive a Notification When Review Is Needed
 
 When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). Builders with access to the vault are notified in two ways:
 
@@ -114,7 +86,7 @@ When a live run hits a review checkpoint, it stops and its status in the Run His
 
 ---
 
-### Step 4: Resolve the Review
+### Step 2: Resolve the Review
 
 Open the playbook in the editor. In the **Run History** panel on the right, locate the run with **Pending Review** status.
 
