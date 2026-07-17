@@ -104,6 +104,7 @@
             "group": "Playbooks",
             "pages": [
               "graphium/playbooks/creating-and-publishing-a-playbook",
+              "graphium/playbooks/managing-your-playbooks",
               "graphium/playbooks/triggering-playbooks-from-connections",
               "graphium/playbooks/running-and-testing-a-playbook",
               "graphium/playbooks/using-review-checkpoints"
