@@ -29,6 +29,10 @@ Two resource types support review checkpoints:
 - **Tables** — Set a table's approval mode to **Requires Review** to pause the run before any write action is taken on that table.
 - **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before any data is sent to or action is taken on that connection.
 
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-review-checkpoint.png" alt="Review checkpoint configured on a resource in Playbook Context" />
+</Frame>
+
 ---
 
 ## Adding a Review Checkpoint to a Step
@@ -84,6 +88,10 @@ When a live run hits a review checkpoint, it stops and its status in the Run His
 
 > **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
 
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a run in Pending Review status" />
+</Frame>
+
 ---
 
 ### Step 2: Resolve the Review
@@ -97,20 +105,12 @@ The run row shows:
 - A **Deny** button
 
 <Frame>
-  <img src="/images/graphium/playbooks/approval-run-history.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
 </Frame>
 
 **To approve:** Click **Approve & Continue**. The run resumes from the point it was paused and continues to the next step.
 
 **To deny:** Click **Deny**. The run fails at that review checkpoint. Subsequent steps are marked as Skipped and the run does not continue.
-
-### Approving Multiple Checkpoints at Once
-
-If multiple reviews are pending on the same run, the run row shows the total count (for example, *3 approvals needed*). An **Approve All & Continue** button appears, which resolves all pending reviews in one action and resumes the run.
-
-<Frame>
-  <img src="/images/graphium/playbooks/approve-all-button.png" alt="Approve All and Continue button for multiple pending reviews" />
-</Frame>
 
 ---
 
@@ -141,6 +141,5 @@ If multiple reviews are pending on the same run, the run row shows the total cou
 
 - [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
 - [Managing Your Playbooks](/graphium/playbooks/managing-your-playbooks)
-- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
-- [What are Playbooks?](/graphium/core-concepts/playbooks)
+- [Playbooks](/graphium/core-concepts/playbooks)
 - [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)
