@@ -1,29 +1,34 @@
 ---
-title: "The AI Assistant Welcome Screen"
-description: ""
+title: "The AI Assistant Home Page"
 icon: "brain"
 ---
 
 ## Overview
 
-When you open a vault in Graphium AI, the **Home** page is your AI-powered starting point. It displays your recent conversations, suggested prompts, the assistants available for this vault, and a chat input bar — giving you immediate access to ask questions about your vault data without navigating elsewhere.
+When you open a vault in Graphium AI, the **Home** page is your AI-powered starting point. It displays your recent conversations, suggested prompts, the assistants available for this vault, and a chat input bar — giving you immediate access to ask questions about your vault data. The Home page also provides access to your full conversation history across past sessions.
+
+---
 
 ## When to Use This
 
-Use this as your starting point whenever you want to ask questions about your vault data, request summaries, or explore insights using the AI.
+Use the Home page as your starting point whenever you want to ask questions about your vault data, request summaries, explore insights using AI, or return to a previous conversation.
+
+---
 
 ## Prerequisites
 
 - You must be a member of the vault with at least Contributor access
 - The vault must have at least one AI Assistant configured
 
-## Step-by-Step Instructions
+---
 
-### Step 1: Open the Vault
+## Opening the Vault
 
 From the workspace dashboard, click on any vault to open it. The **Home** page loads automatically as the default view.
 
-### Step 2: Review the Home Page
+---
+
+## The Home Page
 
 The Home page displays:
 
@@ -32,11 +37,13 @@ The Home page displays:
 - A **TRY ASKING** section with suggested prompts relevant to your vault data
 - An **AVAILABLE ASSISTANTS** section listing the assistants configured for this vault (e.g., *Data Analyst*, *Operations Helper*, *Compliance Monitor*). Click an assistant card to start a new conversation with it.
 
-### Step 3: Review the Vault Sidebar
+---
+
+## The Vault Sidebar
 
 The vault sidebar, to the left of the Home page, gives you quick access to everything in the vault:
 
-- **Home** — the AI Assistant welcome screen
+- **Home** — the AI Assistant home page
 - **Tasks** — task list for the vault (with a count badge for open items)
 - **Connections** — automated connections to external systems
 - **Assistants** — list of AI assistants configured for this vault
@@ -47,28 +54,58 @@ The vault sidebar, to the left of the Home page, gives you quick access to every
 
 A **Builder View** / **Contributor View** toggle at the bottom of the sidebar lets you switch between roles you have access to. The **Collapse sidebar** button hides the sidebar to give the main page more room.
 
-### Step 4: Start a New Conversation
+---
 
-Click the chat input bar and type your question, click one of the **TRY ASKING** suggestions to start with a pre-built prompt, or click an assistant card in **AVAILABLE ASSISTANTS** to start a conversation with a specific assistant.
+## Starting a New Conversation
 
-### Step 5: Return to a Recent Chat
+You have a few options for starting a fresh conversation:
 
-Click any card in the **RECENT CHATS** section to reopen a previous conversation. To browse older conversations, click the **clock icon** in the top-right corner to open the full chat history.
+- Click the **chat input bar** and type your question
+- Click one of the **TRY ASKING** suggestions to start with a pre-built prompt
+- Click an assistant card in **AVAILABLE ASSISTANTS** to start a conversation with a specific assistant
+
+New conversations default to the **General** assistant unless you pick a specialized assistant first.
+
+---
+
+## Accessing Conversation History
+
+Your conversation history is accessible in three ways.
+
+**From the Home page**
+
+The **RECENT CHATS** section shows your four most recent conversations as cards. Each card shows the conversation title, the assistant used, and a relative timestamp (e.g., *5m ago*, *Yesterday*). Click any card to reopen that conversation.
+
+**From the sidebar**
+
+In the vault sidebar, the **RECENT CHATS** section lists your most recent conversations. Click **[N] More** to expand the list. Click any conversation title to reopen it.
+
+**From the full history panel**
+
+Click the **clock icon** in the top-right corner of the Home page to open the full **Chat History** panel. Conversations are grouped by time — **TODAY**, **YESTERDAY**, **PREVIOUS 7 DAYS**, and older groupings as needed. Each entry shows the conversation title, the assistant used, and a relative timestamp. Click any conversation to reopen it, or click **New Chat** at the top of the panel to start a fresh conversation.
+
+---
 
 ## What to Expect
 
-After typing a message and sending it, the conversation view opens with your question and the AI's response. The Home page is always accessible by clicking **Home** in the vault sidebar.
+Reopening a conversation allows you to continue asking follow-up questions — the AI retains the context of the previous messages. The Home page is always accessible by clicking **Home** in the vault sidebar.
 
-## Common Issues & Troubleshooting
+---
+
+## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
-| No recent chats appear | No previous conversations exist for this vault | Start a new conversation by typing in the chat input bar |
+| No recent chats appear on Home | No conversations have been started yet | Start a new conversation by typing in the chat input bar |
 | AVAILABLE ASSISTANTS section is empty | No assistants are configured for this vault | Open the **Assistants** section in the sidebar and configure one |
 | Home is not visible in the sidebar | The vault may not have the AI feature enabled | Contact your vault Admin |
+| A past conversation is not in Recent Chats | It may be older than the 4 most recent | Click the clock icon to access the full time-grouped history |
+| CHATS section in the sidebar is empty | No conversations have been started in this vault | Start a new conversation from the Home page |
+
+---
 
 ## Related Articles
 
 - [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
 - [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants)
-- [Viewing Conversation History](/graphium/ai-assistants/viewing-conversation-history)
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)

@@ -1,71 +1,117 @@
 ---
 title: "Chatting with Your AI Assistant"
-description: ""
 icon: "brain"
 ---
 
 ## Overview
 
-The AI Assistant chat interface lets you type natural language questions about your vault data and receive richly formatted responses in real time. Responses can include plain text, bullet points, bold text, tables, charts, and structured insights — making complex data easy to read at a glance.
+AI Assistants in Graphium AI are conversational agents connected to your vault data. Instead of exporting data or writing manual queries, you can ask an assistant questions in plain language and get instant answers grounded in your actual records. Responses can include plain text, tables, charts, and structured insights — making complex data easy to read at a glance. Assistants can also summarize trends, flag anomalies, and guide team members through data entry tasks.
+
+---
 
 ## When to Use This
 
-Use this whenever you want to ask questions about your data, request analysis, or get summaries without navigating the data grid manually.
+Use an AI Assistant when you want to:
+
+- Query your vault data without writing filters or formulas
+- Get a natural-language summary of recent submissions or trends
+- Troubleshoot unusual data patterns
+- Walk a new team member through a data capture process interactively
+
+---
 
 ## Prerequisites
 
-- You must have access to the vault
-- At least one AI Assistant must be configured in the vault
+- You are signed in and have a vault open
+- The vault contains data for the assistant to reference
+- At least one assistant has been configured and published for this vault — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants)
 
-## Step-by-Step Instructions
+---
 
-### Step 1: Open the Chat Input
+## Step 1: Open the Chat Input
 
 Open a vault and the **Home** page loads automatically. The input bar at the top of the page shows the placeholder text *"Ask a question about your data..."*
 
-### Step 2: Type Your Message
+---
 
-Click the input bar and type your question or request. For example:
+## Step 2: Select an Assistant
 
-- *"Show me today's case volume by facility"*
-- *"Which providers had the most cases this week?"*
-- *"Give me a summary of turnover times by OR room"*
+The **AVAILABLE ASSISTANTS** section at the bottom of the Home page shows the assistants configured for this vault. Click any assistant card to start a conversation with that assistant. You can also click the **Choose assistant** icon (leftmost icon in the input bar) to switch assistants mid-session. If you don't pick a specific one, the **General** assistant is used by default.
 
-### Step 3: Send the Message
+---
 
-Click the **send** button (arrow icon) on the right side of the input bar, or press **Enter**. The message is submitted and the AI begins generating a response.
+## Step 3: Ask a Question
 
-### Step 4: Read the Response
+Type your question or request in plain English and press **Enter** or click the send button (arrow icon). Examples of effective queries:
 
-The AI response appears in the chat area, labeled **AI Assistant**, and can include several content types:
+- *"How many submissions did we receive this week?"*
+- *"Show me all records where Priority is High and Status is still Pending."*
+- *"What was the most common value in the Reason field last month?"*
+- *"Summarize the last 10 submissions."*
+- *"Show me today's case volume by facility."*
+- *"Flag any records where the date of birth field looks invalid."*
+
+> 💡 **Tip:** Be specific. Instead of "Show me the data," try "Show me all records submitted in February where the insurance field is blank." The more context you give, the more precise the answer.
+
+---
+
+## Step 4: Read the Response
+
+The AI response appears in the chat area labeled **AI Assistant** and can include several content types:
 
 - **Headers** — for organized multi-section responses (e.g., *Cases Overview*, *Key Insights*)
 - **Bold text** — for emphasis and key data points
 - **Bullet points** — for lists and summaries
 - **Tables** — for structured data comparisons (e.g., a ranked list of slowest turnover times)
-- **Charts** — bar charts, comparisons, and other visualizations rendered inline in the response
+- **Charts** — bar charts, comparisons, and other visualizations rendered inline
 - **Key Insights callouts** — a structured summary of observations and recommendations at the end of a response
 
 Each message displays a timestamp showing when it was sent or received.
 
-### Step 5: Continue the Conversation
+> **Note:** Always verify critical data decisions against the raw records in the Table View before acting on the results.
 
-Ask follow-up questions in the same conversation — the AI maintains context from previous messages in the thread.
+---
+
+## Step 5: Continue the Conversation
+
+Assistants maintain context within a session, so you can ask follow-up questions without repeating yourself. For example:
+
+- You: *"Show me records where Status is Pending."*
+- Assistant: *(lists results)*
+- You: *"Now filter those to only show ones from this week."*
+
+---
+
+## Step 6: Act on Results
+
+If the assistant surfaces records you want to act on, you can jump directly to those records in the Table View using the links provided, or ask the assistant to trigger an action such as assigning a task or updating a field.
+
+Use the **⚙** button in the input bar to adjust which tables, tools, and connections the AI can access mid-conversation. See [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools) for details.
+
+---
 
 ## What to Expect
 
-The AI responds based on the data it has been given access to via the Chat Context configuration. Use the **⚙** button in the input bar to adjust which tables, tools, and connections the AI can access. The **Choose assistant** icon (leftmost in the input bar) lets you switch to a different assistant mid-session.
+Assistants respond based on the data enabled in Chat Context and draw only from the data within the connected vault — they do not access data from other vaults or external systems unless a connection has been explicitly configured. Conversation history is saved per session for your reference.
 
-## Common Issues & Troubleshooting
+---
+
+## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
-| AI response does not include expected data | The relevant table may not be enabled in Chat Context | Click the ⚙ button and enable the table under the **Tables** tab |
-| AI response does not include charts | **Chart Generation** is not enabled in Chat Context | Open Chat Context, click the **Tools** tab, and toggle **Chart Generation** on |
+| Assistant says it can't find data | Vault has no records yet, or the relevant table isn't enabled in Chat Context | Check that the vault has records; click ⚙ and enable the table under the Tables tab |
+| Answers are vague or generic | Query is too broad | Rephrase with more specific field names, date ranges, or conditions |
+| AI response doesn't include charts | Chart Generation is not enabled in Chat Context | Open Chat Context, click the Tools tab, and toggle Chart Generation on |
+| Assistant is not available in the vault | No assistant configured yet | Ask your administrator to create and activate an assistant for this vault |
+| Results don't match Table View | Assistant may be using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
 | Send button is greyed out | The input field is empty | Type a message before clicking Send |
+
+---
 
 ## Related Articles
 
-- [The AI Assistant Welcome Screen](/graphium/ai-assistants/the-ai-assistant-welcome-screen)
+- [The AI Assistant Home Page](/graphium/ai-assistants/the-ai-assistant-welcome-screen)
 - [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants)
 - [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
+- [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)
