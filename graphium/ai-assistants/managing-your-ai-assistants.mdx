@@ -33,6 +33,10 @@ Use the **grid/list toggle** in the top-right corner to switch between card grid
 
 If no assistants have been created yet, the page shows an empty state: *"No assistants yet — Create specialized AI assistants with custom prompts and data access to help with specific tasks."*
 
+<Frame>
+  <img src="/images/graphium/assistant/browse-assistants.png" alt="Assistants page showing assistant cards in grid view" />
+</Frame>
+
 ---
 
 ## Creating a New Assistant
@@ -47,6 +51,10 @@ On the Assistants page, click **+ New Assistant** in the top-right corner. The a
   <img src="/images/graphium/assistant/new-assistant-editor.png" alt="New assistant editor with General tab open" />
 </Frame>
 
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant.png" alt="New Assistant button in the top-right corner of the Assistants page" />
+</Frame>
+
 ---
 
 ### Step 2: Name the assistant
@@ -54,6 +62,10 @@ On the Assistants page, click **+ New Assistant** in the top-right corner. The a
 Click the **"Name your assistant..."** field at the top of the editor and type a name. Choose something descriptive that tells users what the assistant specialises in — for example, *Data Analyst*, *Operations Helper*, or *Compliance Monitor*.
 
 The name appears immediately in the **Test Chat** panel on the right so you can preview how it will look.
+
+<Frame>
+  <img src="/images/graphium/assistant/name-assistant.png" alt="Name field in the assistant editor" />
+</Frame>
 
 ---
 
@@ -81,6 +93,10 @@ The **General** tab contains the core configuration for the assistant.
   <img src="/images/graphium/assistant/assistant-general-tab.png" alt="General tab showing icon, color, description, AI model, system prompt, and Who Can Access fields" />
 </Frame>
 
+<Frame>
+  <img src="/images/graphium/assistant/configure-assistant-general-settings.png" alt="General settings tab showing icon, color, description, AI model, system prompt, and access fields" />
+</Frame>
+
 ---
 
 ### Step 4: Configure Tools (optional)
@@ -96,11 +112,9 @@ The Tools tab contains four sections:
 
 Enabling resources here sets the assistant's default context — these are the tables and tools available in every conversation, unless overridden by the user's Chat Context settings.
 
----
-
-### Step 5: Configure Channels (optional)
-
-Click the **Channels** tab to deploy this assistant to external messaging channels such as Slack, Teams, or SMS. Channel configuration is optional and can be added or changed after publishing.
+<Frame>
+  <img src="/images/graphium/assistant/configure-assistant-tools.png" alt="Tools tab showing table access, connection actions, general tools, and Can Invoke Assistants sections" />
+</Frame>
 
 ---
 
@@ -114,6 +128,10 @@ Type a message in the **"Send a test message..."** input to verify the assistant
   <img src="/images/graphium/assistant/test-chat-panel.png" alt="Test Chat panel showing assistant name, description, and resource tags" />
 </Frame>
 
+<Frame>
+  <img src="/images/graphium/assistant/test-assistant-chat.png" alt="Test Chat panel with a test message and assistant response" />
+</Frame>
+
 ---
 
 ### Step 7: Save as a draft
@@ -121,6 +139,10 @@ Type a message in the **"Send a test message..."** input to verify the assistant
 Click **Save** in the top-right header. This saves the assistant as a new draft version. Draft versions are not visible to vault members in the chat interface — users will not see the assistant until you publish it in Step 8.
 
 If you want to return and continue editing before going live, saving as a draft lets you pick up where you left off without affecting what users see.
+
+<Frame>
+  <img src="/images/graphium/assistant/save-draft-assistant.png" alt="Save button in the assistant editor header" />
+</Frame>
 
 ---
 
@@ -131,6 +153,10 @@ Click **Publish** in the top-right header to make the assistant available to vau
 > **Note:** For an existing assistant with a published version, users continue seeing the previously published version until you click **Publish** — saved drafts do not affect the live assistant.
 
 To publish a specific earlier version rather than the latest draft, open the version history from the **⋮ (three-dot menu)**, select the version you want, and click **Publish**.
+
+<Frame>
+  <img src="/images/graphium/assistant/publish-assistant.png" alt="Publish button in the assistant editor header" />
+</Frame>
 
 ---
 
@@ -146,6 +172,10 @@ Make your changes across any of the three tabs, then click **Save** to save them
   <img src="/images/graphium/assistant/assistant-edit-screen.png" alt="Assistant editor showing an existing assistant's configuration" />
 </Frame>
 
+<Frame>
+  <img src="/images/graphium/assistant/edit-assistant.png" alt="Assistant editor with an existing assistant's configuration loaded" />
+</Frame>
+
 ---
 
 ## Duplicating an Assistant
@@ -153,6 +183,10 @@ Make your changes across any of the three tabs, then click **Save** to save them
 To create a copy of an existing assistant — useful for creating a variant with a different system prompt or tool configuration — open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Duplicate**.
 
 A copy of the assistant is created and added to the list. Open it to rename and adjust the configuration as needed.
+
+<Frame>
+  <img src="/images/graphium/assistant/duplicate-archive-assistant.png" alt="Three-dot menu showing Duplicate and Archive options" />
+</Frame>
 
 ---
 
@@ -164,6 +198,10 @@ To archive an assistant, open the assistant editor and click the **⋮ (three-do
 
 <Frame>
   <img src="/images/graphium/assistant/assistant-archive-menu.png" alt="Three-dot menu showing Duplicate and Archive options" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/assistant/duplicate-archive-assistant.png" alt="Three-dot menu showing Duplicate and Archive options" />
 </Frame>
 
 The assistant is moved to the archived state immediately and will no longer appear in the active list or chat interface.
@@ -195,8 +233,6 @@ To go back to the vault chat from the Assistants list, click **Home** in the vau
 
 ## Related Articles
 
-- [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants)
 - [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
-- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
 - [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)
 - [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)
