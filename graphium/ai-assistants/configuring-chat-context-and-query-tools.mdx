@@ -8,14 +8,7 @@ icon: "brain"
 
 The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems. A badge on the ⚙ icon shows how many context items are currently enabled.
 
-## When to Use This
-
-Use this before asking the AI a question to ensure it has access to the right data — or to expand its capabilities by enabling tools and connection actions.
-
-## Prerequisites
-
-- Admin or Builder vault role
-- Access to the vault's Home page
+Use this before asking the AI a question to ensure it has access to the right data — or to expand its capabilities by enabling tools and connection actions. You must have Admin or Builder vault role and access to the vault's Home page.
 
 ---
 
@@ -24,6 +17,10 @@ Use this before asking the AI a question to ensure it has access to the right da
 In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with four tabs — **Tables**, **Tools**, **Connections**, and **Assistants** (coming soon).
 
 The ⚙ icon displays a **badge** showing the total number of currently enabled context items across all three tabs (tables, tools, and connection actions). This gives you a quick at-a-glance count of what the AI has access to without opening the panel.
+
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-icon.png" alt="The settings icon in the chat input bar with a badge showing enabled context items" />
+</Frame>
 
 ---
 
@@ -48,6 +45,10 @@ Click the toggle on any enabled table to turn it **Off**. The AI will no longer 
 Enable only the tables relevant to your question for more focused and accurate responses.
 </Tip>
 
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-tables.png" alt="Tables tab in the Chat Context panel showing vault tables with toggle and access level controls" />
+</Frame>
+
 ---
 
 ## Tools Tab — General Tools
@@ -71,6 +72,10 @@ To enable Web Search:
 
 The AI will automatically use web search when it determines that internet data would improve its response.
 
+<Frame>
+  <img src="/images/graphium/assistant/chat-context.png" alt="Tools tab in the Chat Context panel showing Charts and Web Search toggles" />
+</Frame>
+
 ---
 
 ## Connections Tab — Connection Actions
@@ -89,6 +94,10 @@ The third tab (**Connections**) shows actions available from your vault's connec
 | **Graphium Surveys** | Create Survey, Survey Completed |
 
 The exact connections and actions you see depend on what your vault has configured. Toggle individual actions on or off within each connection group.
+
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-connections.png" alt="Connections tab in the Chat Context panel showing connection actions grouped by connection type" />
+</Frame>
 
 ---
 
