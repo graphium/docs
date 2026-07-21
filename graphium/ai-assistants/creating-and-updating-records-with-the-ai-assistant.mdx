@@ -32,6 +32,10 @@ To enable write access:
   <img src="/images/graphium/assistant/table-access-read-write.png" alt="Table Access section showing Off, Read, and Read & Write options" />
 </Frame>
 
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-tables.png" alt="Tables tab in the Chat Context panel showing Read and Read & Write access options" />
+</Frame>
+
 > **Note:** Only Admins and Builders can configure an assistant's tools. Users interacting with the assistant in chat do not change these settings — they are fixed by whoever published the assistant.
 
 ---
@@ -45,6 +49,10 @@ To create a record, describe it in plain language. Include the field values you 
 - *"Create a patient record for Omar Patel. Status: Active. Date of birth: March 2, 1978."*
 
 The assistant confirms what it will create, writes the record, and reports back — including the record's assigned ID.
+
+<Frame>
+  <img src="/images/graphium/assistant/create-record-using-assistant.png" alt="Chat input with a natural language request to create a new record" />
+</Frame>
 
 <Frame>
   <img src="/images/graphium/assistant/create-record-response.png" alt="AI assistant response confirming a new patient record was created" />
@@ -63,6 +71,10 @@ To update a record, identify the record you want to change and describe the upda
 - *"Change Dr. Rivera's specialty to Interventional Cardiology."*
 
 The assistant looks up the matching record, applies only the fields you specified, and confirms the change. Fields you do not mention are left exactly as they are.
+
+<Frame>
+  <img src="/images/graphium/assistant/update-record-using-assistant.png" alt="Chat input with a natural language request to update an existing record" />
+</Frame>
 
 <Frame>
   <img src="/images/graphium/assistant/update-record-response.png" alt="AI assistant response confirming a record update" />
@@ -93,6 +105,10 @@ The assistant can write to most field types in a vault table:
 If a table's access is set to **Read**, the assistant will refuse any request to create or update records in that table. It will explain that it only has read access and cannot make changes — no partial writes will occur.
 
 This lets you give the assistant visibility into a table without the ability to modify it, which is useful for reference tables or tables you want to protect from accidental edits.
+
+<Frame>
+  <img src="/images/graphium/assistant/read-only-response.png" alt="AI Assistant response explaining it only has read access and cannot make changes" />
+</Frame>
 
 ---
 
