@@ -6,7 +6,7 @@ icon: "book-open"
 
 ## Overview
 
-Workflows and tasks are two sides of the same coin. Workflows are the automated processes that watch your data and react to what happens. Tasks are the action items that result when something needs a human being to step in. Together, they form the backbone of how Graphium keeps things from falling through the cracks.
+Workflows and tasks are two sides of the same coin. Workflows are the automated processes that watch your data and react to what happens. Tasks are the action items that result when something needs a human being to step in. Together, they form the backbone of how Graphium AI keeps things from falling through the cracks.
 
 Both live inside a vault. You configure workflows to monitor conditions and fire when something happens. When they find an issue -- or when an AI assistant detects something off -- a task gets created. That task sits in a prioritized list until someone resolves it.
 
@@ -16,7 +16,7 @@ Both live inside a vault. You configure workflows to monitor conditions and fire
 
 ### What They Are
 
-A workflow is an automated process that triggers based on events or schedules within your vault. You set the conditions, and Graphium handles the rest. When a new case record appears, a workflow can check for missing fields. When a subscription gets cancelled in an external system, a workflow can fire an alert. When Monday morning rolls around, a workflow can compile last week's financial summary and send it out.
+A workflow is an automated process that triggers based on events or schedules within your vault. You set the conditions, and Graphium AI handles the rest. When a new case record appears, a workflow can check for missing fields. When a subscription gets cancelled in an external system, a workflow can fire an alert. When Monday morning rolls around, a workflow can compile last week's financial summary and send it out.
 
 Workflows run in the background. You configure them once, turn them on, and they keep working -- tracking every run so you can see how active they are.
 
@@ -32,7 +32,7 @@ Every workflow starts with a trigger -- the event that kicks it off. There are t
 
 **New Record.** Fires when a record is added to a specific table. For example, "New Record in Cases" triggers every time a new case lands in the Cases table. This is the most common trigger for data quality checks and notification workflows.
 
-**Connection Event.** Fires when something happens in an external system connected to your vault. For example, "Graphium DB Subscription Cancelled" fires when a subscription cancellation event comes through from your database connection, or "HubSpot Deal Won" fires when a sales deal closes. These let your vault react to things happening outside of Graphium.
+**Connection Event.** Fires when something happens in an external system connected to your vault. For example, "Graphium AI DB Subscription Cancelled" fires when a subscription cancellation event comes through from your database connection, or "HubSpot Deal Won" fires when a sales deal closes. These let your vault react to things happening outside of Graphium AI.
 
 **Schedule.** Fires on a recurring time-based schedule. "Every Monday at 8:00 AM" or "Daily at 6:00 AM." Use these for periodic reports, routine checks, and anything that needs to happen at regular intervals regardless of what is going on with the data.
 
@@ -55,7 +55,7 @@ Here is what workflows look like in practice across two different vault types --
 
 **SaaS operations:**
 
-- **Churn Alert** -- Triggered by Graphium DB Subscription Cancelled event. When a customer cancels, this workflow immediately flags it for the account team.
+- **Churn Alert** -- Triggered by Graphium AI DB Subscription Cancelled event. When a customer cancels, this workflow immediately flags it for the account team.
 - **New Customer Onboarding Kickoff** -- Triggered by HubSpot Deal Won event. A closed deal automatically starts the onboarding process.
 - **At-Risk Customer Alert** -- Scheduled daily at 9:00 AM. Checks customer health metrics each morning and flags accounts that are trending downward.
 - **NPS Detractor Follow-Up** -- Triggered by Graphium Surveys Survey Completed event. When a survey comes back with a low score, this workflow routes it to the right person for follow-up.
@@ -66,7 +66,7 @@ Here is what workflows look like in practice across two different vault types --
 
 ### What They Are
 
-Tasks are prioritized action items that need human attention. They are the things Graphium surfaces when automation alone is not enough -- when a person needs to look at something, make a judgment call, or take a manual action.
+Tasks are prioritized action items that need human attention. They are the things Graphium AI surfaces when automation alone is not enough -- when a person needs to look at something, make a judgment call, or take a manual action.
 
 Tasks can come from anywhere: an AI assistant detecting an anomaly in your data, a workflow flagging a missing field, a data quality check catching a duplicate, or manual creation by a team member. The point is to give you one place to see everything that needs fixing, who is responsible, and how long it has been waiting.
 
@@ -132,7 +132,7 @@ Here is a representative sample of tasks you might see in the task list:
 
 ### A Day in the Task List
 
-Here is how this plays out in practice. A billing coordinator at a clinical practice opens Graphium on a Tuesday morning and clicks into the Tasks section. Three items were flagged overnight:
+Here is how this plays out in practice. A billing coordinator at a clinical practice opens Graphium AI on a Tuesday morning and clicks into the Tasks section. Three items were flagged overnight:
 
 1. An urgent task: "Procedure duration calculation error" on Case #43891. The AI assistant caught that the recorded procedure duration was 950 minutes -- over 15 hours -- for a routine procedure. The coordinator clicks "View Case #43891," sees the time entry, realizes it should have been 95 minutes, corrects it, and resolves the task.
 

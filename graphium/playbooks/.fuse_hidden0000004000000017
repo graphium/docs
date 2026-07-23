@@ -1,0 +1,215 @@
+---
+title: "Creating and Publishing a Playbook"
+icon: "play"
+---
+
+## Overview
+
+Admins and Builders can create a playbook (workflow) from the Playbooks section of any vault they have access to. When you start a new playbook, Graphium AI asks you to describe what you want it to do. It then generates a complete draft including a name, a trigger, and an ordered set of steps. From there, you review and refine the draft, connect the tables and tools each step needs, configure the trigger, and publish to make it active.
+
+---
+
+## Step 1: Open the Playbooks Section
+
+From within your vault, select **Playbooks** in the left sidebar. If you do not see this option, confirm your vault role is **Admin** or **Builder** - Contributors and Viewers do not have access to Playbooks.
+
+Click **+ New Playbook**.
+
+<Frame>
+  <img src="/images/graphium/playbooks/create-playbook.png" alt="Playbooks page showing the + New Playbook button" />
+</Frame>
+
+---
+
+## Step 2: Describe Your Playbook
+
+A **Create Playbook** modal opens with two fields:
+
+**AI Assistant**
+
+A dropdown that controls which assistant this playbook is associated with. Selecting a specific assistant links the playbook to that assistant's context — the AI will be aware of that assistant's configured tables and tools when generating steps. Leave it set to **General** if the playbook is not tied to a specific assistant.
+
+**Describe the playbook**
+
+A free-text field (up to 5,000 characters) where you describe what you want the playbook to do. Write in plain language — for example, *"Every morning, check for new patient records added in the last 24 hours and summarize the results."* The more specific you are, the better the output.
+
+Click **Generate Playbook** once your description is ready.
+
+<Frame>
+  <img src="/images/graphium/playbooks/create-playbook-modal.png" alt="Create Playbook modal showing AI Assistant dropdown and description field" />
+</Frame>
+
+### Tips for Writing Better Descriptions
+
+The quality of the generated steps depends heavily on how clearly you describe the goal:
+
+- **Include a time or trigger signal** if you want a scheduled playbook — phrases like "every Monday", "daily at 9am", or "each week" will produce a Scheduled trigger.
+- **Name the data you're working with** — mentioning table names like "Patients" or "Providers" helps the AI reference the right data in its step instructions.
+- **Describe the outcome, not just the process** — "send each patient a reminder 7 days before their appointment" is more useful than "check appointments and send messages".
+- **Include any conditions** — "only for patients with a status of Active" or "if no provider is assigned" will be reflected in the generated step instructions.
+
+---
+
+## What the AI Generates
+
+After a few seconds, the editor opens with a fully drafted playbook. The AI produces:
+
+- **A playbook name** derived from your description
+- **A trigger type** inferred from your description — for example, a description mentioning "every week" or "every morning" will produce a Scheduled trigger
+- **An ordered list of steps**, each with a title and written instructions explaining what the AI should do at that step
+
+The playbook opens in the editor as **v1 · Draft**, ready to review and refine.
+
+<Frame>
+  <img src="/images/graphium/playbooks/ai-generate-playbook.png" alt="Playbook editor showing AI-generated name, trigger, and steps" />
+</Frame>
+
+---
+
+## Step 3: Editing Your Playbook
+
+The playbook editor has three columns:
+
+- **Playbook Outline (left column)** — Contains the Playbook Context card, workflow trigger, and list of steps.
+- **Playbook Context/Trigger Configuration/Step Details (center column)** — Shows the configuration for whichever section is selected from the Playbook outline.
+- **Run History (right column)** — Shows all past and in-progress runs for this playbook.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-editor-layout.png" alt="Playbook editor three-column layout" />
+</Frame>
+
+---
+
+## Step 4: Review and Edit Your Steps
+
+The AI generates a step title and written instructions for each step, but does not automatically wire up data context. After generation, each step will show **"No tables, connections, or tools selected yet."** until you connect the resources each step needs. See Step 6 below for configuring resources.
+
+Click a step in the **Playbook Outline** to open its Step Details panel. Each step has two fields:
+
+- **Step Title** — A short label that identifies the step in the outline (for example, *Query Today's Case Data*).
+- **Instructions** — The detailed, plain-language instructions that tell the AI exactly what to do during this step. The Instructions field supports rich text formatting.
+
+Review the generated instructions carefully and edit any details the AI may have assumed — field names, filter conditions, or specific values that should match your vault's actual data.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-step-details.png" alt="Step details panel showing Step Title and Instructions fields" />
+</Frame>
+
+> 💡 **Tip:** Write instructions in plain language and be specific. Reference exact table names and field values where helpful — for example: *"From the Cases table, select all rows where case_date = today and status is Completed or Signed."*
+
+To manage steps in the outline:
+
+- **Add a step** — Click **+** in the Steps section header to add a new step below the last one.
+- **Reorder steps** — Drag a step using its drag handle to change its order.
+- **Remove a step** — Click the delete icon on the step you want to remove.
+
+<Frame>
+  <img src="/images/graphium/playbooks/manage-playbook-steps.png" alt="Managing steps in the Playbook Outline" />
+</Frame>
+
+> **Note:** Steps run in sequence. The output of one step is passed to the next, so you can chain logic across steps.
+
+---
+
+## Step 5: Configure the Trigger
+
+Click the **trigger card** in the Playbook Outline (below Playbook Context) to open Trigger Configuration in the center panel.
+
+<Frame>
+  <img src="/images/graphium/playbooks/add-playbook-trigger.png" alt="Trigger card in the Playbook Outline" />
+</Frame>
+
+A **Choose a Trigger** modal opens with a searchable list of all available trigger types, grouped by category:
+
+- **Manual** — Run manually from the dashboard.
+- **Scheduled** — Run on a recurring schedule.
+- **Vault Events** (Record Added, Record Updated, Record Deleted) — Fire automatically when a record changes in a specific vault table.
+- **Connection events** (listed per connection, e.g., New Row Added from Google Sheets) — Fire automatically when something happens in a connected external system.
+
+Click the trigger you want to configure. For vault event and connection triggers, see [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
+
+<Frame>
+  <img src="/images/graphium/playbooks/select-playbook-trigger.png" alt="Trigger type selection" />
+</Frame>
+
+You can also add an optional **Description** to the trigger to document when and why the playbook runs.
+
+<Frame>
+  <img src="/images/graphium/playbooks/schedule-playbook-trigger.png" alt="Scheduled trigger configuration" />
+</Frame>
+
+---
+
+## Step 6: Configure Resource Access
+
+Click **Playbook Context** at the top of the Playbook Outline to open the resource access panel. This is where you grant the playbook access to the vault resources it needs — and where you connect the tables, connections, and tools required to run each step.
+
+<Frame>
+  <img src="/images/graphium/playbooks/add-playbook-context.png" alt="Opening Playbook Context" />
+</Frame>
+
+The Playbook Context panel is organized into three sections:
+
+**Tables** — Toggle on any vault tables the playbook needs to read from or write to. Each table shows its permission level (**Read** or **Read/Write**) and its approval mode (**Autonomous** or **Requires Review**). Setting a table to **Requires Review** causes the run to pause before any write action is taken on that table.
+
+**Connections** — Toggle on any vault connections the playbook needs to use. Like tables, each connection has an approval mode. Set a connection to **Requires Review** if you want the run to pause before sending data to an external system.
+
+**Tools** — Toggle on any built-in tools the playbook may use during execution, such as Chart Generation or Web Search.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-context-panel.png" alt="Playbook Context panel showing Tables, Connections, and Tools" />
+</Frame>
+
+> 💡 **Tip:** Start with the minimum access your workflow needs. You can always add more resources later by editing the playbook and publishing a new version.
+
+---
+
+## Step 7: Save as Draft
+
+Click **Save** in the top-right header to save your current configuration as a draft version. The header shows the current version number and draft status (for example, *v1 · Draft*).
+
+Drafts are not active — saving does not run or publish the playbook. You can save multiple times as you refine the playbook. Each save creates a new version snapshot you can return to via **History**.
+
+<Frame>
+  <img src="/images/graphium/playbooks/save-draft-playbook.png" alt="Save button in the playbook editor header" />
+</Frame>
+
+---
+
+## Step 8: Publish the Playbook
+
+When you are ready to make the playbook active, click **Publish** in the top-right header. This promotes your current draft to the active published version.
+
+Once published:
+
+- The playbook shows an **Enabled** badge in the list and in the editor header.
+- Manual playbooks are immediately available to run.
+- Scheduled playbooks begin running at the next configured time.
+- Connection and Vault Event playbooks are automatically deployed — the trigger is registered with the external service and begins listening for events immediately.
+
+<Frame>
+  <img src="/images/graphium/playbooks/publish-playbook.png" alt="Publish button and Enabled badge" />
+</Frame>
+
+> **Note:** Only Builders and Admins can publish a playbook. At least one step with instructions must be configured before publishing.
+
+Once published, you can edit, version, and disable your playbook. See [Managing Your Playbooks](/graphium/playbooks/managing-your-playbooks) for details.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Playbooks does not appear in the sidebar | Your vault role is Contributor or Viewer | Ask your vault Admin or Builder to adjust your role |
+| Publish button is not available | No steps have been configured, or no instructions have been added | Add at least one step with instructions before publishing |
+| A table or connection is not available in Playbook Context | The resource has not been added to this vault | Navigate to the Tables or Connections section and add it first |
+
+---
+
+## Related Articles
+
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
+- [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections)
+- [Playbooks](/graphium/core-concepts/playbooks)

@@ -1,0 +1,88 @@
+---
+title: "Creating a Vault"
+description: ""
+icon: "vault"
+---
+
+## Overview
+
+Vaults are the core organizational unit in Graphium AI — a structured container that holds all the data, forms, connections, and workflows related to a specific project or process. Every piece of captured data lives inside a vault. From the Dashboard you can browse your existing vaults and create new ones at any time.
+
+---
+
+## Vault Roles
+
+Every member of a vault is assigned one of four roles:
+
+| Role | What They Can Do |
+|------|-----------------|
+| **Admin** | Full access — manage the vault, its members, all data, and settings |
+| **Builder** | Create and modify tables, forms, schemas, and workflows |
+| **Contributor** | Add and edit records, but cannot change the vault's structure |
+| **Viewer** | Read-only access to view data |
+
+> **Note:** When you create a vault, you are automatically assigned the **Admin** role. All Workspace Owners are also automatically added as Admins.
+
+---
+
+## Creating a Vault
+
+1. From the Dashboard, click the **Create a Vault** card (dashed border with a **+** icon).
+
+<Frame>
+  <img src="/images/graphium/vaults/create-vault-card.png" alt="Create a vault card" />
+</Frame>
+
+2. In the **Create Vault** modal, enter a **Vault Name** (required).
+3. Optionally add a **Description** to explain the vault's purpose.
+4. Click **+ Create Vault**. The button activates once a name has been entered.
+
+<Frame>
+  <img src="/images/graphium/vaults/create-vault-popup.png" alt="Create vault popup" />
+</Frame>
+
+After creation you are automatically navigated into your new vault. You'll see an empty workspace with a sidebar containing Home, Tables, Tasks, Connections, Assistants, Playbooks, and Settings.
+
+> **Note:** Vault names must be unique within your workspace. If another vault has the same name you'll be prompted to choose a different one.
+
+---
+
+## What You Can Do in a Vault
+
+From the vault detail view you can:
+
+- Add and manage **Tables** for structured data capture
+- Configure **Connections** to external data sources
+- Build **Playbooks** to automate processes
+- Assign **Tasks** to team members
+- Chat with the built-in **AI Assistant** for data queries
+
+---
+
+## Permissions
+
+| Action | Workspace Owner | Workspace Manager | Vault Admin | Builder | Contributor | Viewer |
+|--------|----------------|-------------------|-------------|---------|-------------|--------|
+| Create vaults | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| View vaults | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Manage vault structure | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| Add & edit records | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| "Create a Vault" card is not visible | Insufficient workspace role | Contact your administrator about your workspace role |
+| "+ Create Vault" button stays greyed out | Vault Name field is empty | Enter a name — the button activates once the name field has content |
+| "A vault with this name already exists" error | Duplicate vault name | Choose a unique name — all vault names within a workspace must be distinct |
+| Vault not appearing in the Dashboard | You are not an active member | Ask a vault Admin to add you via vault settings |
+| Can see the vault but can't edit structure | Contributor or Viewer role | Ask a vault Admin to update your vault role |
+
+---
+
+## Related Articles
+
+- [Understanding Vault Metadata](/graphium/vaults/understanding-vault-metadata)
+- [Vault Settings](/graphium/vaults/vault-settings-general-configuration)

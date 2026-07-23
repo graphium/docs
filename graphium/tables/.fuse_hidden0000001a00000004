@@ -1,0 +1,119 @@
+---
+title: "Configuring a Formula Property"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+A Formula property computes a value automatically by evaluating an expression against the other properties in the same vault table record. Instead of asking users to enter a value manually, the system calculates it at the time the record is created or updated.
+
+Formula properties are useful for combining existing field values into a derived output — for example, concatenating a company name and invoice number into a formatted label, or building a summary from multiple fields. Only users with a **Builder** or **Admin** vault role can add or edit Formula properties.
+
+---
+
+## Configuring a Formula Property
+
+### Step 1 — Open the Schema Editor
+
+1. In the left sidebar, select the vault table you want to configure.
+2. Click the **Schema** tab at the top of the table view.
+3. Click **+ Add Field** in the top-right corner of the schema list.
+
+The **Add Property** modal opens.
+
+### Step 2 — Fill in the standard fields
+
+| Field | Required | Notes |
+|---|---|---|
+| **Name** | Yes | The display label shown in the data grid and forms (e.g., `Invoice Label`) |
+| **Description** | No | Optional context about the property (0 / 128 characters) |
+| **Internal Name** | Auto-generated | Snake_case version of the name (e.g., `invoice_label`). Locked after the property is saved and cannot be changed |
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-standard-fields.png" alt="Formula property standard fields" />
+</Frame>
+
+### Step 3 — Select the Formula type
+
+In the **Property type** dropdown, search for or select **Formula**.
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-type.png" alt="Formula property type" />
+</Frame>
+
+### Step 4 — Write the Expression
+
+Once selected, a **Formula Configuration** panel appears directly below the Property type field. Template mode is the available expression mode — it uses `{{internal_name}}` placeholders to insert property values into a text string.
+
+Type your expression into the text area:
+
+```
+{{company_name}} — {{invoice_number}}
+```
+
+With a record where `company_name` is "Water Company" and `invoice_number` is "INV-00001-2026", this produces "Water Company — INV-00001-2026".
+
+- Use a property's **Internal Name** (shown in grey next to the property name in the schema list), not its display name
+- Internal names are snake_case, e.g., `company_name`, `invoice_number`
+- Any text outside `{{ }}` is treated as a literal string and included as-is
+
+> **Note:** The Allow Multiple Values option is not available for Formula properties. A formula always produces a single computed value.
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-configuration.png" alt="Formula property configuration" />
+</Frame>
+
+### Step 5 — Add the property
+
+Click **Add** to save the property. The formula expression is stored in the table schema and will be evaluated each time a record is created or updated.
+
+---
+
+## What Happens After Saving
+
+- The Formula property appears as a new column in the data grid.
+- When a new record is created, the system retrieves the current values of the referenced properties, evaluates the expression, and stores the computed result in the formula field automatically.
+
+<Frame>
+  <img src="/images/graphium/tables/formula-property-view.png" alt="Formula property view" />
+</Frame>
+
+---
+
+## Editing a Formula Property
+
+After a property is saved, you can edit it inline from the Schema tab by clicking **Edit** next to the property row.
+
+| Field | Editable after publish? |
+|---|---|
+| Name | Yes |
+| Description | Yes |
+| Internal Name | No — locked permanently after first save |
+| Expression | Yes — the updated expression applies to new records only; existing records retain their previously computed value |
+
+---
+
+## Archiving a Formula Property
+
+To remove a Formula property from active use, archive it from the Schema tab. Archiving is reversible — the property and its computed values are preserved. See [Adding Simple Table Properties](/graphium/tables/adding-simple-table-property-types) for archiving and unarchiving instructions.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Formula field is empty on a record | A referenced property had no value when the record was created | Edit the record to populate the referenced fields and save again |
+| Formula output is not what was expected | Internal name in the expression may be incorrect | Check the internal name of the referenced property in the Schema tab and update the expression |
+| Formula property is not visible in the data grid | Property may be hidden in Default Table Properties | Go to Settings → Default Table Properties and re-add the field |
+| Expression field shows a validation error | The expression is empty or malformed | Ensure the expression is filled in and uses valid `{{internal_name}}` syntax |
+
+---
+
+## Related Articles
+
+- [Adding a Table](/graphium/tables/adding-a-new-table-from-the-sidebar)
+- [Table Settings](/graphium/tables/table-settings)
+- [Configuring an Auto ID Property](/graphium/tables/configuring-an-auto-id-property)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/tables/deleting-archiving-and-unarchiving-properties)

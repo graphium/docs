@@ -1,0 +1,82 @@
+---
+title: "Your Profile & Account"
+description: ""
+icon: "rocket"
+---
+
+## Overview
+
+Your profile and account controls are accessible from the top-right corner of the navigation bar on every page in Graphium AI. From here you can view your account details, edit your first and last name, reset your password, and log out of the application.
+
+---
+
+## Viewing Your Profile
+
+1. Look to the top-right corner of the navigation bar. You will see a circular avatar showing your initials (e.g., **MS** for Molly Sample) followed by your display name and a dropdown arrow.
+2. Click your name or avatar to open the profile block.
+3. The profile block drops down displaying your display name in bold and your email address beneath it.
+
+<Frame>
+  <img src="/images/graphium/getting-started/user-profile-dropdown.png" alt="Graphium AI user profile dropdown" />
+</Frame>
+
+---
+
+## Editing Your Profile
+
+1. Click your **name or avatar** to open the profile block.
+2. Click **Edit Profile**. The profile editing view opens.
+
+<Frame>
+  <img src="/images/graphium/getting-started/edit-profile.png" alt="Graphium AI edit profile" />
+</Frame>
+
+3. Update your **First Name**, **Last Name**, or both fields as needed.
+4. Click **Save**. Your changes are reflected across the application immediately.
+
+| Field | Description |
+|-------|-------------|
+| **First Name** | Your first name as shown in the navigation bar and profile block |
+| **Last Name** | Your last name as shown in the navigation bar and profile block |
+
+> **Note:** To change your password, click the **Reset Password** button in the Edit Profile modal. A password reset email will be sent to your registered email address.
+
+> **Note:** If the save request fails, an error message will appear. Your existing profile information remains unchanged until a successful save is completed.
+
+---
+
+## Logging Out
+
+1. Click your **name or avatar** in the top-right corner to open the profile block.
+2. Click **Log Out** (shown in red at the bottom of the menu).
+3. Your session is cleared and you are redirected to the Graphium AI sign-in page.
+
+No application data is deleted when you log out — your vaults, tables, and records remain intact. After logout, you will not be able to navigate back to any protected page without signing in again.
+
+---
+
+## Permissions
+
+All authenticated users can view and edit their own profile and log out, regardless of their workspace role (Owner, Admin, or Member).
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Name or email shown is incorrect | Profile reflects account data stored with Graphium AI | Click **Edit Profile** within the profile block, or contact your workspace administrator |
+| Profile block shows a loading state or no information | Connectivity or loading issue | Refresh the page and open the profile block again |
+| Edit Profile option is not visible in the dropdown | Profile dropdown may not have fully loaded | Refresh the page and try opening the dropdown again |
+| Changes are not saving | Network issue or invalid field value | Check your internet connection and ensure all fields are valid, then try again |
+| Updated name is not reflected in the navigation bar | Browser cache or display delay | Refresh the page; your updated name should appear after a successful save |
+| Email change is not taking effect | New email may require verification | Check your inbox for a verification email and follow the link to confirm |
+| Log Out option is not visible | Clicking the wrong area of the nav bar | Click your name or avatar in the top-right corner, not the workspace name on the left |
+| Clicked Log Out but nothing happened | Network issue prevented the logout request | Wait a moment and try again; closing your browser will also end your local session |
+| Logged out unexpectedly | Session expired due to inactivity | Sign in again to continue |
+
+---
+
+## Related Articles
+
+- [Signing In with Email and Password](/graphium/getting-started/signing-in-with-email-and-password)

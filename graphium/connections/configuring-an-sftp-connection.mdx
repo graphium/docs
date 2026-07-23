@@ -6,14 +6,14 @@ icon: "link"
 
 ## Overview
 
-Graphium supports two SFTP connection types, both of which link a vault to a remote SFTP server for automated file upload, download, and monitoring:
+Graphium AI supports two SFTP connection types, both of which link a vault to a remote SFTP server for automated file upload, download, and monitoring:
 
 - **SFTP (Key-Based Auth)** — authenticates using an SSH private key. Use this when your server is configured for key-based authentication.
 - **SFTP (Password Auth)** — authenticates using a username and password. Use this when your server uses standard password-based credentials.
 
 The setup process is the same for both types. The only difference is the credentials you enter in Step 4.
 
-To configure either connection, you must have an Admin or Builder vault role with access to the vault's Connections section, valid server credentials, and network access to the file server from Graphium.
+To configure either connection, you must have an Admin or Builder vault role with access to the vault's Connections section, valid server credentials, and network access to the file server from Graphium AI.
 
 ## Step-by-Step Instructions
 
@@ -86,7 +86,7 @@ Next, click the **Test** button in the top right corner to verify the connection
 
 ### Step 6: Set Sync Settings
 
-Configure how often Graphium should check the server for new or updated files:
+Configure how often Graphium AI should check the server for new or updated files:
 
 - **Auto-sync** — toggle on to enable automatic monitoring
 - **Interval** — set the check frequency (e.g., every 5 minutes)
@@ -97,7 +97,7 @@ Configure how often Graphium should check the server for new or updated files:
 
 ## What to Expect
 
-Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. Playbooks can now use this connection to trigger on new files detected on the server or to push files from Graphium to the server. All file transfer activity appears in the connection's Activity Log.
+Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. Playbooks can now use this connection to trigger on new files detected on the server or to push files from Graphium AI to the server. All file transfer activity appears in the connection's Activity Log.
 
 **Available triggers:**
 - **Watch Remote Directory** — fires when a new file appears in the configured remote directory
@@ -117,14 +117,14 @@ Once connected, the status badge shows **"healthy"** and data begins syncing bas
 | **"Successful Connection"** notification does not appear | Invalid credentials or server is unreachable | Confirm the hostname resolves, the server is online, and the credentials are correct |
 | Pipedream rejects the Private Key *(Key-Based Auth only)* | Key is passphrase-protected, in the wrong format, or the matching public key is not authorized | Generate a passphrase-less key in OpenSSH or PEM format and ask your server administrator to add the public key to `~/.ssh/authorized_keys` |
 | Status shows "error" after setup | Incorrect hostname, username, or credentials | Double-check server details in the Authentication section |
-| Connection times out during Test | Firewall or network restriction | Confirm the server allows inbound connections from Graphium's IP range |
+| Connection times out during Test | Firewall or network restriction | Confirm the server allows inbound connections from Graphium AI's IP range |
 | Connection status does not show **"Healthy"** after clicking Test | Authentication succeeded but the session was rejected, or the configured directory is inaccessible | Verify the username has read/write access to the target directory and re-run Test |
 | SFTP option is missing from the **File Server** category | Connection type may not be enabled for your workspace | Contact [support@graphium.ai](mailto:support@graphium.ai) to confirm availability |
 | **+ Add Connection** button is not available | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
 | Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Resolve any authentication errors with Test first, then enable Auto-sync |
 | Files are not being detected | Incorrect directory path configured | Review the server-specific settings in the connection detail view |
 | Sync completes but no records appear in vault tables | Tables are not yet mapped to the SFTP data source | Open the table settings and configure the file source mapping |
-| Status flips between Healthy and Error intermittently | Server session timeouts, IP rotation, or rate limiting | Check the server's auth log for repeated failed logins and consider allowlisting Graphium's IP range |
+| Status flips between Healthy and Error intermittently | Server session timeouts, IP rotation, or rate limiting | Check the server's auth log for repeated failed logins and consider allowlisting Graphium AI's IP range |
 
 ## Related Articles
 

@@ -1,0 +1,116 @@
+---
+title: "Deleting and Voiding Records"
+description: ""
+icon: "grid"
+---
+
+## Overview
+
+Graphium supports two ways to remove a record from a vault table — **Delete** (permanent hard delete) and **Void** (reversible soft delete). The behavior of the row-level action is determined by your workspace's **Record Deletion Mode** setting. Voided records can be restored at any time, and a **Show Voided** toggle in the table header bar lets you surface them in the grid when needed.
+
+## When to Use This
+
+Use this feature when you need to:
+- Remove a record from a vault table that was entered in error, is a duplicate, or is no longer needed
+- Soft-delete (void) a record that may need to be recovered later rather than permanently removed
+- Restore a previously voided record back to active status
+- Audit or review voided records by toggling them into view
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Vault Table
+
+Navigate to the vault that contains the table you want to manage. Select the table from the vault sidebar. The **Data** tab opens by default, displaying records in the data grid.
+
+<Frame>
+  <img src="/images/graphium/records/vault-table.png" alt="Vault table" />
+</Frame>
+
+### Step 2: Locate the Record
+
+Find the record row you want to delete or void. Each row represents one record, with row-level action buttons on the right side of the row.
+
+<Frame>
+  <img src="/images/graphium/records/record-in-table.png" alt="Record in table" />
+</Frame>
+
+### Step 3: Click the Delete or Void Button
+
+Click the trash icon on the right side of the record row. The label on the button depends on your workspace's Record Deletion Mode:
+
+| Mode | Button label | What happens |
+|------|--------------|--------------|
+| **Delete** | Delete | Initiates a permanent hard delete of the record |
+| **Void** | Void | Initiates a soft delete (void) of the record |
+
+### Step 4: Confirm the Action in the Modal
+
+A confirmation modal will appear. The modal will indicate whether the action is a **Delete** or a **Void** based on your workspace settings.
+
+- If the modal says **Delete** — the record will be permanently removed. This cannot be undone.
+- If the modal says **Void** — the record will be soft-deleted and can be restored later.
+
+Click the confirmation button to proceed, or click **Cancel** to abort without making any changes.
+
+<Frame>
+  <img src="/images/graphium/records/delete-record.png" alt="Delete record" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/records/void-record.png" alt="Void record" />
+</Frame>
+
+> ⚠️ **Important:** In Delete mode, once confirmed, the record is permanently removed and cannot be recovered. If your team requires the ability to restore records, ask your administrator to switch the workspace to Void mode.
+
+### Step 5 (Void mode only): View Voided Records with the Show Voided Toggle
+
+After voiding a record, it is hidden from the default table view. To reveal voided records:
+
+1. In the table header bar, locate the **Show Voided** toggle
+2. Click the toggle to enable it
+3. Voided records will appear in the grid with a **gray background**, visually distinguishing them from active records
+4. The **Edit button is hidden** on voided rows — only the Unvoid action is available
+5. Click the **Show Voided** toggle again to hide voided records and return to the default view
+
+<Frame>
+  <img src="/images/graphium/records/show-voided-records.png" alt="Show voided records" />
+</Frame>
+
+### Step 6 (Void mode only): Unvoid a Record
+
+To restore a voided record to active status:
+
+1. Enable the **Show Voided** toggle to surface voided records in the grid (see Step 5)
+2. Locate the voided record (identified by its gray background)
+3. Click the **Unvoid** button on the right side of the record row
+4. The record is immediately restored to active status, the gray styling is removed, and the Edit button becomes available again
+
+<Frame>
+  <img src="/images/graphium/records/unvoid-record.png" alt="Unvoid record" />
+</Frame>
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| Delete a record | ✅ | ✅ | ✅ | ❌ |
+| Void a record | ✅ | ✅ | ✅ | ❌ |
+| Unvoid a record | ✅ | ✅ | ✅ | ❌ |
+| View voided records | ✅ | ✅ | ✅ | ❌ |
+
+> **Note:** Your ability to delete or void records is controlled at the workspace level. The vault table must contain at least one record to act on.
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|--------------|----------|
+| The Delete or Void button is not visible on record rows | Your role is Viewer | Contact your vault administrator to request a Contributor role or higher access |
+| No confirmation modal appears | An unexpected error or browser issue | Refresh the page and try again; contact support if the issue persists |
+| Voided records are not appearing after enabling Show Voided | Toggle may not have applied yet due to a sync delay | Wait a moment and try toggling it off and back on again |
+| **Unvoid** button is not visible on a voided record | The Show Voided toggle may not be enabled, or your role/table access does not permit unvoid | Enable the Show Voided toggle to reveal voided records; confirm your role and table access with your administrator |
+| Modal says "Delete" but the team expected "Void" | Workspace Record Deletion Mode is set to Delete | Ask your workspace administrator to change the Record Deletion Mode setting to Void |
+
+## Related Articles
+
+- [Navigating Your Table](/graphium/tables/table-views-data-schema-and-settings)
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)

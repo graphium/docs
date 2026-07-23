@@ -1,0 +1,86 @@
+---
+title: "Adding a Connection"
+description: ""
+icon: "link"
+---
+
+## Overview
+
+Adding a connection links your vault to an external data source such as an EMR, file server, or spreadsheet. Once connected, data can flow in and out of the vault automatically based on your workflow configuration. You must have an Admin or Builder vault role and know which connection type you need (e.g., Graphium EMR, Google Sheets, SFTP).
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Data Connections Page
+
+In the vault sidebar, click **Connections**.
+
+<Frame>
+  <img src="/images/graphium/connections/connections-sidebar.png" alt="Connections sidebar" />
+</Frame>
+
+### Step 2: Click + Add Connection
+
+Click the **+ Add Connection** button in the top-right of the Data Connections page. The **Add Connection** picker opens.
+
+<Frame>
+  <img src="/images/graphium/connections/add-connection.png" alt="Add connection" />
+</Frame>
+
+### Step 3: Find the Connection Type
+
+Use the **Search connections...** bar to search by name, or browse the categorized list:
+
+| Category | Connection Types |
+|----------|-----------------|
+| **EMR / EHR** | Graphium EMR, Epic |
+| **File Server** | SFTP (Key-Based Auth), SFTP (Password Auth) |
+| **Spreadsheet** | Google Sheets |
+
+Click **Details** on any connection type to learn more before adding.
+
+<Frame>
+  <img src="/images/graphium/connections/search-connections.png" alt="Search connections" />
+</Frame>
+
+### Step 4: Select and Configure
+
+Click the connection type you want to add, then complete the configuration form — including the connection name, authentication credentials, and sync settings.
+
+<Frame>
+  <img src="/images/graphium/connections/configure-connection.png" alt="Configure connection" />
+</Frame>
+
+### Step 5: Save the Connection
+
+Click **+ Add Connection** to save. The new connection appears in the Data Connections list.
+
+## Switching Between Card and List View
+
+Use the view toggle in the top-right corner of the Data Connections page:
+
+- **Grid icon (⊞)** — card view (default): displays each connection as a card showing its icon, name, type, status badge, last activity, and enabled/disabled indicator
+- **List icon (☰)** — list view: displays connections in a table with columns for CONNECTION, TYPE, STATUS, LAST ACTIVITY, and ENABLED
+
+Click the **">"** chevron at the end of any list row — or anywhere on a card — to open the connection's detail view.
+
+## What Happens After Saving
+
+After adding, the connection card or row displays in the Data Connections list with a status badge. If authentication succeeds, the status shows **"healthy"**.
+
+<Frame>
+  <img src="/images/graphium/connections/connection-card.png" alt="Connection card" />
+</Frame>
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| + Add Connection button is not visible | Insufficient vault role | Contact your vault Admin to request Builder or Admin access |
+| Connection status does not show "connected" after setup | Authentication credentials may be incorrect | Click the connection to open its detail view and review the Authentication settings |
+
+## Related Articles
+
+- [Connections](/graphium/core-concepts/connections)
+- [Configuring an SFTP Connection](/graphium/connections/configuring-an-sftp-connection)
+- [Configuring a Graphium EMR Connection](/graphium/connections/configuring-a-graphium-emr-connection)
+- [Configuring a Google Sheets Connection](/graphium/connections/configuring-a-google-sheets-connection)

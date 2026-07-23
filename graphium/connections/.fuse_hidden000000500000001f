@@ -1,0 +1,148 @@
+---
+title: "Working with a Connection"
+description: ""
+icon: "link"
+---
+
+## Overview
+
+Each connection has a detail view that shows its full configuration, sync settings, and an activity log of all events triggered by the connection. From here you can review and update settings, test connectivity, investigate activity, and disable the connection when it's no longer needed. You must have an Admin or Builder vault role to access and manage connection details.
+
+## Opening a Connection
+
+In the vault sidebar, click **Connections**. In card view, click anywhere on the connection card. In list view, click anywhere on the connection's row. The connection detail view opens with two panels:
+
+**Left panel — Configuration:**
+- **Connection Name** — the display name for this connection
+- **Connection Type Key** — the internal identifier used in workflows
+- **Description** — an optional description for this connection
+- **Authentication** — credentials and auth settings for the external system
+- **Sync Settings** — auto-sync toggle and sync interval
+- Connection-specific settings (vary by connection type)
+
+<Frame>
+  <img src="/images/graphium/connections/open-connection.png" alt="Open connection" />
+</Frame>
+
+**Right panel — Activity Log:** shows all events triggered by the connection (see [Using the Activity Log](#using-the-activity-log) below).
+
+<Frame>
+  <img src="/images/graphium/connections/connection-activity-log.png" alt="Connection activity log" />
+</Frame>
+
+---
+
+## Enabling and Disabling a Connection
+
+Disabling a connection pauses data sync while preserving the configuration. Re-enabling restores normal operation. The enabled/disabled state is visible in both card and list views.
+
+**From the list or card view:**
+1. In the vault sidebar, click **Connections**.
+2. In card view, click the **green eye icon** in the bottom-right of the connection card. In list view, click the **eye icon** in the ENABLED column.
+3. The connection is disabled and the icon updates to reflect the disabled state.
+
+<Frame>
+  <img src="/images/graphium/connections/connection-disabled.png" alt="Connection disabled" />
+</Frame>
+
+**From the detail view:**
+1. Open the connection by clicking its card or row.
+2. In the connection detail header, click **Disable**.
+3. The connection is paused and the header updates to show the disabled status.
+
+To re-enable, follow the same steps — clicking the eye icon or using the detail view toggles the connection back to enabled.
+
+<Frame>
+  <img src="/images/graphium/connections/connection-enabled.png" alt="Connection enabled" />
+</Frame>
+
+---
+
+## Editing Connection Settings
+
+Connection settings can be updated at any time from the left panel. Changes take effect immediately.
+
+1. Open the connection detail view.
+2. **Update the Connection Name** — click into the **Connection Name** field and type a new name. Changes save automatically when you click away.
+3. **Update Authentication** — in the **Authentication** section, update your credentials. For OAuth-based connections (such as Google Sheets), click the re-authenticate button to go through the authorization flow again.
+4. **Adjust Sync Settings** — toggle **Auto-sync** on or off, and set the **Interval** for how frequently syncs occur.
+5. **Update connection-specific settings** — scroll down for any settings specific to this connection type (e.g., spreadsheet name, server path, or EMR endpoint).
+
+Most settings save automatically when you click away from a field. After updating authentication, run a **Test** to confirm the connection is still working correctly.
+
+---
+
+## Testing a Connection
+
+The **Test** button runs a real-time health check to verify the connection is active and authentication is valid. Use this after setting up a new connection, updating credentials, or when you suspect a connection has stopped working.
+
+1. Open the connection detail view.
+2. Click the **Test** button in the top-right header.
+3. The result displays inline — a successful test confirms the connection is active; a failed test indicates a connectivity or authentication issue.
+
+<Frame>
+  <img src="/images/graphium/connections/testing-connection.png" alt="Testing a connection" />
+</Frame>
+
+After clicking Test, a **log** event appears in the Activity Log confirming whether the health check passed or failed.
+
+---
+
+## Using the Activity Log
+
+The Activity Log in the right panel gives you a real-time record of everything that has happened with the connection — data syncs, triggered workflows, health checks, and errors.
+
+**Event type badges:**
+
+| Type | Color | Description |
+|------|-------|-------------|
+| **trigger** | Blue | A workflow trigger was fired |
+| **action** | Green | A workflow action was executed |
+| **sync** | Teal | A data sync completed |
+| **log** | Grey | A health check or informational event |
+| **error** | Red | An error occurred (auto-recovered or requires attention) |
+
+<Frame>
+  <img src="/images/graphium/connections/connection-event-badges.png" alt="Connection event badges" />
+</Frame>
+
+- **Filter by type** — click the **All Types** dropdown and select a specific event type
+- **View details** — click any activity row to expand the full event details
+- **Navigate pages** — use **Previous** and **Next** to page through entries (up to 15 per page)
+
+---
+
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| View the Connections page | ✅ | ✅ | ❌ | ❌ |
+| View connection details | ✅ | ✅ | ❌ | ❌ |
+| Add a new connection | ✅ | ✅ | ❌ | ❌ |
+| Enable or disable a connection | ✅ | ✅ | ❌ | ❌ |
+| Edit connection configuration | ✅ | ✅ | ❌ | ❌ |
+| Test a connection | ✅ | ✅ | ❌ | ❌ |
+| View the activity log | ✅ | ✅ | ❌ | ❌ |
+
+Contributor and Viewer roles do not have access to the Connections section and cannot view or manage connections.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Authentication section is not editable | Connection may be in a disabled state | Re-enable the connection first, then update credentials |
+| Test fails immediately | Authentication credentials are invalid or expired | Update credentials in the Authentication section and test again |
+| Test times out | External system is unreachable | Check that the external system is online and accessible |
+| Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button |
+| Error entries appearing frequently | Authentication failure or external system issue | Review the error description and check the Authentication section |
+| Enable/disable icon is not clickable | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
+| Connection re-enables but status does not show as healthy | Authentication may have expired | Open the connection detail view and review the Authentication settings |
+
+---
+
+## Related Articles
+
+- [Connections](/graphium/core-concepts/connections)

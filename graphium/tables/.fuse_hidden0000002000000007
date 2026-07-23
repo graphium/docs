@@ -1,0 +1,104 @@
+---
+title: "Configuring a Reference Property"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+A **Reference** property (labeled **Table Record** in the UI) links each record in one table to a record in another table within the same vault. Instead of duplicating data across tables, a reference property points to a single authoritative record elsewhere. Only users with a **Builder** or **Admin** vault role can add or edit Reference properties.
+
+For example, an Invoices table can have an Invoice Contact field that references a Contacts table. Each record within the Invoices table can then point to a specific record from the Contacts table, rather than having to store the contact's name, title, and phone number inline. If the contact record is ever updated, every invoice record that references it will automatically reflect the change.
+
+---
+
+## Configuring the Reference Property
+
+### Step 1 — Open the Schema Editor
+
+1. Open a vault and select a table from the sidebar.
+2. Click the **Schema** tab in the top-right corner of the main content area.
+3. Click **+ Add Field** to open the Add Property modal.
+
+### Step 2 — Fill in the standard fields
+
+In the Add Property modal:
+
+- **Name** — Enter a display label for the property (e.g., *Contact*, *Surgeon*, *Referring Facility*).
+- **Description** — (Optional) Up to 128 characters. Explain what this reference represents.
+- **Internal Name** — Auto-generated from the display name in snake_case (e.g., `contact`, `referring_facility`). You can edit it before saving; it cannot be changed after.
+
+<Frame>
+  <img src="/images/graphium/tables/reference-property-standard-fields.png" alt="Reference property standard fields" />
+</Frame>
+
+### Step 3 — Select the property type
+
+From the **Property type** dropdown, select **Table Record**.
+
+<Frame>
+  <img src="/images/graphium/tables/reference-property-type.png" alt="Reference property type" />
+</Frame>
+
+### Step 4 — Configure the Reference Property
+
+**Reference Table** *(required)*
+A searchable dropdown listing every other table in the vault. Use the **Search tables…** bar to filter by name. Select the table whose records this property will link to.
+
+> The current table is excluded from the list — a table cannot reference itself.
+
+<Frame>
+  <img src="/images/graphium/tables/configure-reference-property.png" alt="Configure reference property" />
+</Frame>
+
+### Step 5 — Add the property
+
+Click **Add**. The property is added to the schema list and a reference relationship is registered between the two tables in the system.
+
+---
+
+## What Happens After Saving
+
+Once a Table Record property is saved, Graphium registers an explicit relationship between the two tables. This means:
+
+- In the **data grid**, the column displays the linked record's identifier from the referenced table rather than a raw ID.
+- In **forms**, the field renders as a selector that lets users search and pick a record from the referenced table.
+- The relationship is tracked internally so that referential integrity can be maintained across the vault.
+
+<Frame>
+  <img src="/images/graphium/tables/invoice-contact.png" alt="Invoice contact" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/tables/invoice-contact-reference-table.png" alt="Invoice contact reference table" />
+</Frame>
+
+---
+
+## Editing a Reference Property
+
+To edit a Reference property, click **Edit** on the property row in the schema list. You can update the **name** or **description**. The property type and internal name are locked after publication.
+
+---
+
+## Archiving a Reference Property
+
+To remove a Reference property from active use, archive it from the Schema tab. Archiving is reversible — the property, its data, and the underlying reference relationship are all preserved. See [Adding Simple Table Properties](/graphium/tables/adding-simple-table-property-types) for archiving and unarchiving instructions.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Referenced table does not appear in the dropdown | The table may not exist in the vault yet | Create the referenced table first before adding the Reference property |
+| Reference field shows a raw ID instead of a display value | The referenced record may have been deleted | Check the referenced table to confirm the record still exists |
+| Cannot change the referenced table after creation | Reference table is locked after the property is saved | Archive the property and create a new one pointing to the correct table |
+
+---
+
+## Related Articles
+
+- [Adding a Table](/graphium/tables/adding-a-new-table-from-the-sidebar)
+- [Table Settings](/graphium/tables/table-settings)
+- [Deleting, Archiving, and Unarchiving Properties](/graphium/tables/deleting-archiving-and-unarchiving-properties)

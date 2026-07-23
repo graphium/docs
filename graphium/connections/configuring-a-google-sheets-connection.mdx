@@ -6,7 +6,7 @@ icon: "link"
 
 ## Overview
 
-The Google Sheets connection type links a vault to a Google Sheets spreadsheet, enabling automated reading, writing, and monitoring of spreadsheet data. It is useful for teams that manage data in Google Sheets and want to sync that data into Graphium vaults without manual imports. Use this when your team uses Google Sheets to collect or track data and you want Graphium to automatically pull rows into a table, push updated records back to the sheet, or trigger workflows when the sheet changes. To configure this connection, you must have an Admin or Builder vault role with access to the vault's Connections section, a Google account with access to the target spreadsheet, and permission to authorize Graphium to access your Google Sheets.
+The Google Sheets connection type links a vault to a Google Sheets spreadsheet, enabling automated reading, writing, and monitoring of spreadsheet data. It is useful for teams that manage data in Google Sheets and want to sync that data into Graphium AI vaults without manual imports. Use this when your team uses Google Sheets to collect or track data and you want Graphium AI to automatically pull rows into a table, push updated records back to the sheet, or trigger workflows when the sheet changes. To configure this connection, you must have an Admin or Builder vault role with access to the vault's Connections section, a Google account with access to the target spreadsheet, and permission to authorize Graphium AI to access your Google Sheets.
 
 ## Step-by-Step Instructions
 
@@ -39,16 +39,16 @@ Graphium AI uses Pipedream to connect your Google Sheets spreadsheet. When the P
 Pipedream will open a Google sign-in prompt to authorize Graphium AI.
 
 - Sign in with the Google account that has access to the target spreadsheet.
-- Review the permissions Pipedream requests on Graphium's behalf and grant the requested read and write access to your sheets.
+- Review the permissions Pipedream requests on Graphium AI's behalf and grant the requested read and write access to your sheets.
 - When the Google flow finishes, you'll return to Pipedream with a confirmation that the account is connected.
 
 ### Step 5: Configure Spreadsheet Settings
 
-Enter the specific spreadsheet details — such as the sheet name and data range — so Graphium knows which data to sync.
+Enter the specific spreadsheet details — such as the sheet name and data range — so Graphium AI knows which data to sync.
 
 ### Step 6: Set Sync Settings
 
-Configure how often Graphium should sync with Google Sheets:
+Configure how often Graphium AI should sync with Google Sheets:
 
 - **Auto-sync** — toggle on to enable automatic syncing
 - **Interval** — set the sync frequency (e.g., every 5 minutes)
@@ -67,7 +67,7 @@ If successful, the Google Sheets connection will appear in the Data Connections 
 
 ## What to Expect
 
-Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. Graphium can now read rows from and write rows to the connected sheet. Activity such as row added and row updated triggers appears in the connection's Activity Log.
+Once connected, the status badge shows **"healthy"** and data begins syncing based on your configured interval. Graphium AI can now read rows from and write rows to the connected sheet. Activity such as row added and row updated triggers appears in the connection's Activity Log.
 
 **Next steps:**
 

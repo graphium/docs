@@ -1,0 +1,111 @@
+---
+title: "Subscription and Payment Settings"
+icon: "credit-card"
+---
+
+## Overview
+
+Workspace Owners and Admins can manage the workspace subscription directly from the **Billing** page — upgrading or changing the current plan, updating the payment method on file, and accessing invoice history. This article also explains how Graphium handles plan limits and what users see when the workspace approaches or reaches a limit.
+
+---
+
+## Upgrading or Changing Your Plan
+
+To start a plan change, open the **Billing** page from workspace **Settings**. The Billing page displays the current plan alongside options to upgrade or change the subscription.
+
+When you initiate a plan change:
+
+1. Graphium presents a summary of the new plan and what will change.
+2. You confirm the selection directly in Graphium. No external checkout redirect occurs. If no payment method is on file, you will be prompted to add one before the plan change can complete.
+3. Once the change is confirmed, Graphium updates the workspace's subscription state and the Billing page reflects the new plan.
+
+If no payment method is currently on file, you will be prompted to add one as part of the plan change flow.
+
+> **Note:** Plan changes that succeed are reflected on the Billing page immediately. No manual refresh is required.
+
+<Frame>
+  <img src="/images/graphium/billing/plan-subscription-status.png" alt="Current plan and subscription status on the Billing page with the Change plan option" />
+</Frame>
+
+---
+
+## Managing Your Payment Method and Invoices
+
+Payment method management and invoice history are both accessed through the **Billing portal** — a Stripe-managed interface linked from the Billing page.
+
+To open the billing portal:
+
+1. Open **Settings** → **Billing**.
+2. In the **Billing portal** card on the right side of the page, click **Open billing portal**.
+3. The Stripe billing portal opens, where you can update your payment method, download receipts, and manage subscription settings.
+4. Return to Graphium once you are done.
+
+To go directly to your invoice history, click **View all invoices** in the **Recent Invoices** card on the right side of the Billing page. This also opens the Stripe billing portal, navigating to the invoice list.
+
+The payment method on file is used for recurring subscription charges and for seat capacity increases initiated from the Billing page.
+
+<Frame>
+  <img src="/images/graphium/billing/payment-invoice-mgmt.png" alt="Billing portal and Recent Invoices cards on the Billing page" />
+</Frame>
+
+---
+
+## Plan Limits and Upgrade Guidance
+
+Each plan includes workspace-level resource limits — such as the maximum number of vaults, tables, records, active playbooks, and AI assistants. Graphium enforces these limits and provides in-app guidance when the workspace approaches or reaches them.
+
+### Approaching a limit
+
+When the workspace is close to a plan limit, Graphium surfaces a proactive warning within the relevant area of the product — for example, near the vault list when the workspace is approaching its vault limit. The warning tells you which resource is near capacity so you can plan ahead.
+
+### Reaching a limit
+
+When an action would exceed a plan limit, Graphium blocks the action and displays a clear message that identifies the specific limit reached. The message includes a prompt to navigate to the **Billing** page to review the current plan and available upgrade options.
+
+Limits enforced this way include:
+
+Workspace-level limits:
+- Total vault count
+- Active playbooks
+- Connections
+- Teams
+- Channel users
+
+Per-vault limits:
+- Custom tables per vault
+- Records per vault
+- Custom AI assistants per vault
+
+> **Note:** Limit enforcement messages identify the specific resource that was blocked — you will not see a generic error. This makes it easier to understand what needs to change before the action can complete.
+
+<Frame>
+  <img src="/images/graphium/billing/seat-limit-notice.png" alt="Plan limit reached message blocking an action with a link to the Billing page" />
+</Frame>
+
+### Acting on a limit prompt
+
+If you see a limit prompt, click the link in the message to go directly to the Billing page. From there, you can review your current plan entitlements and start an upgrade if you need additional capacity.
+
+<Frame>
+  <img src="/images/graphium/billing/plan-upgrade-notice.png" alt="Billing page showing plan upgrade options after reaching a limit" />
+</Frame>
+
+---
+
+## Permissions
+
+| Action | Owner | Admin | Builder | Contributor |
+|--------|-------|-------|---------|-------------|
+| View current plan and subscription | ✅ | ✅ | ❌ | ❌ |
+| Upgrade or change the plan | ✅ | ✅ | ❌ | ❌ |
+| Open billing portal / manage payment method | ✅ | ✅ | ❌ | ❌ |
+| View invoice history | ✅ | ✅ | ❌ | ❌ |
+| See plan limit warnings | ✅ | ✅ | ✅ | ✅ |
+| Navigate to Billing from a limit prompt | ✅ | ✅ | ❌ | ❌ |
+
+---
+
+## Related Articles
+
+- [Your Subscription Overview](/graphium/billing/your-subscription-overview)
+- [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)

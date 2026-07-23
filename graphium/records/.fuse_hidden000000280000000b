@@ -1,0 +1,100 @@
+---
+title: "Creating and Editing Records"
+description: ""
+icon: "grid"
+---
+
+## Overview
+
+Records can be added and updated directly from the vault table. Clicking **Add {singular}** opens a blank form for new entries; clicking **Edit** on any row opens the same form pre-populated with that record's current values.
+
+---
+
+## Creating a Record
+
+1. Open the vault table and ensure you are on the **Data** tab.
+2. Click the **+ Add {singular}** button in the table header. The button label uses the table's configured singular name — for example, **Add Patient** or **Add Procedure**.
+
+<Frame>
+  <img src="/images/graphium/records/add-record-button.png" alt="Add record button" />
+</Frame>
+
+3. A panel opens to the right with a blank form generated from the table's schema. Fill in the fields for the new record.
+
+<Frame>
+  <img src="/images/graphium/records/create-record.png" alt="Create record" />
+</Frame>
+
+4. Click **Save**. The panel closes and the new record appears in the data grid.
+
+> **Note:** Click **Show additional fields** at the bottom of the form to reveal fields not shown by default.
+
+> **Tip:** Click **Cancel** or outside the panel to dismiss without saving. No record will be created.
+
+---
+
+## Editing a Record
+
+1. Locate the record you want to edit in the vault table.
+2. Click the **Edit** button on the right side of the record row.
+
+<Frame>
+  <img src="/images/graphium/records/record-in-table.png" alt="Record in table" />
+</Frame>
+
+3. A panel opens to the right pre-populated with the record's current field values.
+
+<Frame>
+  <img src="/images/graphium/records/edit-record.png" alt="Edit record" />
+</Frame>
+
+4. Update the fields as needed and click **Save**.
+
+After saving, the table refreshes to show the updated values.
+
+---
+
+## Field Types
+
+Both the create record and edit record actions support the below field types:
+
+| Field Type | How to Fill It In |
+|------------|-------------------|
+| **Text** | Click and type |
+| **Number** | Enter a numeric value |
+| **Date / Time / Date & Time** | Uses browser's native date/time picker |
+| **Boolean** | Toggle on or off |
+| **Select from List** | Choose from dropdown |
+| **Image** | Upload or capture an image |
+| **Signature** | Draw in the signature field |
+| **Table Record** | Search and select a record from the referenced table |
+| **Auto ID** | Automatically assigned — no input required |
+| **Formula** | Computed and read-only |
+
+---
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| View record detail | ✅ | ✅ | ✅ | ✅ |
+| Create a record | ✅ | ✅ | ✅ | ❌ |
+| Edit a record | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Add or Edit button is not visible | Your role is Viewer, or table access is read-only | Contact your vault Admin to request Contributor or higher access |
+| Form opens but fields are greyed out | Field is managed by an integration, Auto ID, or Formula | Auto ID and Formula fields cannot be edited directly |
+| Record does not appear after saving | Grid refresh may not have triggered | Reload the page — the record was saved and will appear after reload |
+| Validation errors after submit | Required fields are missing or invalid | Scroll through the form to find and fix highlighted errors |
+
+---
+
+## Related Articles
+
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)
+- [Navigating Your Table](/graphium/tables/table-views-data-schema-and-settings)

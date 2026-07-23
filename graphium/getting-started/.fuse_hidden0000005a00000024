@@ -1,0 +1,116 @@
+---
+title: "Editing Workspace Settings"
+description: ""
+icon: "rocket"
+---
+
+## Overview
+
+The Workspace Settings page lets Workspace Owners manage the identity and configuration of their workspace — including its name, description, and record deletion behavior — and deactivate it if needed. It is accessible from any page in Graphium AI via the gear icon in the navigation bar.
+
+---
+
+## How to Open Workspace Settings
+
+1. From any page in Graphium AI, locate the **workspace indicator** in the top-left of the navigation bar (the colored icon and workspace name).
+2. Click the **Workspace Settings** button — the gear icon (⚙) that appears immediately to the right of the workspace name.
+3. The Workspace Settings page opens, defaulting to the **General** tab.
+
+<Frame>
+  <img src="/images/graphium/getting-started/workspace-settings-page.png" alt="Graphium AI workspace settings page" />
+</Frame>
+
+---
+
+## Settings Page Layout
+
+The Workspace Settings page has a left-side navigation with three tabs:
+
+| Tab | Purpose |
+|-----|---------|
+| **General** | Workspace name, description, record deletion mode, and danger zone |
+| **Members** | View and manage workspace membership |
+| **Workspaces** | View and manage workspaces |
+| **Billing** | View subscription plan, manage seats, and access the billing portal |
+
+A **"Back to Workspace"** button at the top of the page returns you to the dashboard.
+
+---
+
+## General Settings
+
+### Workspace Name and Description
+
+The General tab opens by default and shows two editable fields at the top:
+
+- **Name** — The workspace's display name. This is shown in the workspace switcher, the navigation bar, and across all workspace views.
+- **Description** — A short description of the workspace (up to 500 characters). Useful for distinguishing between multiple workspaces in your account.
+
+Click **Save Changes** after editing either field to apply the updates.
+
+---
+
+### Record Deletion Mode
+
+This section controls how record deletions are handled across all vault tables in the workspace.
+
+| Mode | Behavior |
+|------|----------|
+| **Void Mode** (default) | Deleted records are marked as voided and remain stored. They are hidden from standard views but retained and recoverable. |
+| **Delete Mode** | Deleted records are permanently removed and cannot be recovered. |
+
+The current mode is displayed in this section. To switch from Void Mode to Delete Mode, click **Enable Delete Mode**. This setting affects all tables across the entire workspace.
+
+> **Note:** Switching to Delete Mode is a significant change. All subsequent record deletions will be permanent.
+
+---
+
+### Danger Zone
+
+The Danger Zone section contains the **Deactivate Workspace** action.
+
+**What deactivation does:**
+- Immediately suspends access for all workspace members
+- The workspace is no longer accessible from the switcher or workspace list
+- All data (vaults, tables, records) is retained and can be restored
+- Active integrations and workflows will be paused
+
+**To deactivate the workspace:**
+
+1. Scroll to the **Danger Zone** section on the General tab.
+2. Click **Deactivate Workspace**.
+3. Confirm the action in the confirmation prompt that appears.
+
+> **Warning:** Deactivating a workspace immediately removes access for all members. Only a Workspace Owner can perform this action and request reactivation.
+
+---
+
+## Permissions
+
+| Action | Workspace Owner | Workspace Member |
+|--------|----------------|-----------------|
+| View General Settings | ✅ | ✅ |
+| Edit workspace name and description | ✅ | ❌ |
+| Change record deletion mode | ✅ | ❌ |
+| Deactivate workspace | ✅ | ❌ |
+| View Members tab | ✅ | ✅ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Gear icon (⚙) is not visible next to the workspace name | You may not have the Owner role | Only Workspace Owners can access Workspace Settings; contact your workspace admin |
+| Changes to name or description are not saving | Required fields may be empty, or a network issue occurred | Ensure all fields are filled in and click **Save Changes** again; check your internet connection |
+| Record Deletion Mode cannot be changed | You may not have the Owner role | Only Workspace Owners can change this setting |
+| Deactivate Workspace button is not visible | You may not have the Owner role | Only Workspace Owners can deactivate a workspace |
+| Workspace was deactivated but needs to be restored | Workspace was deactivated intentionally or in error | Contact Graphium AI support to request reactivation |
+| Settings page is not loading | Browser or connectivity issue | Refresh the page and try again; check your internet connection |
+
+---
+
+## Related Articles
+
+- [Navigating Workspaces](/graphium/getting-started/navigating-workspaces)
+- [Viewing Workspace Members](/graphium/vaults/viewing-workspace-members)

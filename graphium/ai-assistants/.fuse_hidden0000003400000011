@@ -1,0 +1,214 @@
+---
+title: "Managing Your AI Assistants"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The Assistants section of your vault is where Admins and Builders create, configure, edit, and archive the AI assistants available to your team. Each assistant is a distinct agent with its own name, icon, description, AI model, system prompt, tools, access settings, and channel deployments.
+
+Assistants use a **Save → Publish** versioning workflow. Clicking **Save** creates a new draft version of the assistant — drafts are not visible to vault members until you click **Publish** to make a version the active live version.
+
+This article covers how to view your assistants, create and publish a new one, edit an existing one, duplicate it, and archive it.
+
+---
+
+## Viewing Your Assistants
+
+From within a vault, click **Assistants** in the left sidebar. The Assistants page opens, showing the total count and a card for each configured assistant.
+
+Each assistant card displays:
+
+- **Icon and color** — The visual identifier for the assistant
+- **Name** — The assistant's display name
+- **Description** — A brief summary of what the assistant does
+- **Resource counts** — How many tables, connections, and tools the assistant has access to
+
+Use the **grid/list toggle** in the top-right corner to switch between card grid and list view.
+
+If no assistants have been created yet, the page shows an empty state: *"No assistants yet — Create specialized AI assistants with custom prompts and data access to help with specific tasks."*
+
+<Frame>
+  <img src="/images/graphium/assistant/browse-assistants.png" alt="Assistants page showing assistant cards in grid view" />
+</Frame>
+
+---
+
+## Creating a New Assistant
+
+Only **Admin** and **Builder** vault members can create assistants. Contributors and Viewers do not have access to the Assistants page.
+
+### Step 1: Open the New Assistant editor
+
+On the Assistants page, click **+ New Assistant** in the top-right corner. The assistant editor opens.
+
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant.png" alt="New Assistant button in the top-right corner of the Assistants page" />
+</Frame>
+
+---
+
+### Step 2: Name the assistant
+
+Click the **"Name your assistant..."** field at the top of the editor and type a name. Choose something descriptive that tells users what the assistant specialises in — for example, *Data Analyst*, *Operations Helper*, or *Compliance Monitor*.
+
+The name appears immediately in the **Test Chat** panel on the right so you can preview how it will look.
+
+<Frame>
+  <img src="/images/graphium/assistant/name-assistant.png" alt="Name field in the assistant editor" />
+</Frame>
+
+---
+
+### Step 3: Configure the General settings
+
+The **General** tab contains the core configuration for the assistant.
+
+**Icon** — Choose one of six icons to represent the assistant visually. The icon appears on the assistant's card in the list and in the chat interface.
+
+**Color** — Choose a color for the assistant's icon background. Six options are available: teal, blue, purple, orange, green, and pink.
+
+**Description** — Enter a brief description of what this assistant does. This appears on the assistant card and in the Test Chat panel preview. Keep it concise — one to two sentences.
+
+**AI Model** — Select the AI model the assistant will use. The default is **Claude Sonnet 4** (Anthropic), which is marked **PHI Safe** and suited for complex analysis, coding, and creative tasks. Each model shows its provider, a description, context window size, and recommended use cases to help you choose.
+
+> **Note:** Some AI models do not support streaming responses. If you select a model without streaming support, the assistant will display the complete response only after it finishes generating — rather than showing it word by word as it arrives.
+
+**System Prompt** — Write the instructions that define how the assistant behaves. This is the most important field — it tells the AI what expertise it has, what its focus is, how it should respond, and any constraints it should follow.
+
+> **Note:** Both the assistant **name** and **system prompt** are required. You cannot save an assistant without both.
+
+**Who Can Access** — Control which vault roles can use this assistant. By default, the assistant is available to Builder, Contributor, and Viewer roles. To restrict access, deselect roles that should not see or interact with it. Admins always have access regardless of this setting.
+
+<Frame>
+  <img src="/images/graphium/assistant/configure-assistant-general-settings.png" alt="General settings tab showing icon, color, description, AI model, system prompt, and access fields" />
+</Frame>
+
+---
+
+### Step 4: Configure Tools (optional)
+
+Click the **Tools** tab to configure which vault resources this assistant has access to by default. The tab shows a count badge of currently enabled items.
+
+The Tools tab contains four sections:
+
+- **Table Access** — toggle each vault table on or off and set the access level: **Off** (no access), **Read** (query only), or **Read & Write** (query and modify records).
+- **Connection Actions** — enable vault connections this assistant can invoke actions from.
+- **General Tools** — toggle individual tools on or off. Available tools include **Charts** (render bar, line, or pie charts inline) and **Web search** (search the public web for current or external information).
+- **Can Invoke Assistants** — select which other assistants this assistant may call when responding. This enables assistant chaining, where the current assistant can delegate a specific question to a specialized assistant and return the result to the user.
+
+Enabling resources here sets the assistant's default context — these are the tables and tools available in every conversation, unless overridden by the user's Chat Context settings.
+
+<Frame>
+  <img src="/images/graphium/assistant/configure-assistant-tools.png" alt="Tools tab showing table access, connection actions, general tools, and Can Invoke Assistants sections" />
+</Frame>
+
+---
+
+### Step 6: Test the assistant
+
+The **Test Chat** panel on the right side of the editor lets you send test messages to the assistant before saving. The panel updates in real time as you fill in the name, description, and configure tools — showing a preview of how the assistant will appear to users.
+
+Type a message in the **"Send a test message..."** input to verify the assistant responds as expected.
+
+<Frame>
+  <img src="/images/graphium/assistant/test-assistant-chat.png" alt="Test Chat panel with a test message and assistant response" />
+</Frame>
+
+---
+
+### Step 7: Save as a draft
+
+Click **Save** in the top-right header. This saves the assistant as a new draft version. Draft versions are not visible to vault members in the chat interface — users will not see the assistant until you publish it in Step 8.
+
+If you want to return and continue editing before going live, saving as a draft lets you pick up where you left off without affecting what users see.
+
+<Frame>
+  <img src="/images/graphium/assistant/save-draft-assistant.png" alt="Save button in the assistant editor header" />
+</Frame>
+
+---
+
+### Step 8: Publish the assistant
+
+Click **Publish** in the top-right header to make the assistant available to vault members. The current draft becomes the active version users see in the chat interface and in the assistant selector.
+
+> **Note:** For an existing assistant with a published version, users continue seeing the previously published version until you click **Publish** — saved drafts do not affect the live assistant.
+
+To publish a specific earlier version rather than the latest draft, open the version history from the **⋮ (three-dot menu)**, select the version you want, and click **Publish**.
+
+<Frame>
+  <img src="/images/graphium/assistant/publish-assistant.png" alt="Publish button in the assistant editor header" />
+</Frame>
+
+---
+
+## Editing an Assistant
+
+To edit an existing assistant, open the Assistants list and click any assistant card. The same editor opens with the assistant's current configuration loaded.
+
+Make your changes across any of the three tabs, then click **Save** to save them as a new draft version. Click **Publish** to make the updated version live for all vault members. Until you publish, users continue seeing the previously published version.
+
+> 💡 **Tip:** Use the Test Chat panel to verify your changes before publishing — especially when updating the system prompt.
+
+<Frame>
+  <img src="/images/graphium/assistant/edit-assistant.png" alt="Assistant editor with an existing assistant's configuration loaded" />
+</Frame>
+
+---
+
+## Duplicating an Assistant
+
+To create a copy of an existing assistant — useful for creating a variant with a different system prompt or tool configuration — open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Duplicate**.
+
+A copy of the assistant is created and added to the list. Open it to rename and adjust the configuration as needed.
+
+<Frame>
+  <img src="/images/graphium/assistant/duplicate-archive-assistant.png" alt="Three-dot menu showing Duplicate and Archive options" />
+</Frame>
+
+---
+
+## Archiving an Assistant
+
+Archiving an assistant removes it from the active Assistants list and from the chat interface. Archived assistants are not permanently deleted — they can be viewed by enabling the **Show archived** toggle on the Assistants page.
+
+To archive an assistant, open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Archive**.
+
+<Frame>
+  <img src="/images/graphium/assistant/duplicate-archive-assistant.png" alt="Three-dot menu showing Duplicate and Archive options" />
+</Frame>
+
+The assistant is moved to the archived state immediately and will no longer appear in the active list or chat interface.
+
+---
+
+## Returning to the Chat
+
+From the assistant editor, click the **← back arrow** in the top-left to return to the Assistants list.
+
+To go back to the vault chat from the Assistants list, click **Home** in the vault sidebar. This returns you to the vault home page with the chat interface.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Save button does not work | Name or system prompt is missing | Both fields are required — check that both are filled in before saving |
+| Assistant is not visible in the chat interface after saving | The assistant has been saved as a draft but not yet published | Click **Publish** in the top-right header of the assistant editor |
+| Changes made to an existing assistant are not visible to users | The updated version is saved as a draft but not published | Open the assistant editor and click **Publish** |
+| Assistants page is not visible in the sidebar | Your vault role is Contributor or Viewer | Ask your vault Admin or Builder to adjust your access |
+| + New Assistant button is missing | Your vault role is Contributor or Viewer | Contact your vault Admin to request Builder or Admin access |
+| Archived assistant still appears in chat selector | The page may be cached | Refresh the page — archived assistants are removed from the active list immediately on the server |
+| Test Chat is not responding | The system prompt may be too vague, or the AI model may be temporarily unavailable | Try sending a more specific message, or check your internet connection and retry |
+| An assistant is not visible to some vault members | Access is restricted to specific roles | Open the assistant editor, go to the General tab, and review the **Who Can Access** setting |
+
+---
+
+## Related Articles
+
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)

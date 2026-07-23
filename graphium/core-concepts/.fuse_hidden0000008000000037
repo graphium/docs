@@ -1,0 +1,85 @@
+---
+title: "Records"
+icon: "book-open"
+---
+
+## Overview
+
+Records are the individual data entries inside a vault table. If a table is the structure, a record is the substance — a single row that holds real values for every field defined in the table's schema. A Cases table might have thousands of records, each representing one surgical case with its own patient demographics, procedure codes, provider assignment, and billing status.
+
+Records are how your data lives in Graphium. Tables define what information should be captured; records are the actual information. Every query an AI assistant runs, every report a playbook generates, and every chart displayed in a conversation is built from the records stored in your vault tables.
+
+---
+
+## Viewing Records
+
+When you open a table, the **Data** tab is the default view. It displays all records in a scrollable data grid — each row is one record, each column corresponds to a field from the table's schema. The grid loads the first 50 records on open and automatically loads additional batches as you scroll.
+
+The column header row reflects the table's configured default visible fields. You can click any column header to sort the grid by that field — ascending on the first click, descending on the second.
+
+A footer at the bottom of the grid shows a running count of loaded versus total records (e.g., "Showing 50 of 300 records"), updating as you scroll.
+
+---
+
+## Creating a Record
+
+To add a new record, click the **+ Add [Name]** button in the table header — the label uses the table's singular name (e.g., **Add Case**, **Add Patient**, **Add Provider**). A panel opens on the right with a blank form generated from the table's schema. Fill in the fields and click **Save**.
+
+Fields the system manages automatically — **Auto ID** and **Formula** fields — require no input. Auto ID fields are assigned by the system on creation; formula fields are computed from other values in the record.
+
+You can also click **Show additional fields** at the bottom of the form to reveal fields that are hidden from the default view.
+
+---
+
+## Editing a Record
+
+To edit an existing record, click the **Edit** button on the right side of any record row. The same panel opens, pre-populated with the record's current values. Update the fields as needed and click **Save**. The grid refreshes to show the updated values immediately.
+
+---
+
+## Filtering and Sorting Records
+
+The data grid supports filtering to narrow records down to a specific subset. Use the filter controls to define conditions — for example, "Status is Pending" or "Case Date is after 2026-01-01." Multiple conditions can be combined to build precise views of your data.
+
+Sorting is available by clicking any column header. The active sort column displays an arrow indicator (↑ ascending, ↓ descending).
+
+---
+
+## Deleting and Voiding Records
+
+Graphium supports two ways to remove a record, controlled by your workspace's **Record Deletion Mode** setting:
+
+- **Delete** — Permanently removes the record. This action cannot be undone.
+- **Void** — Soft-deletes the record, hiding it from the default view but preserving it for potential recovery. Voided records can be restored at any time using the **Unvoid** action.
+
+When Void mode is active, a **Show Voided** toggle in the table header lets you surface voided records in the grid. Voided records appear with a gray background to distinguish them from active ones.
+
+---
+
+## How AI Assistants Interact with Records
+
+AI assistants can read from and, when configured with **Read & Write** table access, write to vault records directly from a conversation. You can ask an assistant to query records in plain language ("Show me all cases this month where the provider signature is missing"), and it will return filtered, structured results drawn from the live data in your tables.
+
+With write access enabled, assistants can create new records and update existing ones from natural language requests. The assistant confirms what it will write before acting, and only modifies the fields you specify. See [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant) for details.
+
+---
+
+## Permissions
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| View records | ✅ | ✅ | ✅ | ✅ |
+| Create a record | ✅ | ✅ | ✅ | ❌ |
+| Edit a record | ✅ | ✅ | ✅ | ❌ |
+| Delete or void a record | ✅ | ✅ | ✅ | ❌ |
+| Unvoid a record | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## Related Articles
+
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)
+- [Creating and Editing Records](/graphium/records/creating-and-editing-records)
+- [Filtering and Sorting Records](/graphium/records/filtering-and-sorting-records)
+- [Deleting and Voiding Records](/graphium/records/deleting-and-voiding-records-in-the-data-grid)
+- [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)

@@ -1,0 +1,119 @@
+---
+title: "Table Settings"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+Each table in Graphium AI has a set of configurable settings accessible from the **Settings** tab in the table view. From here you can rename the table, update its display names, assign an icon, and control visibility.
+
+> **Note:** The Settings tab is only visible to **Admin** and **Builder** users. Contributor and Viewer users cannot access these settings.
+
+<Frame>
+  <img src="/images/graphium/tables/table-settings-tab.png" alt="Table settings tab" />
+</Frame>
+
+---
+
+## Renaming a Table
+
+1. Open the table and click the **pencil icon (✏️)** to the right of the table name in the header.
+2. Type the new name and press **Enter** to save, or **Escape** to cancel.
+
+<Frame>
+  <img src="/images/graphium/tables/rename-table.png" alt="Rename table" />
+</Frame>
+
+---
+
+## Editing Table Display Names
+
+1. Open the table and click the **Settings** tab.
+2. In the **Table Names** section, update the **Singular Name** and **Plural Name** fields.
+3. Click or tab out of the field to save automatically.
+
+<Frame>
+  <img src="/images/graphium/tables/table-display-names.png" alt="Table display names" />
+</Frame>
+
+---
+
+## Selecting a Table Icon
+
+1. Open the table and click the **Settings** tab.
+2. In the **Table Icon** section, click any of the 7 available icons. Click **Default** to remove a custom icon.
+
+<Frame>
+  <img src="/images/graphium/tables/table-icons.png" alt="Table icons" />
+</Frame>
+
+---
+
+## Builder Mode vs Contributor Mode
+
+Graphium AI has two sidebar modes, toggled using the **Builder / Contributor** switch at the bottom of the vault sidebar.
+
+**Builder Mode** is the default for Admin and Builder users. It shows all tables in the sidebar, full access to Data, Schema, and Settings tabs, and the ability to add, rename, and configure tables.
+
+**Contributor Mode** is a simplified view designed for users who only need to view and edit data. Only tables with **Enable for Contributor Mode** checked appear in the sidebar. The Schema and Settings tabs are not accessible.
+
+Admin and Builder users can switch between modes at any time to preview what Contributor-role users see.
+
+---
+
+## Enabling a Table for Contributor Mode
+
+1. Open the table and click the **Settings** tab.
+2. Check the **Enable for Contributor Mode** checkbox to make the table visible in Contributor Mode, or uncheck it to hide it.
+
+Changes save immediately with no save button required.
+
+<Frame>
+  <img src="/images/graphium/tables/enable-contributor-mode.png" alt="Enable contributor mode" />
+</Frame>
+
+---
+
+## Permissions
+
+**Mode Capabilities:**
+
+| Feature | Builder Mode | Contributor Mode |
+|---------|-------------|-----------------|
+| Who has access | Admin, Builder | Admin, Builder, Contributor, Viewer |
+| Tables visible in sidebar | All tables | Only tables with "Enable for Contributor Mode" checked |
+| Data tab | ✅ | ✅ |
+| Schema tab | ✅ | ❌ |
+| Settings tab | ✅ | ❌ |
+| Add, rename, and configure tables | ✅ | ❌ |
+| View and edit records | ✅ | ✅ |
+
+**Role-Based Actions:**
+
+| Action | Admin | Builder | Contributor | Viewer |
+|--------|-------|---------|-------------|--------|
+| Toggle between Builder and Contributor Mode | ✅ | ✅ | ❌ | ❌ |
+| Enable/disable Contributor Mode for a table | ✅ | ✅ | ❌ | ❌ |
+| Rename a table | ✅ | ✅ | ❌ | ❌ |
+| Edit display names | ✅ | ✅ | ❌ | ❌ |
+| Select a table icon | ✅ | ✅ | ❌ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Pencil icon not visible next to table name | Contributor or Viewer role | Contact your vault Admin to request a higher role |
+| Settings tab is not visible | Contributor or Viewer role | Contact your vault Admin — only Admin and Builder users can access table settings |
+| Name reverts after saving | Network or save error | Check your connection and try again |
+| Display name not updating in the interface | Page may need refreshing | Refresh the page |
+| Table does not appear in Contributor Mode after enabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
+| Table still appears in Contributor Mode after disabling | Sidebar may not have refreshed | Wait a moment and refresh the page if it persists |
+
+---
+
+## Related Articles
+
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)

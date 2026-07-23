@@ -20,13 +20,13 @@ Three things make it different from the dashboards and spreadsheets you are used
 
 **Vaults as a unified, secure workspace.** Instead of scattering data across disconnected tools, you organize everything into vaults -- project workspaces that hold your tables, playbooks, and automations in one place. A vault for Community Surgery Center. A vault for Memorial Hospital. Each one is self-contained, and you can set up the same table structure across vaults so your data stays consistent. Access is controlled per vault -- you add people only to the vaults they need, and nothing else.
 
-**Connections to external systems.** Vaults don't live in isolation. They connect to your EMR (Cerner, Epic, Graphium EMR), your file servers (FTP/SFTP), Google Sheets, survey tools, and more. Data flows in and out. When a case is created in your EMR, Graphium knows. When a new file lands on your SFTP server, Graphium can pick it up. Connections are not just for reading -- they can trigger actions in those external systems too, like pushing an update back to your EMR or adding a row to a shared spreadsheet. You control exactly which connection capabilities are exposed to each AI assistant, so the right tools are available to the right agents.
+**Connections to external systems.** Vaults don't live in isolation. They connect to your EMR (Cerner, Epic, Graphium EMR), your file servers (FTP/SFTP), Google Sheets, survey tools, and more. Data flows in and out. When a case is created in your EMR, Graphium AI knows. When a new file lands on your SFTP server, Graphium AI can pick it up. Connections are not just for reading -- they can trigger actions in those external systems too, like pushing an update back to your EMR or adding a row to a shared spreadsheet. You control exactly which connection capabilities are exposed to each AI assistant, so the right tools are available to the right agents.
 
 **AI assistants that understand your specific data and act on it.** This is the part that matters most. Each vault can have AI assistants that are scoped to your data -- not a generic chatbot, but an assistant that knows your case volumes, your provider list, your billing pipeline. You can ask it a question in plain English ("Show me today's case volume by facility") and get a real answer with charts and tables. You can configure it to run nightly reports, flag compliance issues, or monitor for anomalies -- without writing code.
 
 ## Core Concepts
 
-Graphium is organized as a clear hierarchy. Here is how the pieces fit together, from the top down.
+Graphium AI is organized as a clear hierarchy. Here is how the pieces fit together, from the top down.
 
 ### Workspace
 
@@ -36,13 +36,17 @@ Each workspace has its own set of vaults, assistants, settings, and users. Nothi
 
 ### Vaults
 
-A vault is your project workspace. It is the central organizing unit in Graphium -- the place where data, structure, automation, and AI come together for a specific purpose. You might have one vault per facility, one per department, or one per project. A typical healthcare group might have vaults named "Cases - Community Surgery Center," "Cases - Memorial Hospital," and "Cases - St. Luke's."
+A vault is your project workspace. It is the central organizing unit in Graphium AI -- the place where data, structure, automation, and AI come together for a specific purpose. You might have one vault per facility, one per department, or one per project. A typical healthcare group might have vaults named "Cases - Community Surgery Center," "Cases - Memorial Hospital," and "Cases - St. Luke's."
 
 Vaults hold tables (your data), connections (links to external systems), playbooks (automated AI workflows), and AI assistants (intelligent agents scoped to the vault's data).
 
 ### Tables and Schemas
 
 Tables are the structured data inside a vault. Think of them like database tables, but with hierarchical schemas that can nest fields into groups. A single vault might have tables for Cases, Procedures, Providers, Surgeons, Surgical Locations, and more. Each table has its own schema defining what fields it contains and what types those fields are. Crucially, tables can be linked together using Reference fields -- so a case record points to a provider record in the Providers table rather than duplicating that data. This lets you normalize information from different systems and relate it across tables, giving your AI assistants richer context when they analyze your data.
+
+### Records
+
+Records are the individual data entries inside a vault table — the actual rows of information that your tables hold. A Cases table might contain thousands of records, each representing one surgical case with its own patient demographics, procedure codes, provider assignment, and billing status. Every query an AI assistant runs, every report a playbook generates, and every chart displayed in a conversation is built from the records stored in your vault tables.
 
 ### Connections
 
@@ -58,7 +62,7 @@ Playbooks are automated AI workflows that trigger based on events or schedules w
 
 ## Quick Start Walkthrough
 
-Getting oriented in Graphium takes about five minutes. Here is the path:
+Getting oriented in Graphium AI takes about five minutes. Here is the path:
 
 **1. Sign in and pick your workspace.**
 After signing in, you land on your default workspace. If you belong to multiple workspaces (say, Urban Health Partners and Graphium Corporate), use the dropdown in the header to switch between them. You will also see a global search bar, notifications, and help -- all available from the top navigation.

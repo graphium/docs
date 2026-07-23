@@ -1,0 +1,145 @@
+---
+title: "Using Review Checkpoints"
+description: ""
+icon: "play"
+---
+
+## Overview
+
+Review checkpoints are pause points in a playbook run where a Builder must confirm before the run continues. When a run reaches a review checkpoint, it stops and waits for a Builder to review and approve before allowing the run to proceed. This is useful any time a playbook's next action is irreversible — such as sending data to an external system or writing records — and you want a person to verify it first.
+
+---
+
+## When to Use Review Checkpoints
+
+Use review checkpoints when you need to:
+
+- Review AI output before it is sent to an external connection (such as an EMR or a Google Sheet)
+- Confirm that records are correct before they are written to a vault table
+- Add a mandatory sign-off step to a scheduled playbook so it does not act without oversight
+
+---
+
+## How Review Checkpoints Work
+
+Review checkpoints are configured on resources in the **Playbook Context** panel. When a run reaches an action covered by a review checkpoint, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
+
+Two resource types support review checkpoints:
+
+- **Tables** — Set a table's approval mode to **Requires Review** to pause the run before any write action is taken on that table.
+- **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before any data is sent to or action is taken on that connection.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-review-checkpoint.png" alt="Review checkpoint configured on a resource in Playbook Context" />
+</Frame>
+
+---
+
+## Adding a Review Checkpoint to a Step
+
+Review checkpoints are configured through the **Success Criteria** section inside each step's **Advanced Options**. After a step completes, the AI evaluates the success criteria conditions against its output. If a condition is met and the action is set to **Require Review**, the run pauses and waits for a Builder to confirm before continuing.
+
+### Step 1: Open Advanced Options on a Step
+
+In the playbook editor, click the step you want to add a review checkpoint to. The **Step Details** panel opens in the center column. Scroll down and click **Advanced Options** to expand it.
+
+<Frame>
+  <img src="/images/graphium/playbooks/advanced-options.png" alt="Advanced Options section expanded in Step Details" />
+</Frame>
+
+---
+
+### Step 2: Add a Success Criterion
+
+In the **Success Criteria** section, click **+ Add Criterion**. A new criterion row appears with:
+
+- A **text field** — describe the condition in plain language. The AI evaluates this description against its step output to determine whether to trigger the action.
+- Three **action buttons** — select what happens when the condition is met:
+  - **Fail Playbook** — the run stops and is marked as Failed
+  - **Stop Without Failure** — the run stops but is not marked as a failure
+  - **Require Review** — the run pauses and enters Pending Review status, waiting for a Builder to approve or deny
+
+<Frame>
+  <img src="/images/graphium/playbooks/success-criteria.png" alt="Success Criteria row showing condition text field and Require Review action selected" />
+</Frame>
+
+Select **Require Review** as the action. The button highlights to show it is active.
+
+> 💡 **Tip:** Write your condition in plain language that the AI can evaluate against its output — for example, *"Any encounter is missing required billing fields"* or *"The data contains values outside the expected range."*
+
+You can add multiple criteria to the same step by clicking **+ Add Criterion** again. Each criterion is evaluated independently. To remove a criterion, click the **✕** on the right side of the row.
+
+---
+
+### Step 3: Save and Publish
+
+Save and publish the playbook for the review checkpoint to take effect on live runs. The **Advanced Options** badge shows a count of configured criteria (for example, *1 criterion*) so you can see at a glance which steps have checkpoints configured.
+
+---
+
+## Resolving a Review Checkpoint
+
+### Step 1: Receive a Notification When Review Is Needed
+
+When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). Builders with access to the vault are notified in two ways:
+
+- **In-app notification** — An unread notification appears in the bell icon in the global navigation bar, indicating that a playbook run is awaiting approval. Click the notification to navigate directly to the Playbooks page.
+- **Email notification** — The Builder responsible for the playbook also receives an email with a link to the run.
+
+> **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a run in Pending Review status" />
+</Frame>
+
+---
+
+### Step 2: Resolve the Review
+
+Open the playbook in the editor. In the **Run History** panel on the right, locate the run with **Pending Review** status.
+
+The run row shows:
+
+- The number of reviews needed (for example, *1 approval needed*)
+- An **Approve & Continue** button (cyan)
+- A **Deny** button
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
+</Frame>
+
+**To approve:** Click **Approve & Continue**. The run resumes from the point it was paused and continues to the next step.
+
+**To deny:** Click **Deny**. The run fails at that review checkpoint. Subsequent steps are marked as Skipped and the run does not continue.
+
+---
+
+## Review Checkpoint Reference
+
+| Resource | Approval Mode | Effect |
+|----------|---------------|--------|
+| Table | Autonomous | AI can read and write without pausing |
+| Table | Requires Review | Run pauses before any write to this table |
+| Connection | Autonomous | AI can send data and take actions without pausing |
+| Connection | Requires Review | Run pauses before any action on this connection |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|--------------|------------|
+| Run did not pause at the review checkpoint | The playbook is running in test mode | Review checkpoints are skipped in test mode — trigger a live run instead |
+| No email notification was received | The email may have been filtered, or the notification hasn't fired yet | Check your spam folder; if the run shows Pending Review in the history panel, the approval button is available there |
+| Approve & Continue button is not visible | You may not have Builder or Admin vault access | Reviews can only be resolved by users with Builder or Admin role |
+| Run shows Failed after denying | Expected behaviour | Denying a review causes the run to fail at that checkpoint — this is intentional |
+| A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Context and check the approval mode on each enabled resource |
+
+---
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Managing Your Playbooks](/graphium/playbooks/managing-your-playbooks)
+- [Playbooks](/graphium/core-concepts/playbooks)
+- [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)

@@ -8,7 +8,7 @@ icon: "book-open"
 
 Tables are the structured data layer inside a vault. Each table represents a specific type of information -- Cases, Procedures, Providers, Surgeons -- with a defined schema that describes what properties (fields) exist and how they are organized.
 
-If you have worked with databases, the concept is familiar: rows are records, columns are properties (fields). But Graphium tables have one important difference -- their schemas are hierarchical. *Child* properties (sub-fields) can be nested inside *parent* Object properties, creating a JSON-like structure where a top-level Object property called "Patient Demographics" can contain *child* properties (sub-fields) like Date of Birth, Gender, and Insurance. This lets you model real-world data relationships without flattening everything into a single row of dozens of columns.
+If you have worked with databases, the concept is familiar: rows are records, columns are properties (fields). But Graphium AI tables have one important difference -- their schemas are hierarchical. *Child* properties (sub-fields) can be nested inside *parent* Object properties, creating a JSON-like structure where a top-level Object property called "Patient Demographics" can contain *child* properties (sub-fields) like Date of Birth, Gender, and Insurance. This lets you model real-world data relationships without flattening everything into a single row of dozens of columns.
 
 A single vault typically has many tables. The Community Surgery Center vault, for example, includes Cases (the primary data table), Procedures (reference data with CPT codes), Providers, Surgeons, Surgical Locations, Substances, Patient Allergies, Expenses, Key Metrics, and Invoices. Each table has its own schema, its own records, and its own settings.
 
@@ -42,7 +42,7 @@ The Settings tab handles table-level configuration. This is where you manage the
 
 ## Property Types
 
-Graphium supports a range of property (field) types to model different kinds of data. Here is each type with a practical example from healthcare practice management.
+Graphium AI supports a range of property (field) types to model different kinds of data. Here is each type with a practical example from healthcare practice management.
 
 ### Text
 
@@ -76,7 +76,7 @@ A time-of-day value. Use it for timestamps within a day, separate from the date.
 
 ### Object
 
-A *parent* Object property acts as a container that groups related *child* properties (sub-fields) together, creating the hierarchical nesting that makes Graphium schemas more expressive than flat spreadsheets. A *parent* Object property does not hold data itself — it organizes related *child* properties together.
+A *parent* Object property acts as a container that groups related *child* properties (sub-fields) together, creating the hierarchical nesting that makes Graphium AI schemas more expressive than flat spreadsheets. A *parent* Object property does not hold data itself — it organizes related *child* properties together.
 
 - **Patient Demographics** (Object)
   - Date of Birth (Date)

@@ -1,0 +1,114 @@
+---
+title: "Viewing Records"
+description: ""
+icon: "grid"
+---
+
+## Overview
+
+The **Data** tab is the default view when you open any vault table. It renders the table's records in a scrollable, sortable, filterable data grid where each row is one record and each column corresponds to a property from the table's schema. The grid supports column-header sorting, infinite scroll pagination, filtering, and per-row actions for permitted roles.
+
+---
+
+## Opening the Data Grid
+
+The Data tab opens automatically when you select a table from the vault sidebar. You can also switch to it at any time by clicking the **Data** tab in the top-right corner of the table view.
+
+---
+
+## The Column Header Row
+
+The first row of the grid is the column header row. It contains:
+
+- **Column names** — Derived from the table's schema. When the table has a configured set of default visible fields, only those columns appear, in the configured order. Otherwise all schema properties are shown.
+- **Sort indicator** — The active sort column displays an arrow icon after its name (↑ for ascending, ↓ for descending). Unsorted columns show no indicator. Click any column header to sort by it; click again to reverse.
+
+<Frame>
+  <img src="/images/graphium/records/column-header-row.png" alt="Column header row" />
+</Frame>
+
+---
+
+## Record Rows
+
+Each row below the header represents one record. From left to right, a row contains:
+
+| Element | Description |
+|---------|-------------|
+| **Data cells** | One cell per column, displaying the value stored for that property on this record. Long text values may wrap across multiple lines within the cell. |
+| **Edit button** (far right) | Opens the record detail view to edit the record. Visible to Admin, Builder, and Contributor roles only. |
+| **Delete/Void button** (far right) | Remove a record from the vault table based on the workspace Record Deletion setting. |
+
+---
+
+## The Grid Footer
+
+A persistent footer sits below the last visible row and spans the full width of the grid:
+
+| Element | Position | Description |
+|---------|----------|-------------|
+| **Showing X of Y records** | Left | The count of currently-loaded records versus the table's total record count. Updates automatically as more records load while scrolling. |
+
+The footer counter reads "Showing Y of Y records" once all records have been loaded.
+
+> **Note:** The grid loads the first 50 records on open, then automatically loads additional records in batches of 50 as you scroll down — no button click required.
+
+<Frame>
+  <img src="/images/graphium/records/table-footer.png" alt="Table footer" />
+</Frame>
+
+---
+
+## Empty State
+
+When a table contains no records, the grid displays an empty state message — *"No records yet"* — in place of the data rows.
+
+<Frame>
+  <img src="/images/graphium/records/empty-table.png" alt="Empty table" />
+</Frame>
+
+---
+
+## Column Types and Display
+
+Columns are derived from the table's schema and display values according to their property type:
+
+- **Text** properties display as plain text.
+- **Number** properties display as numerals.
+- **Date / Time / Date+Time** properties display in formatted date or time strings.
+- **Select from List** properties display the selected option label.
+- **Boolean** properties display as a checked or unchecked indicator.
+- **Image** properties display a thumbnail.
+- Other types (Signature, Formula, Auto ID, etc.) display their stored or computed value.
+
+---
+
+## Permissions
+
+| Feature | Admin | Builder | Contributor | Viewer |
+|---------|-------|---------|-------------|--------|
+| View data grid | ✅ | ✅ | ✅ | ✅ |
+| Sort columns | ✅ | ✅ | ✅ | ✅ |
+| Scroll to load more records | ✅ | ✅ | ✅ | ✅ |
+| Filter records | ✅ | ✅ | ✅ | ✅ |
+| Edit button per row | ✅ | ✅ | ✅ | ❌ |
+| + Add {singular} button | ✅ | ✅ | ✅ | ❌ |
+| Import button | ✅ | ✅ | ✅ | ❌ |
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| Data tab is not visible | You may not have a table open | Select a table from the vault sidebar to open the data grid |
+| Expected records are missing | A filter may be active | Check the Filter panel for active conditions and clear them if needed |
+| Columns appear in unexpected order | Default Table Properties may be configured | Go to Settings → Default Table Properties to review column visibility and order |
+| Edit button is not visible on rows | Your role is Viewer | Contact your vault Admin to request a higher access level |
+
+---
+
+## Related Articles
+
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)
+- [Navigating Your Table](/graphium/tables/table-views-data-schema-and-settings)

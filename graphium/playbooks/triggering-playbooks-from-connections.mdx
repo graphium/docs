@@ -96,11 +96,11 @@ Fill in all required parameters (marked with *) before saving and publishing.
 
 ## What Happens at Publish
 
-When you publish a playbook with a connection event trigger, Graphium automatically **deploys** the trigger — registering it with the external service so it begins listening for the configured event immediately.
+When you publish a playbook with a connection event trigger, Graphium AI automatically **deploys** the trigger — registering it with the external service so it begins listening for the configured event immediately.
 
 When you **disable** a connection-triggered playbook, the trigger is paused and stops receiving events from the external service. Re-enabling the playbook reactivates the trigger.
 
-Vault event triggers become active on publish without any external deployment — Graphium monitors the selected table directly.
+Vault event triggers become active on publish without any external deployment — Graphium AI monitors the selected table directly.
 
 > **Note:** If a connection trigger fails to deploy after publishing — for example, because the connection's credentials have expired — the playbook will show an error state. Check the connection's status in the **Connections** section and re-publish once it is healthy.
 

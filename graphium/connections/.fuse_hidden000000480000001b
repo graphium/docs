@@ -1,0 +1,119 @@
+---
+title: "Configuring a Graphium EMR Connection"
+description: ""
+icon: "link"
+---
+
+## Overview
+
+The Graphium EMR connection type links a vault to the Graphium EMR system, enabling automated reading of encounters, providers, facilities, and related clinical data. Use this when your organization uses Graphium EMR and you want to automatically pull clinical data — such as cases, procedures, and provider information — into a vault. To configure this connection, you must have an Admin or Builder vault role with access to the vault's Connections section, as well as valid Graphium EMR credentials.
+
+## Step-by-Step Instructions
+
+### Step 1: Open the Add Connection Picker
+
+In the vault sidebar, click **Connections**, then click **+ Add Connection**.
+
+<Frame>
+  <img src="/images/graphium/connections/connections-sidebar.png" alt="Connections sidebar" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/connections/add-connection.png" alt="Add connection" />
+</Frame>
+
+### Step 2: Select Graphium EMR
+
+Under the **EMR / EHR** category, select **Graphium EMR**. Click **Details** to learn more about the connection type, or click **+ Add Connection** to proceed.
+
+<Frame>
+  <img src="/images/graphium/connections/graphium-emr-connection.png" alt="Graphium EMR connection" />
+</Frame>
+
+### Step 3: Enter a Connection Name
+
+Give the connection a descriptive name (e.g., *"Memorial Hospital EMR"*) so it is easy to identify in the connections list.
+
+<Frame>
+  <img src="/images/graphium/connections/configure-connection.png" alt="Configure connection" />
+</Frame>
+
+### Step 4: Obtain API Key
+
+- Login to your Graphium account via the [**Graphium EMR Dashboard**](https://app.graphiumemr.com).
+- Locate and select **API Keys** under your **Organization Settings**.
+
+  <Frame>
+    <img src="/images/graphium/connections/locate-api-key.png" alt="Locate API key" />
+  </Frame>
+
+- Click **Create API Key**.
+
+  <Frame>
+    <img src="/images/graphium/connections/create-api-key.png" alt="Create API key" />
+  </Frame>
+
+- Name the API Key for future reference.
+
+  <Frame>
+    <img src="/images/graphium/connections/configure-api-key.png" alt="Configure API key" />
+  </Frame>
+
+- Once you click create, you will need to copy the API key provided — note you will only have one time access to this key.
+
+  <Frame>
+    <img src="/images/graphium/connections/copy-api-key.png" alt="Copy API key" />
+  </Frame>
+
+- Navigate back to your Connection setup within Graphium AI and paste the API Key into the **API Key** field within the **Authentication** section of the Graphium EMR Connection sidebar and click **Save**.
+
+  <Frame>
+    <img src="/images/graphium/connections/paste-api-key.png" alt="Paste API key" />
+  </Frame>
+
+- Click the **Test** button in the top right corner to sync your data from Graphium's EMR. You will want to ensure the Graphium EMR connection shows **"Healthy"** otherwise your data will not sync or migrate between Graphium EMR and Graphium AI.
+
+  <Frame>
+    <img src="/images/graphium/connections/test-graphium-emr.png" alt="Test Graphium EMR connection" />
+  </Frame>
+
+### Step 5: Set Sync Settings
+
+Configure how often Graphium should sync with the EMR:
+
+- **Auto-sync** — toggle on to enable automatic syncing
+- **Interval** — set the sync frequency (e.g., every 5 minutes)
+
+<Frame>
+  <img src="/images/graphium/connections/auto-sync-settings.png" alt="Auto-sync settings" />
+</Frame>
+
+## What to Expect
+
+Once the connection shows a **"Healthy"** status, data begins syncing from your Graphium EMR on the schedule set in Sync Settings. All sync activity, triggers, and health checks appear in the connection's Activity Log, and the status badge updates automatically if the connection becomes unhealthy.
+
+**Next steps:**
+
+- Map vault tables to your new EMR data source so records can flow into Graphium AI.
+- Set up workflows or autonomous actions that react to incoming records.
+- Ask your AI Assistant questions about the synced EMR data once tables are populated.
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Status shows "error" after setup | Invalid EMR credentials | Re-enter authentication credentials in the connection detail view |
+| Connection status does not show "Healthy" after clicking Test | API key is incorrect, mistyped, or revoked | Re-copy the API key from the Graphium EMR Dashboard, paste it into the Authentication section, click Save, and click Test again |
+| API key was lost before it could be pasted into Graphium AI | API keys are only visible once at creation | Return to the Graphium EMR Dashboard, delete the previous key, and create a new one |
+| **API Keys** option is not visible under **Organization Settings** in the Graphium EMR Dashboard | Insufficient role within the Graphium EMR organization | Contact a Graphium EMR organization admin to grant API key permissions |
+| **Graphium EMR** option is missing from the **EMR / EHR** category when adding a connection | Connection type may not be enabled for your workspace | Contact [support@graphium.ai](mailto:support@graphium.ai) to confirm availability |
+| **+ Add Connection** button is not available in the vault sidebar | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
+| Data is not syncing | Auto-sync may be disabled | Open the connection detail and enable the Auto-sync toggle |
+| Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Click Test and resolve any authentication errors first, then enable Auto-sync |
+| Sync completes but no records appear in vault tables | Tables are not yet mapped to the Graphium EMR data source | Open the table settings and configure the EMR source mapping |
+| Auth error appears in Activity Log | Credentials expired or changed | Update authentication settings in the connection detail view |
+
+## Related Articles
+
+- [Connections](/graphium/core-concepts/connections)
+- [Adding a Connection](/graphium/connections/adding-a-new-automated-connection)

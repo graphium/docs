@@ -1,0 +1,46 @@
+---
+title: "Managing Your Playbooks"
+icon: "play"
+---
+
+## Overview
+
+After a playbook is published, you can edit it, track version history, and disable it when it no longer needs to run. This article covers all three.
+
+---
+
+## Version History
+
+Every save creates an immutable version snapshot. Click **History** in the top-right header to view the version history. You can re-publish any earlier version to roll back to a previous configuration.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Playbook version history" />
+</Frame>
+
+---
+
+## Editing a Published Playbook
+
+To edit an active playbook, open the playbook from the list, click **Edit** in the top-right header, and then make your changes. Changes are saved as a new draft and do not affect the currently active published version until you publish again.
+
+<Frame>
+  <img src="/images/graphium/playbooks/edit-playbook.png" alt="Edit button in the playbook editor header" />
+</Frame>
+
+---
+
+## Disabling a Playbook
+
+To stop a playbook from running, disable it. A disabled playbook will not fire on schedule, cannot be triggered manually, and will not respond to connection or vault events until re-enabled. For connection-triggered playbooks, disabling also pauses the deployed trigger on the external service.
+
+<Frame>
+  <img src="/images/graphium/playbooks/disable-playbook.png" alt="Disabling a playbook" />
+</Frame>
+
+---
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Playbooks](/graphium/core-concepts/playbooks)

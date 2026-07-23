@@ -1,0 +1,135 @@
+---
+title: "Chatting with Your AI Assistant"
+icon: "brain"
+---
+
+## Overview
+
+AI Assistants in Graphium AI are conversational agents connected to your vault data. Instead of exporting data or writing manual queries, you can ask an assistant questions in plain language and get instant answers grounded in your actual records. Responses can include plain text, tables, charts, and structured insights — making complex data easy to read at a glance. Assistants can also summarize trends, flag anomalies, and guide team members through data entry tasks.
+
+---
+
+## When to Use This
+
+Use an AI Assistant when you want to:
+
+- Query your vault data without writing filters or formulas
+- Get a natural-language summary of recent submissions or trends
+- Troubleshoot unusual data patterns
+- Walk a new team member through a data capture process interactively
+
+---
+
+## Prerequisites
+
+- You are signed in and have a vault open
+- The vault contains data for the assistant to reference
+- At least one assistant has been configured and published for this vault — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants)
+
+---
+
+## Step 1: Open the Chat Input
+
+Open a vault and the **Home** page loads automatically. The input bar at the top of the page shows the placeholder text *"Ask a question about your data..."*
+
+<Frame>
+  <img src="/images/graphium/assistant/assistant-home-page.png" alt="The AI Assistant Home page showing the chat input bar" />
+</Frame>
+
+---
+
+## Step 2: Select an Assistant
+
+The **AVAILABLE ASSISTANTS** section at the bottom of the Home page shows the assistants configured for this vault. Click any assistant card to start a conversation with that assistant. You can also click the **Choose assistant** icon (leftmost icon in the input bar) to switch assistants mid-session. If you don't pick a specific one, the **General** assistant is used by default.
+
+<Frame>
+  <img src="/images/graphium/assistant/assistant-home-page.png" alt="The AI Assistant Home page showing available assistants" />
+</Frame>
+
+---
+
+## Step 3: Ask a Question
+
+Type your question or request in plain English and press **Enter** or click the send button (arrow icon). Examples of effective queries:
+
+- *"How many submissions did we receive this week?"*
+- *"Show me all records where Priority is High and Status is still Pending."*
+- *"What was the most common value in the Reason field last month?"*
+- *"Summarize the last 10 submissions."*
+- *"Show me today's case volume by facility."*
+- *"Flag any records where the date of birth field looks invalid."*
+
+> 💡 **Tip:** Be specific. Instead of "Show me the data," try "Show me all records submitted in February where the insurance field is blank." The more context you give, the more precise the answer.
+
+<Frame>
+  <img src="/images/graphium/assistant/ask-assistant-question.png" alt="Chat input bar with a question typed" />
+</Frame>
+
+---
+
+## Step 4: Read the Response
+
+The AI response appears in the chat area labeled **AI Assistant** and can include several content types:
+
+- **Headers** — for organized multi-section responses (e.g., *Cases Overview*, *Key Insights*)
+- **Bold text** — for emphasis and key data points
+- **Bullet points** — for lists and summaries
+- **Tables** — for structured data comparisons (e.g., a ranked list of slowest turnover times)
+- **Charts** — bar charts, comparisons, and other visualizations rendered inline
+- **Key Insights callouts** — a structured summary of observations and recommendations at the end of a response
+
+Each message displays a timestamp showing when it was sent or received.
+
+> **Note:** Always verify critical data decisions against the raw records in the Table View before acting on the results.
+
+<Frame>
+  <img src="/images/graphium/assistant/general-assistant-response.png" alt="AI Assistant response in the chat area" />
+</Frame>
+
+---
+
+## Step 5: Continue the Conversation
+
+Assistants maintain context within a session, so you can ask follow-up questions without repeating yourself. For example:
+
+- You: *"Show me records where Status is Pending."*
+- Assistant: *(lists results)*
+- You: *"Now filter those to only show ones from this week."*
+
+---
+
+## Step 6: Act on Results
+
+If the assistant surfaces records you want to act on, you can jump directly to those records in the Table View using the links provided, or ask the assistant to trigger an action such as assigning a task or updating a field.
+
+Use the **⚙** button in the input bar to adjust which tables, tools, and connections the AI can access mid-conversation. See [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools) for details.
+
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-tools.png" alt="Chat Context panel showing tables, tools, and connections available to the AI Assistant" />
+</Frame>
+
+---
+
+## What to Expect
+
+Assistants respond based on the data enabled in Chat Context and draw only from the data within the connected vault — they do not access data from other vaults or external systems unless a connection has been explicitly configured. Conversation history is saved per session for your reference.
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| Assistant says it can't find data | Vault has no records yet, or the relevant table isn't enabled in Chat Context | Check that the vault has records; click ⚙ and enable the table under the Tables tab |
+| Answers are vague or generic | Query is too broad | Rephrase with more specific field names, date ranges, or conditions |
+| AI response doesn't include charts | Chart Generation is not enabled in Chat Context | Open Chat Context, click the Tools tab, and toggle Chart Generation on |
+| Assistant is not available in the vault | No assistant configured yet | Ask your administrator to create and activate an assistant for this vault |
+| Results don't match Table View | Assistant may be using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
+| Send button is greyed out | The input field is empty | Type a message before clicking Send |
+
+---
+
+## Related Articles
+
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
+- [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)

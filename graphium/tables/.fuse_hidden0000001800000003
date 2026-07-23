@@ -1,0 +1,60 @@
+---
+title: "Adding a Table"
+description: ""
+icon: "database"
+---
+
+## Overview
+
+The **+** button in the TABLES section of the vault sidebar lets Admin and Builder users create a new table.
+
+> **Note:** The + button is only visible to users with an **Admin** or **Builder** role. Contributor and Viewer users do not see this button and cannot create tables.
+
+---
+
+## How to Add a New Table
+
+1. In the vault sidebar, locate the **TABLES** section header.
+2. Click the **+** button on the right side of the TABLES header.
+
+<Frame>
+  <img src="/images/graphium/tables/add-table.png" alt="Add table" />
+</Frame>
+
+3. A **Create Table** modal opens. Enter a **Table Name** (required) — placeholder text shows examples like *"Contacts, Tasks, Inventory"*.
+4. Optionally add a **Description** to explain what the table will store.
+5. Click **+ Create Table**.
+
+<Frame>
+  <img src="/images/graphium/tables/create-table.png" alt="Create table" />
+</Frame>
+
+---
+
+## What Happens After the Table Is Created
+
+- The modal closes and you are automatically navigated to the new table's Data view
+- The new table appears at the top of the TABLES list in the sidebar, highlighted in teal
+- The Data view opens showing *"No records yet"* — the table is empty and ready for records
+- The **+ Add [Table Name]** button appears in the top-right, ready for adding records
+
+<Frame>
+  <img src="/images/graphium/tables/empty-vault-table.png" alt="Empty vault table" />
+</Frame>
+
+---
+
+## Troubleshooting
+
+| Issue | Likely Cause | What to Do |
+|-------|-------------|------------|
+| The + button is not visible in the TABLES header | Your vault role is Contributor or Viewer | Contact your vault Admin — only Admin and Builder users can create tables |
+| + Create Table button is greyed out | Table Name field is empty | Enter a table name before clicking + Create Table |
+| The table name did not save after typing | The field may not have lost focus | Press Enter or click outside the name field to confirm the rename |
+| The new table does not appear in the sidebar | The sidebar may need to refresh | Scroll up in the TABLES list or refresh the page |
+
+---
+
+## Related Articles
+
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)
