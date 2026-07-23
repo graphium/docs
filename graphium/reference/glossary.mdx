@@ -10,17 +10,13 @@ A quick reference for key terms used throughout Graphium AI.
 
 ---
 
-**Action (Autonomous Action)** -- A scheduled or event-driven task that an AI assistant performs automatically, without being prompted. Examples: nightly reports, weekly summaries, event-triggered scans.
-
 **Admin** -- The highest vault permission role. Full access to manage the vault, its users, and all data. Can configure tables, schemas, connections, playbooks, assistants, and permissions.
 
 **Assistant (AI Assistant)** -- A configurable AI agent scoped to a specific vault's data. Assistants are configured with a system prompt, table access controls, and connection actions. Users interact with them through natural language chat. Also referred to as agents.
 
 **Auto ID** -- A field type that automatically generates a unique identifier for each record (e.g., AAC-01001, REQ-0200).
 
-**Builder** -- A vault permission role. Can create and modify tables, schemas, forms, and playbooks, but cannot manage users or vault-level settings. Also refers to Builder Mode, the UI state that exposes configuration tools.
-
-**Channel** -- An external communication platform (Microsoft Teams, Slack, or SMS) where an AI assistant is deployed as a bot. Users can message the assistant directly from these platforms.
+**Builder** -- A vault permission role. Can create and modify tables, schemas, and playbooks, but cannot manage users or vault-level settings. Also refers to Builder Mode, the UI state that exposes configuration tools.
 
 **Connection** -- A bidirectional data pipeline between a Graphium AI vault and an external system (EMR, spreadsheet, database, CRM, etc.). Connections sync data in and out and expose actions that assistants and playbooks can use.
 
@@ -44,8 +40,6 @@ A quick reference for key terms used throughout Graphium AI.
 
 **Reference** -- A field type that links to a record in another table, functioning as a foreign key. Example: a "Provider" field in the Cases table that references the Providers table.
 
-**Sample Vault** -- A pre-loaded vault with demo data, available for new users to explore tables, connections, and playbooks before creating their own.
-
 **Schema** -- The structure definition of a table, consisting of an ordered list of fields with their names, keys, and types. Schemas can be hierarchical (using Groups) and may include cross-table relationships (using References).
 
 **Schema View** -- A table tab that displays the field structure as an editable list, showing each field's name, key, type, and hierarchy.
@@ -56,13 +50,11 @@ A quick reference for key terms used throughout Graphium AI.
 
 **Table** -- A structured data collection within a vault, defined by a schema of hierarchical properties. Vaults can contain multiple tables (e.g., Cases, Procedures, Providers).
 
-**Task** -- A prioritized action item surfaced by an AI assistant, playbook, or manual creation. Tasks have a title, description, priority level (Urgent, High, Medium, Low), linked records, and assignee. They represent issues that need human attention.
-
 **Text[]** -- A field type representing an array of text values. Example: a Procedure Codes field that can hold multiple CPT codes for a single case.
 
 **Trigger** -- The event or schedule that initiates a playbook. Types include manual triggers, time-based schedules, and connection events.
 
-**Vault** -- The central organizing unit in Graphium AI. A secure workspace that contains tables, connections, AI assistants, playbooks, and tasks. Each vault is scoped to a specific dataset or use case.
+**Vault** -- The central organizing unit in Graphium AI. A secure workspace that contains tables, connections, AI assistants, and playbooks. Each vault is scoped to a specific dataset or use case.
 
 **Viewer** -- The lowest vault permission role. Read-only access to view data. Cannot add, edit, or configure anything. Suitable for auditors, external reviewers, or stakeholders.
 
