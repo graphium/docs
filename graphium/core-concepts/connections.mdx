@@ -54,9 +54,9 @@ The accounting connection pulls financial data from QuickBooks Online -- revenue
 
 Graphium Surveys connections bring patient satisfaction, NPS scores, and feedback data into the vault. Create surveys from within Graphium and capture completions as structured records. For a healthcare organization, this means post-procedure patient experience data lives alongside the clinical and financial data for the same case -- a complete picture from OR to follow-up.
 
-### Medical Devices (Neomatic)
+### Medical Devices (Neximatic)
 
-Neomatic connections stream real-time physiological data from OR vitals monitors into Graphium. This is device-level data -- heart rate, blood pressure, SpO2, and other intraoperative signals. The data serves as an independent validation source: if the charge ticket says the procedure started at 10:15 AM but the vitals monitor shows physiological data beginning at 10:14 AM, you have corroboration. When the timestamps don't agree, the AI notices.
+Neximatic connections stream real-time physiological data from OR vitals monitors into Graphium. This is device-level data -- heart rate, blood pressure, SpO2, and other intraoperative signals. The data serves as an independent validation source: if the charge ticket says the procedure started at 10:15 AM but the vitals monitor shows physiological data beginning at 10:14 AM, you have corroboration. When the timestamps don't agree, the AI notices.
 
 ### Communication (Slack, Microsoft Teams, Twilio SMS)
 
@@ -73,7 +73,7 @@ Each connection type exposes a specific set of **actions** -- the events it can 
 - **Graphium EMR**: *Create Case*, *Update Case*, *Case Created*, *Case Updated*, *Case Signed*
 - **Google Sheets**: *Add Row*, *Update Row*, *Delete Row*, *Create Sheet*, *Row Added*, *Row Updated*, *Sheet Modified*
 - **Graphium Surveys**: *Create Survey*, *Survey Completed*
-- **Neomatic**: *Data Received*, *Run Query*
+- **Neximatic**: *Data Received*, *Run Query*
 
 Some actions are operations you initiate (Send HL7 Message, Upload File, Add Row) and others are events you react to (Received HL7 Message, New File Uploaded, Case Signed). This distinction matters because it determines how the action gets used downstream.
 

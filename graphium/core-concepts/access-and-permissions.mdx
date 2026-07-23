@@ -18,9 +18,9 @@ Every user in a vault has one of four roles. These roles determine what they can
 
 **Admin.** Full access to everything. Admins can manage the vault itself -- rename it, delete it, configure settings. They can manage users, assign roles, create and modify tables, configure playbooks, configure AI assistants, and of course add and edit data. If something can be done in the vault, an Admin can do it. This is the role for practice managers, IT leads, and whoever is responsible for how the vault is set up.
 
-**Builder.** The structural role. Builders can create and modify tables, define schemas, configure playbooks, and configure forms. They can also add and edit data. What they cannot do is manage vault-level settings or control user access. Think of Builders as the people who design how data flows through the vault -- your billing team lead who sets up the charge capture workflow, or your operations manager who configures the provider schedule table.
+**Builder.** The structural role. Builders can create and modify tables, define schemas, and configure playbooks. They can also add and edit data. What they cannot do is manage vault-level settings or control user access. Think of Builders as the people who design how data flows through the vault -- your billing team lead who sets up the charge capture workflow, or your operations manager who configures the provider schedule table.
 
-**Contributor.** The data entry role. Contributors can add records, edit existing data, and work within the structure that Builders have created. They cannot modify table schemas, create playbooks, or change the vault's configuration. This is the right role for providers entering case data, staff submitting forms, or anyone whose job is to work with the data rather than shape the system around it.
+**Contributor.** The data entry role. Contributors can add records, edit existing data, and work within the structure that Builders have created. They cannot modify table schemas, create playbooks, or change the vault's configuration. This is the right role for providers entering case data, or anyone whose job is to work with the data rather than shape the system around it.
 
 **Viewer.** Read-only access. Viewers can see data but cannot change anything -- no adding records, no editing fields, no modifying structure. This role exists for auditors, external reviewers, stakeholders who need visibility, or anyone who should be able to look but not touch.
 
@@ -52,7 +52,7 @@ Beyond role-based permissions, Graphium has a practical UI distinction between t
 
 **Builder mode** shows the full configuration interface. You see schema editors, playbook configuration tools, assistant configuration panels, and all the structural tools. This is the mode where you design the vault -- define what fields exist in a table, set up a playbook, configure an AI assistant's system prompt.
 
-**Contributor mode** shows a streamlined data entry interface. The structural tools are hidden. You see the tables, the forms, and the data -- everything you need to add and edit records, nothing you do not need. The interface is cleaner and more focused.
+**Contributor mode** shows a streamlined data entry interface. The structural tools are hidden. You see the tables and the data -- everything you need to add and edit records, nothing you do not need. The interface is cleaner and more focused.
 
 The typical pattern is this: Builders set up the vault during the initial configuration phase -- creating tables, defining schemas, configuring playbooks, connecting external systems. Once the structure is in place, the day-to-day users switch to Contributor mode (or are assigned the Contributor role) and work within that structure. Builder mode is for setup and maintenance. Contributor mode is for daily operations.
 

@@ -28,6 +28,7 @@
             "pages": [
               "graphium/core-concepts/vaults",
               "graphium/core-concepts/tables-and-schemas",
+              "graphium/core-concepts/records",
               "graphium/core-concepts/connections",
               "graphium/core-concepts/ai-assistants",
 "graphium/core-concepts/playbooks",
