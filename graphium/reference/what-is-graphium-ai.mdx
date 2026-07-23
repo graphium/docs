@@ -34,13 +34,13 @@ A workspace is the top-level container. It represents your practice, company, or
 
 Each workspace has its own set of vaults, assistants, settings, and users. Nothing leaks between workspaces.
 
-### Vault
+### Vaults
 
 A vault is your project workspace. It is the central organizing unit in Graphium -- the place where data, structure, automation, and AI come together for a specific purpose. You might have one vault per facility, one per department, or one per project. A typical healthcare group might have vaults named "Cases - Community Surgery Center," "Cases - Memorial Hospital," and "Cases - St. Luke's."
 
 Vaults hold tables (your data), connections (links to external systems), playbooks (automated AI workflows), and AI assistants (intelligent agents scoped to the vault's data).
 
-### Tables
+### Tables and Schemas
 
 Tables are the structured data inside a vault. Think of them like database tables, but with hierarchical schemas that can nest fields into groups. A single vault might have tables for Cases, Procedures, Providers, Surgeons, Surgical Locations, and more. Each table has its own schema defining what fields it contains and what types those fields are. Crucially, tables can be linked together using Reference fields -- so a case record points to a provider record in the Providers table rather than duplicating that data. This lets you normalize information from different systems and relate it across tables, giving your AI assistants richer context when they analyze your data.
 
@@ -77,6 +77,3 @@ Click **Home** in the sidebar. The Home page shows a chat input bar with suggest
 
 That is the basic loop: vault holds your data, tables give it structure, and the AI assistant helps you understand and act on it. From there, you can set up connections to pull data from your EMR, build playbooks to automate repetitive processes, and configure assistant actions to run reports on a schedule.
 
-## What Comes Next
-
-The rest of this documentation walks through each concept in depth. Start with **Vaults** to understand how to organize your workspaces, then move to **Tables & Schemas** to learn how your data is structured. From there, explore AI Assistants, Connections, Playbooks, and Tasks as your needs grow.
