@@ -22,7 +22,7 @@ Use review checkpoints when you need to:
 
 ## How Review Checkpoints Work
 
-Review checkpoints are configured on resources in the **Playbook Context** panel. When a run reaches an action covered by a review checkpoint, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
+Review checkpoints are configured on resources in the **Playbook Access** panel (click **Configure shared access** in the left sidebar to open it). When a run reaches an action covered by a review checkpoint, the run enters **Pending Review** status and stops until a Builder resolves the approval directly from the Run History panel.
 
 Two resource types support review checkpoints:
 
@@ -30,8 +30,10 @@ Two resource types support review checkpoints:
 - **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before any data is sent to or action is taken on that connection.
 
 <Frame>
-  <img src="/images/graphium/playbooks/playbook-review-checkpoint.png" alt="Review checkpoint configured on a resource in Playbook Context" />
+  <img src="/images/graphium/playbooks/playbook-review-checkpoint.png" alt="Review checkpoint configured on a resource in Playbook Access" />
 </Frame>
+
+> **Note:** Column changes on a table use a separate, always-on approval flow — see [Approving Column Changes](#approving-column-changes) below.
 
 ---
 
@@ -114,6 +116,24 @@ The run row shows:
 
 ---
 
+## Approving Column Changes
+
+If a table is set to **Read/Write** in Playbook Access and its **Allow column changes** toggle is enabled, a playbook's steps may propose adding or editing columns on that table as they run. Unlike the Autonomous/Requires Review setting above, column changes always require approval — there is no autonomous mode for schema changes.
+
+When a step proposes a column change, the run pauses and a card appears in the Run History panel: **"Playbook wants to make N changes"**, labeled **Column changes** with a **Pending** badge. The card lists each proposed change — for example, an **ADD** entry showing the new column's name and type, a note on existing data (such as *"Existing 42 rows: empty"* for a newly added column), and a short **Why** explanation of the change's purpose.
+
+<Frame>
+  <img src="/images/graphium/playbooks/playbook-column-changes-approval.png" alt="Column changes approval card listing proposed column additions with Approve all and Reject all buttons" />
+</Frame>
+
+**To approve:** Click **Approve all N** to apply every proposed change and let the run continue.
+
+**To reject:** Click **Reject all** to discard the proposed changes. The run fails at that step, the same as denying a regular review checkpoint.
+
+> **Note:** The **Allow column changes** toggle is only available when a table's access is set to **Read/Write**. It also requires the vault-level **Let assistants add and edit columns** setting to be enabled in vault Settings.
+
+---
+
 ## Review Checkpoint Reference
 
 | Resource | Approval Mode | Effect |
@@ -122,6 +142,7 @@ The run row shows:
 | Table | Requires Review | Run pauses before any write to this table |
 | Connection | Autonomous | AI can send data and take actions without pausing |
 | Connection | Requires Review | Run pauses before any action on this connection |
+| Table column changes | Always requires approval | Run pauses on a "Column changes" card whenever a step proposes adding or editing columns — there is no autonomous mode |
 
 ---
 
@@ -133,7 +154,9 @@ The run row shows:
 | No email notification was received | The email may have been filtered, or the notification hasn't fired yet | Check your spam folder; if the run shows Pending Review in the history panel, the approval button is available there |
 | Approve & Continue button is not visible | You may not have Builder or Admin vault access | Reviews can only be resolved by users with Builder or Admin role |
 | Run shows Failed after denying | Expected behaviour | Denying a review causes the run to fail at that checkpoint — this is intentional |
-| A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Context and check the approval mode on each enabled resource |
+| A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Access and check the approval mode on each enabled resource |
+| A "Column changes" card appears even though the table is set to Autonomous | Column changes always require approval, regardless of the table's Autonomous/Requires Review setting | This is expected — approve or reject the proposed changes from the card |
+| Allow column changes toggle is missing on a table | The table's access level is set to Off or Read only | Set the table's access level to Read/Write in Playbook Access to reveal the toggle |
 
 ---
 
