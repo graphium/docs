@@ -6,7 +6,7 @@ icon: "brain"
 
 ## Overview
 
-The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems. A badge on the ⚙ icon shows how many context items are currently enabled.
+The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems. A badge on the ⚙ icon shows how many tables and connection actions are currently enabled.
 
 Use this before asking the AI a question to ensure it has access to the right data — or to expand its capabilities by enabling tools and connection actions. You must have Admin or Builder vault role and access to the vault's Home page.
 
@@ -14,9 +14,9 @@ Use this before asking the AI a question to ensure it has access to the right da
 
 ## Opening the Chat Context Panel
 
-In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with four tabs — **Tables**, **Tools**, **Connections**, and **Assistants** (coming soon).
+In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three tabs — **Tables**, **Tools** (wrench icon), and **Connections** (link icon).
 
-The ⚙ icon displays a **badge** showing the total number of currently enabled context items across all three tabs (tables, tools, and connection actions). This gives you a quick at-a-glance count of what the AI has access to without opening the panel.
+The **Tables** and **Connections** tab icons each display a small **badge** showing how many items are currently enabled in that tab, and the ⚙ icon in the chat input bar shows the combined total across both. General Tools (Charts, Web Search) are not counted in this total.
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-icon.png" alt="The settings icon in the chat input bar with a badge showing enabled context items" />
@@ -32,18 +32,19 @@ The first tab (**Tables**) shows all tables in the vault. Use this to control wh
 
 1. Open the Chat Context panel and click the **Tables** tab.
 2. Find the table you want to enable.
-3. Click the toggle to turn it **On**.
-4. Set the access level:
-   - **Read** — The AI can read and query data from this table
-   - **R/W** — The AI can read and also write or update records in this table
+3. Select its access level: **Off**, **Read** (the AI can read and query data from this table), or **Read & Write** (the AI can also write or update records in this table).
 
 ### Disabling a Table
 
-Click the toggle on any enabled table to turn it **Off**. The AI will no longer include that table's data in its responses.
+Select **Off** on any enabled table. The AI will no longer include that table's data in its responses.
 
 <Tip>
 Enable only the tables relevant to your question for more focused and accurate responses.
 </Tip>
+
+### Allowing Column Changes
+
+When a table's access level is set to **Read & Write**, an additional **Allow column changes** toggle appears beneath it. Enabling this lets the AI Assistant add or edit columns on that table during the conversation — subject to the vault-level **Let assistants add and edit columns** setting in vault Settings, which must also be enabled.
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-tables.png" alt="Tables tab in the Chat Context panel showing vault tables with toggle and access level controls" />
@@ -53,7 +54,7 @@ Enable only the tables relevant to your question for more focused and accurate r
 
 ## Tools Tab — General Tools
 
-The second tab (**Tools**) shows general-purpose tools the AI can use during a conversation. Toggle any tool on or off depending on what you need.
+The second tab (**Tools**) shows general-purpose tools the AI can use during a conversation. Each tool has its own **Off/On** control depending on what you need.
 
 | Tool | Description |
 |------|-------------|
@@ -68,7 +69,7 @@ To enable Web Search:
 
 1. Open the Chat Context panel.
 2. Click the **Tools** tab.
-3. Toggle **Web Search** on.
+3. Click **On** next to **Web search**.
 
 The AI will automatically use web search when it determines that internet data would improve its response.
 
@@ -80,20 +81,18 @@ The AI will automatically use web search when it determines that internet data w
 
 ## Connections Tab — Connection Actions
 
-The third tab (**Connections**) shows actions available from your vault's connected external systems, grouped by connection. Enabling a connection action allows the AI to interact with that external system as part of its response.
+The third tab (**Connections**) shows actions available from your vault's connected external systems, grouped by connection. Each connection group shows a counter of how many of its actions are currently enabled (for example, *1/10*), plus an **Enable all** link. Enabling a connection action allows the AI to use it as part of its response.
 
 **Examples by connection type:**
 
 | Connection | Available Actions |
 |------------|------------------|
-| **EHR (Epic)** | Send HL7 Message to EHR, Received HL7 Message from EHR |
-| **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted |
-| **OR Vitals Monitor** | Data Received from Device |
+| **HubSpot** | Add Contact to List, Create Company, Create Deal, Create or Update Contact, Create Task, Create Ticket, Enroll Contact in Sequence, Get Contact, and more |
 | **Graphium EMR** | Create Case, Update Case, Case Created, Case Updated, Case Signed |
 | **Google Sheets** | Add Row, Update Row, Delete Row, Create Sheet, Row Added, Row Updated, Sheet Modified |
-| **Graphium Surveys** | Create Survey, Survey Completed |
+| **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted |
 
-The exact connections and actions you see depend on what your vault has configured. Toggle individual actions on or off within each connection group.
+The exact connections and actions you see depend on what your vault has configured — only connections actually added to the vault appear here. Toggle individual actions on or off within each connection group, or use **Enable all** to turn on every action for that connection at once.
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-connections.png" alt="Connections tab in the Chat Context panel showing connection actions grouped by connection type" />
@@ -110,9 +109,9 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 
 ## What to Expect
 
-- The badge on the ⚙ icon updates in real time as you enable or disable items
+- The badges on the Tables and Connections tabs, and the total on the ⚙ icon, update in real time as you enable or disable items
 - Changes to Chat Context apply only to the current conversation
-- If a table is toggled off, the AI will not include that table's data in its analysis
+- If a table is set to Off, the AI will not include that table's data in its analysis
 - Web Search results are cited in the AI's response when used
 
 ---
@@ -121,11 +120,12 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
-| AI response doesn't include expected table data | Table is toggled off in Tables | Open Chat Context and enable the relevant table |
-| Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web Search is enabled in the Tools tab |
+| AI response doesn't include expected table data | Table is set to Off in the Tables tab | Open Chat Context and set the relevant table to Read or Read & Write |
+| Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web search is set to On in the Tools tab |
 | Connection actions are not visible | No connections have been configured for the vault | Set up connections in the Connections section first |
-| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel and toggle off any items you no longer need |
-| R/W access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
+| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel and turn off any tables or connection actions you no longer need |
+| Allow column changes toggle is missing on a table | The table's access level is set to Off or Read only | Set the table's access level to Read & Write to reveal the toggle |
+| Read & Write access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
 
 ---
 
