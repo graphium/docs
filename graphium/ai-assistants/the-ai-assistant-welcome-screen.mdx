@@ -34,21 +34,21 @@ The Home page displays:
 
 ## The Vault Sidebar
 
-The vault sidebar, to the left of the Home page, gives you quick access to everything in the vault:
+The vault sidebar, to the left of the Home page, has two states, toggled by the arrow icon at the bottom.
 
-- **Home** — the AI Assistant home page
-- **Tasks** — task list for the vault (with a count badge for open items)
-- **Connections** — automated connections to external systems
-- **Assistants** — list of AI assistants configured for this vault
-- **Playbooks** — automated playbooks for the vault
-- **Settings** — vault settings
-- **TABLES** — a quick-access list of tables in the vault
-- **RECENT CHATS** — a quick-access list of recent conversations
+**Expanded (default)** shows quick-access shortcuts for the current vault:
 
-A **Builder View** / **Contributor View** toggle at the bottom of the sidebar lets you switch between roles you have access to. The **Collapse sidebar** button hides the sidebar to give the main page more room.
+- **Ask Graphium** — returns to the AI Assistant home page
+- **TABLES** — pinned tables in the vault, with a **+** to add one and **[N] More** to see the rest
+- **CHATS** — your recent conversations, with a **+** to start a new one
+- A **Builder / Contributor** toggle at the bottom to switch between roles you have access to
+
+**Collapsed** shrinks the sidebar to an icon-only rail, which is how you reach the vault's other sections: an icon for the Home page, one icon per pinned table, then **Assistants** (briefcase icon), **Playbooks** (book icon), **Connections** (link icon), and **Settings** (gear icon).
+
+> **Note:** There is no longer a "Tasks" item in the vault sidebar.
 
 <Frame>
-  <img src="/images/graphium/assistant/assistant-vault-sidebar.png" alt="The vault sidebar showing Home, Tasks, Connections, Assistants, Playbooks, Settings, Tables, and Recent Chats" />
+  <img src="/images/graphium/assistant/assistant-vault-sidebar.png" alt="The vault sidebar in its expanded state (Ask Graphium, Tables, Chats) and collapsed icon-rail state (Home, Tables, Assistants, Playbooks, Connections, Settings)" />
 </Frame>
 
 ---
@@ -102,6 +102,7 @@ Reopening a conversation allows you to continue asking follow-up questions — t
 | Home is not visible in the sidebar | The vault may not have the AI feature enabled | Contact your vault Admin |
 | A past conversation is not in Recent Chats | It may be older than the 4 most recent | Click the clock icon to access the full time-grouped history |
 | CHATS section in the sidebar is empty | No conversations have been started in this vault | Start a new conversation from the Home page |
+| Can't find Assistants, Playbooks, Connections, or Settings in the sidebar | The sidebar is in its expanded state, which only shows Tables and Chats shortcuts | Click the collapse arrow at the bottom of the sidebar to switch to the icon rail, which includes these sections |
 
 ---
 
