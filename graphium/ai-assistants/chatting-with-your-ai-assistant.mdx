@@ -98,6 +98,28 @@ Assistants maintain context within a session, so you can ask follow-up questions
 
 ---
 
+## Stopping a Response
+
+While the assistant is generating a response, the send button becomes a **stop** button (a filled square icon). Click it to immediately halt generation — the partial response stays in the chat, followed by a note: *"You stopped this response. Send another message to continue."*
+
+<Frame>
+  <img src="/images/graphium/assistant/stop-generating-response.png" alt="Stop button shown in the chat input bar while a response is generating" />
+</Frame>
+
+---
+
+## If You Lose Connection
+
+If your network connection drops while sending a message, a **"You're offline"** banner appears both as a toast notification and inline in the chat: *"This message may not have been sent. Reconnect, then click Retry — if it did go through, the reply will appear on its own."*
+
+Once your connection is restored, click **Retry** to resend the message. If the original message actually went through despite the dropped connection, the assistant's reply appears on its own without needing a retry.
+
+<Frame>
+  <img src="/images/graphium/assistant/chat-offline-banner.png" alt="You're offline banner with a Retry link shown in the chat" />
+</Frame>
+
+---
+
 ## Step 6: Act on Results
 
 If the assistant surfaces records you want to act on, you can jump directly to those records in the Table View using the links provided, or ask the assistant to trigger an action such as assigning a task or updating a field.
@@ -126,6 +148,8 @@ Assistants respond based on the data enabled in Chat Context and draw only from 
 | Assistant is not available in the vault | No assistant configured yet | Ask your administrator to create and activate an assistant for this vault |
 | Results don't match Table View | Assistant may be using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
 | Send button is greyed out | The input field is empty | Type a message before clicking Send |
+| Response stops partway through | You clicked the stop button, or generation was interrupted | Send another message to continue, or ask the assistant to pick up where it left off |
+| "You're offline" banner appears | Your network connection dropped while sending a message | Reconnect to the internet, then click Retry; if the message actually sent, the reply will appear on its own |
 
 ---
 
