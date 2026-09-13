@@ -15,15 +15,11 @@ All triggers are configured from the same place: click the **trigger card** at t
 
 Open a playbook in the editor and click the **trigger card** at the top of the flow canvas.
 
-<Frame>
-  <img src="/images/graphium/playbooks/add-playbook-trigger.png" alt="Trigger card at the top of the flow canvas" />
-</Frame>
-
 In the **Trigger Configuration** panel, click the **Run when** dropdown and use the search field to find the trigger you want. Options are grouped by category:
 
 - **General** — Manual, Scheduled
 - **Vault Events** — Record Added, Record Updated, Record Deleted
-- **One category per connected system** — for example, a vault with HubSpot connected shows a **HubSpot** group listing its available trigger events
+- **Connected System** — for example, a vault with HubSpot connected shows a **HubSpot** group listing its available trigger events
 
 Only connections that have actually been added to the vault appear in this list — if you don't see a connection you expected, confirm it has been added under [Connections](/graphium/connections/adding-a-new-automated-connection) first.
 
@@ -32,6 +28,26 @@ Only connections that have actually been added to the vault appear in this list 
 </Frame>
 
 Selecting a trigger type reveals its specific configuration fields directly in the same panel — no separate step or modal is required.
+
+---
+
+## General Event Triggers
+
+General triggers aren't tied to a vault table or a connected system — they're either started by a person or fired on a schedule. Two types are available:
+
+- **Manual** — Fires only when someone clicks **Run** in the playbook editor or dashboard. No additional configuration is required beyond an optional Description.
+- **Scheduled** — Fires automatically on a recurring schedule.
+
+After selecting **Scheduled** from the **Run when** dropdown, configure:
+
+- **Frequency** — How often the playbook runs (for example, Daily, Weekly).
+- **Time** — The time of day the run should start.
+- **Time Zone** — The time zone used to evaluate the scheduled time.
+- **Description** (optional) — Document when and why this playbook runs.
+
+<Frame>
+  <img src="/images/graphium/playbooks/add-playbook-trigger.png" alt="Trigger card at the top of the flow canvas" />
+</Frame>
 
 ---
 
@@ -64,6 +80,10 @@ Connection Event triggers fire when something happens in a connected external sy
 | Graphium EMR | New Case, New Case Update, New Document |
 | FTP/SFTP | New File Added (Polling) |
 | HubSpot | New Deal in Stage, New Form Submission, New or Updated Company, New or Updated Contact, New or Updated Deal, New Ticket |
+
+<Frame>
+  <img src="/images/graphium/playbooks/connection-event-trigger.png" alt="Trigger Configuration panel showing a connection event trigger selected" />
+</Frame>
 
 > **Note:** Events marked **(Polling)** are checked on a regular interval rather than delivered instantly — there may be a short delay between the event happening and the playbook running.
 
