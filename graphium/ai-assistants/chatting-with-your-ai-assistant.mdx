@@ -40,10 +40,12 @@ Open a vault and the **Home** page loads automatically. The input bar at the top
 
 ## Step 2: Select an Assistant
 
-The **AVAILABLE ASSISTANTS** section at the bottom of the Home page shows the assistants configured for this vault. Click any assistant card to start a conversation with that assistant. You can also click the **Choose assistant** icon (leftmost icon in the input bar) to switch assistants mid-session. If you don't pick a specific one, the **General** assistant is used by default.
+Above the chat input, a labeled **assistant selector** shows the currently active assistant (for example, **GENERAL ASSISTANT ⌄**). Click it to open a popup listing every assistant configured for this vault, each with a short description and a checkmark next to the one currently selected. Click an assistant to switch to it. If you don't pick one, the **General** assistant is used by default.
+
+Once a conversation has started, this same selector moves into the input bar's toolbar as a small badge alongside the model picker and the Chat Context (⚙) button — you can still click it there to switch assistants mid-session.
 
 <Frame>
-  <img src="/images/graphium/assistant/assistant-home-page.png" alt="The AI Assistant Home page showing available assistants" />
+  <img src="/images/graphium/assistant/choose-assistant-icon.png" alt="Assistant selector popup listing configured assistants with descriptions and a checkmark next to the active one" />
 </Frame>
 
 ---
@@ -76,9 +78,9 @@ The AI response appears in the chat area labeled **AI Assistant** and can includ
 - **Bullet points** — for lists and summaries
 - **Tables** — for structured data comparisons (e.g., a ranked list of slowest turnover times)
 - **Charts** — bar charts, comparisons, and other visualizations rendered inline
-- **Key Insights callouts** — a structured summary of observations and recommendations at the end of a response
+- **Callout boxes** — a highlighted card summarizing a key observation, dynamically titled to match its content (for example, *Incomplete Contact Information*)
 
-Each message displays a timestamp showing when it was sent or received.
+Each message shows a timestamp and, next to it, a **Context** indicator showing how much of the AI's context window this conversation has used so far (for example, *13.1K of 200K (7%)*).
 
 > **Note:** Always verify critical data decisions against the raw records in the Table View before acting on the results.
 
