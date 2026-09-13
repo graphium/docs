@@ -126,10 +126,6 @@ If a table is set to **Read/Write** in Playbook Access and its **Allow column ch
 
 When a step proposes a column change, the run pauses and a card appears in the Run History panel: **"Playbook wants to make N changes"**, labeled **Column changes** with a **Pending** badge. The card lists each proposed change — for example, an **ADD** entry showing the new column's name and type, a note on existing data (such as *"Existing 42 rows: empty"* for a newly added column), and a short **Why** explanation of the change's purpose.
 
-<Frame>
-  <img src="/images/graphium/playbooks/playbook-column-changes-approval.png" alt="Column changes approval card listing proposed column additions with Approve all and Reject all buttons" />
-</Frame>
-
 **To approve:** Click **Approve all N** to apply every proposed change and let the run continue.
 
 **To reject:** Click **Reject all** to discard the proposed changes. The run fails at that step, the same as denying a regular review checkpoint.
