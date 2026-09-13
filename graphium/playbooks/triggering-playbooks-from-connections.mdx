@@ -112,19 +112,19 @@ Every connection trigger also has an optional **Description** field, and a **Cle
 
 ---
 
-## Selecting Which Connection Actions Are Available
+## Selecting Playbook Access
 
-When a playbook uses a connection — whether as its trigger or as a resource its steps can call — you control exactly which actions from that connection the playbook is allowed to use.
+The **Playbook Access** panel controls every resource a playbook can use — its **Tables**, **Connections**, and **Tools** — not just its trigger.
 
-In the left sidebar, click **Configure shared access** to open the **Playbook Access** panel, then find the connection under **Connections**. Toggling a connection on reveals an **Actions** row showing how many of the connection's available actions are currently enabled (for example, *10 of 10 actions*). Click it to expand the full list, where each action has its own checkbox alongside **Select all** and **Clear** links.
+1. In the left sidebar, click **Configure shared access** to open the **Playbook Access** panel.
+2. Toggle on any tables, connections, or tools this playbook's steps need.
+3. Toggling a connection type on reveals an **Actions** row showing how many actions are enabled (for example, *10 of 10 actions*). Click it to expand the full list, where each action has its own checkbox alongside **Select all** and **Clear** links — use this to scope the connection down to only the actions this playbook actually needs.
+
+   > **Note:** A connection must have at least one action enabled, or be turned off entirely. If a connection is toggled on with zero actions selected, the playbook cannot be saved or published until this is fixed — see Troubleshooting below.
 
 <Frame>
   <img src="/images/graphium/playbooks/playbook-context-panel.png" alt="Playbook Access panel showing a connection's Actions list with individual checkboxes" />
 </Frame>
-
-Deselect any actions you don't want this playbook to be able to use. This is especially useful for limiting a playbook to read-only actions (like **Get Contact** or **Search CRM**) when it shouldn't be able to create or modify records in the connected system.
-
-> **Note:** A connection must have at least one action enabled, or be turned off entirely. If a connection is toggled on with zero actions selected, the playbook cannot be saved or published until this is fixed — see Troubleshooting below.
 
 ---
 
