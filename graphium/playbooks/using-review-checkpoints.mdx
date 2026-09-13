@@ -91,7 +91,7 @@ When a live run hits a review checkpoint, it stops and its status in the Run His
 > **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
 
 <Frame>
-  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a run in Pending Review status" />
+  <img src="/images/graphium/playbooks/playbook-review-notification.png" alt="Run History panel showing a run in Pending Review status" />
 </Frame>
 
 ---
@@ -107,7 +107,7 @@ The run row shows:
 - A **Deny** button
 
 <Frame>
-  <img src="/images/graphium/playbooks/playbook-run-history.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
+  <img src="/images/graphium/playbooks/resolve-playbook-review.png" alt="Run History panel showing a Pending Review run with Approve and Continue and Deny buttons" />
 </Frame>
 
 **To approve:** Click **Approve & Continue**. The run resumes from the point it was paused and continues to the next step.
@@ -119,6 +119,10 @@ The run row shows:
 ## Approving Column Changes
 
 If a table is set to **Read/Write** in Playbook Access and its **Allow column changes** toggle is enabled, a playbook's steps may propose adding or editing columns on that table as they run. Unlike the Autonomous/Requires Review setting above, column changes always require approval — there is no autonomous mode for schema changes.
+
+<Frame>
+  <img src="/images/graphium/playbooks/allow-column-changes.png" alt="Allow column changes toggle enabled on a Read/Write table in Playbook Access" />
+</Frame>
 
 When a step proposes a column change, the run pauses and a card appears in the Run History panel: **"Playbook wants to make N changes"**, labeled **Column changes** with a **Pending** badge. The card lists each proposed change — for example, an **ADD** entry showing the new column's name and type, a note on existing data (such as *"Existing 42 rows: empty"* for a newly added column), and a short **Why** explanation of the change's purpose.
 
