@@ -22,7 +22,7 @@ Write access is configured per table inside the assistant's **Tools** tab. Each 
 
 To enable write access:
 
-1. Open the assistant from the **Assistants** page (collapse the vault sidebar to its icon rail, then click the Assistants icon to get there).
+1. Open the assistant from the **Assistants** page.
 2. Click **Edit** and navigate to the **Tools** tab.
 3. Under **Table Access**, find the table you want to enable.
 4. Click **Read & Write** to select it.
@@ -33,6 +33,8 @@ To enable write access:
 </Frame>
 
 > **Note:** Only Admins and Builders can configure an assistant's tools. Users interacting with the assistant in chat do not change these settings — they are fixed by whoever published the assistant.
+
+> **Note:** When a table is set to **Read & Write**, an **Allow column changes** toggle appears below it, letting the assistant add and edit columns on that table. If this toggle is greyed out with the message *"Turned off for this vault. Change in Vault settings,"* it means the vault-level **Let assistants add and edit columns** setting is disabled — enable it in vault Settings before this toggle can be turned on here.
 
 > 💡 **Tip:** A table's Read & Write access here sets the assistant's *default* permissions. A user can further restrict (but not expand) what's available in a given conversation via Chat Context — see [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools).
 
@@ -82,7 +84,7 @@ The assistant looks up the matching record, applies only the fields you specifie
 
 ---
 
-## What the AI Can Write
+## What the AI Assistant Can Write
 
 The assistant can write to most field types in a vault table:
 
