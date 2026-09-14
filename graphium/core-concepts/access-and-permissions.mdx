@@ -34,7 +34,7 @@ User management lives under **Settings > Access & Permissions** in the vault sid
 
 The Users tab shows a list of everyone who has access to the vault: their name, email, and assigned role. From here you can:
 
-**Add a user.** Click the add user option and enter an email address. If that person already belongs to your workspace, they will be added to the vault immediately. If they are new, they will receive an invitation. Invited users who have not yet accepted show up in the list with a **"Pending"** badge next to their name, so you can see at a glance who has access and who is still waiting to join.
+**Add a member.** Search for an existing workspace member by name or email, choose their vault role from the dropdown, and click **Add Member**. This only works for people who already belong to your workspace — if you need to bring in someone brand new, invite them at the workspace level first (see [Inviting New People to the Workspace](#inviting-new-people-to-the-workspace) below), then add them to this vault the same way.
 
 **Change a role.** Each user has a role dropdown. Adjust it to promote or demote someone -- say, moving a Contributor up to Builder when they take on playbook configuration responsibilities, or moving a Builder down to Contributor when the setup phase is done.
 
@@ -48,7 +48,7 @@ The Teams tab lets you organize users into groups. Instead of assigning roles on
 
 ## Builder vs. Contributor Mode
 
-Beyond role-based permissions, Graphium AI has a practical UI distinction between two working modes. The footer of the vault shows **"Builder"** and **"+ Contributor"** buttons that let you switch between them.
+Beyond role-based permissions, Graphium AI has a practical UI distinction between two working modes. The footer of the vault shows **"Builder"** and **"Contributor"** buttons that let you switch between them.
 
 **Builder mode** shows the full configuration interface. You see schema editors, playbook configuration tools, assistant configuration panels, and all the structural tools. This is the mode where you design the vault -- define what fields exist in a table, set up a playbook, configure an AI assistant's system prompt.
 
@@ -67,6 +67,20 @@ Vaults exist inside workspaces, and workspaces are the top-level container for e
 **Switching workspaces.** If you belong to multiple workspaces -- say you manage Urban Health Partners but also consult for Graphium Corporate -- use the dropdown in the header to switch between them. Each workspace has its own context, and switching changes your entire view.
 
 **Workspace Settings.** The gear icon in the header opens workspace-level configuration. This is where workspace-wide settings live, separate from vault-specific settings.
+
+### Inviting New People to the Workspace
+
+Vault access can only be granted to people who already belong to your workspace — vault-level "Add Member" pickers only search existing workspace members. To bring in someone new:
+
+1. Click the gear icon in the header to open **Workspace Settings**, then click **Members**.
+2. Under **Invite New User**, enter their email address.
+3. Choose a workspace **Role** — **Owner**, **Admin**, or **Member**. This controls their access at the workspace level (billing, workspace settings, and so on), separate from any vault role.
+4. Choose a **Seat Type** — **Builder** or **Contributor**. This sets their default seat and factors into billing.
+5. Click **Send Invite**.
+
+Once they accept the invitation and join the workspace, add them to specific vaults from that vault's **Access & Permissions > Users** tab, just like any other existing member.
+
+> **Note:** Workspace Role and Seat Type are workspace-wide concepts and are not the same as the four vault-level roles (Admin, Builder, Contributor, Viewer) described earlier in this article — those are set separately for each vault.
 
 **Multi-workspace users.** A single user account can belong to multiple workspaces with different roles in each. You might be an Admin in your primary practice's workspace and a Viewer in a partner workspace where you just need to review data.
 
