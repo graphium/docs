@@ -224,7 +224,13 @@ No additional configuration is required. Signature properties do not support mul
   <img src="/images/graphium/tables/complete-object-property.png" alt="Complete object property" />
 </Frame>
 
-> Object properties do not support the "Allow multiple values" option.
+### Object Collection
+
+Object properties do support **Allow multiple values**. Enabling it turns the Object into a repeating group of the same child-property structure — each entry in the list has its own copy of all the child fields.
+
+**Example:** An "Addresses" Object Collection on a Contacts table, where each address entry has its own Street, City, State, and Zip, letting a single contact record hold more than one address.
+
+In the schema list, this displays as type **Object Collection**. Configure it the same way as a regular Object — define the child properties once — then enable **Allow multiple values** in the Add Property form before saving.
 
 ---
 
