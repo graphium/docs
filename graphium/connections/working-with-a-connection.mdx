@@ -17,7 +17,7 @@ In the vault sidebar, click **Connections**. In card view, click anywhere on the
 - **Connection Type Key** — the internal identifier used in workflows
 - **Description** — an optional description for this connection
 - **Authentication** — credentials and auth settings for the external system
-- **Sync Settings** — auto-sync toggle and sync interval
+- **Sync Settings** — auto-sync toggle and sync interval, where the connection type supports configurable syncing. Some connection types don't — for example, HubSpot's detail view shows "Sync not available for this connection type" here instead.
 - Connection-specific settings (vary by connection type)
 
 <Frame>
@@ -65,7 +65,7 @@ Connection settings can be updated at any time from the left panel. Changes take
 1. Open the connection detail view.
 2. **Update the Connection Name** — click into the **Connection Name** field and type a new name. Changes save automatically when you click away.
 3. **Update Authentication** — in the **Authentication** section, update your credentials. For OAuth-based connections (such as Google Sheets), click the re-authenticate button to go through the authorization flow again.
-4. **Adjust Sync Settings** — toggle **Auto-sync** on or off, and set the **Interval** for how frequently syncs occur.
+4. **Adjust Sync Settings** — where available, toggle **Auto-sync** on or off, and set the **Interval** for how frequently syncs occur. Not every connection type supports configurable sync — this section will indicate if syncing isn't available for the current connection type.
 5. **Update connection-specific settings** — scroll down for any settings specific to this connection type (e.g., spreadsheet name, server path, or EMR endpoint).
 
 Most settings save automatically when you click away from a field. After updating authentication, run a **Test** to confirm the connection is still working correctly.
