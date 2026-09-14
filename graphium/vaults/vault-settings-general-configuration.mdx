@@ -8,6 +8,8 @@ icon: "vault"
 
 Graphium AI lets you personalize each vault's identity by editing its name, adding a description, and choosing a custom icon and color. These settings help your team quickly identify vaults at a glance and keep the workspace organized.
 
+The same **General** settings page also lets Admins and Builders control whether AI assistants and playbooks can modify the vault's structure, and lets Workspace Owners deactivate or delete the vault entirely.
+
 ## Prerequisites
 
 - You must have an existing vault in Graphium AI
@@ -37,10 +39,10 @@ The vault name can be updated in two ways: directly from the vault header (quick
   <img src="/images/graphium/vaults/vault-name-header.png" alt="Vault name header" />
 </Frame>
 
-### Option B: Edit from General Settings
+### Option B: Edit from Vault Settings
 
-1. Open the vault and click **Settings** in the left sidebar.
-2. Under **General Settings**, locate the **Vault Information** card.
+1. Open the vault and click **Settings** in the vault sidebar.
+2. On the **General** page, locate the **Vault details** card.
 3. Click into the **Vault Name** field and update the name.
 4. Click away (blur the field) or navigate away to save. The change is applied automatically.
 
@@ -54,10 +56,10 @@ The vault name can be updated in two ways: directly from the vault header (quick
 
 ## Editing the Vault Description
 
-The vault description is optional and is managed from the General Settings page.
+The vault description is optional and is managed from the vault's General settings page.
 
-1. Open the vault and click **Settings** in the left sidebar.
-2. Under **General Settings**, locate the **Vault Information** card.
+1. Open the vault and click **Settings** in the vault sidebar.
+2. On the **General** page, locate the **Vault details** card.
 3. Click into the **Description** text area and type or update the description.
 
 > 💡 **Tip:** Descriptions have a maximum length of 500 characters. A good description helps new team members quickly understand what data or workflows a vault contains.
@@ -73,18 +75,41 @@ The vault description is optional and is managed from the General Settings page.
 
 ## Selecting a Vault Icon & Color
 
-The vault icon and color are set from the **General Settings** page and help visually distinguish vaults on the dashboard.
+The vault icon and color are set from the same **Vault details** card as the name and description, and help visually distinguish vaults on the dashboard.
 
-1. Open the vault and click **Settings** in the left sidebar.
-2. Click **General Settings**.
-3. In the **Vault Icon** section, click any of the 7 available icons to select it — the selected icon is highlighted with a teal background.
-4. In the **Vault Color** section, click any of the 6 available colors — the selected color is highlighted with a border.
+1. Open the vault and click **Settings** in the vault sidebar.
+2. On the **General** page, scroll down within the **Vault details** card to the **Vault Icon** and **Vault Color** sections.
+3. In the **Vault Icon** section, click any of the 7 available icons to select it.
+4. In the **Vault Color** section, click any of the 6 available colors — the selected color gets a border ring, and the vault icon updates immediately to use that color as its background.
 
-Changes save automatically when you click an icon or color — no Save button is required.
+Changes save automatically as soon as you click an icon or color — no Save button is required, and there is no popover to confirm or dismiss.
 
 <Frame>
   <img src="/images/graphium/vaults/vault-settings.png" alt="Vault settings" />
 </Frame>
+
+---
+
+## Assistant Table and Column Changes
+
+Further down the **General** page, the **Assistant table and column changes** section controls what AI assistants and playbooks are allowed to change about this vault's tables. Both settings are off by default.
+
+- **Let assistants add and edit columns** — when off, assistants and playbooks cannot add or edit columns anywhere in this vault, regardless of what any individual table's own settings say. Those per-table settings are preserved and take effect again as soon as you turn this on.
+- **Let assistants create new tables** — when off, assistants and playbooks cannot create new tables in this vault. They can still add or edit columns on tables that already exist, if the setting above allows it.
+
+Both toggles save immediately — no Save button is required.
+
+> 💡 **Tip:** This vault-level setting is what makes the **Allow column changes** toggle on an individual assistant's Tools tab available or greyed out. See [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant) for how it applies to a specific assistant.
+
+<Frame>
+  <img src="/images/graphium/vaults/assistant-table-column-changes.png" alt="Assistant table and column changes section showing the Let assistants add and edit columns and Let assistants create new tables toggles" />
+</Frame>
+
+---
+
+## Deactivating or Deleting a Vault
+
+At the bottom of the **General** page, the **Danger Zone** lets Workspace Owners deactivate or delete the vault. This is a Workspace Owner–only control and is covered in full in [Deleting or Deactivating a Vault](/graphium/vaults/deleting-or-deactivating-a-vault).
 
 ---
 
@@ -96,7 +121,6 @@ Changes save automatically when you click an icon or color — no Save button is
 | Vault icon is not clickable | You have a Contributor or Viewer role | Contact your vault ADMIN to request a higher role |
 | Name change reverts immediately after saving | API error or validation failure | Check that the name is not empty and is under 255 characters. Try again — if it persists, check your network connection |
 | Vault name field won't save when empty | Empty names are not allowed | Enter at least one character before saving |
-| Icon/color changes are lost when I click outside the popover | Popover was dismissed without clicking Done | Reopen the popover by clicking the vault icon and reapply your changes, then click **Done** |
 | Description is not saving | Possible network issue | Ensure you clicked away from the text area to trigger the save. Reload the page and try again |
 | "Insufficient permissions" error | Your vault role is Contributor or Viewer | Contact your vault ADMIN or Workspace Owner to adjust your permissions |
 
@@ -106,6 +130,7 @@ Changes save automatically when you click an icon or color — no Save button is
 
 - [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
 - [Deleting or Deactivating a Vault](/graphium/vaults/deleting-or-deactivating-a-vault)
+- [Creating and Updating Records with the AI Assistant](/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant)
 
 ---
 
