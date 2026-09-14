@@ -21,13 +21,25 @@ For a published playbook, the editor header contains two buttons next to **Edit*
   <img src="/images/graphium/playbooks/test-run-buttons.png" alt="Test and Run buttons in the playbook editor header" />
 </Frame>
 
-A "Test run started" popup appears when the test run is queued. The run appears at the top of the **Runs** list in the left sidebar with a **Pending** status, then updates to **Running** while it executes.
-
 > **Note:** The **Test** and **Run** buttons are only available for a published playbook. A playbook in draft mode must be published first — see [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook).
 
 ---
 
 ## What Happens in Test Mode
+
+A "Test run started" popup appears when the test run is queued. The run appears at the top of the **Runs** list in the left sidebar with a **Pending** status, then updates to **Running** while it executes.
+
+<Columns cols={3}>
+  <Frame caption="Pending">
+    <img src="/images/graphium/playbooks/test-run-pending.png" alt="Test run showing Pending status at the top of the Runs list" />
+  </Frame>
+  <Frame caption="Running">
+    <img src="/images/graphium/playbooks/test-run-running.png" alt="Test run showing Running status at the top of the Runs list" />
+  </Frame>
+  <Frame caption="Completed">
+    <img src="/images/graphium/playbooks/test-run-completed.png" alt="Test run showing Completed status at the top of the Runs list" />
+  </Frame>
+</Columns>
 
 Test mode executes all steps but suppresses any real-world side effects:
 
@@ -56,9 +68,14 @@ Clicking **Run** starts a live execution where the playbook performs real action
 - If a step **fails**, the run stops at that point and all subsequent steps are marked as **Skipped**.
 - Live runs appear in the **Runs** list with their trigger type — **Manual**, **Scheduled**, **Record Added**, **Connection Event**, etc.
 
-<Frame>
-  <img src="/images/graphium/playbooks/run-playbook.png" alt="Live run in progress in the run detail page" />
-</Frame>
+<Columns cols={2}>
+  <Frame caption="Running">
+    <img src="/images/graphium/playbooks/playbook-run-running.png" alt="Live playbook run showing Running status in the run detail page" />
+  </Frame>
+  <Frame caption="Completed">
+    <img src="/images/graphium/playbooks/playbook-run-completed.png" alt="Live playbook run showing Completed status in the run detail page" />
+  </Frame>
+</Columns>
 
 > ⚠️ **Note:** Live runs take real actions immediately. Use **Test** mode first to verify your playbook's logic before running it live.
 
@@ -102,6 +119,10 @@ If a step **fails**, the run stops at that step and all subsequent steps are mar
 
 To cancel an in-progress run, open the run detail while the run is still executing and click **Cancel Run** in the left sidebar. A confirmation dialog asks *"Are you sure you want to cancel this run?"* — click **Cancel Run** again to confirm. Steps that have already completed are not rolled back.
 
+<Frame>
+  <img src="/images/graphium/playbooks/cancel-playbook-run.png" alt="Cancel Run button and confirmation dialog in the run detail page" />
+</Frame>
+
 > **Note:** If the run finishes on its own before your cancellation is processed, you'll see a *"Run not found or already in a terminal state"* message — this is expected and means the run completed just ahead of the cancel request.
 
 ---
@@ -124,7 +145,7 @@ Save and publish the playbook to activate the schedule. The first scheduled run 
   <img src="/images/graphium/playbooks/schedule-playbook-trigger.png" alt="Scheduled trigger configuration showing Frequency, Time, and Time Zone fields" />
 </Frame>
 
-### Scheduled Run Behaviour
+### Scheduled Run Behavior
 
 - Scheduled runs appear in the Runs list with a **Scheduled** trigger type.
 - If the playbook is **disabled**, scheduled runs will not fire until the playbook is re-enabled.
