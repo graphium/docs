@@ -24,6 +24,10 @@ Every user in a vault has one of four roles. These roles determine what they can
 
 **Viewer.** Read-only access. Viewers can see data but cannot change anything -- no adding records, no editing fields, no modifying structure. This role exists for auditors, external reviewers, stakeholders who need visibility, or anyone who should be able to look but not touch.
 
+<Frame>
+  <img src="/images/graphium/core-concepts/vault-role-permissions.png" alt="Role Permissions reference card showing Admin, Builder, Viewer, and Contributor descriptions" />
+</Frame>
+
 ---
 
 ## Managing Users
@@ -40,9 +44,17 @@ The Users tab shows a list of everyone who has access to the vault: their name, 
 
 **Deactivate a user.** If someone no longer needs access to the vault, click **Deactivate** next to their name. This removes their active access to the vault without affecting their access to other vaults in the workspace.
 
+<Frame>
+  <img src="/images/graphium/core-concepts/vault-access-users-tab.png" alt="Users tab in vault Access & Permissions showing Add Member, People with Vault Access, and role dropdowns" />
+</Frame>
+
 ### Teams Tab
 
 The Teams tab lets you organize users into groups. Instead of assigning roles one person at a time, you can create a team (like "Billing" or "Providers"), add members to it, and manage access at the group level. This is especially useful in larger practices where you have dozens of users and role assignments need to be consistent across the team.
+
+<Frame>
+  <img src="/images/graphium/core-concepts/vault-access-teams-tab.png" alt="Teams tab in vault Access & Permissions showing Create Team and a list of existing teams" />
+</Frame>
 
 ---
 
@@ -56,6 +68,10 @@ Beyond role-based permissions, Graphium AI has a practical UI distinction betwee
 
 The typical pattern is this: Builders set up the vault during the initial configuration phase -- creating tables, defining schemas, configuring playbooks, connecting external systems. Once the structure is in place, the day-to-day users switch to Contributor mode (or are assigned the Contributor role) and work within that structure. Builder mode is for setup and maintenance. Contributor mode is for daily operations.
 
+<Frame>
+  <img src="/images/graphium/core-concepts/builder-contributor-toggle.png" alt="Builder and Contributor toggle buttons at the bottom of the vault sidebar" />
+</Frame>
+
 ---
 
 ## Workspace-Level Access
@@ -67,6 +83,10 @@ Vaults exist inside workspaces, and workspaces are the top-level container for e
 **Switching workspaces.** If you belong to multiple workspaces -- say you manage Urban Health Partners but also consult for Graphium Corporate -- use the dropdown in the header to switch between them. Each workspace has its own context, and switching changes your entire view.
 
 **Workspace Settings.** The gear icon in the header opens workspace-level configuration. This is where workspace-wide settings live, separate from vault-specific settings.
+
+<Frame>
+  <img src="/images/graphium/core-concepts/workspace-switcher-and-settings.png" alt="Workspace switcher dropdown and gear icon in the header" />
+</Frame>
 
 ### Inviting New People to the Workspace
 
@@ -81,6 +101,10 @@ Vault access can only be granted to people who already belong to your workspace 
 Once they accept the invitation and join the workspace, add them to specific vaults from that vault's **Access & Permissions > Users** tab, just like any other existing member.
 
 > **Note:** Workspace Role and Seat Type are workspace-wide concepts and are not the same as the four vault-level roles (Admin, Builder, Contributor, Viewer) described earlier in this article — those are set separately for each vault.
+
+<Frame>
+  <img src="/images/graphium/core-concepts/invite-new-workspace-user.png" alt="Invite New User form in Workspace Settings showing email, Role, and Seat Type fields" />
+</Frame>
 
 **Multi-workspace users.** A single user account can belong to multiple workspaces with different roles in each. You might be an Admin in your primary practice's workspace and a Viewer in a partner workspace where you just need to review data.
 
