@@ -10,6 +10,8 @@ When a vault table is configured with **Read & Write** access, the AI assistant 
 
 This is useful for capturing records on the fly, correcting data without leaving a chat, and running playbooks that write back to vault tables as part of an automated workflow.
 
+> **Note:** Only Admins and Builders can configure an assistant's tools. Users interacting with the assistant in chat do not change these settings — they are fixed by whoever published the assistant.
+
 ---
 
 ## Enabling Write Access for a Table
@@ -32,9 +34,35 @@ To enable write access:
   <img src="/images/graphium/assistant/configure-assistant-tools.png" alt="Table Access section in the assistant's Tools tab showing Off, Read, and Read & Write options" />
 </Frame>
 
-> **Note:** Only Admins and Builders can configure an assistant's tools. Users interacting with the assistant in chat do not change these settings — they are fixed by whoever published the assistant.
+### Allowing Column Changes
 
-> **Note:** When a table is set to **Read & Write**, an **Allow column changes** toggle appears below it, letting the assistant add and edit columns on that table. If this toggle is greyed out with the message *"Turned off for this vault. Change in Vault settings,"* it means the vault-level **Let assistants add and edit columns** setting is disabled — enable it in vault Settings before this toggle can be turned on here.
+When a table is set to **Read & Write**, an **Allow column changes** toggle appears below it, letting the assistant add and edit columns on that table. Whether this toggle can actually be turned on depends on a vault-level setting — **Let assistants add and edit columns** — found in vault Settings.
+
+**When the vault setting is disabled**
+
+The **Allow column changes** toggle on the table appears greyed out and cannot be turned on. It's labeled with the message *"Turned off for this vault. Change in Vault settings"* so you know why it's unavailable. The assistant can still create and update records on this table, but it cannot add or edit columns.
+
+<Columns cols={2}>
+  <Frame caption="Vault Settings — Disabled">
+    <img src="/images/graphium/vaults/let-assistants-edit-columns-disabled.png" alt="Let assistants add and edit columns toggle disabled in vault Settings" />
+  </Frame>
+  <Frame caption="Table Access — Locked">
+    <img src="/images/graphium/assistant/allow-column-changes-locked.png" alt="Allow column changes toggle greyed out on a Read/Write table, labeled Turned off for this vault" />
+  </Frame>
+</Columns>
+
+**When the vault setting is enabled**
+
+The **Allow column changes** toggle on the table becomes clickable. Turning it on lets this assistant propose adding or editing columns on that table as it works — for example, when a playbook step or a chat request needs a field that doesn't exist yet.
+
+<Columns cols={2}>
+  <Frame caption="Vault Settings — Enabled">
+    <img src="/images/graphium/vaults/let-assistants-edit-columns-enabled.png" alt="Let assistants add and edit columns toggle enabled in vault Settings" />
+  </Frame>
+  <Frame caption="Table Access — Available">
+    <img src="/images/graphium/assistant/allow-column-changes-available.png" alt="Allow column changes toggle enabled and clickable on a Read/Write table" />
+  </Frame>
+</Columns>
 
 > 💡 **Tip:** A table's Read & Write access here sets the assistant's *default* permissions. A user can further restrict (but not expand) what's available in a given conversation via Chat Context — see [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools).
 
