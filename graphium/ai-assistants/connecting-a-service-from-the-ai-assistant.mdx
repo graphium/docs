@@ -1,0 +1,132 @@
+---
+title: "Connecting a Service from the AI Assistant"
+description: "When a request needs a service your vault isn't connected to, the AI Assistant shows a card so you can connect it without leaving the conversation."
+icon: "brain"
+---
+
+## Overview
+
+When you ask the AI Assistant to do something that depends on an external service — for example, sending an email through Gmail — the assistant checks whether your vault already has a working connection for that service. If it doesn't, the assistant shows an **Authorization required** card right in the conversation. You can connect, re-enable, or reconnect the service from the card, and the assistant picks up your original request once the connection is ready.
+
+## When to Use This
+
+- You ask the assistant to take an action in a service the vault hasn't connected yet, such as *"Send an email summarizing today's contacts."*
+- A connection exists but has been disabled, so the assistant can't use it.
+- A connection's sign-in has expired or been revoked, and an action the assistant tried has failed.
+
+The card appears in regular AI Assistant chats on the vault Home page. It does not appear in playbook run transcripts, in a custom assistant's **Test Chat** panel, or when one assistant calls another — in those places nobody is present to authorize the connection.
+
+## Prerequisites
+
+- To connect or repair a service from the card, you need the **Builder** or **Admin** role in the vault. Workspace Owners and Admins can do this in every vault.
+- Contributors and Viewers still see the card, but it explains that a vault Builder or Admin needs to connect the service, and no button is shown.
+- The service must be one Graphium AI supports. If it isn't, the assistant tells you and may suggest a supported alternative.
+- Your workspace must have room under its plan's connection limit. See [Plan Limits and Upgrade Guidance](/graphium/billing/subscription-and-payment-settings#plan-limits-and-upgrade-guidance).
+
+## Step-by-Step Instructions
+
+### Step 1: Ask the Assistant for Something That Needs a Service
+
+On the vault Home page, type your request in the chat input bar and send it. If the vault has no usable connection for the service, the assistant's response includes an **Authorization required** card.
+
+The card shows:
+
+- The service's icon and name (for example, **Connect to Gmail**)
+- Your request, restated as the reason for the connection
+- **You'll authorize:** a short description of how you'll sign in and which actions the assistant will be able to use
+- A button for the next step
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-authorization-card.png" alt="Authorization required card in the chat showing Connect to Gmail, the reason, what you'll authorize, and an Authorize Gmail button" />
+</Frame>
+
+### Step 2: Click Authorize
+
+Click **Authorize {service}** (for example, **Authorize Google Calendar**).
+
+- For most services, a window titled **Graphium AI uses Pipedream to connect your account** opens. Graphium AI uses Pipedream to connect to these services securely. Click **Continue** (which accepts Pipedream's Terms of Service and Privacy Policy), then sign in to the service and approve the access it requests.
+- For services that use an API key or other credentials (such as Graphium EMR), the **Add Connection** form opens on the credentials step with the connection name already filled in. Enter the credentials and save.
+
+If you close the window before finishing, the card shows **Authorization was canceled.** with a **Try again** button.
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-authorization-pipedream.png" alt="Pipedream window reading Graphium AI uses Pipedream to connect your account, with a Continue button" />
+</Frame>
+
+> 💡 **Tip:** If your workspace has already used all the connections included in its plan, a **Connection limit reached** dialog appears before any sign-in window opens. Click **Upgrade plan** to review plan options on the Billing page, or **Cancel** to close it.
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-limit-reached.png" alt="Connection limit reached dialog showing 3 of 3 connections used, with Cancel and Upgrade plan buttons" />
+</Frame>
+
+### Step 3: Wait for the Connection to Be Verified
+
+After you finish signing in, the connection is created and linked to the vault. The card shows **Connected · verifying…** while Graphium AI confirms the connection is healthy. When it's confirmed, the button is replaced by a green **Ready** badge.
+
+If verification takes longer than about a minute, the card shows that verification is pending and offers **Continue anyway**, so you can move on without waiting.
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-authorization-ready.png" alt="Connect to Google Calendar card with a green Ready badge in place of the Authorize button" />
+</Frame>
+
+### Step 4: Let the Assistant Continue
+
+You don't need to type anything else. When the card reaches **Ready**, a short status message appears in the conversation on your side (for example, *"Google Calendar connected · 7 actions enabled for this assistant"*), and the assistant resumes your original request.
+
+- **General Assistant:** All of the new connection's actions are turned on for you automatically in this vault. The assistant continues right away using the new connection, and each connection action it runs is listed in its response. You can see the newly enabled actions under the **Connections** tab of the Chat Context panel (click the ⚙ icon in the chat input bar).
+- **Custom assistants:** Actions are not turned on automatically, because a custom assistant's tools are set by whoever published it. The status message reads *"{service} connected · enable its actions in Tools,"* and the assistant points you to its **Tools** tab. A vault Admin or Builder must enable the actions there — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants).
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-authorized-status-chip.png" alt="Status message reading Google Calendar connected, 7 actions enabled for this assistant, followed by the assistant's response listing the connection actions it ran" />
+</Frame>
+
+> 💡 **Tip:** Anything you've typed in the chat input bar, and any files you've attached but not sent, stay where they are. The status message is sent separately.
+
+## Repairing a Disabled or Unhealthy Connection
+
+If the vault already has a connection for the service but the assistant can't use it, the card offers a repair instead of a new connection:
+
+| What the card says | What it means | What to do |
+|---|---|---|
+| *{service} is connected but disabled for this vault.* with **Enable in Connections** | The connection was turned off | Click **Enable in Connections** to open the connection's detail page, then click **Enable** in the header |
+| **Reconnect {service}** | The connection's sign-in has expired or been revoked | Click **Reconnect {service}** and sign in again. The card changes to **Ready** when the connection is healthy |
+
+When a connection's sign-in has been revoked, the assistant's first attempt to use it fails. In that same response, the assistant shows the **Reconnect** card instead of the service's raw error message, and the connection is marked unhealthy on the Connections page. After you reconnect, ask the assistant to try your request again.
+
+<Frame>
+  <img src="/images/graphium/assistant/connection-authorization-disabled.png" alt="Authorization card for HubSpot stating the connection is disabled for this vault, with an Enable in Connections button" />
+</Frame>
+
+## What to Expect
+
+- The new connection appears on the vault's **Connections** page, just as if you had added it there. See [Working with a Connection](/graphium/connections/working-with-a-connection).
+- The card always reflects the connection's current state. If you reload the page or come back to the conversation later, a card that reached **Ready** still shows **Ready**, and the status message is still there.
+- If someone connects the same service from the Connections page while a card is waiting, the card changes to **Ready** when you return to the chat. The assistant does not resume automatically in this case — send your request again.
+- If you move to a different conversation, vault, or assistant before the connection is ready, nothing is sent. A message lets you know the connection was made but the conversation that asked for it has moved on.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| The card has no button and says a vault Builder or Admin must connect the service | Your vault role is Contributor or Viewer | Ask a vault Builder or Admin to connect the service |
+| **Connection limit reached** appears when you click Authorize | The workspace has used every connection included in its plan | Click **Upgrade plan**, or ask a workspace Owner or Admin to review the plan |
+| The card says **Authorization was canceled.** | The Pipedream or sign-in window was closed before finishing | Click **Try again** |
+| The card says authorization failed | Sign-in with the service didn't complete | Click **Try again** |
+| The card says *Authorized, but saving failed* | Sign-in succeeded but the connection couldn't be saved | Click **Retry**. You won't need to sign in again |
+| The card stays on verification pending | The service hasn't confirmed the connection yet | Click **Continue anyway**, or check the connection's status on the Connections page |
+| The connection is ready but a custom assistant still can't use it | Custom assistants don't turn on new actions automatically | Enable the connection's actions on the assistant's **Tools** tab |
+| The assistant says the service isn't available | Graphium AI doesn't support that service | Use a supported alternative the assistant suggests, or see [Connections](/graphium/core-concepts/connections) |
+| A message says AI credits ran out after connecting | The workspace is out of AI credits | Add credits on the Billing page, then click **Retry** |
+| No card appears in a playbook run or Test Chat | The card only appears in regular chats | Connect the service from the vault's **Connections** page instead |
+
+## Related Articles
+
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
+- [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants)
+- [Adding a Connection](/graphium/connections/adding-a-new-automated-connection)
+- [Working with a Connection](/graphium/connections/working-with-a-connection)
+
+---
+
+*Questions? Reach out to the Graphium AI team or open a ticket in your support channel.*
