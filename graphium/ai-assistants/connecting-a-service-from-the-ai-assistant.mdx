@@ -73,7 +73,7 @@ If verification takes longer than about a minute, the card shows that verificati
 
 You don't need to type anything else. When the card reaches **Ready**, a short status message appears in the conversation on your side (for example, *"Google Calendar connected · 7 actions enabled for this assistant"*), and the assistant resumes your original request.
 
-- **General Assistant:** All of the new connection's actions are turned on for you automatically in this vault. The assistant continues right away using the new connection, and each connection action it runs is listed in its response. You can see the newly enabled actions under the **Connections** tab of the Chat Context panel (click the ⚙ icon in the chat input bar).
+- **General Assistant:** All of the new connection's actions are turned on for you automatically in this vault. The assistant continues right away using the new connection, and each connection action it runs is listed in its response.
 - **Custom assistants:** Actions are not turned on automatically, because a custom assistant's tools are set by whoever published it. The status message reads *"Gmail connected · enable its actions in Tools."* When the assistant needs an action it doesn't have yet, it shows an **Access required** card listing the suggested permission, with a **Review connection access** button. A vault Admin or Builder must enable the actions on the assistant's **Tools** tab — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants).
 
 <Frame>
@@ -91,11 +91,11 @@ If the vault already has a connection for the service but the assistant can't us
 | *Gmail is connected but disabled for this vault.* with **Enable in Connections** | The connection was turned off | Click **Enable in Connections** to open the connection's detail page, then click **Enable** in the header |
 | **Reconnect Gmail** | The connection's sign-in has expired or been revoked | Click **Reconnect Gmail** and sign in again. The card changes to **Ready** when the connection is healthy |
 
-When a connection's sign-in has been revoked, the assistant's first attempt to use it fails. In that same response, the assistant shows the **Reconnect** card instead of the service's raw error message, and the connection is marked unhealthy on the Connections page. After you reconnect, ask the assistant to try your request again.
-
 <Frame>
   <img src="/images/graphium/assistant/assistant-enable-connection.png" alt="Authorization required card for Gmail stating Gmail is connected but disabled for this vault, with an Enable in Connections button" />
 </Frame>
+
+When a connection's sign-in has been revoked, the assistant's first attempt to use it fails. In that same response, the assistant shows the **Reconnect** card instead of the service's raw error message, and the connection is marked unhealthy on the Connections page. After you reconnect, ask the assistant to try your request again.
 
 ## What to Expect
 
