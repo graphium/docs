@@ -36,7 +36,7 @@ The assistant's reply includes an **artifact card** showing the page title and *
 > 💡 **Tip:** The assistant chooses a color theme that suits the subject — for example, a calm blue look for medical content or a deep slate look for financial reports. If you want a particular look, say so in your request (for example, "use a warm, earthy look").
 
 <Frame>
-  <img src="/images/graphium/assistant/artifact-card.png" alt="Assistant reply with an artifact card titled Q3 Results One-Pager, Version 1" />
+  <img src="/images/graphium/assistant/assistant-reply-artifact-card.png" alt="Assistant reply to a Q3 results request with an artifact card titled Q3 Quarterly Results, Version 1" />
 </Frame>
 
 ### Step 2: Open the Artifact
@@ -52,7 +52,7 @@ The panel header shows the artifact's title and version, plus three buttons:
 | **Close** | Closes the viewer |
 
 <Frame>
-  <img src="/images/graphium/assistant/artifact-split-panel.png" alt="Artifact open in a panel beside the chat, with Expand, Open in new tab, and Close buttons in the panel header" />
+  <img src="/images/graphium/assistant/artifact-side-panel.png" alt="Q3 Quarterly Results artifact open in a panel beside the chat, with Expand, Open in new tab, and Close buttons in the panel header" />
 </Frame>
 
 Every artifact ends with a **Generated with Graphium** footer. Artifacts are self-contained pages: they don't load outside content, and links or buttons on the page won't take you away from Graphium AI.
@@ -77,7 +77,7 @@ When an artifact has more than one version, the version label in the viewer head
 Opening the newest card always shows the latest version. Older cards earlier in the conversation still open the version they were created with.
 
 <Frame>
-  <img src="/images/graphium/assistant/artifact-version-switcher.png" alt="Artifact viewer header with the version drop-down showing Version 3" />
+  <img src="/images/graphium/assistant/artifact-versions.png" alt="Version drop-down open in the artifact viewer header listing Versions 1, 2, and 3, with Version 2 and Version 3 cards in the chat" />
 </Frame>
 
 ## Building an Artifact from Vault Data
@@ -88,11 +88,11 @@ You can ask the assistant to build an artifact from records in your vault tables
 - The artifact captures the data **as it was when the artifact was created**. Later changes to the table don't update it — ask the assistant to create a new version to refresh the data.
 - If you later remove the assistant's access to a table, artifacts that were already built from it keep their data.
 
-If your request needs a table the assistant can't access, it won't build a partial artifact. Instead, the reply shows an **Access required** card naming the table, with a **Review table access** button. Click it to open the Chat Context panel, give the assistant access to the table, and then ask again.
-
 <Frame>
-  <img src="/images/graphium/assistant/artifact-access-required.png" alt="Access required card naming a table the assistant needs, with a Review table access button" />
+  <img src="/images/graphium/assistant/artifact-from-vault.png" alt="Assistant querying two vault tables and building a Providers and Invoices Summary artifact, shown open in the viewer" />
 </Frame>
+
+If your request needs a table the assistant can't access, it won't build a partial artifact. Instead, the reply shows an **Access required** card naming the table, with a **Review table access** button. Click it to open the Chat Context panel, give the assistant access to the table, and then ask again.
 
 ## What to Expect
 
