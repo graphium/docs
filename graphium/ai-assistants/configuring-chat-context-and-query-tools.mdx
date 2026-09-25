@@ -6,7 +6,7 @@ icon: "brain"
 
 ## Overview
 
-The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, and expose actions from your connected external systems. A badge on the ⚙ icon shows how many tables and connection actions are currently enabled.
+The Chat Context panel lets you control exactly what data and tools the AI Assistant can access during a conversation. You can grant or restrict access to specific vault tables, enable general tools like web search and chart generation, expose actions from your connected external systems, and choose which AI model answers. A badge on the ⚙ icon shows how many tables, tools, and connection actions are currently enabled.
 
 Use this before asking the AI a question to ensure it has access to the right data — or to expand its capabilities by enabling tools and connection actions. You must have Admin or Builder vault role and access to the vault's Home page.
 
@@ -14,9 +14,9 @@ Use this before asking the AI a question to ensure it has access to the right da
 
 ## Opening the Chat Context Panel
 
-In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with three tabs — **Tables**, **Tools** (wrench icon), and **Connections** (link icon).
+In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens as a popover with four tabs — **Tables** (grid icon), **Tools** (wrench icon), **Connections** (link icon), and **Model** (sparkle icon).
 
-The **Tables** and **Connections** tab icons each display a small **badge** showing how many items are currently enabled in that tab, and the ⚙ icon in the chat input bar shows the combined total across both. General Tools (Charts, Web Search) are not counted in this total.
+The **Tables**, **Tools**, and **Connections** tab icons each display a small **badge** showing how many items are currently enabled in that tab, and the ⚙ icon in the chat input bar shows the combined total across all three. The **Model** tab has no badge.
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-icon.png" alt="The settings icon in the chat input bar with a badge showing enabled context items" />
@@ -61,6 +61,8 @@ The second tab (**Tools**) shows general-purpose tools the AI can use during a c
 | **Charts** | Render bar, line, or pie charts inline |
 | **Web search** | Search the public web for current or external information |
 
+> **Note:** Artifacts — finished pages the assistant builds, such as one-pagers and reports — don't need a tool setting. See [Creating and Viewing Artifacts](/graphium/ai-assistants/creating-and-viewing-artifacts).
+
 ### Web Search Tool
 
 The **Web Search** tool allows the AI to search the internet in real time. Enable this when you want the AI to supplement your vault data with up-to-date external information — for example, pulling current clinical guidelines, regulatory requirements, or market benchmarks alongside your internal data.
@@ -92,7 +94,7 @@ The third tab (**Connections**) shows actions available from your vault's connec
 | **Google Sheets** | Add Row, Update Row, Delete Row, Create Sheet, Row Added, Row Updated, Sheet Modified |
 | **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified, File Deleted |
 
-The exact connections and actions you see depend on what your vault has configured — only connections actually added to the vault appear here. Toggle individual actions on or off within each connection group, or use **Enable all** to turn on every action for that connection at once.
+The exact connections and actions you see depend on what your vault has configured — only connections actually added to the vault appear here. Toggle individual actions on or off within each connection group, or use **Enable all** to turn on every action for that connection at once. When every action in a group is on, the link changes to **Disable all**.
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-connections.png" alt="Connections tab in the Chat Context panel showing connection actions grouped by connection type" />
@@ -100,16 +102,30 @@ The exact connections and actions you see depend on what your vault has configur
 
 ---
 
+## Model Tab — Choosing the AI Model
+
+The fourth tab (**Model**) lets you choose which AI model answers in the current conversation. Models are grouped by provider (for example, Anthropic and OpenAI), and each one includes a short description of what it's best for. Some models also carry a **PHI SAFE** label.
+
+1. Open the Chat Context panel and click the **Model** tab.
+2. Select a model, or select **Use workspace default** to use the model your workspace has set as its default. The workspace default's name is shown in parentheses.
+
+The top of the tab shows which model the current conversation is using. A new chat starts with the workspace default.
+
+<Frame>
+  <img src="/images/graphium/assistant/chat-context-model.png" alt="Model tab in the Chat Context panel showing the workspace default option and available models grouped by provider" />
+</Frame>
+
+---
 
 ## Closing the Panel and Sending Your Message
 
-Once configured, close the panel by clicking outside it or pressing **Escape**. Type your question in the input bar and send it. The AI will use only the tables, tools, and actions you have enabled.
+Once configured, close the panel by clicking outside it or pressing **Escape**. Type your question in the input bar and send it. The AI will use only the tables, tools, and actions you have enabled, and will answer with the model you selected.
 
 ---
 
 ## What to Expect
 
-- The badges on the Tables and Connections tabs, and the total on the ⚙ icon, update in real time as you enable or disable items
+- The badges on the Tables, Tools, and Connections tabs, and the total on the ⚙ icon, update in real time as you enable or disable items
 - Changes to Chat Context apply only to the current conversation
 - If a table is set to Off, the AI will not include that table's data in its analysis
 - Web Search results are cited in the AI's response when used
@@ -123,7 +139,8 @@ Once configured, close the panel by clicking outside it or pressing **Escape**. 
 | AI response doesn't include expected table data | Table is set to Off in the Tables tab | Open Chat Context and set the relevant table to Read or Read & Write |
 | Web Search results are outdated or irrelevant | The AI may not have used web search | Ensure Web search is set to On in the Tools tab |
 | Connection actions are not visible | No connections have been configured for the vault | Set up connections in the Connections section first |
-| Badge count doesn't match expected number | Some items may be enabled from a previous session | Open the panel and turn off any tables or connection actions you no longer need |
+| Badge count doesn't match expected number | Some items may be enabled from a previous session, and enabled tools count toward the total | Open the panel and turn off any tables, tools, or connection actions you no longer need |
+| A conversation isn't using the workspace's default model | A different model was selected for this conversation | Open the **Model** tab and select **Use workspace default**, or start a new chat |
 | Allow column changes toggle is missing on a table | The table's access level is set to Off or Read only | Set the table's access level to Read & Write to reveal the toggle |
 | Read & Write access is not available for a table | Your vault role may not permit writes | Contact your vault Admin to adjust permissions |
 
