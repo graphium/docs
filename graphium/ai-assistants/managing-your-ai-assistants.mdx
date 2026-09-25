@@ -64,17 +64,26 @@ Describe the assistant the way you'd explain it to a new teammate — for exampl
   <img src="/images/graphium/assistant/add-assistant-describe.png" alt="Add an assistant window on the Describe step, with a text box asking what the assistant should do" />
 </Frame>
 
-#### Step 2: Review the name and the tables it can read
+#### Step 2: Review the name
 
-Graphium AI suggests a name based on your description. Change it if you'd like.
-
-Under **What it can read**, every table in the vault is selected. Clear the checkbox for any table the assistant shouldn't see.
+Graphium AI suggests a name based on your description. Change it if you'd like, then click **Continue**.
 
 <Frame>
-  <img src="/images/graphium/assistant/add-assistant-name.png" alt="Add an assistant window on the Name step, showing a suggested name and the What it can read list of tables" />
+  <img src="/images/graphium/assistant/add-assistant-name.png" alt="Add an assistant window on the Name step, showing a suggested name and a Continue button" />
 </Frame>
 
-#### Step 3: Create the assistant
+#### Step 3: Choose where it works and create the assistant
+
+On the **Where it works** step, choose the vault the assistant belongs to. The assistant reads and writes only inside that vault — everything it reads, builds, or saves stays there, and your other vaults stay out of reach.
+
+- **Put it in a vault you already have** — select an existing vault. Each option shows how many tables it has, and vaults with data are labeled **Has data**.
+- **Or start a new one** — select **A new vault** to keep the assistant's work separate. The new vault starts empty. This option isn't available if your plan's vault limit has been reached.
+
+Under **What it can read**, every table in the selected vault is checked. Clear the checkbox for any table the assistant shouldn't see.
+
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant-vault.png" alt="Add an assistant window on the Where it works step, asking where the assistant should keep its work, with a list of existing vaults and the What it can read list of tables" />
+</Frame>
 
 Click **Create assistant**. The assistant is created and published right away, and a new chat with it opens so you can start using it. Graphium AI also writes the assistant's description and system prompt from what you described, and sets it to use the workspace's default AI model.
 
