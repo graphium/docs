@@ -30,7 +30,9 @@ Use an AI Assistant when you want to:
 
 ## Step 1: Open the Chat Input
 
-Open a vault and the **Home** page loads automatically. The input bar at the top of the page shows the placeholder text *"Ask a question about your data..."*
+Open a vault and the **Home** page loads automatically. The chat input bar shows the selected assistant's name — for example, *"Ask General Assistant..."*.
+
+You can also start from the **Assistants** tab of the workspace home: click an assistant's card to open a chat with it in its vault. See [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace).
 
 <Frame>
   <img src="/images/graphium/assistant/assistant-home-page.png" alt="The AI Assistant Home page showing the chat input bar" />
@@ -40,7 +42,7 @@ Open a vault and the **Home** page loads automatically. The input bar at the top
 
 ## Step 2: Select an Assistant
 
-Above the chat input, a labeled **assistant selector** shows the currently active assistant (for example, **GENERAL ASSISTANT ⌄**). Click it to open a popup listing every assistant configured for this vault, each with a short description and a checkmark next to the one currently selected. Click an assistant to switch to it. If you don't pick one, the **General** assistant is used by default.
+Above the heading, a labeled **assistant selector** shows the currently active assistant (for example, **GENERAL ASSISTANT ⌄**). Click it to open a popup listing every assistant configured for this vault, each with a short description and a checkmark next to the one currently selected. Click an assistant to switch to it — or click one under **ASSISTANTS** in the vault sidebar. If you don't pick one, the **General** assistant is used by default. See [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants).
 
 Once a conversation has started, this same selector moves into the input bar's toolbar as a small badge alongside the model picker and the Chat Context (⚙) button — you can still click it there to switch assistants mid-session.
 
@@ -153,6 +155,7 @@ Assistants respond based on the data enabled in Chat Context and draw only from 
 | Answers are vague or generic | Query is too broad | Rephrase with more specific field names, date ranges, or conditions |
 | AI response doesn't include charts | Chart Generation is not enabled in Chat Context | Open Chat Context, click the Tools tab, and toggle Chart Generation on |
 | Assistant is not available in the vault | No assistant configured yet | Ask your administrator to create and activate an assistant for this vault |
+| Can't type in a chat labeled **Inactive** | The assistant it was held with has been archived | Start a new chat with an active assistant |
 | Results don't match Table View | Assistant may be using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
 | Send button is greyed out | The input field is empty | Type a message before clicking Send |
 | Response stops partway through | You clicked the stop button, or generation was interrupted | Send another message to continue, or ask the assistant to pick up where it left off |

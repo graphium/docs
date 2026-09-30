@@ -16,7 +16,14 @@ This article covers how to view your assistants, create and publish a new one, e
 
 ## Viewing Your Assistants
 
-From within a vault, click **Assistants** in the left sidebar. The Assistants page opens, showing the total count and a card for each configured assistant.
+From within a vault, open the Custom Assistants page:
+
+- **Admins** — click the **⚙ (Manage assistants)** button next to the **ASSISTANTS** heading in the left sidebar.
+- **Admins and Builders** — click the assistant selector above the chat, then click **Manage assistants** at the bottom.
+
+The **Custom Assistants** page opens, showing how many assistants are active and archived and a card for each one.
+
+To see assistants across all your vaults, use the **Assistants** tab of the workspace home — see [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace). Vault Admins can click an assistant's ⚙ there to open its settings.
 
 Each assistant card displays:
 
@@ -30,14 +37,14 @@ Use the **grid/list toggle** in the top-right corner to switch between card grid
 If no assistants have been created yet, the page shows an empty state: *"No assistants yet — Create specialized AI assistants with custom prompts and data access to help with specific tasks."*
 
 <Frame>
-  <img src="/images/graphium/assistant/browse-assistants.png" alt="Assistants page showing assistant cards in grid view" />
+  <img src="/images/graphium/assistant/browse-assistants.png" alt="Custom Assistants page showing assistant cards in grid view" />
 </Frame>
 
 ---
 
 ## Creating a New Assistant
 
-Only **Admin** and **Builder** vault members can create assistants. Contributors and Viewers do not have access to the Assistants page.
+Only **Admin** and **Builder** vault members can create assistants. Contributors and Viewers do not have access to the Custom Assistants page.
 
 There are two ways to create an assistant:
 
@@ -47,7 +54,7 @@ There are two ways to create an assistant:
 You can edit any assistant later, however it was created.
 
 <Frame>
-  <img src="/images/graphium/assistant/add-assistant.png" alt="New Assistant and Advanced setup buttons in the top-right corner of the Assistants page" />
+  <img src="/images/graphium/assistant/add-assistant.png" alt="New Assistant and Advanced setup buttons in the top-right corner of the Custom Assistants page" />
 </Frame>
 
 ---
@@ -56,7 +63,7 @@ You can edit any assistant later, however it was created.
 
 Click **+ New Assistant**, describe what the assistant should do, and review the name Graphium AI suggests. Confirm which tables it can read, then click **Create assistant**. The assistant is published right away and a chat with it opens.
 
-For the full walkthrough — including creating an assistant from the workspace dashboard and setting up a new vault for it — see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant).
+For the full walkthrough — including creating an assistant from the workspace home and setting up a new vault for it — see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant).
 
 ---
 
@@ -64,7 +71,7 @@ For the full walkthrough — including creating an assistant from the workspace 
 
 #### Step 1: Open the assistant editor
 
-On the Assistants page, click **Advanced setup**. The assistant editor opens with the **General** tab selected and a **Test Chat** panel on the right.
+On the Custom Assistants page, click **Advanced setup**. The assistant editor opens with the **General** tab selected and a **Test Chat** panel on the right.
 
 <Frame>
   <img src="/images/graphium/assistant/assistant-advanced-setup.png" alt="New assistant editor opened from Advanced setup, showing the General tab with Identity, Who Can Access, AI Model, and System Prompt sections and the Test Chat panel on the right" />
@@ -200,7 +207,7 @@ A copy of the assistant is created and added to the list. Open it to rename and 
 
 ## Archiving an Assistant
 
-Archiving an assistant removes it from the active Assistants list and from the chat interface. Archived assistants are not permanently deleted — they can be viewed by enabling the **Show archived** toggle on the Assistants page.
+Archiving an assistant removes it from the active Assistants list and from the chat interface. Archived assistants are not permanently deleted — they can be viewed by enabling the **Show archived** toggle on the Custom Assistants page.
 
 To archive an assistant, open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Archive**.
 
@@ -208,7 +215,9 @@ To archive an assistant, open the assistant editor and click the **⋮ (three-do
   <img src="/images/graphium/assistant/duplicate-archive-assistant.png" alt="Three-dot menu showing Duplicate and Archive options" />
 </Frame>
 
-The assistant is moved to the archived state immediately and will no longer appear in the active list or chat interface.
+The assistant is moved to the archived state immediately and will no longer appear in the active list, the sidebar, the workspace **Assistants** tab, or the chat interface.
+
+Conversations people had with the assistant are kept. They're labeled **Inactive** in the **CHATS** list and can still be read, but not continued. See [Chats with an Archived Assistant](/graphium/ai-assistants/the-ai-assistant-welcome-screen#chats-with-an-archived-assistant).
 
 ---
 
@@ -228,7 +237,7 @@ To go back to the vault chat from the Assistants list, click **Home** in the vau
 | Tools tab is not available | The assistant has not been saved yet | Save the assistant once, then the Tools tab becomes editable |
 | Assistant is not visible in the chat interface after saving | The assistant has been saved as a draft but not yet published | Click **Publish** in the top-right header of the assistant editor |
 | Changes made to an existing assistant are not visible to users | The updated version is saved as a draft but not published | Open the assistant editor and click **Publish** |
-| Assistants page is not visible in the sidebar | Your vault role is Contributor or Viewer | Ask your vault Admin or Builder to adjust your role |
+| The ⚙ (Manage assistants) button is missing from the sidebar | The sidebar button is for vault Admins only | Builders can use **Manage assistants** in the assistant selector. Contributors and Viewers should ask a vault Admin for Builder access |
 | + New Assistant button is missing | Your vault role is Contributor or Viewer | Contact your vault Admin to request Builder or Admin access |
 | Archived assistant still appears in chat selector | The page may be cached | Refresh the page — archived assistants are removed from the active list immediately on the server |
 | Test Chat is not responding | The system prompt may be too vague, or the AI model may be temporarily unavailable | Try sending a more specific message, or check your internet connection and retry |

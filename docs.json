@@ -97,6 +97,7 @@
           {
             "group": "AI Assistants",
             "pages": [
+              "graphium/ai-assistants/browsing-assistants-in-your-workspace",
               "graphium/ai-assistants/the-ai-assistant-welcome-screen",
               "graphium/ai-assistants/chatting-with-your-ai-assistant",
               "graphium/ai-assistants/switching-between-ai-assistants",

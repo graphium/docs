@@ -6,13 +6,15 @@ icon: "vault"
 
 ## Overview
 
-The dashboard is your home screen in Graphium AI. It displays all vaults in your workspace as either a grid of cards or a list of rows. From here you can browse your vaults and open any one to access its tables, tasks, automations, and settings.
+The **Vaults** tab of the workspace home lists every vault you have access to, as either a grid of cards or a list of rows. From here you can browse your vaults and open any one to access its assistants, chats, tables, playbooks, connections, and settings.
+
+> **Note:** The workspace home opens on the **Assistants** tab. Click **Vaults** next to it to see your vaults. See [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace).
 
 ---
 
-## The Vault Dashboard
+## The Vaults Tab
 
-By default, vaults are displayed as cards in a responsive grid. Each card gives you a quick summary before you open the vault:
+The tab is headed **Your Vaults**. By default, vaults are displayed as cards in a responsive grid. Each card gives you a quick summary before you open the vault:
 
 - **Vault icon** — displayed in the upper-left corner using the icon and color assigned to that vault
 - **Vault name** — shown in bold below the icon
@@ -23,14 +25,14 @@ By default, vaults are displayed as cards in a responsive grid. Each card gives 
 The first card in the grid is always the **Create a Vault** card (dashed border, **+** icon). Clicking it opens the vault creation flow.
 
 <Frame>
-  <img src="/images/graphium/vaults/vault-dashboard.png" alt="Vault dashboard" />
+  <img src="/images/graphium/vaults/vault-dashboard.png" alt="Vaults tab of the workspace home showing vault cards" />
 </Frame>
 
 ---
 
 ## Switching Between Grid and List View
 
-Use the view toggle icons in the upper-right corner of the dashboard:
+Use the view toggle icons in the upper-right corner of the Vaults tab:
 
 - **Grid icon (⊞)** — displays vaults as cards with names, record counts, and table counts
 - **List icon (☰)** — displays vaults as rows with Name, Last Updated, Records and Tables columns
@@ -47,7 +49,7 @@ Your view preference is remembered across sessions.
 
 Click anywhere on a vault card or row to open it. The vault opens on the **Home** page, where you can chat with the vault's AI assistants, view recent conversations, and see suggested prompts based on your data.
 
-Each time you update a vault, the **Last Updated** timestamp updates automatically. Only vaults you have been granted access to appear on your dashboard.
+Each time you update a vault, the **Last Updated** timestamp updates automatically. Only vaults you have been granted access to appear on the Vaults tab. To include deactivated vaults, turn on **Show inactive** in the upper-right corner.
 
 ---
 
@@ -56,10 +58,10 @@ Each time you update a vault, the **Last Updated** timestamp updates automatical
 When you open a vault you are taken to the vault interior, which includes:
 
 - A **vault header** at the top showing the vault name, record count, and last updated date
-- A **sidebar** on the left with Home, your list of tables, Tasks, Connections, Assistants, Playbooks, and Settings
-- The **first table's Data view** as the default landing point
+- A **sidebar** on the left with Home, Assistants, Chats, Tables, and the Vault section (Playbooks, Connections, and Settings) — see [Navigating Your Vault](/graphium/vaults/navigating-your-vault-using-the-sidebar)
+- The **Home** page, with the General Assistant selected, as the default landing point
 
-To return to the dashboard, click the **back arrow (←)** in the top-left corner of the vault header.
+To return to the workspace home, click the **back arrow (←)** in the top-left corner of the vault header. The workspace home opens on the **Assistants** tab.
 
 <Frame>
   <img src="/images/graphium/vaults/table-data-view.png" alt="Table data view" />
@@ -71,17 +73,18 @@ To return to the dashboard, click the **back arrow (←)** in the top-left corne
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| A vault is missing from the dashboard | You haven't been added to that vault, or it is inactive | Contact your workspace administrator to request access |
+| I only see assistants, not vaults | The workspace home opens on the **Assistants** tab | Click the **Vaults** tab |
+| A vault is missing from the Vaults tab | You haven't been added to that vault, or it is inactive | Turn on **Show inactive**, or contact your workspace administrator to request access |
 | The grid shows fewer vaults than expected | You may be in the wrong workspace | Check the workspace name in the top navigation bar |
 | Clicking a vault card does nothing | A temporary UI issue | Refresh the page and try again |
-| The vault opens on an unexpected table | The first table in the vault's list is shown by default | Use the sidebar to navigate to the table you want |
-| The dashboard shows "No vaults yet" | No vaults have been created in this workspace | Use the **+ Create Vault** card to create one, or ask an Admin |
+| I want to open a table, not the Home page | Vaults always open on the Home page | Click the table under **TABLES** in the sidebar |
+| The Vaults tab shows "No vaults yet" | No vaults have been created in this workspace | Use the **Create a Vault** card to create one, or ask an Admin |
 
 ---
 
 ## Related Articles
 
-- [Understanding Vault Metadata](/graphium/vaults/understanding-vault-metadata)
+- [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace)
 - [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar)
 
 ---

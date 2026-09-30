@@ -9,8 +9,8 @@ icon: "vault"
 From the **Danger Zone** section of Vault Settings, Workspace Owners can permanently delete a vault or deactivate it. The action available depends on the vault's current state:
 
 - **Delete Vault** — available when the vault contains no tables. Permanently removes the vault and all of its data. This action cannot be undone.
-- **Deactivate Vault** — available when the vault contains one or more tables. Hides the vault from the dashboard without removing any data. The vault and its tables can be restored by reactivating it later.
-- **Reactivate Vault** — available when the vault is currently deactivated. Restores the vault to active status, making it visible on the dashboard again.
+- **Deactivate Vault** — available when the vault contains one or more tables. Hides the vault from the **Vaults** tab without removing any data. The vault and its tables can be restored by reactivating it later.
+- **Reactivate Vault** — available when the vault is currently deactivated. Restores the vault to active status, making it visible on the **Vaults** tab again.
 
 > **Note:** These controls are only visible to users with the **Workspace Owner** role. Admins, Builders, Contributors, and Viewers do not see the Danger Zone.
 
@@ -47,9 +47,9 @@ Deletion is only available when the vault contains **no tables**. If the vault h
   <img src="/images/graphium/vaults/delete-vault-warning.png" alt="Delete vault warning" />
 </Frame>
 
-4. Confirm the deletion. You are returned to the workspace dashboard.
+4. Confirm the deletion. You are returned to the workspace home.
 
-The deleted vault no longer appears on the dashboard.
+The deleted vault no longer appears on the **Vaults** tab.
 
 > **Warning:** Vault deletion cannot be undone. If the vault contains data you may need later, use Deactivate instead.
 
@@ -57,7 +57,7 @@ The deleted vault no longer appears on the dashboard.
 
 ## Deactivating a Vault
 
-Deactivation is available when the vault contains **one or more tables**. Deactivating a vault hides it from the dashboard without deleting any data.
+Deactivation is available when the vault contains **one or more tables**. Deactivating a vault hides it from the **Vaults** tab without deleting any data.
 
 1. Open the vault and navigate to **Settings → General → Danger Zone**.
 2. Click **Deactivate Vault**. A confirmation dialog appears.
@@ -66,7 +66,7 @@ Deactivation is available when the vault contains **one or more tables**. Deacti
   <img src="/images/graphium/vaults/deactivate-vault.png" alt="Deactivate vault" />
 </Frame>
 
-3. Confirm the deactivation. The vault is marked as inactive and is no longer visible on the dashboard by default.
+3. Confirm the deactivation. The vault is marked as inactive and is no longer visible on the **Vaults** tab by default.
 
 <Frame>
   <img src="/images/graphium/vaults/deactivate-vault-warning.png" alt="Deactivate vault warning" />
@@ -78,10 +78,10 @@ The vault and its tables, records, and configuration remain intact. Workspace Ow
 
 ## Viewing Inactive Vaults on the Dashboard
 
-By default, the dashboard only shows active vaults. To see deactivated vaults:
+By default, the **Vaults** tab only shows active vaults. To see deactivated vaults:
 
-1. Go to the workspace dashboard.
-2. Locate the **Show inactive vaults** toggle (near the vault list filter controls).
+1. Go to the workspace home and click the **Vaults** tab.
+2. Locate the **Show inactive** toggle (near the vault list filter controls).
 3. Enable the toggle. Inactive vaults appear in the list alongside active vaults.
 
 Inactive vaults are visually distinguished from active vaults in the list.
@@ -96,8 +96,8 @@ Inactive vaults are visually distinguished from active vaults in the list.
 
 To restore a deactivated vault:
 
-1. Go to the workspace dashboard.
-2. Enable the **Show inactive vaults** toggle to make the deactivated vault visible.
+1. Go to the workspace home and click the **Vaults** tab.
+2. Enable the **Show inactive** toggle to make the deactivated vault visible.
 3. Open the deactivated vault.
 4. In the left sidebar, click **Settings**.
 5. Under **General**, scroll to the **Danger Zone** section.
@@ -107,7 +107,7 @@ To restore a deactivated vault:
   <img src="/images/graphium/vaults/reactivate-vault.png" alt="Reactivate vault" />
 </Frame>
 
-7. Confirm the reactivation. The vault is restored to active status and appears on the dashboard again.
+7. Confirm the reactivation. The vault is restored to active status and appears on the **Vaults** tab again.
 
 <Frame>
   <img src="/images/graphium/vaults/reactivate-vault-warning.png" alt="Reactivate vault warning" />
@@ -133,7 +133,7 @@ The Danger Zone and its controls are not visible to any role other than Workspac
 | Danger Zone is not visible | You don't have the Workspace Owner role | Contact your Workspace Owner |
 | Delete Vault button is not available | The vault contains one or more tables | Delete all tables first, or use Deactivate instead |
 | Deactivate Vault button is not available | The vault has no tables — Delete option shows instead | Use Delete Vault if you want to permanently remove it |
-| Deactivated vault is not visible on the dashboard | Show inactive vaults toggle is off | Enable the **Show inactive vaults** toggle on the dashboard |
+| Deactivated vault is not visible on the **Vaults** tab | Show inactive toggle is off | Enable the **Show inactive** toggle on the **Vaults** tab |
 | Reactivate Vault button is not visible | The vault is not deactivated | Only deactivated vaults show the Reactivate option |
 
 ---
