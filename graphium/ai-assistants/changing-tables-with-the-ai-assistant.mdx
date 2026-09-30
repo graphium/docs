@@ -127,7 +127,7 @@ To let a playbook change a table's columns, set the table to **Read/Write** and 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
 | An **Access required** card says *Add or edit columns* | The vault setting is off, or the table doesn't allow column changes | Ask a vault Admin to turn on the setting in **Settings → General**, then turn on **Allow column changes** for the table |
-| The assistant says it can't add columns, with no card | Column changes aren't allowed for that table in this conversation | Click the ⚙ icon, set the table to **Read & Write**, turn on **Allow column changes**, and ask again |
+| The assistant says it can't add columns, with no card | Column changes aren't allowed for that table in this conversation. Some faster models, such as Claude Haiku, may reply in plain text instead of showing the **Access required** card | Click the ⚙ icon, set the table to **Read & Write**, turn on **Allow column changes**, and ask again |
 | The **Allow column changes** switch is missing | The table is set to **Off** or **Read**, or you're a Contributor or Viewer | Set the table to **Read & Write**. If the switch still doesn't appear, ask a vault Admin or Builder |
 | The **Allow column changes** switch is greyed out | **Let assistants add and edit columns** is off for the vault | Ask a vault Admin to turn it on in **Settings → General** |
 | The assistant won't create a table | **Let assistants create new tables** is off, the name is already taken, or this conversation has already created 5 tables | Ask an Admin to turn on the setting, choose a different name, or start a new chat |

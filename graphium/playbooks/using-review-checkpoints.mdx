@@ -118,17 +118,24 @@ The run row shows:
 
 ## Approving Column Changes
 
-If a table is set to **Read/Write** in Playbook Access and its **Allow column changes** toggle is enabled, a playbook's steps may propose adding or editing columns on that table as they run. Unlike the Autonomous/Requires Review setting above, column changes always require approval — there is no autonomous mode for schema changes.
+If a table is set to **Read/Write** in Playbook Access and its **Allow column changes** toggle is enabled, a playbook's steps may propose adding or editing columns on that table as they run. Unlike the Autonomous/Requires Review setting above, column changes always require approval — there is no autonomous mode for schema changes. When you turn the toggle on, Playbook Access reminds you: *"Column changes always pause for approval, whatever this table's data setting says."*
 
 <Frame>
   <img src="/images/graphium/playbooks/allow-column-changes.png" alt="Allow column changes toggle enabled on a Read/Write table in Playbook Access" />
 </Frame>
 
-When a step proposes a column change, the run pauses and a card appears in the Run History panel: **"Playbook wants to make N changes"**, labeled **Column changes** with a **Pending** badge. The card lists each proposed change — for example, an **ADD** entry showing the new column's name and type, a note on existing data (such as *"Existing 42 rows: empty"* for a newly added column), and a short **Why** explanation of the change's purpose.
+When a step proposes a column change, the run pauses with a **Pending Review** status and an approval card appears at the end of that step in the run's details — for example, **"Playbook wants to change a column"**, labeled **Column change** with a **Pending** badge. The card shows:
 
-**To approve:** Click **Approve all N** to apply every proposed change and let the run continue.
+- The **Table** the change applies to
+- Each proposed change — for example, **ADD Refill Notes** with its type (*New Text column · Optional*)
+- What happens to existing records, such as *"Existing 2 rows: empty"*. Row counts are as they were when the change was proposed.
+- A short **Why** explaining the change's purpose
 
-**To reject:** Click **Reject all** to discard the proposed changes. The run fails at that step, the same as denying a regular review checkpoint.
+If a step proposes several changes, they all appear on one card and are approved or rejected together.
+
+**To approve:** Click **Approve**. The change is made and the run continues. The card updates to **Approved**.
+
+**To reject:** Click **Reject**. A box appears on the card asking *"Why are you rejecting this? (optional)"*. Enter a reason if you'd like, then click **Reject changes** (or **Cancel** to go back). The change isn't made, the card updates to **Rejected** and shows the reason you gave, and the run fails at that step with the message *"Approval rejected:"* followed by your reason.
 
 > **Note:** The **Allow column changes** toggle is only available when a table's access is set to **Read/Write**. It also requires the vault-level **Let assistants add and edit columns** setting to be enabled in vault Settings.
 
@@ -142,7 +149,7 @@ When a step proposes a column change, the run pauses and a card appears in the R
 | Table | Requires Review | Run pauses before any write to this table |
 | Connection | Autonomous | AI can send data and take actions without pausing |
 | Connection | Requires Review | Run pauses before any action on this connection |
-| Table column changes | Always requires approval | Run pauses on a "Column changes" card whenever a step proposes adding or editing columns — there is no autonomous mode |
+| Table column changes | Always requires approval | Run pauses on a column change card whenever a step proposes adding or editing columns — there is no autonomous mode |
 
 ---
 
@@ -155,7 +162,8 @@ When a step proposes a column change, the run pauses and a card appears in the R
 | Approve & Continue button is not visible | You may not have Builder or Admin vault access | Reviews can only be resolved by users with Builder or Admin role |
 | Run shows Failed after denying | Expected behaviour | Denying a review causes the run to fail at that checkpoint — this is intentional |
 | A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Access and check the approval mode on each enabled resource |
-| A "Column changes" card appears even though the table is set to Autonomous | Column changes always require approval, regardless of the table's Autonomous/Requires Review setting | This is expected — approve or reject the proposed changes from the card |
+| A column change card appears even though the table is set to Autonomous | Column changes always require approval, regardless of the table's Autonomous/Requires Review setting | This is expected — approve or reject the proposed changes from the card |
+| Run shows Failed after rejecting a column change | Expected behaviour | Rejecting a column change fails the run at that step. The reason you entered appears on the card and in the run's failure message |
 | Allow column changes toggle is missing on a table | The table's access level is set to Off or Read only | Set the table's access level to Read/Write in Playbook Access to reveal the toggle |
 
 ---
