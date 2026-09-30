@@ -1,0 +1,121 @@
+---
+title: "Creating an AI Assistant"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The quickest way to create an AI assistant is to describe the job you want it to do. Graphium AI names the assistant, writes its instructions, and — if you start from the workspace — helps you choose the vault it works in or creates a new one for it. When you're done, you land in a chat with your new assistant, which introduces itself and tells you what to do next.
+
+If you'd rather set every option yourself, use **Advanced setup** instead — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants).
+
+## When to Use This
+
+- Creating your first assistant in a new workspace
+- Setting up an assistant for a specific job — for example, tracking claim denials or monitoring supply levels — without writing instructions yourself
+- Starting a new area of work in its own vault, with an assistant ready to help you fill it
+
+## Prerequisites
+
+- To add an assistant to an existing vault, you must be an **Admin** or **Builder** in that vault.
+- To create a new vault for the assistant, you must be able to create vaults in the workspace, and the workspace must have room under its plan's vault limit.
+- The workspace must have room under its plan's limit for custom assistants.
+
+If you can't do either of the first two, the **Add an assistant** option doesn't appear.
+
+## Where to Start
+
+You can open the **Add an assistant** window from three places:
+
+- **The Assistants tab of the workspace dashboard.** Click the **Add an assistant** tile (*"Say what you need help with, and we'll set one up for you"*).
+- **A workspace with no assistants yet.** The Assistants tab shows a **Create your first assistant** panel in place of the list.
+- **Inside a vault.** On the vault's Assistants page, click **New Assistant** (or **Create an assistant** if the vault doesn't have any custom assistants yet).
+
+Starting from the workspace takes three steps — **Describe**, **Name**, and **Where it works**. Starting inside a vault takes two, because the vault is already chosen.
+
+## Step-by-Step Instructions
+
+### Step 1: Describe what the assistant should do
+
+The window asks *What would you like this assistant to do?* Describe the job the way you'd explain it to a new teammate — for example, *"Keep track of our office supply orders and tell me when we're running low."* Then click **Continue**.
+
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant-describe.png" alt="Add an assistant window on the Describe step, with a text box asking what the assistant should do" />
+</Frame>
+
+### Step 2: Review the name
+
+Graphium AI suggests a name based on your description (for example, *Supply Level Monitor*). Change it if you'd like.
+
+- **Starting from the workspace:** click **Continue** to choose where the assistant works.
+- **Starting inside a vault:** this is the last step. Review **What it can read** — every table in the vault is selected, so clear the checkbox for any table the assistant shouldn't see — then click **Create assistant**.
+
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant-name.png" alt="Add an assistant window on the Name step, showing a suggested name and a Continue button" />
+</Frame>
+
+### Step 3: Choose where it works (workspace only)
+
+The **Where it works** step explains what a vault is before asking you to choose: a vault is where your data lives — your tables, records, and connections — and the assistant reads and writes only inside the vault you pick. Your other vaults stay out of its reach.
+
+Choose one of the following:
+
+- **Put it in a vault you already have.** Each vault shows how many tables it has and is labeled **Has data** or **Starts empty**. Under **What it can read**, every table in the vault is selected — clear the checkbox for any table the assistant shouldn't see. Then click **Create assistant**.
+- **Or start a new one.** Select **A new vault**. Graphium AI suggests a name for the vault from your description, which you can change under **Name for the new vault**. Then click **Create assistant and vault**. This option isn't available if your workspace has reached its plan's vault limit.
+
+A **What happens next** note at the bottom of the window tells you what the assistant will be able to do once it's created. If you've chosen an existing vault and want to set up the assistant yourself instead, click **Advanced setup**.
+
+<Frame>
+  <img src="/images/graphium/assistant/add-assistant-vault.png" alt="Add an assistant window on the Where it works step, asking where the assistant should keep its work, with a list of existing vaults and the What it can read list of tables" />
+</Frame>
+
+> **Note:** A vault created this way has both of its **Assistant table and column changes** settings turned on, so your new assistant can build tables for you right away. You can change this later in the vault's **Settings → General** — see [Vault Settings](/graphium/vaults/vault-settings-general-configuration).
+
+### Step 4: Start chatting
+
+The assistant is created, and a chat with it opens. The assistant has already written the first message. It explains what it does, names the vault it works in, and suggests a next step:
+
+- **If the vault is empty,** it offers to help you get your first data in — for example, by building a table from a spreadsheet you attach, or by connecting a system you already use. See [Changing Tables with the AI Assistant](/graphium/ai-assistants/changing-tables-with-the-ai-assistant) and [Connecting a Service from the AI Assistant](/graphium/ai-assistants/connecting-a-service-from-the-ai-assistant).
+- **If the vault already has data,** it tells you what it can read, so you can start asking questions right away.
+
+This first message stays in the conversation, so you'll see it again if you reload the page or come back later.
+
+<Frame>
+  <img src="/images/graphium/assistant/guided-assistant-greeting.png" alt="New assistant's first message in chat, explaining what it does, naming its empty vault, and offering to build a table from a spreadsheet or connect a system" />
+</Frame>
+
+## Duplicate Names
+
+Assistant names must be unique within a vault, and vault names must be unique within a workspace (capitalization doesn't matter). If a name you've chosen is already taken, the window tells you before you create anything and shows the name it will use instead, with a number added — for example, *"That name is taken here, so this one will be created as 'Claims Denial Tracker 2'."* To pick a different name, click **Back**.
+
+Every vault already has a **General Assistant**, so naming your assistant *General Assistant* in a new vault also adds a number.
+
+## What to Expect
+
+- The assistant is published right away — there's no draft to publish first — and appears in the **Assistants** tab of the workspace dashboard and in the vault's sidebar under **ASSISTANTS**.
+- Graphium AI writes the assistant's description and instructions (system prompt) from what you described, and sets it to use the workspace's default AI model.
+- If the assistant builds a table for you in its first conversation, it can still read that table in later conversations.
+- You can change any of the assistant's settings later. Open it from the vault's Assistants page and click **Edit** — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants#editing-an-assistant).
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| The **Add an assistant** option doesn't appear | You're a Contributor or Viewer in every vault and can't create vaults, or the workspace has reached its plan's assistant limit | Ask a workspace Owner or Admin for Builder access to a vault, or to review the plan |
+| **A new vault** can't be selected | The workspace has reached its plan's vault limit | Choose an existing vault, or ask a workspace Owner or Admin to upgrade the plan |
+| The assistant or vault name has a number added | That name is already in use | Click **Back** and choose a different name, or keep the numbered name |
+| The assistant can't see a table | The table was unchecked under **What it can read** | Edit the assistant and turn the table on in its **Tools** tab |
+| You want to choose the model or write the instructions yourself | The guided steps set these for you | Use **Advanced setup**, or edit the assistant after creating it |
+| **Advanced setup** doesn't appear on the last step | You've chosen **A new vault** | Advanced setup is only offered when you add the assistant to an existing vault |
+
+## Related Articles
+
+- [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants)
+- [Changing Tables with the AI Assistant](/graphium/ai-assistants/changing-tables-with-the-ai-assistant)
+- [Connecting a Service from the AI Assistant](/graphium/ai-assistants/connecting-a-service-from-the-ai-assistant)
+- [Vault Settings](/graphium/vaults/vault-settings-general-configuration)
+
+---
+
+*Questions? [Contact Graphium AI Support or Sales](/graphium/reference/how-to-contact-support-or-sales).*
