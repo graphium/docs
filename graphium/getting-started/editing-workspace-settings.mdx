@@ -6,7 +6,7 @@ icon: "rocket"
 
 ## Overview
 
-The Workspace Settings page lets Workspace Owners manage the identity and configuration of their workspace — including its name, description, and record deletion behavior — and deactivate it if needed. It is accessible from any page in Graphium AI via the gear icon in the navigation bar.
+The Workspace Settings page lets Workspace Owners manage the identity and configuration of their workspace — including its name, description, default assistant model, record deletion behavior, and Graphium support access — and deactivate it if needed. It is accessible from any page in Graphium AI via the gear icon in the navigation bar.
 
 ---
 
@@ -24,29 +24,41 @@ The Workspace Settings page lets Workspace Owners manage the identity and config
 
 ## Settings Page Layout
 
-The Workspace Settings page has a left-side navigation with three tabs:
+The Workspace Settings page has a left-side navigation with four tabs:
 
 | Tab | Purpose |
 |-----|---------|
-| **General** | Workspace name, description, record deletion mode, and danger zone |
+| **General** | Workspace details, default assistant model, record deletion mode, Graphium support access, and danger zone |
 | **Members** | View and manage workspace membership |
-| **Workspaces** | View and manage workspaces |
+| **Workspaces** | Switch between workspaces, and add a workspace (Owners) |
 | **Billing** | View subscription plan, manage seats, and access the billing portal |
 
-A **"Back to Workspace"** button at the top of the page returns you to the dashboard.
+A **Back to Workspace** link at the top of the page returns you to the workspace home.
 
 ---
 
 ## General Settings
 
-### Workspace Name and Description
+### Workspace Details
 
-The General tab opens by default and shows two editable fields at the top:
+The General tab opens by default. The **Workspace details** card at the top has two editable fields:
 
 - **Name** — The workspace's display name. This is shown in the workspace switcher, the navigation bar, and across all workspace views.
 - **Description** — A short description of the workspace (up to 500 characters). Useful for distinguishing between multiple workspaces in your account.
 
 Click **Save Changes** after editing either field to apply the updates.
+
+---
+
+### Default Assistant Model
+
+This section sets the AI model that assistants use when they haven't been given a model of their own. The current default is shown with its provider and labels such as **PHI Safe** — for example, *Claude Haiku 4.5*.
+
+- Click **Change model** to pick a different default.
+- Assistants set to **Use workspace default** pick up the change automatically, without being edited.
+- Assistants that have been given a specific model keep using it.
+
+For how an assistant's model is set, see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant#using-advanced-setup).
 
 ---
 
@@ -65,6 +77,14 @@ The current mode is displayed in this section. To switch from Void Mode to Delet
 
 ---
 
+### Graphium Support Access
+
+This switch lets Graphium representatives access your workspace to help debug an issue. It's off by default — the section reads *"Graphium representatives cannot access this workspace."* Access applies to Graphium staff only, and you can turn it off at any time.
+
+To allow access, turn on **Allow Graphium support access**. Turn it off again once the issue is resolved.
+
+---
+
 ### Danger Zone
 
 The Danger Zone section contains the **Deactivate Workspace** action.
@@ -72,7 +92,7 @@ The Danger Zone section contains the **Deactivate Workspace** action.
 **What deactivation does:**
 - Immediately suspends access for all workspace members
 - The workspace is no longer accessible from the switcher or workspace list
-- All data (vaults, tables, records) is retained and can be restored
+- All data (vaults, tables, records) is kept for **30 days**, then permanently deleted
 - Active integrations and workflows will be paused
 
 **To deactivate the workspace:**
@@ -81,7 +101,7 @@ The Danger Zone section contains the **Deactivate Workspace** action.
 2. Click **Deactivate Workspace**.
 3. Confirm the action in the confirmation prompt that appears.
 
-> **Warning:** Deactivating a workspace immediately removes access for all members. Only a Workspace Owner can perform this action and request reactivation.
+> **Warning:** Deactivating a workspace immediately removes access for all members, and its data is permanently deleted after 30 days. Only a Workspace Owner can perform this action. To reactivate it within 30 days, contact Graphium AI Support.
 
 ---
 
@@ -91,7 +111,9 @@ The Danger Zone section contains the **Deactivate Workspace** action.
 |--------|----------------|-----------------|
 | View General Settings | ✅ | ✅ |
 | Edit workspace name and description | ✅ | ❌ |
+| Change the default assistant model | ✅ | ❌ |
 | Change record deletion mode | ✅ | ❌ |
+| Turn Graphium support access on or off | ✅ | ❌ |
 | Deactivate workspace | ✅ | ❌ |
 | View Members tab | ✅ | ✅ |
 
@@ -105,7 +127,7 @@ The Danger Zone section contains the **Deactivate Workspace** action.
 | Changes to name or description are not saving | Required fields may be empty, or a network issue occurred | Ensure all fields are filled in and click **Save Changes** again; check your internet connection |
 | Record Deletion Mode cannot be changed | You may not have the Owner role | Only Workspace Owners can change this setting |
 | Deactivate Workspace button is not visible | You may not have the Owner role | Only Workspace Owners can deactivate a workspace |
-| Workspace was deactivated but needs to be restored | Workspace was deactivated intentionally or in error | Contact Graphium AI support to request reactivation |
+| Workspace was deactivated but needs to be restored | Workspace was deactivated intentionally or in error | Contact Graphium AI Support within 30 days to request reactivation |
 | Settings page is not loading | Browser or connectivity issue | Refresh the page and try again; check your internet connection |
 
 ---

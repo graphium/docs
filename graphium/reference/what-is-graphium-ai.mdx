@@ -42,7 +42,7 @@ Vaults hold tables (your data), connections (links to external systems), playboo
 
 ### Tables and Schemas
 
-Tables are the structured data inside a vault. Think of them like database tables, but with hierarchical schemas that can nest fields into groups. A single vault might have tables for Cases, Procedures, Providers, Surgeons, Surgical Locations, and more. Each table has its own schema defining what fields it contains and what types those fields are. Crucially, tables can be linked together using Reference fields -- so a case record points to a provider record in the Providers table rather than duplicating that data. This lets you normalize information from different systems and relate it across tables, giving your AI assistants richer context when they analyze your data.
+Tables are the structured data inside a vault. Think of them like database tables, but with hierarchical schemas that can nest fields inside objects. A single vault might have tables for Cases, Procedures, Providers, Surgeons, Surgical Locations, and more. Each table has its own schema defining what fields it contains and what types those fields are. Crucially, tables can be linked together using Reference fields -- so a case record points to a provider record in the Providers table rather than duplicating that data. This lets you normalize information from different systems and relate it across tables, giving your AI assistants richer context when they analyze your data.
 
 ### Records
 
@@ -65,16 +65,16 @@ Playbooks are automated AI workflows that trigger based on events or schedules w
 Getting oriented in Graphium AI takes about five minutes. Here is the path:
 
 **1. Sign in and pick your workspace.**
-After signing in, you land on your default workspace. If you belong to multiple workspaces (say, Urban Health Partners and Graphium Corporate), use the dropdown in the header to switch between them. You will also see a global search bar, notifications, and help -- all available from the top navigation.
+After signing in, you land on your workspace home. If you belong to multiple workspaces (say, Urban Health Partners and Graphium Corporate), use the dropdown in the header to switch between them. Notifications and help are always available from the top navigation.
 
-**2. Browse your vaults.**
-The main workspace shows your vaults as cards. You will see them in a grid or list -- toggle between views with the view switcher in the top-right corner. Each card shows the vault name, description, record count, and last updated date.
+**2. Find an assistant or a vault.**
+The workspace home opens on the **Assistants** tab, which lists the AI assistants you can use across all your vaults -- click one to start a chat. The **Vaults** tab shows your vaults as cards, with the vault name, description, record count, table count, and last updated date. Toggle between grid and list views in the top-right corner.
 
 **3. Open a vault.**
-Click into a vault -- say, "Cases - Community Surgery Center." The vault opens with a sidebar on the left. The sidebar lists your sections: Home (the AI chat interface), Tables (with an expandable list of all tables), Connections, Assistants, Playbooks, Settings, and RECENT CHATS. The sidebar can be collapsed to icon-only mode if you need more screen space.
+Click into a vault -- say, "Cases - Community Surgery Center." The vault opens on its Home page, with a sidebar on the left listing Home (the AI chat interface), ASSISTANTS, CHATS, TABLES, and a VAULT section with Playbooks, Connections, and Settings. Use the search bar at the top to search within the vault. The sidebar can be collapsed to icon-only mode if you need more screen space.
 
 **4. Browse tables.**
-Expand the Tables section in the sidebar and click on a table -- Cases, for example. You will see the Data tab by default, showing records in a tabular format with pagination ("Showing 50 of 300 records"). Switch to the Schema tab to see how the table is structured -- fields like Patient Name, Case Date, Procedure Duration, Provider, and how they are organized into groups like Patient Demographics.
+Click a table under TABLES in the sidebar -- Cases, for example. You will see the Data tab by default, showing records in a tabular format with pagination ("Showing 50 of 300 records"). Switch to the Schema tab to see how the table is structured -- fields like Patient Name, Case Date, Procedure Duration, Provider, and how they are organized into objects like Patient Demographics.
 
 **5. Ask the AI assistant a question.**
 Click **Home** in the sidebar. The Home page shows a chat input bar with suggested prompts to get you started. Try something like: "Can you give me a summary of today's cases?" or "Show me the average procedure duration by provider this month." The assistant responds with data tables, charts, key metrics, and recommendations -- all pulled from the actual data in your vault.

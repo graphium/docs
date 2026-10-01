@@ -83,10 +83,7 @@ Save and publish the playbook for the review checkpoint to take effect on live r
 
 ### Step 1: Receive a Notification When Review Is Needed
 
-When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). Builders with access to the vault are notified in two ways:
-
-- **In-app notification** — An unread notification appears in the bell icon in the global navigation bar, indicating that a playbook run is awaiting approval. Click the notification to navigate directly to the Playbooks page.
-- **Email notification** — The Builder responsible for the playbook also receives an email with a link to the run.
+When a live run hits a review checkpoint, it stops and its status in the Run History panel changes to **Pending Review** (shown in orange). Vault Admins and Builders get an in-app notification in the bell icon in the global navigation bar, saying the playbook run needs approval. Click the notification to go directly to the Playbooks page. Notifications are in-app only — no email is sent.
 
 > **Note:** Review checkpoints are skipped entirely in test mode. Notifications are only sent for live runs.
 
@@ -158,7 +155,7 @@ If a step proposes several changes, they all appear on one card and are approved
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
 | Run did not pause at the review checkpoint | The playbook is running in test mode | Review checkpoints are skipped in test mode — trigger a live run instead |
-| No email notification was received | The email may have been filtered, or the notification hasn't fired yet | Check your spam folder; if the run shows Pending Review in the history panel, the approval button is available there |
+| No notification appeared in the bell | The run hasn't paused yet, or you aren't an Admin or Builder in the vault | If the run shows Pending Review in the Run History panel, the approval buttons are available there |
 | Approve & Continue button is not visible | You may not have Builder or Admin vault access | Reviews can only be resolved by users with Builder or Admin role |
 | Run shows Failed after denying | Expected behaviour | Denying a review causes the run to fail at that checkpoint — this is intentional |
 | A review checkpoint is firing but it wasn't configured | The connection or table may have been set to Requires Review in a previous version | Open Playbook Access and check the approval mode on each enabled resource |
