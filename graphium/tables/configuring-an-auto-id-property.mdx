@@ -56,8 +56,8 @@ The Auto ID Configuration panel contains four fields:
 |---|---|---|---|
 | **Prefix** | No | *(empty)* | Text prepended to every generated value (e.g., `INV-`) |
 | **Suffix** | No | *(empty)* | Text appended to every generated value (e.g., `-2026`) |
-| **Starting Number** | Yes | `1` | The first numeric value issued when the first record is created. **Cannot be changed after the property is saved.** |
-| **Number Length (digits)** | Yes | `6` | The total number of digits in the numeric portion. Shorter values are zero-padded to this length |
+| **Starting Number** | Yes | `0` | The first numeric value issued when the first record is created. **Cannot be changed after the property is saved.** |
+| **Number Length (digits)** | Yes | `5` | The total number of digits in the numeric portion. Shorter values are zero-padded to this length |
 
 <Frame>
   <img src="/images/graphium/tables/autoid-configuration-settings.png" alt="Auto ID configuration settings" />
@@ -67,7 +67,7 @@ The Auto ID Configuration panel contains four fields:
 
 As you configure the fields, a **Preview** panel updates in real time:
 
-- **Current** — The value that will be issued to the first record (e.g., INV-00001-2026)
+- **Preview** — The value that will be issued to the first record (e.g., INV-00001-2026)
 - **Next** — The value that will be issued to the second record (e.g., INV-00002-2026)
 
 #### Formatting Example

@@ -6,7 +6,7 @@ icon: "vault"
 
 ## Overview
 
-Vaults are the core organizational unit in Graphium AI — a structured container that holds all the data, forms, connections, and workflows related to a specific project or process. Every piece of captured data lives inside a vault. From the Dashboard you can browse your existing vaults and create new ones at any time.
+Vaults are the core organizational unit in Graphium AI — a structured container that holds all the data, forms, connections, and workflows related to a specific project or process. Every piece of captured data lives inside a vault. From the **Vaults** tab of the workspace home you can browse your existing vaults and create new ones at any time.
 
 ---
 
@@ -27,7 +27,7 @@ Every member of a vault is assigned one of four roles:
 
 ## Creating a Vault
 
-1. From the Dashboard, click the **Create a Vault** card (dashed border with a **+** icon).
+1. On the workspace home, click the **Vaults** tab, then click the **Create a Vault** card (dashed border with a **+** icon).
 
 <Frame>
   <img src="/images/graphium/vaults/create-vault-card.png" alt="Create a vault card" />
@@ -35,7 +35,7 @@ Every member of a vault is assigned one of four roles:
 
 2. In the **Create Vault** modal, enter a **Vault Name** (required).
 3. Optionally add a **Description** to explain the vault's purpose.
-4. Click **+ Create Vault**. The button activates once a name has been entered.
+4. Click **Create Vault**. The button activates once a name has been entered.
 
 <Frame>
   <img src="/images/graphium/vaults/create-vault-popup.png" alt="Create vault popup" />
@@ -60,7 +60,7 @@ From the vault detail view you can:
 
 ## Permissions
 
-| Action | Workspace Owner | Workspace Manager | Vault Admin | Builder | Contributor | Viewer |
+| Action | Workspace Owner | Workspace Admin | Vault Admin | Builder | Contributor | Viewer |
 |--------|----------------|-------------------|-------------|---------|-------------|--------|
 | Create vaults | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | View vaults | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -73,10 +73,10 @@ From the vault detail view you can:
 
 | Issue | Likely Cause | What to Do |
 |-------|-------------|------------|
-| "Create a Vault" card is not visible | Insufficient workspace role | Contact your administrator about your workspace role |
-| "+ Create Vault" button stays greyed out | Vault Name field is empty | Enter a name — the button activates once the name field has content |
+| "Create a Vault" card is not visible | Only Workspace Owners and Admins can create vaults | Ask a Workspace Owner or Admin to create the vault, or to change your workspace role |
+| **Create Vault** button stays greyed out | Vault Name field is empty | Enter a name — the button activates once the name field has content |
 | "A vault with this name already exists" error | Duplicate vault name | Choose a unique name — all vault names within a workspace must be distinct |
-| Vault not appearing in the Dashboard | You are not an active member | Ask a vault Admin to add you via vault settings |
+| Vault not appearing on the Vaults tab | You are not an active member | Ask a vault Admin to add you via vault settings |
 | Can see the vault but can't edit structure | Contributor or Viewer role | Ask a vault Admin to update your vault role |
 
 ---

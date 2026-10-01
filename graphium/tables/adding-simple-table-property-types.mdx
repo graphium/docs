@@ -64,13 +64,16 @@ When enabled, this field can hold a list of values instead of a single value. In
 ### Required Value
 When enabled, this property must have a value before the record can be saved. Required properties display a red **Required** badge in the schema list.
 
+### Unique Identifier *(optional)*
+When enabled, this property identifies a record for imports and syncs. When incoming data has the same value as an existing record, that record is updated instead of a duplicate being created — for example, an NPI on a Providers table, or a case number on a Cases table.
+
 ---
 
 ## Archiving a Property
 
 Archiving removes a property from active use without deleting it or its data. The property can be restored at any time.
 
-1. In the **Schema** tab, click the **trash icon** on the active property's row.
+1. In the **Schema** tab, click the **archive icon** on the active property's row.
 2. In the **Archive Property** dialog, click **Archive** to confirm.
 
 The property is immediately hidden from forms and the data grid. Its data is preserved.
@@ -90,7 +93,7 @@ The property is immediately hidden from forms and the data grid. Its data is pre
 </Frame>
 
 2. Locate the archived property (shown with a greyed-out background).
-3. Click the **trash icon** on the archived property's row.
+3. Click the **archive icon** on the archived property's row.
 4. In the **Unarchive Property** dialog, click **Unarchive** to confirm.
 
 The property is immediately restored to active status and becomes visible in forms and the data grid again.
@@ -103,7 +106,7 @@ The property is immediately restored to active status and becomes visible in for
 
 ## Editing an Existing Property
 
-1. Click the **Edit** button on the property's row in the Schema tab.
+1. Click the pencil (**Edit**) icon on the property's row in the Schema tab.
 2. Update the **display name**, **description**, or **Required** setting.
 3. Click **Save**.
 
