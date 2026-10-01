@@ -38,8 +38,8 @@ Disabling a connection pauses data sync while preserving the configuration. Re-e
 
 **From the list or card view:**
 1. In the vault sidebar, click **Connections**.
-2. In card view, click the **green eye icon** in the bottom-right of the connection card. In list view, click the **eye icon** in the ENABLED column.
-3. The connection is disabled and the icon updates to reflect the disabled state.
+2. In card view, click the **Enabled** switch in the bottom-right of the connection card. In list view, click the switch in the ENABLED column.
+3. The connection is disabled and the switch updates to show **Disabled**.
 
 <Frame>
   <img src="/images/graphium/connections/connection-disabled.png" alt="Connection disabled" />
@@ -50,7 +50,7 @@ Disabling a connection pauses data sync while preserving the configuration. Re-e
 2. In the connection detail header, click **Disable**.
 3. The connection is paused and the header updates to show the disabled status.
 
-To re-enable, follow the same steps — clicking the eye icon or using the detail view toggles the connection back to enabled.
+To re-enable, follow the same steps — clicking the switch, or using the detail view, turns the connection back on.
 
 <Frame>
   <img src="/images/graphium/connections/connection-enabled.png" alt="Connection enabled" />
@@ -64,7 +64,7 @@ Connection settings can be updated at any time from the left panel. Changes take
 
 1. Open the connection detail view.
 2. **Update the Connection Name** — click into the **Connection Name** field and type a new name. Changes save automatically when you click away.
-3. **Update Authentication** — in the **Authentication** section, update your credentials. For OAuth-based connections (such as Google Sheets), click the re-authenticate button to go through the authorization flow again.
+3. **Update Authentication** — in the **Authentication** section, update your credentials. For OAuth-based connections (such as Google Sheets), click **Reconnect** to go through the authorization flow again.
 4. **Adjust Sync Settings** — where available, toggle **Auto-sync** on or off, and set the **Interval** for how frequently syncs occur. Not every connection type supports configurable sync — this section will indicate if syncing isn't available for the current connection type.
 5. **Update connection-specific settings** — scroll down for any settings specific to this connection type (e.g., spreadsheet name, server path, or EMR endpoint).
 
@@ -100,6 +100,7 @@ The Activity Log in the right panel gives you a real-time record of everything t
 | **action** | Green | A workflow action was executed |
 | **sync** | Teal | A data sync completed |
 | **log** | Grey | A health check or informational event |
+| **Created** | Green | The connection was created, with the settings that were set |
 | **error** | Red | An error occurred (auto-recovered or requires attention) |
 
 <Frame>
@@ -138,7 +139,7 @@ Contributor and Viewer roles do not have access to the Connections section and c
 | Test times out | External system is unreachable | Check that the external system is online and accessible |
 | Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button |
 | Error entries appearing frequently | Authentication failure or external system issue | Review the error description and check the Authentication section |
-| Enable/disable icon is not clickable | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
+| Enabled switch can't be clicked | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
 | Connection re-enables but status does not show as healthy | Authentication may have expired | Open the connection detail view and review the Authentication settings |
 
 ---

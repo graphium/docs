@@ -42,11 +42,7 @@ Pipedream will open a Google sign-in prompt to authorize Graphium AI.
 - Review the permissions Pipedream requests on Graphium AI's behalf and grant the requested read and write access to your sheets.
 - When the Google flow finishes, you'll return to Pipedream with a confirmation that the account is connected.
 
-### Step 5: Configure Spreadsheet Settings
-
-Enter the specific spreadsheet details — such as the sheet name and data range — so Graphium AI knows which data to sync.
-
-### Step 6: Set Sync Settings
+### Step 5: Set Sync Settings
 
 Configure how often Graphium AI should sync with Google Sheets:
 
@@ -57,7 +53,7 @@ Configure how often Graphium AI should sync with Google Sheets:
   <img src="/images/graphium/connections/auto-sync-settings.png" alt="Auto-sync settings" />
 </Frame>
 
-### Step 7: Save the Connection
+### Step 6: Save the Connection
 
 If successful, the Google Sheets connection will appear in the Data Connections list with a status badge. Next, click the **Test** button in the top right corner to sync your data from your Google Sheet. You will want to ensure the Google Sheets connection shows **"Healthy"** otherwise your data will not sync or migrate over to Graphium AI.
 
@@ -83,11 +79,10 @@ Once connected, the status badge shows **"healthy"** and data begins syncing bas
 | Google sign-in window closes immediately or shows an error | Third-party cookies are blocked or the browser is in strict privacy mode | Enable third-party cookies for `accounts.google.com` and `pipedream.com` and retry, or try the flow in a standard browser window |
 | OAuth authorization fails | Google account lacks access to the sheet | Ensure the Google account used has at least viewer access to the target spreadsheet |
 | Permissions prompt does not include Sheets access | Wrong Google account selected during sign-in | Click the account avatar in the Pipedream window, switch to the correct account, and re-authorize |
-| Connection status does not show **"Healthy"** after clicking Test | OAuth succeeded but the configured sheet or range is invalid | Open the connection detail and verify the spreadsheet ID, sheet name, and data range, then re-run Test |
-| **Google Sheets** option is missing from the **Spreadsheet** category | Connection type may not be enabled for your workspace | Submit a Ticket to our Support Team via the Help Assistant icon (?) at the top of your Graphium AI dashboard. |
+| Connection status does not show **"Healthy"** after clicking Test | The Google sign-in expired or the account lost access to the sheet | Open the connection detail, click **Reconnect** to sign in again, then re-run Test |
+| **Google Sheets** option is missing from the **Spreadsheet** category | Connection type may not be enabled for your workspace | click **Submit a ticket** in the Help panel (the **?** icon in the top navigation bar). |
 | **+ Add Connection** button is not available in the vault sidebar | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
 | Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Resolve any authentication errors with Test first, then enable Auto-sync |
-| Status shows "connected" but no data syncs | Incorrect sheet name or range configured | Open the connection detail and verify the spreadsheet-specific settings |
 | Auth expires unexpectedly | Google token revoked or the password changed | Re-authenticate via the Authentication section in the connection detail view |
 | Row changes in the sheet are not triggering workflows | Auto-sync is disabled | Open the connection detail and enable the Auto-sync toggle |
 | Sync completes but no records appear in vault tables | Tables are not yet mapped to the Google Sheets data source | Open the table settings and configure the Sheets source mapping |

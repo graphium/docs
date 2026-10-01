@@ -40,7 +40,7 @@ A system prompt for a Data Analyst assistant at a healthcare practice might defi
 
 ### Tools
 
-The Tools tab controls what the assistant can see and do. It's divided into three sections.
+The Tools tab controls what the assistant can see and do. It's divided into four sections.
 
 **Table Access** is a permission matrix listing every table in the vault. For each table, you set access to one of three levels:
 
@@ -52,7 +52,9 @@ This granularity matters. Your Data Analyst probably needs Read access to Cases,
 
 **Connection Actions** lists the actions available from each connected system. If the vault has an Epic connection, you'll see "Send HL7 Message to EMR" and "Received HL7 Message from EMR" available to toggle on. If there's a Google Sheets connection, you'll see Add Row, Update Row, and the rest. Enabling a connection action gives the assistant the ability to interact with that external system -- not just read vault data, but reach out and do things in the tools your organization uses.
 
-**General Tools** provides additional built-in capabilities beyond table and connection access, such as search and web lookup functionality.
+**General Tools** provides additional built-in capabilities beyond table and connection access, such as charts and web search.
+
+**Can Invoke Assistants** lets this assistant hand a question to another assistant in the vault and bring the answer back -- for example, a General Assistant that asks a Compliance Monitor about a specific measure.
 
 ---
 
@@ -74,12 +76,12 @@ Once an assistant is configured and active, your team interacts with it through 
 
 Inside any vault, click **Home** in the sidebar to open the chat interface. From the Home page you'll see:
 
-- A chat input at the top to start a new conversation
-- **Recent Chats** showing your previous conversations
+- An **assistant selector** above the heading showing which assistant you're talking to
+- A chat input to start a new conversation
 - A **Try Asking** section with suggested prompts based on your vault data
-- An **Available Assistants** section listing every assistant configured for the vault (e.g., "Quality Analyst", "Patient Experience", "Data Analyst")
+- **Recent Chats** showing your previous conversations with the selected assistant
 
-If the vault has multiple assistants, you choose which one to talk to. The chat interface shows a **"Chatting with [Assistant Name]"** indicator at the bottom so you always know which assistant you're engaged with. You can switch between assistants at any time -- each maintains its own conversation history.
+If the vault has multiple assistants, you choose which one to talk to -- from the assistant selector, or from the **ASSISTANTS** section of the sidebar (e.g., "Quality Analyst", "Patient Experience", "Data Analyst"). The selected assistant's name appears in the selector and in the chat input. You can switch between assistants at any time -- each keeps its own conversation history. See [The AI Assistant Home Page](/graphium/ai-assistants/the-ai-assistant-welcome-screen).
 
 ### Starting a Conversation
 
@@ -110,7 +112,7 @@ On the **Tools** tab, she gives it Read access to the Cases table and the MACRA 
 
 She opens the **Test Chat** panel and types: "Which providers had the lowest MIPS composite scores last month?" The assistant returns a ranked table of providers with their scores, highlights the two below benchmark, and recommends a documentation review for both. The system prompt is working -- the response is specific, actionable, and grounded in the actual data.
 
-Satisfied with the configuration, she shares the vault with her quality team. The next morning, a quality coordinator opens the vault, navigates to the Home page, selects Quality Analyst from Available Assistants, and asks: "Show me the trend in our overall MIPS score over the last six months." A line chart appears, a summary table with monthly scores follows, and the Key Insights section notes a dip in Q2 that correlates with the onboarding of three new providers, along with a recommendation to review their documentation training.
+Satisfied with the configuration, she shares the vault with her quality team. The next morning, a quality coordinator opens the vault, navigates to the Home page, selects Quality Analyst from the ASSISTANTS section of the sidebar, and asks: "Show me the trend in our overall MIPS score over the last six months." A line chart appears, a summary table with monthly scores follows, and the Key Insights section notes a dip in Q2 that correlates with the onboarding of three new providers, along with a recommendation to review their documentation training.
 
 The coordinator didn't build that report. She didn't export data to Excel. She asked a question and got an answer grounded in the practice's own data, shaped by the quality director's expertise encoded in the system prompt.
 

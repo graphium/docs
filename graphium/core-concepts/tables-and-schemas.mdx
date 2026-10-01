@@ -152,7 +152,7 @@ Scanning the property list, they see top-level properties (fields) like Case ID 
 
 They also see a Provider field typed as Reference, pointing to the Providers table. This means provider details (name, credentials, NPI) are not duplicated in every case record -- instead, each case points to a single provider record, keeping the data clean.
 
-Further down, they find Procedure Codes typed as Text[] -- an array, because a single case can involve multiple CPT codes. And at the bottom, Charge Ticket (Image) and Provider Signature (Signature) -- the fields that capture the scanned paper ticket and the attending physician's sign-off.
+Further down, they find Procedure Codes typed as Text Collection -- a list of values, because a single case can involve multiple CPT codes. And at the bottom, Charge Ticket (Image) and Provider Signature (Signature) -- the fields that capture the scanned paper ticket and the attending physician's sign-off.
 
 With this understanding of the schema, the quality team can now configure their AI assistant to ask the right questions: "Show me all cases this month where Provider Signature is missing" or "List cases where Procedure Duration exceeds 240 minutes and Insurance is Medicare." The schema is the map; the assistant uses it to navigate the data.
 
