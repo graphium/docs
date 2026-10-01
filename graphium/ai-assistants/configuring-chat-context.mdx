@@ -1,5 +1,5 @@
 ---
-title: "Configuring Chat Context and Query Tools"
+title: "Configuring Chat Context"
 description: ""
 icon: "brain"
 ---
@@ -32,7 +32,12 @@ The first tab (**Tables**) shows all tables in the vault. Use this to control wh
 
 1. Open the Chat Context panel and click the **Tables** tab.
 2. Find the table you want to enable.
-3. Select its access level: **Off**, **Read** (the AI can read and query data from this table), or **Read & Write** (the AI can also write or update records in this table).
+3. Select its access level:
+   - **Off** — the assistant can't see or use this table
+   - **Read** — the assistant can query and report on the table's data, but can't change it. If you ask it to create or update a record, it explains that it only has read access, and nothing is written
+   - **Read & Write** — the assistant can also create and update records in this table. See [Changing Your Data Using the AI Assistant](/graphium/ai-assistants/changing-your-data-using-the-ai-assistant)
+
+> **Note:** For a custom assistant, the same access levels are set as its defaults in the assistant's **Tools** tab (Admins and Builders) — see [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants). Chat Context can narrow those defaults for a conversation, but not expand them.
 
 ### Disabling a Table
 
@@ -44,11 +49,25 @@ Enable only the tables relevant to your question for more focused and accurate r
 
 ### Allowing Column Changes
 
-When a table's access level is set to **Read & Write**, an additional **Allow column changes** toggle appears beneath it. Enabling this lets the AI Assistant add or edit columns on that table during the conversation — subject to the vault-level **Let assistants add and edit columns** setting in vault Settings, which must also be enabled. For what the assistant can change and how it confirms changes with you, see [Changing Tables with the AI Assistant](/graphium/ai-assistants/changing-tables-with-the-ai-assistant).
+When a table's access level is set to **Read & Write**, an additional **Allow column changes** toggle appears beneath it (Admins and Builders only). Turning it on lets the assistant add or edit columns on that table. It also depends on the vault-level **Let assistants add and edit columns** setting in **Settings → General**:
+
+- **When the vault setting is off**, the toggle is greyed out and labeled *"Turned off for this vault. Change in Vault settings."* The assistant can still create and update records on the table, but can't add or edit columns.
+- **When the vault setting is on**, the toggle can be turned on for each table.
+
+The same toggle appears in a custom assistant's **Tools** tab. For what the assistant can change and how it confirms changes with you, see [Changing Your Data Using the AI Assistant](/graphium/ai-assistants/changing-your-data-using-the-ai-assistant#changing-tables).
 
 <Frame>
   <img src="/images/graphium/assistant/chat-context-tables.png" alt="Tables tab in the Chat Context panel showing vault tables with toggle and access level controls" />
 </Frame>
+
+<Columns cols={2}>
+  <Frame caption="Vault setting off — toggle locked">
+    <img src="/images/graphium/assistant/allow-column-changes-locked.png" alt="Allow column changes toggle greyed out on a Read/Write table, labeled Turned off for this vault" />
+  </Frame>
+  <Frame caption="Vault setting on — toggle available">
+    <img src="/images/graphium/assistant/allow-assistant-edit-columns.png" alt="Allow column changes toggle enabled and clickable on a Read/Write table" />
+  </Frame>
+</Columns>
 
 ---
 

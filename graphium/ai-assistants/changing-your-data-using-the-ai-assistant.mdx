@@ -1,0 +1,223 @@
+---
+title: "Changing Your Data Using the AI Assistant"
+description: ""
+icon: "brain"
+---
+
+## Overview
+
+The AI Assistant can do more than answer questions about your data — it can change it for you. In a conversation, you can ask it to:
+
+- **Create and update records** in a table
+- **Change a table's structure** — add or edit columns, create a new table (with rows, if you give it some), or build a table from a spreadsheet you attach
+
+You describe what you need in plain language. Before it changes a table's structure, the assistant sets out exactly what it will do and waits for you to agree.
+
+## When to Use This
+
+- Capturing a record on the fly, or correcting a value without leaving the chat
+- Adding a field your team has started tracking — for example, a **Notes** column on a Medications table
+- Renaming a column or adding options to a dropdown column
+- Setting up a new table by describing it, instead of building it by hand
+- Turning a spreadsheet into a table, or adding a spreadsheet's rows to a table you already have
+
+## Prerequisites
+
+What the assistant can change depends on these settings:
+
+| To let the assistant… | You need |
+|---|---|
+| Create and update records in a table | The table set to **Read & Write** |
+| Add or edit columns on a table | The table set to **Read & Write** with **Allow column changes** on, and the vault setting **Let assistants add and edit columns** on |
+| Create new tables | The vault setting **Let assistants create new tables** on |
+
+- **Table access and Allow column changes (Admins and Builders).** For the General Assistant, set these in the Chat Context panel (⚙ in the chat input bar). For a custom assistant, its defaults are set in its **Tools** tab. See [Configuring Chat Context](/graphium/ai-assistants/configuring-chat-context).
+- **Vault settings (vault Admins).** Go to **Settings → General** and, under **Assistant table and column changes**, turn on the settings you need. Both are off in every vault until an Admin turns them on. See [Vault Settings](/graphium/vaults/vault-settings-general-configuration).
+
+> **Note:** Contributors and Viewers can't change table access or the **Allow column changes** switch.
+
+---
+
+## Creating and Updating Records
+
+### Creating a record
+
+Describe the record in plain language, including the field values you want to set:
+
+- *"Create a new patient named Maria Lopez with a date of birth of June 15, 1985."*
+- *"Add a new provider: Dr. James Rivera, specialty Cardiology."*
+- *"Create a patient record for Omar Patel. Status: Active. Date of birth: March 2, 1978."*
+
+The assistant writes the record and reports back, including the record's assigned ID.
+
+<Frame>
+  <img src="/images/graphium/assistant/create-record-using-assistant.png" alt="Chat input with a natural language request to create a new record" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/assistant/create-record-response.png" alt="AI assistant response confirming a new patient record was created" />
+</Frame>
+
+> 💡 **Tip:** You don't need to list every field. If a required field is missing and the assistant can't work it out, it asks you for the value before creating the record.
+
+### Updating a record
+
+Identify the record and describe the change:
+
+- *"Update John Smith's phone number to 555-0199."*
+- *"Set the status on patient #PAT-4821 to Inactive."*
+- *"Change Dr. Rivera's specialty to Interventional Cardiology."*
+
+The assistant finds the matching record, changes only the fields you mentioned, and confirms the update. If your description matches more than one record, it lists the matches and asks which one you mean before changing anything.
+
+<Frame>
+  <img src="/images/graphium/assistant/update-record-using-assistant.png" alt="Chat input with a natural language request to update an existing record" />
+</Frame>
+
+<Frame>
+  <img src="/images/graphium/assistant/update-record-response.png" alt="AI assistant response confirming a record update" />
+</Frame>
+
+### Fields the assistant can fill in
+
+- **Text, number, date, time, and checkbox fields** — set or cleared by value
+- **Dropdown fields** — matched by label, ignoring capitalization (e.g., *"set status to active"* becomes *Active*)
+- **Grouped fields** — for example, an address (street, city, state, zip) can be set or updated together
+- **List fields** — repeating groups like emergency contacts are replaced with the complete list you describe
+- **Reference fields** — links to another table are matched by the linked record's name or label
+
+The assistant can't set auto-generated ID fields or formula fields.
+
+### When a table is Read only
+
+If a table is set to **Read**, the assistant won't create or update records in it. It explains that it only has read access, and nothing is written. This is useful for reference tables you want the assistant to see but not change.
+
+<Frame>
+  <img src="/images/graphium/assistant/read-only-response.png" alt="AI Assistant response explaining it only has read access and cannot make changes" />
+</Frame>
+
+### Tips for record requests
+
+- **Name the record clearly** — a full name, record ID, or other unique value.
+- **Describe only what should change.** Fields you don't mention stay as they are.
+- **Use your table's field labels** — for example, *Primary Diagnosis* rather than an abbreviation.
+- **For list fields, describe the full list.** The assistant replaces the whole list, so include every entry you want to keep.
+
+---
+
+## Changing Tables
+
+### Step 1: Ask for the change
+
+On the vault Home page, describe the change in the chat input bar. Name the table and be specific about each column — for example:
+
+- *"Add a text column called Notes to the Medications table."*
+- *"Create a Medications table with name, dose, route, and a status of Active, Discontinued or On hold."*
+- *"Create a Medications table with name, dose and route, and add these rows: Ibuprofen, 400mg, Oral; Lisinopril, 10mg, Oral."*
+
+<Frame>
+  <img src="/images/graphium/assistant/table-changes-allow-column-changes.png" alt="Chat Context panel with a table set to Read & Write and the Allow column changes switch turned on" />
+</Frame>
+
+### Step 2: Review what the assistant proposes
+
+The assistant doesn't make the change right away. It sets out exactly what it will do — the table name, each column and its type, the options for any dropdown column, and any rows it will add — and asks whether it looks correct.
+
+If anything is wrong, say what to change (for example, *"Make Dose a number instead"*) and the assistant sets out a revised version.
+
+> 💡 **Tip:** One confirmation covers everything the assistant listed. If you then ask for something that wasn't on the list, it asks again before making that change.
+
+<Frame>
+  <img src="/images/graphium/assistant/table-changes-proposal.png" alt="Assistant reply proposing a new table, listing its columns, column types, and rows, and asking whether it looks correct" />
+</Frame>
+
+### Step 3: Confirm the change
+
+Reply **yes**. The assistant makes the change and tells you what it did — for example, *"I've created the Medications table with 4 columns and added the 2 rows you specified."*
+
+### Step 4: Check the table
+
+Open the table from the **TABLES** section of the vault sidebar. New columns appear in both the **Data** and **Schema** tabs. Existing records show new columns as empty, ready to fill in.
+
+<Frame>
+  <img src="/images/graphium/assistant/table-changes-result.png" alt="Data tab of a table created by the assistant, showing its rows and a newly added empty Notes column" />
+</Frame>
+
+### What the assistant can and can't change
+
+The assistant's table changes only add to a table — it never removes or reinterprets data that's already there.
+
+| The assistant can | The assistant can't |
+|---|---|
+| Add columns of these types: Text, Number, Date, Time, Date/Time, Boolean (yes/no), Select from List, Image, and Signature | Delete a column |
+| Rename a column or change its description | Change a column's type |
+| Add options to a Select from List column | Make a column required — every column it creates is optional |
+| Make a required column optional | Add Reference, Formula, or Auto ID columns |
+| Create a new table with columns, and add rows to it | Delete or rename a table |
+
+> **Note:** The assistant can create **Image** and **Signature** columns, but it can't fill them in. Those are for people to complete by hand.
+
+### Creating a table
+
+- **Creating a table can't be undone.** There's no way to delete a table afterward, so check the proposal before you reply **yes**.
+- **Table names must be unique in the vault.** If the name is taken, the assistant asks whether to use the existing table or choose a different name.
+- **The new table is ready to use in the same conversation.** You can ask the assistant to add or look up records in it right away. This access applies to that conversation only — the table isn't added to Chat Context or the assistant's Tools settings.
+- **Changing the new table's columns needs column access.** Set it to **Read & Write** and turn on **Allow column changes** first.
+- **One conversation can create up to 5 tables.** To create more, start a new chat.
+
+### Building a table from a spreadsheet
+
+1. In the chat input bar, click the paperclip icon and attach the file. It appears above your message with its row count.
+2. Ask for the table — for example, *"Build a table called Providers Import from this file and load all of its rows."*
+3. The assistant proposes a table: a suggested name, one column per spreadsheet column with a type based on the data, and every row it will load. Columns with a small set of repeating values (such as Specialty) become Select from List columns; columns of TRUE/FALSE values become Boolean columns.
+4. Reply **yes**. The assistant creates the table, loads the rows, and tells you how many it loaded.
+
+A few things to know:
+
+- **Rows with a bad value are skipped, not lost silently.** If a value doesn't fit its column — for example, a word in a number column — the assistant skips that row, tells you which row and why, and loads the rest.
+- **Column headers are checked.** If two headers would end up with the same name, or a column has no header, the assistant asks you to rename it first.
+- **You can load a spreadsheet into a table you already have.** For example, *"Load the rows from this file into Providers Import."* The rows are added — existing records aren't changed or matched up.
+
+<Frame>
+  <img src="/images/graphium/assistant/table-changes-spreadsheet.png" alt="Attached spreadsheet in the chat and the assistant's proposed table built from it, with a column type for each spreadsheet column" />
+</Frame>
+
+### Table changes in playbooks
+
+Playbook steps can make the same changes — for example, a step that creates a table from a file that triggered the run. In a playbook, nobody is there to reply **yes**, so a table or column change always pauses the run for approval, even if the table is otherwise set to run without review. See [Approving Column Changes](/graphium/playbooks/using-review-checkpoints#approving-column-changes).
+
+To let a playbook change a table's columns, set the table to **Read/Write** and turn on **Allow column changes** in the playbook's access settings. To let it create tables, the vault's **Let assistants create new tables** setting must be on.
+
+---
+
+## What to Expect
+
+- New and updated records show up right away in the table's **Data** tab.
+- Table changes are made only after you confirm them in chat, or after they're approved in a playbook run. New columns show up right away in the **Data** and **Schema** tabs.
+- If the vault settings are turned off later, any **Allow column changes** switches you turned on are kept, and take effect again when the vault setting is turned back on.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| The assistant says it only has read access | The table is set to **Read** | Set the table to **Read & Write** in Chat Context, or in the assistant's **Tools** tab |
+| The assistant asks which record I mean | More than one record matches your description | Pick the right one from the list, or include a record ID or other unique value |
+| A list field lost some entries | The assistant replaces the whole list with what you describe | Ask again, listing every entry you want to keep |
+| An **Access required** card says *Add or edit columns* | The vault setting is off, or the table doesn't allow column changes | Ask a vault Admin to turn on the setting in **Settings → General**, then turn on **Allow column changes** for the table |
+| The assistant says it can't add columns, with no card | Column changes aren't allowed for that table in this conversation. Some faster models, such as Claude Haiku, may reply in plain text instead of showing the **Access required** card | Click the ⚙ icon, set the table to **Read & Write**, turn on **Allow column changes**, and ask again |
+| The **Allow column changes** switch is missing | The table is set to **Off** or **Read**, or you're a Contributor or Viewer | Set the table to **Read & Write**. If the switch still doesn't appear, ask a vault Admin or Builder |
+| The **Allow column changes** switch is greyed out | **Let assistants add and edit columns** is off for the vault | Ask a vault Admin to turn it on in **Settings → General** |
+| The assistant won't create a table | **Let assistants create new tables** is off, the name is already taken, or this conversation has already created 5 tables | Ask an Admin to turn on the setting, choose a different name, or start a new chat |
+| Some spreadsheet rows didn't load | Those rows had values that didn't fit their columns | Correct the rows the assistant named and ask it to load them again |
+| The assistant won't delete a column or make one required | These changes aren't available to the assistant | Make the change yourself from the table's **Schema** tab |
+
+## Related Articles
+
+- [Configuring Chat Context](/graphium/ai-assistants/configuring-chat-context)
+- [Vault Settings](/graphium/vaults/vault-settings-general-configuration)
+- [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
+- [Tables & Schemas](/graphium/core-concepts/tables-and-schemas)
+
+---
+
+*Questions? [Contact Graphium AI Support or Sales](/graphium/reference/how-to-contact-support-or-sales).*

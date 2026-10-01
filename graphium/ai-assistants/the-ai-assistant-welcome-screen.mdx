@@ -5,77 +5,138 @@ icon: "brain"
 
 ## Overview
 
-When you open a vault in Graphium AI, the **Home** page is your AI-powered starting point. It displays your recent conversations, suggested prompts, and a chat input bar — giving you immediate access to ask questions about your vault data. The Home page also provides access to your full conversation history across past sessions.
+Graphium AI gives you two places to start a conversation with an AI Assistant:
 
-Use the Home page as your starting point whenever you want to ask questions about your vault data, request summaries, explore insights using AI, or return to a previous conversation. You must be a vault member with at least Contributor access, and the vault must have at least one AI Assistant configured.
+- The **Assistants** tab of the workspace home, which lists the custom assistants you can use across every vault
+- The **Home** page of a vault, with the vault's chat input, suggested prompts, and your recent conversations
+
+This article covers both, along with choosing the right assistant and returning to an earlier conversation. For sending messages and reading replies, see [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant).
+
+You must be a vault member with at least Contributor access to chat in a vault.
+
+---
+
+## Starting from the Workspace Home
+
+When you sign in — or click the **Graphium** logo in the top-left corner — the workspace home opens with two tabs:
+
+- **Assistants** (the default) — the custom assistants you can use in this workspace
+- **Vaults** — your vaults. See [Viewing and Opening Vaults](/graphium/vaults/viewing-and-opening-vaults).
+
+The line under **Your Assistants** shows how many assistants you have and how many vaults they're spread across — for example, *3 assistants across 3 vaults*.
+
+Each assistant card shows:
+
+- The assistant's icon, name, and description
+- The **vault** it works in
+- How many **tables** and **connections** it can use
+- A **Chat** link, and a ⚙ **Configure** button for vault Admins
+
+Click a card or **Chat** to open the assistant's vault on the Home page with a new chat for that assistant.
+
+<Frame>
+  <img src="/images/graphium/assistant/workspace-assistants-tab.png" alt="Workspace home on the Assistants tab, showing Your Assistants, the Add an assistant tile, and assistant cards" />
+</Frame>
+
+Use the toggle in the top-right corner to switch between the card grid and a list view. The list view shows the same details in columns (Assistant, Vault, Tables, Connections, Actions), with **Chat** and ⚙ buttons on each row. Graphium AI remembers the view you chose.
+
+<Frame>
+  <img src="/images/graphium/assistant/workspace-assistants-list.png" alt="Assistants tab in list view, with Assistant, Vault, Tables, Connections, and Actions columns and an Add an assistant button" />
+</Frame>
+
+A few more things you can do from the Assistants tab:
+
+- **Add an assistant** — click the **Add an assistant** tile (*"Say what you need help with, and we'll set one up for you"*), or **+ Add an assistant** in list view. If you don't have any assistants yet, a **Create your first assistant** panel appears in place of the cards. See [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant).
+- **Open an assistant's settings (vault Admins)** — click the ⚙ on its card or row. See [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants).
+
+> **Note:** The **General Assistant** isn't listed on the Assistants tab, and neither are archived or unpublished assistants. Every vault has a General Assistant — open a vault to chat with it.
 
 ---
 
 ## The Vault Home Page
 
-From the workspace home, click the **Vaults** tab and click any vault to open it. The Home page loads automatically as the default view, with the **General Assistant** selected. (If you open an assistant from the workspace **Assistants** tab instead, the Home page opens with that assistant selected — see [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace).)
+To open a vault's Home page, click the **Vaults** tab of the workspace home and click any vault, or click **Home** at the top of the vault sidebar. The Home page opens with the **General Assistant** selected, unless you opened a specific assistant.
 
 The Home page displays:
 
-- An **assistant selector** above the heading showing the currently selected assistant (e.g., **GENERAL ASSISTANT ⌄**) — click it to switch to a different configured assistant
-- A **chat input bar**. With the General Assistant, it reads *"Ask General Assistant..."*; with a custom assistant, it shows that assistant's name (for example, *"Ask Claims Denial Tracker..."*)
+- An **assistant selector** above the heading showing the currently selected assistant (e.g., **GENERAL ASSISTANT ⌄**)
+- A **chat input bar** with the selected assistant's name — for example, *"Ask General Assistant..."* or *"Ask Claims Denial Tracker..."*
 - A **TRY ASKING** section with suggested prompts relevant to your vault data
-- A **RECENT CHATS** section showing your four most recent conversations with the selected assistant as cards — each showing the conversation title, which assistant was used, and how long ago it was. With a custom assistant selected, the heading reads **RECENT CHATS WITH [assistant name]**
+- A **RECENT CHATS** section showing your four most recent conversations with the selected assistant
 
 <Frame>
   <img src="/images/graphium/assistant/assistant-home-page.png" alt="The AI Assistant Home page showing the assistant selector, chat input bar, Try Asking, and Recent Chats sections" />
 </Frame>
 
+For everything else in the vault sidebar, see [Navigating Your Vault](/graphium/vaults/navigating-your-vault-using-the-sidebar).
+
 ---
 
-## The Vault Sidebar
+## Choosing an Assistant
 
-The vault sidebar, to the left of the Home page, has two states, toggled by the arrow icon at the bottom.
+Each vault can have several assistants, each with its own focus, data access, and tools.
 
-**Expanded (default)** shows these sections, in order:
+- **The General Assistant** is part of every vault. It has no specialized focus and answers questions across whatever tables, tools, and connections are enabled in Chat Context. Use it for quick one-off questions, or when no specialized assistant fits.
+- **Custom assistants** are set up by your team for specific jobs — for example, a *Claims Denial Tracker* or a *Provider Credentialing Tracker*.
 
-- **Home** (house icon) — returns to the AI Assistant home page
-- **ASSISTANTS** — the **General Assistant** first, then the vault's published custom assistants. Click one to start a new chat with it. Vault Admins also see a ⚙ (manage assistants) and a **+** (add an assistant) next to the heading
-- **CHATS** — your recent conversations, each with the icon of the assistant it was held with. Click **+** to start a new General Assistant chat, and **[N] More** to see the rest
-- **TABLES** — pinned tables in the vault, with a **+** to add one and **[N] More** to see the rest
-- **VAULT** — **Playbooks**, **Connections**, and **Settings** (Admins and Builders)
-- A **Builder / Contributor** toggle at the bottom to switch between roles you have access to
+### From the assistant selector
 
-**Collapsed** shrinks the sidebar to an icon-only rail. The collapsed rail doesn't show your chats.
+1. Click the **assistant selector** — above the heading, or in the input bar's toolbar once a conversation has started. A popup lists each available assistant with a short description, with a checkmark next to the current one.
+2. Click the assistant you want to use.
 
-For the full sidebar reference, see [Navigating Your Vault Using the Sidebar](/graphium/vaults/navigating-your-vault-using-the-sidebar).
+The popup also has a **Manage assistants** link at the bottom (Admins and Builders), which opens the **Custom Assistants** page.
 
 <Frame>
-  <img src="/images/graphium/assistant/assistant-vault-sidebar.png" alt="The vault sidebar showing Home, Assistants, Chats, Tables, and Vault sections" />
+  <img src="/images/graphium/assistant/choose-assistant-icon.png" alt="Assistant selector popup showing available assistants with descriptions and a Manage assistants link" />
 </Frame>
+
+### From the sidebar
+
+The **ASSISTANTS** section of the vault sidebar lists the **General Assistant** first, followed by the vault's published custom assistants. If there are more than five, click **[N] More** to see the rest. Click an assistant to open a new chat with it.
+
+Vault Admins also see two buttons next to the **ASSISTANTS** heading:
+
+- **⚙ (Manage assistants)** — opens the **Custom Assistants** page. See [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants).
+- **+ (Add assistant)** — creates a new assistant. See [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant).
+
+Builders don't see these buttons — they use **Manage assistants** in the assistant selector instead.
+
+<Frame>
+  <img src="/images/graphium/assistant/sidebar-assistants-section.png" alt="ASSISTANTS section of the vault sidebar listing the General Assistant and custom assistants, with the manage and add buttons" />
+</Frame>
+
+### When a custom assistant is selected
+
+The Home page is set up for that assistant:
+
+- Its name appears in the selector and in the chat input (*"Ask [assistant name]…"*)
+- The description under the heading is the assistant's own description
+- **RECENT CHATS WITH [assistant name]** shows only your conversations with that assistant
+
+To go back to the General Assistant, pick **General Assistant** in the selector or in the sidebar.
 
 ---
 
 ## Starting a New Conversation
 
-You have a few options for starting a fresh conversation:
+You can start a fresh conversation by:
 
-- Click the **chat input bar** and type your question
-- Click one of the **TRY ASKING** suggestions to start with a pre-built prompt
-- Click the **assistant selector** above the heading to pick a specific assistant before you start typing
-- Click an assistant under **ASSISTANTS** in the sidebar — this always opens a new chat with that assistant
-- Click **+** next to **CHATS** in the sidebar to start a new General Assistant chat
-
-New conversations use the **General** assistant unless you pick a specialized assistant first.
+- Typing in the **chat input bar**
+- Clicking one of the **TRY ASKING** suggestions
+- Picking an assistant in the **assistant selector**, the sidebar **ASSISTANTS** section, or the workspace **Assistants** tab — picking an assistant always opens a new chat
+- Clicking **+** next to **CHATS** in the sidebar, which starts a new General Assistant chat
 
 ---
 
-## Accessing Conversation History
-
-Your conversation history is accessible in two ways.
+## Returning to a Previous Conversation
 
 **From the Home page**
 
-The **RECENT CHATS** section shows your four most recent conversations with the selected assistant as cards. Each card shows the conversation title, the assistant used, and a relative timestamp (e.g., *5m ago*, *Yesterday*). Click any card to reopen that conversation. To see conversations with a different assistant, select that assistant first.
+The **RECENT CHATS** section shows your four most recent conversations with the selected assistant as cards. Each card shows the conversation title, the assistant used, and a relative timestamp (e.g., *5m ago*, *Yesterday*). Click a card to reopen that conversation. To see conversations with a different assistant, select that assistant first.
 
-**From the sidebar**
+**From the sidebar (Admins and Builders)**
 
-In the vault sidebar, the **CHATS** section (Admins and Builders) lists your most recent conversations with every assistant. Click **More** to expand the list. Click any conversation title to reopen it. A chat that hasn't been given a title yet shows the assistant's name.
+The **CHATS** section lists your most recent conversations with every assistant, each with the icon of the assistant it was held with. Click **More** to expand the list, and click a conversation to reopen it. A chat that hasn't been given a title yet shows the assistant's name.
 
 <Columns cols={2}>
   <Frame caption="Recent Chats">
@@ -86,15 +147,7 @@ In the vault sidebar, the **CHATS** section (Admins and Builders) lists your mos
   </Frame>
 </Columns>
 
----
-
-## What to Expect
-
-Reopening a conversation allows you to continue asking follow-up questions — the AI retains the context of the previous messages. The vault home page is always accessible by clicking **Home** in the vault sidebar.
-
-<Frame>
-  <img src="/images/graphium/assistant/ask-graphium.png" alt="Home link in the vault sidebar used to return to the AI Assistant home page" />
-</Frame>
+Reopening a conversation lets you continue asking follow-up questions — the AI retains the context of the previous messages.
 
 ### Chats with an Archived Assistant
 
@@ -106,26 +159,37 @@ If an assistant is archived, your conversations with it are kept. In the **CHATS
 
 ---
 
+## What to Expect
+
+- Each assistant may have different table access, tools, and connection permissions, so the same question can get different answers from different assistants.
+- Picking an assistant always starts a new conversation. Your earlier conversations stay in **Recent Chats** and the **CHATS** list.
+- Inside a vault, the back arrow (←) in the vault header returns you to the workspace home.
+
+---
+
 ## Troubleshooting
 
 | Issue | Likely Cause | Solution |
 |-------|-------------|----------|
-| No recent chats appear on Home | No conversations have been started yet | Start a new conversation by typing in the chat input bar |
-| Only the General assistant appears in the selector | No specialized assistants are configured for this vault | Admins can click **+** next to **ASSISTANTS** in the sidebar, and Builders can use **Manage assistants** in the selector, to create one — see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant) |
-| Home is not visible in the sidebar | The vault may not have the AI feature enabled | Contact your vault Admin |
-| A past conversation is not in Recent Chats | It may be older than the 4 most recent, or it was with a different assistant | Select the assistant it was held with, or open it from the **CHATS** list in the sidebar |
-| CHATS section in the sidebar is empty | No conversations have been started in this vault | Start a new conversation from the Home page |
+| The General Assistant isn't on the workspace Assistants tab | It's part of every vault, so it isn't listed separately | Open a vault from the **Vaults** tab and chat from its Home page |
+| An assistant I expected isn't listed | It's archived, not yet published, restricted to other vault roles, or in a vault you can't access | Ask a vault Admin to check the assistant's status and **Who Can Access** setting, or to add you to the vault |
+| Only the General assistant appears in the selector | No custom assistants are set up for this vault | Admins can click **+** next to **ASSISTANTS** in the sidebar, and Builders can use **Manage assistants** in the selector — see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant) |
+| The ⚙ and **+** next to ASSISTANTS, or the ⚙ on a workspace card, are missing | These buttons are for vault Admins only | Builders can use **Manage assistants** in the assistant selector. Contributors and Viewers should ask a vault Admin |
+| The **Add an assistant** tile is missing | You can't create assistants in any vault and can't create vaults, or the workspace has reached its assistant limit | See [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant) |
+| My previous conversation disappeared when I picked an assistant | Picking an assistant always starts a new chat | Reopen the earlier conversation from **Recent Chats** or the **CHATS** list |
+| A past conversation isn't in Recent Chats | It's older than the 4 most recent, or it was with a different assistant | Select the assistant it was held with, or open it from the **CHATS** list |
 | A chat is labeled **Inactive** and I can't type in it | The assistant it was held with has been archived | Read the chat as needed, then start a new chat with an active assistant |
-| Chats don't appear in the collapsed sidebar | The collapsed icon rail doesn't show chats | Expand the sidebar with the arrow at the bottom |
-| Can't find Playbooks, Connections, or Settings in the sidebar | They're in the **VAULT** section at the bottom, which a long chat or table list can push out of view; or your role is Contributor or Viewer | Scroll down within the sidebar. If they still don't appear, ask a vault Admin about your role |
+| The CHATS list isn't in the sidebar | The sidebar is collapsed, or your vault role is Contributor or Viewer | Expand the sidebar with the arrow at the bottom. Contributors and Viewers can reopen chats from **Recent Chats** |
+| I want to see my vaults | The workspace home opens on the Assistants tab | Click the **Vaults** tab |
 
 ---
 
 ## Related Articles
 
-- [Browsing Assistants in Your Workspace](/graphium/ai-assistants/browsing-assistants-in-your-workspace)
-- [Switching Between AI Assistants](/graphium/ai-assistants/switching-between-ai-assistants)
-- [Configuring Chat Context and Query Tools](/graphium/ai-assistants/configuring-chat-context-and-query-tools)
+- [Chatting with Your AI Assistant](/graphium/ai-assistants/chatting-with-your-ai-assistant)
+- [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant)
+- [Configuring Chat Context](/graphium/ai-assistants/configuring-chat-context)
+- [Navigating Your Vault](/graphium/vaults/navigating-your-vault-using-the-sidebar)
 
 ---
 

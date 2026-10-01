@@ -97,16 +97,13 @@
           {
             "group": "AI Assistants",
             "pages": [
-              "graphium/ai-assistants/browsing-assistants-in-your-workspace",
               "graphium/ai-assistants/the-ai-assistant-welcome-screen",
               "graphium/ai-assistants/chatting-with-your-ai-assistant",
-              "graphium/ai-assistants/switching-between-ai-assistants",
               "graphium/ai-assistants/creating-an-ai-assistant",
               "graphium/ai-assistants/managing-your-ai-assistants",
-              "graphium/ai-assistants/configuring-chat-context-and-query-tools",
-              "graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant",
-              "graphium/ai-assistants/changing-tables-with-the-ai-assistant",
-              "graphium/ai-assistants/connecting-a-service-from-the-ai-assistant",
+              "graphium/ai-assistants/configuring-chat-context",
+              "graphium/ai-assistants/changing-your-data-using-the-ai-assistant",
+              "graphium/ai-assistants/connecting-a-service-using-the-ai-assistant",
               "graphium/ai-assistants/creating-and-viewing-artifacts"
             ]
           },
@@ -156,5 +153,13 @@
   },
   "footer": {
     "socials": {}
-  }
+  },
+  "redirects": [
+    { "source": "/graphium/ai-assistants/switching-between-ai-assistants", "destination": "/graphium/ai-assistants/the-ai-assistant-welcome-screen" },
+    { "source": "/graphium/ai-assistants/browsing-assistants-in-your-workspace", "destination": "/graphium/ai-assistants/the-ai-assistant-welcome-screen" },
+    { "source": "/graphium/ai-assistants/creating-and-updating-records-with-the-ai-assistant", "destination": "/graphium/ai-assistants/changing-your-data-using-the-ai-assistant" },
+    { "source": "/graphium/ai-assistants/changing-tables-with-the-ai-assistant", "destination": "/graphium/ai-assistants/changing-your-data-using-the-ai-assistant" },
+    { "source": "/graphium/ai-assistants/connecting-a-service-from-the-ai-assistant", "destination": "/graphium/ai-assistants/connecting-a-service-using-the-ai-assistant" },
+    { "source": "/graphium/ai-assistants/configuring-chat-context-and-query-tools", "destination": "/graphium/ai-assistants/configuring-chat-context" }
+  ]
 }
