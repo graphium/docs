@@ -98,13 +98,13 @@
             "group": "AI Assistants",
             "pages": [
               "graphium/ai-assistants/the-ai-assistant-welcome-screen",
-              "graphium/ai-assistants/chatting-with-your-ai-assistant",
               "graphium/ai-assistants/creating-an-ai-assistant",
-              "graphium/ai-assistants/managing-your-ai-assistants",
+              "graphium/ai-assistants/chatting-with-your-ai-assistant",
               "graphium/ai-assistants/configuring-chat-context",
               "graphium/ai-assistants/changing-your-data-using-the-ai-assistant",
               "graphium/ai-assistants/connecting-a-service-using-the-ai-assistant",
-              "graphium/ai-assistants/creating-and-viewing-artifacts"
+              "graphium/ai-assistants/creating-and-viewing-artifacts",
+              "graphium/ai-assistants/managing-your-ai-assistants"
             ]
           },
           {
