@@ -27,7 +27,14 @@ Review checkpoints are configured on resources in the **Playbook Access** panel 
 Two resource types support review checkpoints:
 
 - **Tables** — Set a table's approval mode to **Requires Review** to pause the run before any write action is taken on that table.
-- **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before any data is sent to or action is taken on that connection.
+- **Connections** — Set a connection's approval mode to **Requires Review** to pause the run before actions that change the connected system. Connections start as **Requires Review** when you turn them on.
+
+For a connection set to **Requires Review**, approval covers *"actions that change the connected system, and any action nobody has classified yet. An action known to be a read runs without review."* Expand **Actions** under the connection to choose which actions the playbook may use (**Select all** or **Clear**) and to see how each one behaves:
+
+- **Pauses for review** — the run stops for approval before this action
+- **Runs without review** — the action runs on its own
+
+> **Note:** Some connections' actions haven't been classified as reads yet, so every action — including ones that only look up data — may show **Pauses for review**.
 
 <Frame>
   <img src="/images/graphium/playbooks/playbook-review-checkpoint.png" alt="Review checkpoint configured on a resource in Playbook Access" />
@@ -39,27 +46,32 @@ Two resource types support review checkpoints:
 
 ## Adding a Review Checkpoint to a Step
 
-Review checkpoints are configured through the **Success Criteria** section inside each step's **Advanced Options**. After a step completes, the AI evaluates the success criteria conditions against its output. If a condition is met and the action is set to **Require Review**, the run pauses and waits for a Builder to confirm before continuing.
+Review checkpoints on a step are set in its **Success Criteria** section. Each criterion is judged against what the step produced:
 
-### Step 1: Open Advanced Options on a Step
+- **Fail Playbook** and **Stop Without Failure** act only when the criterion is *not* met.
+- **Require Review** always pauses the run for a person and shows them the assessment.
 
-In the playbook editor, click the step you want to add a review checkpoint to. The **Step Details** panel opens in the center column. Scroll down and click **Advanced Options** to expand it.
+With no criteria, *"this step always proceeds, whatever it produced."* AI-generated playbooks often include criteria on steps that fetch or check data.
+
+### Step 1: Open the Step
+
+In the playbook editor, click **Edit**, then click the step you want to add a review checkpoint to. The **Step Details** panel opens on the right, with **Success Criteria** below the step's instructions.
 
 <Frame>
-  <img src="/images/graphium/playbooks/advanced-options.png" alt="Advanced Options section expanded in Step Details" />
+  <img src="/images/graphium/playbooks/advanced-options.png" alt="Success Criteria section in Step Details" />
 </Frame>
 
 ---
 
 ### Step 2: Add a Success Criterion
 
-In the **Success Criteria** section, click **+ Add Criterion**. A new criterion row appears with:
+In the **Success Criteria** section, click **Add Criterion**. A new criterion row appears with:
 
-- A **text field** — describe the condition in plain language. The AI evaluates this description against its step output to determine whether to trigger the action.
-- Three **action buttons** — select what happens when the condition is met:
-  - **Fail Playbook** — the run stops and is marked as Failed
-  - **Stop Without Failure** — the run stops but is not marked as a failure
-  - **Require Review** — the run pauses and enters Pending Review status, waiting for a Builder to approve or deny
+- A **text field** — describe, in plain language, what a usable result looks like. The AI judges the step's output against it.
+- Three **action buttons** — select what happens:
+  - **Fail Playbook** — if the criterion isn't met, the run stops and is marked as Failed
+  - **Stop Without Failure** — if the criterion isn't met, the run stops but is not marked as a failure
+  - **Require Review** — the run always pauses and enters Pending Review status, showing a Builder the assessment so they can approve or deny
 
 <Frame>
   <img src="/images/graphium/playbooks/success-criteria.png" alt="Success Criteria row showing condition text field and Require Review action selected" />
@@ -67,15 +79,15 @@ In the **Success Criteria** section, click **+ Add Criterion**. A new criterion 
 
 Select **Require Review** as the action. The button highlights to show it is active.
 
-> 💡 **Tip:** Write your condition in plain language that the AI can evaluate against its output — for example, *"Any encounter is missing required billing fields"* or *"The data contains values outside the expected range."*
+> 💡 **Tip:** Write the criterion as what a good result looks like — for example, *"Every encounter has the required billing fields"* or *"At least one record was returned."*
 
-You can add multiple criteria to the same step by clicking **+ Add Criterion** again. Each criterion is evaluated independently. To remove a criterion, click the **✕** on the right side of the row.
+You can add multiple criteria to the same step by clicking **Add Criterion** again. Each criterion is evaluated independently. To remove a criterion, click the **✕** on the right side of the row.
 
 ---
 
 ### Step 3: Save and Publish
 
-Save and publish the playbook for the review checkpoint to take effect on live runs. The **Advanced Options** badge shows a count of configured criteria (for example, *1 criterion*) so you can see at a glance which steps have checkpoints configured.
+Save and publish the playbook for the review checkpoint to take effect on live runs.
 
 ---
 
@@ -144,8 +156,8 @@ If a step proposes several changes, they all appear on one card and are approved
 |----------|---------------|--------|
 | Table | Autonomous | AI can read and write without pausing |
 | Table | Requires Review | Run pauses before any write to this table |
-| Connection | Autonomous | AI can send data and take actions without pausing |
-| Connection | Requires Review | Run pauses before any action on this connection |
+| Connection | Autonomous | Every enabled action runs without pausing |
+| Connection | Requires Review | Run pauses before actions that change the connected system, and before any action not yet classified as a read. Each action shows **Pauses for review** or **Runs without review** |
 | Table column changes | Always requires approval | Run pauses on a column change card whenever a step proposes adding or editing columns — there is no autonomous mode |
 
 ---

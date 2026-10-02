@@ -1,0 +1,110 @@
+---
+title: "Using Step Outputs"
+description: ""
+icon: "play"
+---
+
+## Overview
+
+Each playbook step can declare the outputs it produces — for example, a list of records, a number, or an artifact — and each later step can choose which earlier steps it reads from. When a playbook uses **Step outputs**, a step sees only what the steps it depends on handed forward, instead of everything that happened earlier in the run. This keeps long, data-heavy playbooks focused and reliable, and makes it clear what each step passes on.
+
+## When to Use This
+
+- A playbook has several steps and later steps only need a specific result from earlier ones — for example, step 1 pulls tickets, step 2 summarizes them, and step 3 posts the summary
+- An early step retrieves a large amount of data that later steps shouldn't have to carry
+- You want a step to fail clearly when it doesn't produce something the next step needs
+- You want to see, in each run, exactly what every step handed forward
+
+## Prerequisites
+
+- You must be a vault **Admin** or **Builder** to edit a playbook.
+- Open the playbook in the editor and click **Edit** — this creates a new draft version from the published one.
+
+## Step-by-Step Instructions
+
+### Step 1: Choose how steps share context
+
+In the left panel of the playbook editor, find **Step context** under the agent. Choose one:
+
+- **Shared conversation** — every step sees the whole run so far, including what earlier steps said and did.
+- **Step outputs** — *"Each step sees only what the steps it depends on declared."* Steps pass work forward through the outputs you set up below.
+
+Playbooks that Graphium AI generates for you use **Step outputs** and arrive with outputs and dependencies already filled in. Review them in Step 2 and Step 3 before you publish.
+
+> **Note:** Switching back to **Shared conversation** keeps your output declarations — they're just not used until you switch to **Step outputs** again.
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-context-setting.png" alt="Step context setting in the playbook editor's left panel, with Shared conversation and Step outputs options" />
+</Frame>
+
+### Step 2: Declare what a step produces
+
+1. Click a step card in the flow canvas to open its **Step Details**.
+2. Expand **Advanced Options**. The **Outputs and dependencies** section appears.
+3. Click **+ Add output** and fill in:
+   - **Output name** — lowercase letters, digits, and underscores, starting with a letter (for example, `open_tickets` or `key_points_summary`).
+   - **Output type** — **Records**, **Artifact**, **Text**, **Number**, **Yes or no**, or **Structured data**.
+   - **Output description** — a short description of what the output holds. The AI uses it to fill the output correctly.
+   - **Step must produce this** — check this if the playbook shouldn't continue without it.
+4. Optionally, add a **Note for whoever reads this playbook** to explain what the step hands forward.
+
+Add as many outputs as the step needs. To remove one, click the **✕** next to its name.
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-outputs.png" alt="Outputs and dependencies section in Step Details, showing an output's name, type, description, and the Step must produce this checkbox" />
+</Frame>
+
+> 💡 **Tip:** Mention the output name in the step's instructions — for example, *"Return the artifact ID in the report_artifact output."* — so the AI knows exactly where to put its result.
+
+### Step 3: Choose what a step reads
+
+Under **What this step reads**, choose one:
+
+- **The step before this one** — the step reads the outputs of whichever step comes right before it. If you move the step, what it reads changes with it.
+- **Specific steps** — pick the earlier steps this step reads from. Naming a step pins it to that step, even if you reorder the playbook.
+
+The outputs available from those steps are listed below, with a summary such as *"Reads the outputs of step 1."*
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-reads.png" alt="What this step reads setting, with The step before this one and Specific steps options and the outputs it reads" />
+</Frame>
+
+### Step 4: Save, test, and publish
+
+Click **Save**, run a **Test** to check that each step produces what the next one needs, then click **Publish**. See [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook).
+
+### Step 5: Check the outputs in a run
+
+Open a run from the **Runs** list. In the run detail, each step has an **Outputs** section — click it to expand. It lists each output's name, type, and value, and shows which steps the step read from — for example, **Reads step 1** or **Reads no earlier step**.
+
+<Frame>
+  <img src="/images/graphium/playbooks/run-step-outputs.png" alt="Run detail showing a step's expanded Outputs section with an output name, type, and value, and the Reads no earlier step label" />
+</Frame>
+
+## What to Expect
+
+- With **Step outputs**, each step works only from its own instructions and the outputs of the steps it reads. Information that wasn't declared as an output isn't passed forward.
+- A step with no declared outputs hands nothing specific forward. If a later step depends on it, add outputs first.
+- Playbook Access, success criteria, and review checkpoints work the same way in both modes.
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| A later step doesn't seem to know what an earlier step found | The playbook uses **Step outputs**, and the earlier step didn't declare that information as an output, or the later step doesn't read from it | Add an output to the earlier step, and check **What this step reads** on the later step |
+| An output name won't save | The name has capital letters, spaces, or starts with a number | Use lowercase letters, digits, and underscores, starting with a letter |
+| A step reads the wrong step after reordering | It's set to **The step before this one**, which follows the order | Choose **Specific steps** to pin it to the step you want |
+| The Outputs and dependencies section isn't visible | **Advanced Options** is collapsed | Open the step and expand **Advanced Options** |
+| Output fields are greyed out | The playbook is open in view mode | Click **Edit** to create a draft you can change |
+| An output is empty in the run detail | The AI didn't produce it | Make the output's description and the step's instructions more specific, or check **Step must produce this** |
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
+- [Playbooks](/graphium/core-concepts/playbooks)
+
+---
+
+*Questions? [Contact Graphium AI Support or Sales](/graphium/reference/how-to-contact-support-or-sales).*

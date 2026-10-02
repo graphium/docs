@@ -111,6 +111,7 @@
             "group": "Playbooks",
             "pages": [
               "graphium/playbooks/creating-and-publishing-a-playbook",
+              "graphium/playbooks/using-step-outputs",
               "graphium/playbooks/managing-your-playbooks",
               "graphium/playbooks/triggering-playbooks-from-connections",
               "graphium/playbooks/running-and-testing-a-playbook",
