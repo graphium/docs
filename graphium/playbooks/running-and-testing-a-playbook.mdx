@@ -105,7 +105,7 @@ Click any entry in the Runs list to open its detail as a full page. The detail p
 - A header with the run's trigger type, status, elapsed time, and the AI model it ran on (for example, *Ran on Claude Opus 4.6*) in the left sidebar, along with a **Test Mode** banner if applicable.
 - A **numbered step list** in the left sidebar — each step shows a colored status dot: green (completed), blue (currently running), or gray (pending).
 - **Per-step detail** in the main panel — each step shows its title, status badge, a **Context** usage bar (how much of the AI's context window this step has used, for example *15.4K of 200K (8%)*), the step's instructions, and the AI's narration of what it did.
-- An **Outputs** section under each step — click to expand it and see what the step handed forward (each output's name, type, and value) and which earlier steps it read, for example **Reads step 1**. See [Using Step Outputs](/graphium/playbooks/using-step-outputs).
+- An **Outputs** section under each step — click to expand it and see what the step handed forward (each output's name, type, and value) and which earlier steps it read, for example **Reads step 1**. See [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps).
 - While a step is actively processing, an animated **"⋯"** (three dots) indicator appears beneath it before its narration streams in. Steps that haven't started yet show a **Pending** badge and *"No messages yet for this step."*
 
 If a step **fails**, the run stops at that step and all subsequent steps are marked as **Skipped**. The error message is shown in the failed step's narration.

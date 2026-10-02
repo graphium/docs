@@ -1,0 +1,88 @@
+---
+title: "Passing Data Between Playbook Steps"
+description: ""
+icon: "play"
+---
+
+## Overview
+
+When a playbook has more than one step, later steps usually need something from earlier ones. For example, step 1 finds this week's open tickets, and step 2 writes a summary of them.
+
+You can tell each step what to **hand forward** (its *outputs*) and which earlier step to **pick up from**. That way, each step gets exactly what it needs and nothing extra.
+
+> 💡 **Tip:** If Graphium AI wrote your playbook for you, this is usually already set up. You only need to check it.
+
+## Before You Start
+
+- You must be a vault **Admin** or **Builder**.
+- Open the playbook and click **Edit**.
+
+## Step-by-Step Instructions
+
+### Step 1: Turn on step outputs
+
+In the left panel of the playbook editor, find **Step context** and select **Step outputs**.
+
+- **Step outputs** — each step only sees what earlier steps hand forward to it.
+- **Shared conversation** — every step sees everything that happened before it.
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-context-setting.png" alt="Step context setting in the playbook editor's left panel, with Shared conversation and Step outputs options" />
+</Frame>
+
+### Step 2: Say what a step hands forward
+
+1. Click the step that produces something — for example, step 1, which finds the tickets.
+2. Open **Advanced Options** and click **+ Add output**.
+3. Give the output a short **name**, such as `open_tickets`. Use lowercase letters and underscores only.
+4. Pick a **type** that matches what the step produces — for example, **Records** for a list of tickets, or **Text** for a written summary.
+5. Add a short **description**, such as *"This week's open tickets."*
+6. Check **Step must produce this** if the playbook shouldn't continue without it.
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-outputs.png" alt="Outputs and dependencies section in Step Details, showing an output's name, type, description, and the Step must produce this checkbox" />
+</Frame>
+
+> 💡 **Tip:** Use the output's name in the step's instructions — for example, *"Save the tickets you find as open_tickets."*
+
+### Step 3: Say where the next step picks up from
+
+1. Click the step that needs the information — for example, step 2, which writes the summary.
+2. Under **What this step reads**, leave **The step before this one** selected. This works for most playbooks.
+
+If a step needs something from further back — for example, step 3 needs what step 1 found — choose **Specific steps** and pick that step.
+
+<Frame>
+  <img src="/images/graphium/playbooks/step-reads.png" alt="What this step reads setting, with The step before this one and Specific steps options and the outputs it reads" />
+</Frame>
+
+### Step 4: Test and publish
+
+Click **Save**, then **Test** to try the playbook. When it works the way you expect, click **Publish**. See [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook).
+
+### Step 5: See what each step handed forward
+
+Open any run from the **Runs** list. Under each step, click **Outputs** to see what that step handed forward.
+
+<Frame>
+  <img src="/images/graphium/playbooks/run-step-outputs.png" alt="Run detail showing a step's expanded Outputs section with an output name, type, and value, and the Reads no earlier step label" />
+</Frame>
+
+## Common Issues & Troubleshooting
+
+| Issue | Likely Cause | Solution |
+|-------|-------------|----------|
+| A step doesn't seem to know what an earlier step found | The earlier step doesn't hand that information forward | Add an output to the earlier step for it |
+| A step is reading from the wrong step | Steps were moved, and the step reads from **The step before this one** | Choose **Specific steps** and pick the step it should read from |
+| An output name won't save | The name has capital letters, spaces, or starts with a number | Use lowercase letters and underscores, starting with a letter — for example, `open_tickets` |
+| The settings are greyed out | The playbook isn't in edit mode | Click **Edit** |
+
+## Related Articles
+
+- [Creating and Publishing a Playbook](/graphium/playbooks/creating-and-publishing-a-playbook)
+- [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
+- [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
+
+---
+
+*Questions? [Contact Graphium AI Support or Sales](/graphium/reference/how-to-contact-support-or-sales).*

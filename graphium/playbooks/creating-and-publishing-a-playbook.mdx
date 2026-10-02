@@ -70,7 +70,7 @@ The playbook opens in the editor as **v1 · Draft**, ready to review and refine.
 
 The playbook editor is organized into three areas:
 
-- **Playbook Settings (left sidebar)** — The assistant running the playbook, **Step context** (how steps share information — see [Using Step Outputs](/graphium/playbooks/using-step-outputs)), a description, **Playbook Access** (shared tables, connections, and tools), and a **Runs** panel showing this playbook's run history.
+- **Playbook Settings (left sidebar)** — The assistant running the playbook, **Step context** (how steps share information — see [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps)), a description, **Playbook Access** (shared tables, connections, and tools), and a **Runs** panel showing this playbook's run history.
 - **Flow canvas (center)** — A vertical, top-to-bottom flow showing the trigger card followed by each numbered step card, in the order they run. Click any card to configure it.
 - **Configuration panel (right)** — Shows the settings for whatever you've selected in the canvas or sidebar: **Trigger Configuration** when the trigger card is selected, **Step Details** when a step card is selected, or **Playbook Access** when you click **Configure shared access**.
 
@@ -85,7 +85,7 @@ Click a step card in the canvas to open its **Step Details** in the right panel.
 - **Step Title** — A short label that identifies the step (for example, *Query Today's Case Data*).
 - **Instructions** — The detailed, plain-language instructions that tell the AI exactly what to do during this step.
 - **Success Criteria** — Conditions the step's result is judged against, each with an action: **Fail Playbook**, **Stop Without Failure**, or **Require Review**. With no criteria, the step always proceeds. AI-generated playbooks often include criteria on steps that fetch or check data. See [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints#adding-a-review-checkpoint-to-a-step).
-- **Advanced Options** — An expandable section containing **Outputs and dependencies**: what the step produces and which earlier steps it reads. See [Using Step Outputs](/graphium/playbooks/using-step-outputs).
+- **Advanced Options** — An expandable section containing **Outputs and dependencies**: what the step produces and which earlier steps it reads. See [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps).
 
 Review the generated instructions carefully and edit any details the AI may have assumed — field names, filter conditions, or specific values that should match your vault's actual data.
 
@@ -104,7 +104,7 @@ To manage steps in the canvas:
   <img src="/images/graphium/playbooks/manage-playbook-steps.png" alt="Step card showing the insert (+) control and the ⋮ menu with Move up, Move down, Duplicate step, and Delete Step" />
 </Frame>
 
-> **Note:** Steps run in sequence, top to bottom. The next step only starts after the previous one finishes. What a later step can see from earlier ones depends on the playbook's **Step context** setting — see [Using Step Outputs](/graphium/playbooks/using-step-outputs).
+> **Note:** Steps run in sequence, top to bottom. The next step only starts after the previous one finishes. What a later step can see from earlier ones depends on the playbook's **Step context** setting — see [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps).
 
 ---
 
@@ -205,7 +205,7 @@ Once published, you can edit, version, and disable your playbook. See [Managing 
 
 ## Related Articles
 
-- [Using Step Outputs](/graphium/playbooks/using-step-outputs)
+- [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps)
 - [Running and Testing a Playbook](/graphium/playbooks/running-and-testing-a-playbook)
 - [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints)
 - [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections)
