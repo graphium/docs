@@ -70,12 +70,12 @@ Each connection type exposes a specific set of **actions** -- the events it can 
 
 - **Epic**: *Send HL7 Message to EMR*, *Received HL7 Message from EMR*
 - **SFTP (Key-Based Auth / Password Auth)**: *Upload File*, *Download File*, *Delete File*, *List Directory*, *Watch Remote Directory*
-- **Graphium EMR**: *Create Case*, *Update Case*, *Case Created*, *Case Updated*, *Case Signed*
+- **Graphium EMR**: read-only actions such as *Get Encounters*, *Get Encounter Forms*, *Get Providers*, *Get Facilities*, *Get Users*, *Get Imports*, *Get Model Definitions*, and *Get Changes*
 - **Google Sheets**: *Add Row*, *Update Row*, *Delete Row*, *Create Sheet*, *Row Added*, *Row Updated*, *Sheet Modified*
 - **Graphium Surveys**: *Create Survey*, *Survey Completed*
 - **Neximatic**: *Data Received*, *Run Query*
 
-Some actions are operations you initiate (Send HL7 Message, Upload File, Add Row) and others are events you react to (Received HL7 Message, New File Uploaded, Case Signed). This distinction matters because it determines how the action gets used downstream.
+Some actions are operations you initiate (Send HL7 Message, Upload File, Add Row) and others are events you react to (Received HL7 Message, New File Uploaded). This distinction matters because it determines how the action gets used downstream.
 
 ---
 
