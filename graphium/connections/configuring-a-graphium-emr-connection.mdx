@@ -92,10 +92,24 @@ Configure how often Graphium AI should sync with the EMR:
 
 Once the connection shows a **"Healthy"** status, data begins syncing from your Graphium EMR on the schedule set in Sync Settings. All sync activity, triggers, and health checks appear in the connection's Activity Log, and the status badge updates automatically if the connection becomes unhealthy.
 
+## What Assistants and Playbooks Can Do
+
+Once the connection is set up, AI assistants and playbooks with access to it can read data from Graphium EMR. The connection includes 19 actions covering:
+
+- **Encounters** and **encounter forms** — including form data
+- **Model definitions** — the form models your organization uses
+- **Users** — the people in your Graphium EMR organization
+- **Imports** — data imports into Graphium EMR
+- Providers, facilities, reference lists, and recent changes
+
+Encounters, encounter forms, and model definitions can be **filtered** by field and **sorted**, so you can ask for exactly what you need in plain language — for example, *"Show me encounter forms with a date of service in the last month, newest first."*
+
+> **Note:** The **Users** and **Imports** actions require an API key that includes the `users:read` and `imports:read` scopes. If the assistant reports a permissions error for these, create a new API key with those scopes in the Graphium EMR Dashboard and update it in the connection's **Authentication** section.
+
 **Next steps:**
 
 - Map vault tables to your new EMR data source so records can flow into Graphium AI.
-- Set up workflows or autonomous actions that react to incoming records.
+- Set up playbooks that react to incoming records.
 - Ask your AI Assistant questions about the synced EMR data once tables are populated.
 
 ## Troubleshooting

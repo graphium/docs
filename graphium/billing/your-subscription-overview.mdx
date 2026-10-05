@@ -5,7 +5,7 @@ icon: "credit-card"
 
 ## Overview
 
-The **Billing** page gives workspace Owners and Admins a single place to review the workspace's current subscription state — the active plan, billing period, seat counts, Graphium Credits balance, and the resource limits that apply to the workspace. Only users with a workspace **Owner** or **Admin** role can access the Billing page.
+The **Billing** page gives you a single place to review the workspace's current subscription state — the active plan, billing period, seat counts, Graphium Credits balance, and the resource limits that apply to the workspace. Every workspace member can open the Billing page. Workspace **Members** see it read-only; only workspace **Owners** and **Admins** can change the plan, manage payment and invoices, or cancel the subscription.
 
 ---
 
@@ -13,7 +13,7 @@ The **Billing** page gives workspace Owners and Admins a single place to review 
 
 From anywhere in the application, click the **gear icon** (⚙️) in the top navigation bar to open workspace **Settings**. In the Settings sidebar, click **Billing**.
 
-If you do not see a Billing option in Settings, your workspace role does not include billing access. Contact your workspace Owner or Admin.
+> **Note:** If your workspace role is **Member**, the Billing page shows the plan, Graphium credits, and plan resource usage only. **Change plan**, **Update payment method**, the **Billing portal** card, **Recent Invoices**, and **Cancel subscription** are hidden. Contact a workspace Owner or Admin for billing changes.
 
 <Frame>
   <img src="/images/graphium/billing/billing-access.png" alt="Billing option in the workspace Settings sidebar" />
@@ -30,7 +30,7 @@ The top section of the Billing page displays your workspace's active subscriptio
 - **Next invoice** — the upcoming invoice amount and the date it will be charged
 - **Billing period** — the current billing cycle start and end dates
 
-Click **Change plan** to review available plans and upgrade or downgrade. If the workspace has not yet started a paid subscription, this section explains the current free or trial state and provides an entry point to review available plans.
+Owners and Admins can click **Change plan** to review available plans and upgrade or downgrade. See [Plan Comparison](/graphium/billing/subscription-and-payment-settings#plan-comparison) for what each plan includes. If the workspace has not yet started a paid subscription, this section explains the current free or trial state and provides an entry point to review available plans.
 
 <Frame>
   <img src="/images/graphium/billing/plan-subscription-status.png" alt="Current plan and subscription status on the Billing page" />
@@ -101,6 +101,8 @@ If the workspace approaches or reaches a limit, Graphium AI displays an in-app p
 
 ## Payment and Invoice Management
 
+This section is visible to workspace Owners and Admins only.
+
 The right side of the Billing page includes a **Billing portal** card with an **Open billing portal** button. The card also displays connection status fields — including the subscription service, connection status, last sync time, and entitlement source — which reflect how your workspace's subscription data is synced with the billing provider. Click **Open billing portal** to manage your payment method, update subscription settings, and download receipts.
 
 A **Recent Invoices** section also appears on the right side of the page, showing the most recent charges. Click **View all invoices** to open the full invoice history in the billing portal.
@@ -117,15 +119,19 @@ Both of these routes to the billing portal return you to Graphium AI once you ar
 
 | Action | Owner | Admin | Builder | Contributor |
 |--------|-------|-------|---------|-------------|
-| View the Billing page | ✅ | ✅ | ❌ | ❌ |
-| View plan, credits, and limits | ✅ | ✅ | ❌ | ❌ |
+| View the Billing page | ✅ | ✅ | ✅ | ✅ |
+| View plan, credits, and limits | ✅ | ✅ | ✅ | ✅ |
+| Change plan or cancel the subscription | ✅ | ✅ | ❌ | ❌ |
 | Access payment and invoice management | ✅ | ✅ | ❌ | ❌ |
+
+> **Note:** Builder and Contributor here refer to workspace **Members** with that seat type. A Member's access to billing is view-only.
 
 ---
 
 ## Related Articles
 
 - [Managing Billing Seats](/graphium/billing/managing-billing-seats)
+- [Plan Comparison](/graphium/billing/subscription-and-payment-settings#plan-comparison)
 - [Subscription and Payment Settings](/graphium/billing/subscription-and-payment-settings)
 - [Vault Users and Permissions](/graphium/vaults/vault-users-and-permissions)
 - [Managing Workspace Members](/graphium/getting-started/managing-workspace-members)

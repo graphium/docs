@@ -128,7 +128,7 @@ The **General** tab contains the core configuration for the assistant.
 - **Use workspace default** — the assistant uses whichever model your workspace has set as its default (the current default is shown in parentheses), and switches automatically if the workspace default changes.
 - **A specific model** — the assistant is pinned to that model and keeps it even when the workspace default changes.
 
-The selected model shows its provider, a short description of what it's best for, and a **PHI Safe** label where applicable. On the **Free** and **Starter** plans, the highest-capability models show an **UPGRADE** label and can't be selected.
+The selected model shows its provider, a short description of what it's best for, and a **PHI Safe** label where applicable. On the **Free** and **Starter** plans, the highest-capability models show an **UPGRADE** label and can't be selected. If your workspace moves to a plan that doesn't include an assistant's model, the assistant keeps working on the workspace default model, and its saved model setting isn't changed. See [Downgrading and AI Models](/graphium/billing/subscription-and-payment-settings#downgrading-and-ai-models).
 
 > **Note:** Some AI models do not support streaming responses. If you select a model without streaming support, the assistant will display the complete response only after it finishes generating — rather than showing it word by word as it arrives.
 

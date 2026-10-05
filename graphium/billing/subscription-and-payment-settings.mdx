@@ -21,9 +21,36 @@ When you initiate a plan change:
 
 > **Note:** Plan changes that succeed are reflected on the Billing page immediately. No manual refresh is required.
 
+For a side-by-side view of each plan's limits, see [Plan Comparison](#plan-comparison) below.
+
 <Frame>
   <img src="/images/graphium/billing/plan-subscription-status.png" alt="Current plan and subscription status on the Billing page with the Change plan option" />
 </Frame>
+
+### Downgrading and AI models
+
+The **Free** and **Starter** plans can use standard-tier AI models only; **Core** and **Pro** can use every model. If you move to a plan that doesn't include an assistant's selected model, the assistant keeps working: its chats, playbook steps, and sub-assistant calls run on the workspace default model instead. The assistant's saved model setting isn't changed, so it switches back automatically if you upgrade again. You can't save an assistant with a model above your plan's tier — those models show an **UPGRADE** label in the model picker.
+
+---
+
+## Plan Comparison
+
+| | Free | Starter | Core | Pro |
+|---|---|---|---|---|
+| Custom AI assistants per vault | 1 | Unlimited | Unlimited | Unlimited |
+| Connections | 2 | Unlimited | Unlimited | Unlimited |
+| Active playbooks | 1 | 5 | 25 | Unlimited |
+| Playbook triggers | Manual only | Manual and Scheduled | All triggers | All triggers |
+| Custom tables per vault | 3 | 5 | 15 | 50 |
+| Records per vault | 500 | 5,000 | 25,000 | 100,000 |
+| Included Graphium credits per month | 500 | 2,000 | 5,000 | 10,000 |
+| AI models | Standard models | Standard models | All models | All models |
+
+- Every vault also includes the **General Assistant**, which doesn't count toward the custom assistant limit.
+- **Connections** and **Active playbooks** are counted across the whole workspace; tables, records, and custom assistants are counted per vault.
+- **Playbook triggers** — **Free** allows manual runs only. **Starter** adds **Scheduled** triggers. **Core** and **Pro** also include vault event and connection triggers.
+- Included credits reset every month. Click **Buy credits** on the Billing page to add more at any time.
+- For pricing, click **Change plan** on the Billing page. For larger teams or custom limits, ask about the **Enterprise** plan — see [How to Contact Support or Sales](/graphium/reference/how-to-contact-support-or-sales).
 
 ---
 
@@ -72,6 +99,8 @@ Per-vault limits:
 - Records per vault
 - Custom AI assistants per vault
 
+On paid plans, custom AI assistants and connections are **Unlimited**, so you won't see a limit prompt for them. See [Plan Comparison](#plan-comparison) for each plan's numbers.
+
 > **Note:** Limit enforcement messages identify the specific resource that was blocked — you will not see a generic error. This makes it easier to understand what needs to change before the action can complete.
 
 <Frame>
@@ -101,13 +130,13 @@ The **Cancel subscription** section near the bottom of the Billing page lets an 
 
 | Action | Owner | Admin | Builder | Contributor |
 |--------|-------|-------|---------|-------------|
-| View current plan and subscription | ✅ | ✅ | ❌ | ❌ |
+| View current plan and subscription | ✅ | ✅ | ✅ | ✅ |
 | Upgrade or change the plan | ✅ | ✅ | ❌ | ❌ |
 | Cancel the subscription | ✅ | ✅ | ❌ | ❌ |
 | Open billing portal / manage payment method | ✅ | ✅ | ❌ | ❌ |
 | View invoice history | ✅ | ✅ | ❌ | ❌ |
 | See plan limit warnings | ✅ | ✅ | ✅ | ✅ |
-| Navigate to Billing from a limit prompt | ✅ | ✅ | ❌ | ❌ |
+| Navigate to Billing from a limit prompt | ✅ | ✅ | ✅ (view only) | ✅ (view only) |
 
 ---
 

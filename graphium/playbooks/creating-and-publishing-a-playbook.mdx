@@ -126,7 +126,9 @@ Use the **Run when** dropdown to search and select a trigger type, grouped by ca
   <img src="/images/graphium/playbooks/select-playbook-trigger.png" alt="Run when dropdown showing General, Vault Events, and connection-specific trigger options" />
 </Frame>
 
-Selecting a trigger type reveals its specific fields directly in the same panel — for example, choosing **Scheduled** reveals **Frequency**, **Time**, and **Time Zone** fields. For Vault Event and connection triggers, see [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
+Selecting a trigger type reveals its specific fields directly in the same panel — for example, choosing **Scheduled** reveals **Frequency** (such as Daily, Weekly, Monthly, or Quarterly), **Time**, and **Time Zone** fields. The trigger summary then names the days the playbook will run.
+
+> **Note:** On the **Free** plan, playbooks can only be run manually — **Scheduled**, vault event, and connection triggers aren't available. The **Starter** plan adds **Scheduled** triggers. See [Plan Comparison](/graphium/billing/subscription-and-payment-settings#plan-comparison). For Vault Event and connection triggers, see [Triggering Playbooks from Connections and Vault Events](/graphium/playbooks/triggering-playbooks-from-connections) for full setup details.
 
 You can also add an optional **Description** to the trigger to document when and why the playbook runs. Click **Clear all** to reset the trigger configuration.
 
@@ -147,6 +149,8 @@ In the left sidebar, click **Configure shared access** under **Playbook Access**
 The Playbook Access panel is organized into three sections:
 
 **Tables** — Toggle on any vault tables the playbook needs to read from or write to. Each table shows its permission level (**Read** or **Read/Write**) and its approval mode (**Autonomous** or **Requires Review**). Setting a table to **Requires Review** causes the run to pause before any write action is taken on that table.
+
+If a run of this playbook creates a table, that table is added to the list automatically, labeled **Built by playbook**, at **Read/Write** with column changes allowed. Later runs can read, write, and propose column changes on it (column changes still pause for approval). To remove the playbook's access, switch the table **Off** (click **Edit** first if the playbook is published) and click **Save** — this takes effect on the next run without publishing a new version.
 
 **Connections** — Toggle on any vault connections the playbook needs to use. Each connection has an approval mode, which starts as **Requires Review**. Under **Actions**, choose which of the connection's actions the playbook may use; each action shows whether it **Pauses for review** or **Runs without review**. See [Using Review Checkpoints](/graphium/playbooks/using-review-checkpoints#how-review-checkpoints-work).
 
