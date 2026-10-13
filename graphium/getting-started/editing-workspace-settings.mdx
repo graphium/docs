@@ -50,15 +50,13 @@ Click **Save Changes** after editing either field to apply the updates.
 
 ---
 
-### Default Assistant Model
+### Default assistant model
 
-This section sets the AI model that assistants use when they haven't been given a model of their own. The current default is shown with its provider and labels such as **PHI Safe** — for example, *Claude Haiku 4.5*.
+This section sets the AI model that assistants use when they haven't been given a model of their own. The current default is shown with its provider and labels such as **PHI Safe** — for example, *Claude Sonnet 5*.
 
-- Click **Change model** to pick a different default.
+- Click **Change model** to pick a different default. Choose **Use the Graphium default** to follow Graphium's recommended model, or pick a specific model.
 - Assistants set to **Use workspace default** pick up the change automatically, without being edited.
 - Assistants that have been given a specific model keep using it.
-
-In the **Change model** editor, you can also set **Thinking** — how much the default model reasons before it answers. **Model default** uses the model's own setting; the other options are the levels the selected model offers. Assistants set to **Use workspace default** for Thinking pick up this level. The option is hidden for models that don't offer thinking levels.
 
 For how an assistant's model is set, see [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant#using-advanced-setup).
 
@@ -95,7 +93,7 @@ The Danger Zone section contains the **Deactivate Workspace** action.
 - Immediately suspends access for all workspace members
 - The workspace is no longer accessible from the switcher or workspace list
 - All data (vaults, tables, records) is kept for **30 days**, then permanently deleted
-- Active connections and playbooks will be paused
+- Active integrations and playbooks will be paused
 
 **To deactivate the workspace:**
 

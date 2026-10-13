@@ -130,13 +130,6 @@ The **General** tab contains the core configuration for the assistant.
 
 The selected model shows its provider, a short description of what it's best for, and a **PHI Safe** label where applicable. On the **Free** and **Starter** plans, the highest-capability models show an **UPGRADE** label and can't be selected. If your workspace moves to a plan that doesn't include an assistant's model, the assistant keeps working on the workspace default model, and its saved model setting isn't changed. See [Downgrading and AI Models](/graphium/billing/subscription-and-payment-settings#downgrading-and-ai-models).
 
-**Thinking** — For models that support it, choose how much the model reasons before it answers. More thinking can give better answers to complex questions but takes longer. The options are:
-
-- **Use workspace default** — the assistant uses the thinking level set in the workspace's Default Assistant Model settings.
-- **A specific level** — the levels the selected model offers. Some models don't offer every level (for example, Claude Opus 5.5 can't be set to Off).
-
-The **Thinking** option is hidden when the selected model doesn't offer thinking levels.
-
 > **Note:** Some AI models do not support streaming responses. If you select a model without streaming support, the assistant will display the complete response only after it finishes generating — rather than showing it word by word as it arrives.
 
 **System Prompt** — Write the instructions that define how the assistant behaves. This is the most important field — it tells the AI what expertise it has, what its focus is, how it should respond, and any constraints it should follow.
