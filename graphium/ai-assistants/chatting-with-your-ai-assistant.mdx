@@ -97,9 +97,25 @@ Assistants maintain context within a session, so you can ask follow-up questions
 
 ---
 
+## While the Assistant Works
+
+While a reply is in progress, a status line under it shows what the assistant is doing:
+
+- **Thinking…** with a running timer, while the assistant works out its next step
+- A short description of the current task, such as **Searching the web**, **Reading results**, or **Querying your spreadsheet**
+- **Wrapping up with what I have…** when the reply is close to its time limit and the assistant is finishing with the results it has so far
+
+The status line disappears when the reply is complete.
+
+For models that reason before answering, a collapsed **Show thinking** section appears on the reply. Click it to see a summary of the assistant's reasoning as it works. The summary isn't saved — it's gone after you reload the page or reopen the chat.
+
+---
+
 ## Stopping a Response
 
 While the assistant is generating a response, the send button becomes a **stop** button (a filled square icon). Click it to immediately halt generation — the partial response stays in the chat, followed by a note: *"You stopped this response. Send another message to continue."*
+
+The stop button also appears when the chat shows **Generating response…** — for example, after you reload the page, switch to another chat and back, or lose your connection while a reply is still running.
 
 You can keep typing your next message while the assistant is replying. It won't send until the reply finishes — pressing **Enter** mid-reply does nothing, and your text stays in the box. When the reply is done, press **Enter** or click the send button.
 
@@ -155,6 +171,8 @@ Assistants respond based on the data enabled in Chat Context and draw only from 
 | Results don't match Table View | Assistant may be using cached data | Refresh the chat or ask "What is the most recent data you have access to?" |
 | Send button is greyed out | The input field is empty | Type a message before clicking Send |
 | Response stops partway through | You clicked the stop button, or generation was interrupted | Send another message to continue, or ask the assistant to pick up where it left off |
+| The reply says the request was too large to finish | The request needed more work than fits in one reply, so it ran out of time | Narrow the request and ask again — for example, one provider or one week at a time. Sending the same request again usually runs out of time again |
+| The reply covers only part of what you asked | The assistant reached its time limit and answered with the results it had so far | Ask a narrower follow-up question to get the rest |
 | "You're offline" banner appears | Your network connection dropped while sending a message | Reconnect to the internet, then click Retry; if the message actually sent, the reply will appear on its own |
 
 ---

@@ -6,7 +6,7 @@ icon: "link"
 
 ## Overview
 
-The Google Sheets connection type links a vault to a Google Sheets spreadsheet, enabling automated reading, writing, and monitoring of spreadsheet data. It is useful for teams that manage data in Google Sheets and want to sync that data into Graphium AI vaults without manual imports. Use this when your team uses Google Sheets to collect or track data and you want Graphium AI to automatically pull rows into a table, push updated records back to the sheet, or trigger workflows when the sheet changes. To configure this connection, you must have an Admin or Builder vault role with access to the vault's Connections section, a Google account with access to the target spreadsheet, and permission to authorize Graphium AI to access your Google Sheets.
+The Google Sheets connection type links a vault to a Google Sheets spreadsheet, enabling automated reading, writing, and monitoring of spreadsheet data. It is useful for teams that manage data in Google Sheets and want to sync that data into Graphium AI vaults without manual imports. Use this when your team uses Google Sheets to collect or track data and you want Graphium AI to automatically pull rows into a table, push updated records back to the sheet, or trigger playbooks when the sheet changes. To configure this connection, you must have an Admin or Builder vault role with access to the vault's Connections section, a Google account with access to the target spreadsheet, and permission to authorize Graphium AI to access your Google Sheets.
 
 ## Step-by-Step Instructions
 
@@ -68,7 +68,7 @@ Once connected, the status badge shows **"healthy"** and data begins syncing bas
 **Next steps:**
 
 - Map vault tables to your new Google Sheets data source so rows can flow into Graphium AI.
-- Set up workflows or autonomous actions that react to row changes in the sheet.
+- Set up playbooks that react to row changes in the sheet.
 - Ask your AI Assistant questions about the synced sheet data once tables are populated.
 
 ## Troubleshooting
@@ -83,8 +83,9 @@ Once connected, the status badge shows **"healthy"** and data begins syncing bas
 | **Google Sheets** option is missing from the **Spreadsheet** category | Connection type may not be enabled for your workspace | click **Submit a ticket** in the Help panel (the **?** icon in the top navigation bar). |
 | **+ Add Connection** button is not available in the vault sidebar | Insufficient vault role | Ask a vault Admin to grant Admin or Builder access |
 | Auto-sync toggle cannot be enabled | Connection is in an unhealthy state | Resolve any authentication errors with Test first, then enable Auto-sync |
+| You need to switch the connection to a different Google account | The connection is still signed in to the original account | Open the connection detail, click **Disconnect**, then **Connect** and sign in with the new account. See [Disconnecting an Account](/graphium/connections/working-with-a-connection#disconnecting-an-account) |
 | Auth expires unexpectedly | Google token revoked or the password changed | Re-authenticate via the Authentication section in the connection detail view |
-| Row changes in the sheet are not triggering workflows | Auto-sync is disabled | Open the connection detail and enable the Auto-sync toggle |
+| Row changes in the sheet are not triggering playbooks | Auto-sync is disabled | Open the connection detail and enable the Auto-sync toggle |
 | Sync completes but no records appear in vault tables | Tables are not yet mapped to the Google Sheets data source | Open the table settings and configure the Sheets source mapping |
 | Duplicate rows appear in the vault on each sync | No unique key configured for the mapped table | Set a unique key column in the table mapping so syncs deduplicate on the source row identifier |
 

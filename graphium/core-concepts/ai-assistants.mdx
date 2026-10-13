@@ -32,7 +32,7 @@ Start with the **icon and color picker** -- choose a visual identity that makes 
 
 Add a **description** that explains the assistant's purpose in plain language. This description appears on the assistant card in the listing and helps your team understand what each assistant is for without opening it.
 
-Select the **AI model** that powers the assistant. The current default is Claude Sonnet 4, which is PHI Safe and optimized for everyday reasoning at production speed. The model selection determines the assistant's underlying intelligence, reasoning ability, and context handling.
+Select the **AI model** that powers the assistant. The current default is Claude Sonnet 5, which is PHI Safe and optimized for everyday reasoning at production speed. The model selection determines the assistant's underlying intelligence, reasoning ability, and context handling.
 
 Then there's the **system prompt** -- and this is the most important field on the page. The system prompt is a block of text that tells the AI who it is, what it knows, how it should behave, and what its domain expertise covers. It's the difference between a generic AI that gives you textbook answers and a practice-specific intelligence that understands your operation.
 
@@ -106,7 +106,7 @@ Ask the Quality Analyst "How are our providers performing on MACRA measures this
 
 A quality director at a multi-facility healthcare practice wants better visibility into provider performance and regulatory compliance. She creates a **Quality Analyst** assistant in the Cases vault.
 
-On the **General** tab, she gives it a blue shield icon, writes a description ("Analyzes provider performance against quality benchmarks and MACRA compliance measures"), selects Claude Sonnet 4 as the model, and writes a system prompt that defines the assistant as a quality and compliance specialist focused on clinical practice metrics. The prompt instructs the assistant to always compare performance against CMS benchmarks, flag providers below the 75th percentile, and present findings with both data and actionable recommendations.
+On the **General** tab, she gives it a blue shield icon, writes a description ("Analyzes provider performance against quality benchmarks and MACRA compliance measures"), selects Claude Sonnet 5 as the model, and writes a system prompt that defines the assistant as a quality and compliance specialist focused on clinical practice metrics. The prompt instructs the assistant to always compare performance against CMS benchmarks, flag providers below the 75th percentile, and present findings with both data and actionable recommendations.
 
 On the **Tools** tab, she gives it Read access to the Cases table and the MACRA Measures table. She leaves the Expenses and Invoices tables set to Off -- this assistant doesn't need financial data. She enables the Google Sheets "Add Row" action so the assistant can log compliance findings to the quality tracking spreadsheet her team already uses.
 

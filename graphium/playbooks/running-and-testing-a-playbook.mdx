@@ -102,7 +102,7 @@ The **Runs** list in the playbook editor's left sidebar shows all past and in-pr
 Click any entry in the Runs list to open its detail as a full page. The detail page shows:
 
 - **← Back to Playbook** — Click to return to the playbook editor.
-- A header with the run's trigger type, status, elapsed time, and the AI model it ran on (for example, *Ran on Claude Opus 4.6*) in the left sidebar, along with a **Test Mode** banner if applicable.
+- A header with the run's trigger type, status, elapsed time, and the AI model it ran on (for example, *Ran on Claude Opus 5.5*) in the left sidebar, along with a **Test Mode** banner if applicable.
 - A **numbered step list** in the left sidebar — each step shows a colored status dot: green (completed), blue (currently running), or gray (pending).
 - **Per-step detail** in the main panel — each step shows its title, status badge, a **Context** usage bar (how much of the AI's context window this step has used, for example *15.4K of 200K (8%)*), the step's instructions, and the AI's narration of what it did.
 - An **Outputs** section under each step — click to expand it and see what the step handed forward (each output's name, type, and value) and which earlier steps it read, for example **Reads step 1**. See [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps).
@@ -176,6 +176,7 @@ Save and publish the playbook to activate the schedule. The first scheduled run 
 
 | Issue | Likely Cause | What to Do |
 |-------|--------------|------------|
+| Runs fail right away after a model was retired | The assistant the playbook uses is published on a retired AI model (Claude Sonnet 4 and Claude Opus 4.6 have been retired). Playbooks use whichever model their assistant uses | Open that assistant's editor, choose an active model or **Use workspace default**, then **Save** and **Publish**. See [Managing Your AI Assistants](/graphium/ai-assistants/managing-your-ai-assistants) |
 | Test and Run buttons are greyed out | The playbook may not be published | Publish the playbook first — the Test and Run buttons are only active for published playbooks |
 | Run does not appear in the Runs list | A connection or network issue may have interrupted the request | Refresh the page and check again |
 | A step shows as Skipped | A previous step failed and the run stopped | Open the failed step's detail to read the AI narration, then correct the step's instructions or resource access |

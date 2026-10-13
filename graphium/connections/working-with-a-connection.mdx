@@ -14,7 +14,7 @@ In the vault sidebar, click **Connections**. In card view, click anywhere on the
 
 **Left panel — Configuration:**
 - **Connection Name** — the display name for this connection
-- **Connection Type Key** — the internal identifier used in workflows
+- **Connection Type Key** — the internal identifier used in playbooks
 - **Description** — an optional description for this connection
 - **Authentication** — credentials and auth settings for the external system
 - **Sync Settings** — auto-sync toggle and sync interval, where the connection type supports configurable syncing. Some connection types don't — for example, HubSpot's detail view shows "Sync not available for this connection type" here instead.
@@ -56,6 +56,26 @@ To re-enable, follow the same steps — clicking the switch, or using the detail
   <img src="/images/graphium/connections/connection-enabled.png" alt="Connection enabled" />
 </Frame>
 
+> **Note:** Disabling keeps the connected account signed in. When you re-enable the connection, it picks up again with the same account and no new sign-in. To remove the account itself, use **Disconnect** (see below).
+
+---
+
+## Disconnecting an Account
+
+For connections that you sign in to through a third-party service (such as Google Sheets), **Disconnect** removes the connected account from Graphium AI. Use it when the person who authorized the connection leaves your team, or when you want Graphium AI to stop holding that sign-in.
+
+1. Open the connection detail view.
+2. In the **Authentication** section, click **Disconnect** (next to **Reconnect**).
+3. Read the confirmation message and confirm.
+
+After you disconnect:
+
+- The connection is disabled, and any playbook triggers that use it stop running.
+- The connection can't run again until someone clicks **Connect** and signs in again.
+- The connection's name and settings are kept.
+
+> **Note:** Disconnecting removes Graphium AI's copy of the sign-in. It doesn't remove Graphium AI from the list of third-party apps in the user's own account (for example, their Google account). To revoke access there too, the user removes it from their account's security settings.
+
 ---
 
 ## Editing Connection Settings
@@ -90,14 +110,14 @@ After clicking Test, a **log** event appears in the Activity Log confirming whet
 
 ## Using the Activity Log
 
-The Activity Log in the right panel gives you a real-time record of everything that has happened with the connection — data syncs, triggered workflows, health checks, and errors.
+The Activity Log in the right panel gives you a real-time record of everything that has happened with the connection — data syncs, triggered playbooks, health checks, and errors.
 
 **Event type badges:**
 
 | Type | Color | Description |
 |------|-------|-------------|
-| **trigger** | Blue | A workflow trigger was fired |
-| **action** | Green | A workflow action was executed |
+| **trigger** | Blue | A playbook trigger was fired |
+| **action** | Green | A connection action was run |
 | **sync** | Teal | A data sync completed |
 | **log** | Grey | A health check or informational event |
 | **Created** | Green | The connection was created, with the settings that were set |
@@ -122,6 +142,7 @@ The Activity Log in the right panel gives you a real-time record of everything t
 | View connection details | ✅ | ✅ | ❌ | ❌ |
 | Add a new connection | ✅ | ✅ | ❌ | ❌ |
 | Enable or disable a connection | ✅ | ✅ | ❌ | ❌ |
+| Disconnect a connected account | ✅ | ✅ | ❌ | ❌ |
 | Edit connection configuration | ✅ | ✅ | ❌ | ❌ |
 | Test a connection | ✅ | ✅ | ❌ | ❌ |
 | View the activity log | ✅ | ✅ | ❌ | ❌ |
@@ -140,6 +161,7 @@ Contributor and Viewer roles do not have access to the Connections section and c
 | Activity log is empty | No sync activity has occurred yet | Trigger a test sync using the **Test** button |
 | Error entries appearing frequently | Authentication failure or external system issue | Review the error description and check the Authentication section |
 | Enabled switch can't be clicked | Insufficient vault role | Only Admin and Builder users can enable or disable connections |
+| Connection still uses the old account after re-enabling | Disabling doesn't remove the connected account | Click **Disconnect** in the Authentication section, then **Connect** and sign in with the new account |
 | Connection re-enables but status does not show as healthy | Authentication may have expired | Open the connection detail view and review the Authentication settings |
 
 ---
