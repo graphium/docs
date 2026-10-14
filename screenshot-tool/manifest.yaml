@@ -169,7 +169,7 @@
 - id: allow-column-changes-locked
   image: images/graphium/assistant/allow-column-changes-locked.png
   area: assistant
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A vault with assistant column changes turned off
   capture: element
@@ -185,11 +185,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: artifact-from-vault
   image: images/graphium/assistant/artifact-from-vault.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -205,11 +206,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: artifact-playbook-step
   image: images/graphium/assistant/artifact-playbook-step.png
   area: assistant
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A completed run whose step made an artifact
   capture: viewport
@@ -225,11 +227,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: artifact-side-panel
   image: images/graphium/assistant/artifact-side-panel.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -244,11 +247,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: artifact-versions
   image: images/graphium/assistant/artifact-versions.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -265,7 +269,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: ask-assistant-question
   image: images/graphium/assistant/ask-assistant-question.png
   area: assistant
@@ -319,7 +324,7 @@
 - id: assistant-authorize-connection
   image: images/graphium/assistant/assistant-authorize-connection.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -335,11 +340,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: assistant-connection-access
   image: images/graphium/assistant/assistant-connection-access.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: element
@@ -356,7 +362,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: assistant-connection-successful
   image: images/graphium/assistant/assistant-connection-successful.png
   area: assistant
@@ -380,7 +387,7 @@
 - id: assistant-enable-connection
   image: images/graphium/assistant/assistant-enable-connection.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -397,7 +404,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: assistant-home-page
   image: images/graphium/assistant/assistant-home-page.png
   area: assistant
@@ -425,7 +433,7 @@
 - id: assistant-reply-artifact-card
   image: images/graphium/assistant/assistant-reply-artifact-card.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -441,7 +449,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: browse-assistants
   image: images/graphium/assistant/browse-assistants.png
   area: assistant
@@ -725,7 +734,7 @@
 - id: connection-limit-reached
   image: images/graphium/assistant/connection-limit-reached.png
   area: assistant
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A workspace at its connection limit
   capture: element
@@ -741,11 +750,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: create-record-response
   image: images/graphium/assistant/create-record-response.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -760,11 +770,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: create-record-using-assistant
   image: images/graphium/assistant/create-record-using-assistant.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -779,7 +790,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: duplicate-archive-assistant
   image: images/graphium/assistant/duplicate-archive-assistant.png
   area: assistant
@@ -817,7 +829,7 @@
   image: images/graphium/assistant/edit-assistant.png
   area: assistant
   status: capture
-  method: interactive
+  method: auto
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
   current_size: 232x64
@@ -829,14 +841,20 @@
   context: Make your changes across either tab — for what each setting does, see [Using Advanced Setup](/graphium/ai-assistants/creating-an-ai-assistant#using-advanced-setup)
     — then click **Save** to save them as a new draft version. Click **Publish** to make the updated version live for all
     vault members. Unt
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants/{{qaAssistantId}}
+  steps:
+  - wait_for:
+      role: button
+      name: Edit
+      exact: true
+  selector: '[class*="_detailContainer_"] > [class*="_header_"]'
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-36-32).'
 - id: general-assistant-response
   image: images/graphium/assistant/general-assistant-response.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -852,11 +870,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: guided-assistant-greeting
   image: images/graphium/assistant/guided-assistant-greeting.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -872,11 +891,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: inactive-assistant-chat
   image: images/graphium/assistant/inactive-assistant-chat.png
   area: assistant
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: An archived assistant with an old chat
   capture: viewport
@@ -893,11 +913,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: interact-with-results
   image: images/graphium/assistant/interact-with-results.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -913,7 +934,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: name-assistant
   image: images/graphium/assistant/name-assistant.png
   area: assistant
@@ -994,14 +1016,32 @@
   context: '> **Note:** For an existing assistant with a published version, users continue seeing the previously published
     version until you click **Publish** — saved drafts do not affect the live assistant. To publish a specific earlier version
     rather than the latest draft, open the version history from the **'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants/{{qaAssistantId}}
+  steps: &id002
+  - click:
+      role: button
+      name: Edit
+      exact: true
+    optional: true
+    note: Creates a new draft version of QA Custom Assistant (Shauna approved 2026-10-14). Never clicks Save or Publish.
+  - wait_for:
+      role: button
+      name: Publish
+      exact: true
+  selector:
+  - role: button
+    name: Save
+    exact: true
+  - role: button
+    name: Publish
+    exact: true
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-36-32).'
 - id: read-only-response
   image: images/graphium/assistant/read-only-response.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -1016,7 +1056,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: recent-chats
   image: images/graphium/assistant/recent-chats.png
   area: assistant
@@ -1042,7 +1083,7 @@
 - id: save-draft-assistant
   image: images/graphium/assistant/save-draft-assistant.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -1055,10 +1096,16 @@
   context: 'Click **Save** in the top-right header. This saves the assistant as a new draft version — the header updates to
     show the version number and a **Ready to publish** badge once the required fields are filled in. Draft versions are not
     visible to vault members in the chat interface — users will not see '
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants/{{qaAssistantId}}
+  steps: *id002
+  selector:
+  - css: '[class*="_versionBadge_"]'
+  - role: button
+    name: Save
+    exact: true
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: sidebar-assistants-section
   image: images/graphium/assistant/sidebar-assistants-section.png
   area: assistant
@@ -1174,10 +1221,10 @@
 - id: table-changes-proposal
   image: images/graphium/assistant/table-changes-proposal.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
-  capture: viewport
+  capture: element
   current_size: 1315x331
   alt: Assistant asking for the new column's name, type, and other details after a request to add a column to the Providers
     table
@@ -1188,17 +1235,51 @@
   context: If anything is wrong, say what to change (for example, *"Make Dose a number instead"*) and the assistant sets out
     a revised version. > 💡 **Tip:** One confirmation covers everything the assistant listed. If you then ask for something
     that wasn't on the list, it asks again before making that change.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - &id003
+    click:
+      testid: ai-assistant-selector-trigger
+  - &id004
+    wait_for:
+      testid: ai-assistant-selector-popover
+  - &id005
+    click:
+      text: QA Custom Assistant
+      within:
+        testid: ai-assistant-selector-popover
+  - &id006
+    fill:
+      target: &id009
+        css: '[data-testid="ai-assistant-input-container"] textarea'
+      value: Can you add a column to the Providers table?
+  - &id007
+    press: Enter
+    note: Sends the chat message (uses credits)
+  - &id008
+    wait_for:
+      text: Context
+      exact: true
+    timeout: 180000
+    note: The reply is finished when its Context bar appears
+  selector:
+  - text: Can you add a column to the Providers table?
+  - text: Context
+    exact: true
+  reviewed: true
+  padding:
+    top: 16
+    left: 32
+    right: 32
+    bottom: 16
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: table-changes-proposal2
   image: images/graphium/assistant/table-changes-proposal2.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
-  capture: viewport
+  capture: element
   current_size: 1321x417
   alt: Assistant listing the proposed Date of Birth column with its type and description, and asking whether to go ahead
   used_in:
@@ -1208,14 +1289,39 @@
   context: If anything is wrong, say what to change (for example, *"Make Dose a number instead"*) and the assistant sets out
     a revised version. > 💡 **Tip:** One confirmation covers everything the assistant listed. If you then ask for something
     that wasn't on the list, it asks again before making that change.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - *id008
+  - fill:
+      target: *id009
+      value: Column name - Date of Birth. This column will allow the provider's date of birth to be recorded.
+  - press: Enter
+  - wait_for:
+      text: Context
+      exact: true
+      nth: 1
+    timeout: 180000
+  selector:
+  - text: Column name - Date of Birth. This column will allow the provider's date of birth to be recorded.
+  - text: Context
+    exact: true
+    nth: 1
+  reviewed: true
+  padding:
+    top: 16
+    left: 32
+    right: 32
+    bottom: 16
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: table-changes-result
   image: images/graphium/assistant/table-changes-result.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -1230,11 +1336,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: table-changes-spreadsheet
   image: images/graphium/assistant/table-changes-spreadsheet.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -1251,11 +1358,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: test-assistant-chat
   image: images/graphium/assistant/test-assistant-chat.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: element
@@ -1271,11 +1379,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: update-record-response
   image: images/graphium/assistant/update-record-response.png
   area: assistant
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -1291,11 +1400,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: update-record-using-assistant
   image: images/graphium/assistant/update-record-using-assistant.png
   area: assistant
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -1311,7 +1421,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna chose to keep the current image (Assistant questions round).'
 - id: workspace-assistants-list
   image: images/graphium/assistant/workspace-assistants-list.png
   area: assistant
