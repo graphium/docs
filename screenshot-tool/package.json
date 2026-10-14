@@ -1,0 +1,16 @@
+{
+  "name": "graphium-help-screenshots",
+  "private": true,
+  "type": "module",
+  "description": "Recapture Graphium AI help-site screenshots from the dev app",
+  "scripts": {
+    "setup": "npm install && npx playwright install chromium",
+    "capture": "node capture.mjs",
+    "apply": "node apply.mjs",
+    "preview": "node preview.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.59.1",
+    "yaml": "2.8.4"
+  }
+}

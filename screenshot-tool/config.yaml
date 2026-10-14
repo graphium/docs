@@ -1,0 +1,27 @@
+# Settings for the capture script.
+
+base_url: https://app.dev.graphium.ai
+
+# The script only runs when the header shows this workspace.
+workspace_name: Demo Workspace
+
+# The script stops immediately if the header shows any of these.
+forbidden_workspaces:
+  - Shauna's Workspace
+  - Graphium Corp
+forbidden_vaults:
+  - Engineering Operations Hub
+
+# Browser window used for every capture.
+viewport: { width: 1440, height: 900 }
+device_scale_factor: 1   # 2 = sharper, larger files
+
+# Wait after each page load and each step (milliseconds).
+settle_ms: 1200
+
+# Values you can use in manifest steps as {{name}}.
+vars:
+  vaultId: 019cd827-3788-7b45-b476-8c83741257d9    # Patient Records (Demo Workspace)
+  vaultName: Patient Records
+  tableId: 01a0df93-4750-78c3-a3fb-3d1f7e077213    # Providers 40
+  searchTerm: ''   # TODO (Shauna): search term for the vault search screenshots; "Inv" has no results in Patient Records
