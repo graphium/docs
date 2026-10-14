@@ -4115,14 +4115,35 @@
     section: Boolean
     line: 124
   context: 4. Click **Add**. No additional configuration is required.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Paid
+  - fill:
+      target: '#propertyDescription'
+      value: Has the invoice been paid in full - yes/no
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Boolean
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-child-property
   image: images/graphium/tables/add-child-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -4137,7 +4158,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: add-date-property
   image: images/graphium/tables/add-date-property.png
   area: tables
@@ -4153,14 +4175,35 @@
     line: 68
   context: 4. Click **Add**. No additional configuration is required. Date properties appear with a **calendar** icon in the
     schema list.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Due Date
+  - fill:
+      target: '#propertyDescription'
+      value: Date invoice must be paid by
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Date
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-default-property
   image: images/graphium/tables/add-default-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4175,7 +4218,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: add-image-property
   image: images/graphium/tables/add-image-property.png
   area: tables
@@ -4190,10 +4234,31 @@
     section: Image
     line: 144
   context: 4. Click **Add**. No additional configuration is required.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Company Logo
+  - fill:
+      target: '#propertyDescription'
+      value: Image of the company logo for reference
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Image
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-list-property
   image: images/graphium/tables/add-list-property.png
   area: tables
@@ -4209,10 +4274,45 @@
     line: 185
   context: 6. Click **Add**. > **Note:** List options can be added or removed after the property is created by clicking **Edit**
     on the property row.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Payment Type
+  - fill:
+      target: '#propertyDescription'
+      value: List of payment types used to pay off invoice
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Select from List
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - fill:
+      target: '#newListOption'
+      value: Check
+  - press: Enter
+    allow_enter: true
+    note: Adds a list option inside the form; nothing is saved
+  - fill:
+      target: '#newListOption'
+      value: Credit Card
+  - press: Enter
+    allow_enter: true
+  - fill:
+      target: '#newListOption'
+      value: Bank Account
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-number-property
   image: images/graphium/tables/add-number-property.png
   area: tables
@@ -4228,10 +4328,31 @@
     line: 48
   context: 4. Click **Add**. No additional configuration is required. Number properties appear with a **#** icon in the schema
     list.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Amount
+  - fill:
+      target: '#propertyDescription'
+      value: Invoice amount due
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Number
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-property-modal
   image: images/graphium/tables/add-property-modal.png
   area: tables
@@ -4246,10 +4367,17 @@
     section: The Add Property Form
     line: 44
   context: 'When you click **+ Add Field**, the **Add Property** modal opens with the following fields:'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-signature-property
   image: images/graphium/tables/add-signature-property.png
   area: tables
@@ -4264,14 +4392,35 @@
     section: Signature
     line: 163
   context: 3. Click **Add**. No additional configuration is required. Signature properties do not support multiple values.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Paid By
+  - fill:
+      target: '#propertyDescription'
+      value: Signature of person who paid the invoice
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Signature
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-table-property
   image: images/graphium/tables/add-table-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -4286,13 +4435,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: add-table
   image: images/graphium/tables/add-table.png
   area: tables
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 212x173
   alt: Add table
@@ -4302,10 +4452,14 @@
     line: 21
   context: 1. In the vault sidebar, locate the **TABLES** section header. 2. Click the **+** button on the right side of the
     TABLES header.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/ai-assistant
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[data-testid="vault-detail-sidebar"] [class*="_sectionHeader_"]'
+    has_text: TABLES
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: add-text-property
   image: images/graphium/tables/add-text-property.png
   area: tables
@@ -4321,10 +4475,31 @@
     line: 28
   context: 4. Click **Add**. No additional configuration is required. Once saved, Text properties appear with a **T** icon
     in the schema list.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Company Name
+  - fill:
+      target: '#propertyDescription'
+      value: Name of the company invoice was received from
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Text
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: add-time-property
   image: images/graphium/tables/add-time-property.png
   area: tables
@@ -4340,14 +4515,35 @@
     line: 88
   context: 4. Click **Add**. No additional configuration is required. Time properties appear with a **clock** icon in the
     schema list.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Time
+  - fill:
+      target: '#propertyDescription'
+      value: Time of day invoice payment is due by
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Time
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: archive-table-property
   image: images/graphium/tables/archive-table-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4362,11 +4558,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image (avoid clicking Archive on real data).'
 - id: archive-toggle
   image: images/graphium/tables/archive-toggle.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4380,11 +4577,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: autoid-configuration-settings
   image: images/graphium/tables/autoid-configuration-settings.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4397,14 +4595,42 @@
   context: '| **Starting Number** | Yes | `0` | The first numeric value issued when the first record is created. **Cannot
     be changed after the property is saved.** | | **Number Length (digits)** | Yes | `5` | The total number of digits in the
     numeric portion. Shorter values are zero-padded to this length |'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Number
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Auto ID
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - fill:
+      target: '#autoIdPrefix'
+      value: INV-
+  - fill:
+      target: '#autoIdSuffix'
+      value: '-2026'
+  - fill:
+      target: '#autoIdStartingNumber'
+      value: '1'
+  - fill:
+      target: '#autoIdNumberLength'
+      value: '5'
+  selector: .ReactModal__Content [class*="_autoIdConfig_"]
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: autoid-property-type
   image: images/graphium/tables/autoid-property-type.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4416,14 +4642,31 @@
     line: 48
   context: '> Auto ID appears with a **New** badge in the property type list. Once selected, an **Auto ID Configuration**
     panel appears directly below the Property type field.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Auto ID
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  selector: &id010
+  - text: Property Type
+    exact: true
+    within: .ReactModal__Content
+  - .ReactModal__Content [class*="_control_"]
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: autoid-view
   image: images/graphium/tables/autoid-view.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4439,7 +4682,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: child-property-1
   image: images/graphium/tables/child-property-1.png
   area: tables
@@ -4455,10 +4699,31 @@
     line: 212
   context: 3. Click **Add**. The Object property appears in the schema list with a **folder** icon. 4. To add child properties,
     click the expand arrow next to the Object row, then click **+ Add Field** for each child property.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Customer Service Representative
+  - fill:
+      target: '#propertyDescription'
+      value: Name of customer service rep
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Text
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: child-property-2
   image: images/graphium/tables/child-property-2.png
   area: tables
@@ -4474,10 +4739,31 @@
     line: 216
   context: 3. Click **Add**. The Object property appears in the schema list with a **folder** icon. 4. To add child properties,
     click the expand arrow next to the Object row, then click **+ Add Field** for each child property.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Job Title
+  - fill:
+      target: '#propertyDescription'
+      value: Job title of customer service representative
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Text
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: child-property-3
   image: images/graphium/tables/child-property-3.png
   area: tables
@@ -4493,14 +4779,35 @@
     line: 220
   context: 3. Click **Add**. The Object property appears in the schema list with a **folder** icon. 4. To add child properties,
     click the expand arrow next to the Object row, then click **+ Add Field** for each child property.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Cell Number
+  - fill:
+      target: '#propertyDescription'
+      value: Direct phone number for customer service rep
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Text
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - click: '#isValueRequired'
+    optional: true
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: complete-object-property
   image: images/graphium/tables/complete-object-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -4515,11 +4822,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: configure-reference-property
   image: images/graphium/tables/configure-reference-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4535,11 +4843,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: create-table
   image: images/graphium/tables/create-table.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4550,14 +4859,21 @@
     section: How to Add a New Table
     line: 29
   context: 4. Optionally add a **Description** to explain what the table will store. 5. Click **+ Create Table**.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      role: button
+      name: Add table
+      exact: true
+  - wait_for: .ReactModal__Content
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: data-view
   image: images/graphium/tables/data-view.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -4572,11 +4888,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: default-table-properties-header
   image: images/graphium/tables/default-table-properties-header.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -4591,11 +4908,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: default-table-properties
   image: images/graphium/tables/default-table-properties.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4614,11 +4932,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: empty-vault-table
   image: images/graphium/tables/empty-vault-table.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -4633,11 +4952,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: enable-contributor-mode
   image: images/graphium/tables/enable-contributor-mode.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4652,14 +4972,18 @@
     line: 105
   context: 2. Check the **Enable for Contributor Mode** checkbox to make the table visible in Contributor Mode, or uncheck
     it to hide it. Changes save immediately with no save button required.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/settings
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '#contributorMode'
+  - text: When enabled, this table will be visible and editable in Contributor Mode
+  reviewed: true
+  padding: 14
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: formula-property-configuration
   image: images/graphium/tables/formula-property-configuration.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4671,14 +4995,33 @@
     line: 64
   context: '- Any text outside `{{ }}` is treated as a literal string and included as-is > **Note:** The Allow Multiple Values
     option is not available for Formula properties. A formula always produces a single computed value.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Label
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Formula
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  - fill:
+      target: '#formulaExpression'
+      value: '{{ company_name }} - {{ invoice_number }}'
+  selector: .ReactModal__Content [class*="_formulaConfig_"]
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: formula-property-standard-fields
   image: images/graphium/tables/formula-property-standard-fields.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4690,14 +5033,30 @@
     line: 34
   context: '| **Description** | No | Optional context about the property (0 / 128 characters) | | **Internal Name** | Auto-generated
     | Snake_case version of the name (e.g., `invoice_label`). Locked after the property is saved and cannot be changed |'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Label
+  - fill:
+      target: '#propertyDescription'
+      value: Combines the company name and invoice number into a single summary field
+  selector: &id011
+  - css: .ReactModal__Content label[for="propertyName"]
+  - text: The internal name is used as the field identifier
+    within: .ReactModal__Content
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: formula-property-type
   image: images/graphium/tables/formula-property-type.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4708,14 +5067,27 @@
     section: Configuring a Formula Property > Step 3 — Select the Formula type
     line: 42
   context: In the **Property type** dropdown, search for or select **Formula**.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Formula
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  selector: *id010
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: formula-property-view
   image: images/graphium/tables/formula-property-view.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4731,11 +5103,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: invoice-contact-reference-table
   image: images/graphium/tables/invoice-contact-reference-table.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4750,11 +5123,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: invoice-contact
   image: images/graphium/tables/invoice-contact.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4769,11 +5143,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: parent-object-property
   image: images/graphium/tables/parent-object-property.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4785,14 +5160,33 @@
     line: 202
   context: 2. From the **Property type** dropdown, select **Object**. 3. Click **Add**. The Object property appears in the
     schema list with a **folder** icon.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Customer Service Contact Info
+  - fill:
+      target: '#propertyDescription'
+      value: Contact information for customer service
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Object
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: reference-property-standard-fields
   image: images/graphium/tables/reference-property-standard-fields.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4805,10 +5199,23 @@
   context: '- **Description** — (Optional) Up to 128 characters. Explain what this reference represents. - **Internal Name**
     — Auto-generated from the display name in snake_case (e.g., `contact`, `referring_facility`). You can edit it before saving;
     it cannot be changed after.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Contact
+  - fill:
+      target: '#propertyDescription'
+      value: Reference the contact information for the invoice's main point of contact
+  selector: *id011
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: reference-property-type
   image: images/graphium/tables/reference-property-type.png
   area: tables
@@ -4823,14 +5230,27 @@
     section: Configuring the Reference Property > Step 3 — Select the property type
     line: 40
   context: From the **Property type** dropdown, select **Table Record**.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: .ReactModal__Content input[id^="react-select-"]
+      value: Table Record
+  - press: Enter
+    allow_enter: true
+    note: Picks the property type; the form is not submitted
+  selector: *id010
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: rename-table
   image: images/graphium/tables/rename-table.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4845,11 +5265,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: schema-view
   image: images/graphium/tables/schema-view.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -4864,7 +5285,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: standard-property-fields
   image: images/graphium/tables/standard-property-fields.png
   area: tables
@@ -4880,14 +5302,28 @@
     line: 36
   context: '| **Description** | No | Optional context about the property (0 / 128 characters) | | **Internal Name** | Auto-generated
     | Snake_case version of the name (e.g., `invoice_number`). Locked after the property is saved and cannot be changed |'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+  steps:
+  - click:
+      role: button
+      name: Add Field
+      exact: true
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: '#propertyName'
+      value: Invoice Number
+  - fill:
+      target: '#propertyDescription'
+      value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
+        number
+  selector: *id011
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: table-display-names
   image: images/graphium/tables/table-display-names.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4905,11 +5341,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: table-icons
   image: images/graphium/tables/table-icons.png
   area: tables
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -4921,10 +5358,19 @@
     line: 48
   context: 1. Open the table and click the **Settings** tab. 2. In the **Table Icon** section, click any of the 7 available
     icons. The selected icon is outlined and appears next to the table in the vault sidebar.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/settings
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - text: Table Icon
+    exact: true
+  - text: Select an icon to represent this table
+  reviewed: true
+  padding:
+    top: 14
+    left: 14
+    right: 14
+    bottom: 60
+  review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
 - id: table-settings-tab
   image: images/graphium/tables/table-settings-tab.png
   area: tables
@@ -4944,10 +5390,14 @@
   context: 'Each table in Graphium AI has a set of configurable settings accessible from the **Settings** tab in the table
     view. From here you can rename the table, update its display names, assign an icon, and control visibility. > **Note:**
     The Settings tab is only visible to **Admin** and **Builder** users. '
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/settings
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[role="tablist"]'
+    has_text: Schema
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: table-settings
   image: images/graphium/tables/table-settings.png
   area: tables
@@ -4962,14 +5412,15 @@
     section: The Settings Tab
     line: 81
   context: The Settings tab contains configuration options that control how the table behaves across your vault.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}/settings
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
 - id: unarchive-property-view
   image: images/graphium/tables/unarchive-property-view.png
   area: tables
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -4984,7 +5435,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: needs Invoices/Contacts/Reminders data that Patient Records lacks; Shauna kept the current image.'
 - id: add-vault-user
   image: images/graphium/vaults/add-vault-user.png
   area: vaults

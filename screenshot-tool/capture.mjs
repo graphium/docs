@@ -1,8 +1,14 @@
 // Recapture help-site screenshots listed in manifest.yaml.
 //
-//   npm run capture -- --area vaults            one area
-//   npm run capture -- --id vault-dashboard,danger-zone
-//   npm run capture -- --area vaults --dry-run  check the manifest without opening a browser
+//   npm run capture                              every screenshot that's set up (all areas)
+//   npm run capture -- --area vaults,assistant   just these areas
+//   npm run capture -- --id vault-dashboard      just these screenshots
+//   npm run capture -- --include-kept            also recapture ones marked keep-current
+//   npm run capture -- --with-ai                 also run ones that send chat messages (uses credits)
+//   npm run capture -- --dry-run                 check the manifest without opening a browser
+//
+// The preview lists screenshots that look different first; ones with no visible change are
+// folded away at the bottom, and `npm run apply` skips them.
 //
 // A browser window opens on the sign-in page. Sign in yourself and switch to the
 // workspace in config.yaml; the captures then run in that window. Nothing about your
@@ -15,6 +21,7 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { chromium } from 'playwright';
 import { buildPreview } from './preview.mjs';
+import { compareImages } from './compare.mjs';
 import {
   OUTPUT_DIR, REPO_DIR, describe, fill, isUnsafeLabel, loadConfig, loadManifest, locate, runName,
 } from './lib.mjs';
@@ -25,14 +32,17 @@ const opt = (name) => { const i = args.indexOf(`--${name}`); return i >= 0 ? arg
 const flag = (name) => args.includes(`--${name}`);
 const areas = opt('area')?.split(',');
 const ids = opt('id')?.split(',');
-const methods = (opt('method') || 'auto,interactive,needs-test-data,ai-reply').split(',');
+const withAi = flag('with-ai') || !!ids;
+const methods = (opt('method') || ['auto', 'interactive', 'needs-test-data', ...(withAi ? ['ai-reply'] : [])].join(',')).split(',');
 const dryRun = flag('dry-run');
+const includeKept = flag('include-kept');
 
 const cfg = loadConfig();
 const vars = cfg.vars || {};
 const manifest = loadManifest();
 
-let entries = manifest.filter((e) => e.status === 'capture');
+let entries = manifest.filter((e) => e.status === 'capture'
+  || (e.status === 'keep-current' && e.start_url && (includeKept || ids?.includes(e.id))));
 if (areas) entries = entries.filter((e) => areas.includes(e.area));
 if (ids) entries = entries.filter((e) => ids.includes(e.id));
 if (!ids) entries = entries.filter((e) => methods.includes(e.method));
@@ -41,16 +51,22 @@ const ready = entries.filter((e) => e.start_url);
 const notReady = entries.filter((e) => !e.start_url);
 
 console.log(`${entries.length} matching entries: ${ready.length} have steps, ${notReady.length} don't yet.`);
-if (notReady.length) console.log('  No steps yet (skipped):', notReady.map((e) => e.id).join(', '));
+if (notReady.length) {
+  const byArea = {};
+  for (const e of notReady) byArea[e.area] = (byArea[e.area] || 0) + 1;
+  console.log('  No steps yet (skipped):', notReady.length <= 12
+    ? notReady.map((e) => e.id).join(', ')
+    : Object.entries(byArea).map(([a, n]) => `${a} ${n}`).join(', '));
+}
 
 // ---------- validate steps ----------
 const STEP_KEYS = ['goto', 'click', 'hover', 'fill', 'press', 'wait', 'wait_for', 'scroll_to', 'scroll_to_top', 'wait_for_hidden'];
 const problems = [];
 for (const e of ready) {
   for (const [i, s] of (e.steps || []).entries()) {
-    const keys = Object.keys(s).filter((k) => !['allow_unsafe', 'note', 'optional', 'timeout'].includes(k));
+    const keys = Object.keys(s).filter((k) => !['allow_unsafe', 'allow_enter', 'note', 'optional', 'timeout'].includes(k));
     if (keys.length !== 1 || !STEP_KEYS.includes(keys[0])) problems.push(`${e.id} step ${i + 1}: expected one of ${STEP_KEYS.join(', ')}`);
-    if (s.press === 'Enter' && e.method !== 'ai-reply') problems.push(`${e.id} step ${i + 1}: Enter is only allowed for ai-reply entries`);
+    if (s.press === 'Enter' && e.method !== 'ai-reply' && !s.allow_enter) problems.push(`${e.id} step ${i + 1}: Enter needs allow_enter: true (or an ai-reply entry)`);
   }
   if (!['element', 'viewport', 'full_page', 'clip'].includes(e.capture)) problems.push(`${e.id}: capture must be element, viewport, full_page or clip`);
   if (e.capture === 'element' && !e.selector) problems.push(`${e.id}: capture is element but there is no selector`);
@@ -182,7 +198,31 @@ async function shoot(e, file) {
   }
 }
 
+// ---------- data watch: stop if a run changes real data ----------
+// config.yaml `watch` lists values (like a table's field count) that must not change.
+// Each is read before the run and again after every screenshot whose start_url begins with applies_to.
+const watches = (cfg.watch || [])
+  .map((w) => ({ ...w, url: fill(w.url, vars), applies_to: fill(w.applies_to, vars) }))
+  .filter((w) => ready.some((e) => fill(e.start_url, vars).startsWith(w.applies_to)));
+async function readWatch(w) {
+  await signedInPage.goto(new URL(w.url, cfg.base_url).toString(), { waitUntil: 'domcontentloaded' });
+  await signedInPage.waitForTimeout(cfg.settle_ms ?? 1200);
+  const loc = locate(signedInPage, w.target, vars);
+  await loc.waitFor({ state: 'visible', timeout: 20000 });
+  return (await loc.innerText()).replace(/\s+/g, ' ').trim();
+}
+for (const w of [...watches]) {
+  try {
+    w.baseline = await readWatch(w);
+    console.log(`Watching ${w.label}: "${w.baseline.slice(0, 80)}"`);
+  } catch (err) {
+    console.log(`Couldn't read ${w.label}, so it won't be checked this run (${String(err.message || err).split('\n')[0]}).`);
+    watches.splice(watches.indexOf(w), 1);
+  }
+}
+
 const results = [];
+let stoppedByWatch = null;
 for (const e of ready) {
   const name = runName(e.image);
   const newFile = path.join(runDir, 'new', name);
@@ -202,8 +242,9 @@ for (const e of ready) {
     }
     await guardWorkspace();
     await shoot(e, newFile);
-    results.push({ e, ok: true });
-    console.log('ok');
+    const cmp = compareImages(path.join(runDir, 'old', name), newFile);
+    results.push({ e, ok: true, changed: cmp.changed, reason: cmp.reason });
+    console.log(cmp.changed ? `changed (${cmp.reason})` : 'no visible change');
   } catch (err) {
     const msg = String(err.message || err).split('\n')[0];
     results.push({ e, ok: false, error: msg });
@@ -213,15 +254,31 @@ for (const e of ready) {
   }
   // Leave any open dialog or menu without saving.
   await page.keyboard.press('Escape').catch(() => {});
+  // Check that nothing was saved.
+  for (const w of watches) {
+    if (e.signed_out || !fill(e.start_url, vars).startsWith(w.applies_to)) continue;
+    const now = await readWatch(w).catch((err) => `could not read (${String(err.message || err).split('\n')[0]})`);
+    if (now !== w.baseline) {
+      stoppedByWatch = `${w.label} changed from "${w.baseline}" to "${now}" after ${e.id}.`;
+      break;
+    }
+  }
+  if (stoppedByWatch) {
+    console.log(`\nSTOPPED: ${stoppedByWatch} Check the app and tell Claude before running again.`);
+    const last = results[results.length - 1];
+    if (last) { last.ok = false; last.error = `STOPPED: ${stoppedByWatch}`; }
+    break;
+  }
 }
 await browser.close();
 
 // ---------- results + preview page ----------
-fs.writeFileSync(path.join(runDir, 'results.json'), JSON.stringify(results.map(({ e, ok, error }) => ({ id: e.id, image: e.image, ok, error })), null, 1));
+fs.writeFileSync(path.join(runDir, 'results.json'), JSON.stringify(results.map(({ e, ok, error, changed, reason }) => ({ id: e.id, image: e.image, ok, error, changed, reason })), null, 1));
 const previewFile = buildPreview(runDir);
 
 const failed = results.filter((r) => !r.ok).length;
-console.log(`\n${results.length - failed} captured, ${failed} failed.`);
+const changedN = results.filter((r) => r.ok && r.changed).length;
+console.log(`\n${changedN} changed, ${results.length - failed - changedN} with no visible change, ${failed} failed.`);
 console.log(`Review: ${path.relative(process.cwd(), previewFile)} (opening it now)`);
 if (process.platform === 'darwin') execFile('open', [previewFile]);
 console.log(`Then:   npm run apply -- ${run}`);

@@ -26,3 +26,15 @@ vars:
   tableId: 01a0df93-4750-78c3-a3fb-3d1f7e077213    # Providers 40
   qaAssistantId: 019fcd76-72e8-7597-b178-c596b594a21e  # QA Custom Assistant
   searchTerm: ''   # Not needed for now (both search-result screenshots are kept as-is). Set before recapturing them; "Inv" has no results in Patient Records.
+
+# Values that must not change during a run. Each is read before the run and after every
+# screenshot whose start_url begins with applies_to; if it changes, the run stops.
+watch:
+  - label: Providers 40 field count
+    url: /vaults/{{vaultId}}/tables/{{tableId}}/schema
+    target: { testid: vault-table-count }
+    applies_to: /vaults/{{vaultId}}/tables/{{tableId}}
+  - label: Patient Records table list (sidebar TABLES section)
+    url: /vaults/{{vaultId}}/ai-assistant
+    target: { css: '[data-testid="vault-detail-sidebar"] [class*="_group_"]', has_text: TABLES }
+    applies_to: /vaults/{{vaultId}}/ai-assistant

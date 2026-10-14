@@ -15,9 +15,13 @@ If you use nvm, run `nvm use` first in each new Terminal window.
 
 Each session:
 
-1. `npm run capture -- --area vaults` — a browser window opens on the dev sign-in page. Sign in yourself and switch to the workspace named in `config.yaml` (Demo Workspace). Captures then start in that window; leave it alone until it closes. Use `--id a,b` for specific screenshots, or `--dry-run` to check the manifest without opening a browser.
-2. The preview page (`output/<run>/preview.html`) opens automatically to compare current and new images side by side. To reopen it later: `npm run preview` (latest run) or `npm run preview -- <run>`.
-3. `npm run apply -- <run>` copies the new images into `images/`. Use `--only id1,id2` or `--skip id3` to pick. Then review and commit in git as usual.
+1. `npm run capture` — captures every screenshot that's set up, across all areas. A browser window opens on the dev sign-in page. Sign in yourself and switch to the workspace named in `config.yaml` (Demo Workspace). Captures then start in that window; leave it alone until it closes.
+   - `--area vaults,assistant` for just some areas, `--id a,b` for specific screenshots.
+   - `--include-kept` also recaptures screenshots marked keep-current (useful after a redesign).
+   - `--with-ai` also runs screenshots that send chat messages (uses credits). They're left out of full runs otherwise; `--id` always includes them.
+   - `--dry-run` checks the manifest without opening a browser.
+2. The preview page opens automatically. Screenshots that look different from the current image are listed first; ones with no visible change (less than 0.5% of pixels differ) are folded away at the bottom. To reopen it later: `npm run preview` (latest run) or `npm run preview -- <run>`.
+3. `npm run apply -- <run>` copies the changed images into `images/`, skipping ones with no visible change. Use `--only id1,id2` or `--skip id3` to pick, or `--all` to include unchanged ones. Then review and commit in git as usual.
 
 Safety:
 
@@ -25,6 +29,7 @@ Safety:
 - The script stops if the header shows any workspace or vault listed under `forbidden_*` in `config.yaml`, or anything other than `workspace_name`.
 - It refuses to click buttons that save, send or delete (Save, Publish, Delete, Deactivate, Send, Create Vault and similar). Every capture ends with Escape, without saving.
 - New images go to `output/` first; nothing in `images/` changes until you run `apply`.
+- Data watch: `watch` in `config.yaml` lists values that must not change (Providers 40's field count, Patient Records' table list). They're read at the start and after each related screenshot; if one changes, the run stops and says which screenshot did it.
 
 ## Files
 
