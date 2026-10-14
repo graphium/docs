@@ -44,11 +44,11 @@ console.log(`${entries.length} matching entries: ${ready.length} have steps, ${n
 if (notReady.length) console.log('  No steps yet (skipped):', notReady.map((e) => e.id).join(', '));
 
 // ---------- validate steps ----------
-const STEP_KEYS = ['goto', 'click', 'hover', 'fill', 'press', 'wait', 'wait_for', 'scroll_to', 'wait_for_hidden'];
+const STEP_KEYS = ['goto', 'click', 'hover', 'fill', 'press', 'wait', 'wait_for', 'scroll_to', 'scroll_to_top', 'wait_for_hidden'];
 const problems = [];
 for (const e of ready) {
   for (const [i, s] of (e.steps || []).entries()) {
-    const keys = Object.keys(s).filter((k) => !['allow_unsafe', 'note', 'optional'].includes(k));
+    const keys = Object.keys(s).filter((k) => !['allow_unsafe', 'note', 'optional', 'timeout'].includes(k));
     if (keys.length !== 1 || !STEP_KEYS.includes(keys[0])) problems.push(`${e.id} step ${i + 1}: expected one of ${STEP_KEYS.join(', ')}`);
     if (s.press === 'Enter' && e.method !== 'ai-reply') problems.push(`${e.id} step ${i + 1}: Enter is only allowed for ai-reply entries`);
   }
@@ -135,11 +135,15 @@ async function runStep(e, s) {
   } else if (s.wait !== undefined) {
     await page.waitForTimeout(Number(s.wait));
   } else if (s.wait_for !== undefined) {
-    await locate(page, s.wait_for, vars).waitFor({ state: 'visible', timeout: e.method === 'ai-reply' ? 180000 : 20000 });
+    await locate(page, s.wait_for, vars).waitFor({ state: 'visible', timeout: s.timeout ?? (e.method === 'ai-reply' ? 180000 : 20000) });
   } else if (s.wait_for_hidden !== undefined) {
-    await locate(page, s.wait_for_hidden, vars).waitFor({ state: 'hidden', timeout: e.method === 'ai-reply' ? 180000 : 20000 });
+    await locate(page, s.wait_for_hidden, vars).waitFor({ state: 'hidden', timeout: s.timeout ?? (e.method === 'ai-reply' ? 180000 : 20000) });
   } else if (s.scroll_to !== undefined) {
     await locate(page, s.scroll_to, vars).scrollIntoViewIfNeeded();
+    await settle();
+  } else if (s.scroll_to_top !== undefined) {
+    // Scroll so the element sits at the top of its scrolling area.
+    await locate(page, s.scroll_to_top, vars).evaluate((el) => el.scrollIntoView({ block: 'start' }));
     await settle();
   }
 }
@@ -148,15 +152,29 @@ async function shoot(e, file) {
   const mask = (e.mask || []).map((t) => locate(page, t, vars));
   const opts = { path: file, animations: 'disabled', caret: 'hide', mask };
   if (e.capture === 'element') {
-    const loc = locate(page, e.selector, vars);
-    await loc.waitFor({ state: 'visible', timeout: 15000 });
-    await loc.scrollIntoViewIfNeeded();
-    const pad = e.padding ?? 8;
-    const box = await loc.boundingBox();
-    if (!box) throw new Error(`Element not on screen: ${describe(e.selector)}`);
+    // selector can be one target or a list; a list captures the area covering all of them.
+    const targets = Array.isArray(e.selector) ? e.selector : [e.selector];
+    const boxes = [];
+    for (const [i, t] of targets.entries()) {
+      const loc = locate(page, t, vars);
+      await loc.waitFor({ state: 'visible', timeout: 15000 });
+      if (i === 0 && !e.no_scroll) await loc.scrollIntoViewIfNeeded();
+      const b = await loc.boundingBox();
+      if (!b) throw new Error(`Element not on screen: ${describe(t)}`);
+      boxes.push(b);
+    }
+    // padding: a number, or { top, right, bottom, left } in pixels.
+    const P = typeof e.padding === 'object' && e.padding
+      ? { top: 8, right: 8, bottom: 8, left: 8, ...e.padding }
+      : { top: e.padding ?? 8, right: e.padding ?? 8, bottom: e.padding ?? 8, left: e.padding ?? 8 };
     const vp = page.viewportSize();
-    const x = Math.max(0, box.x - pad), y = Math.max(0, box.y - pad);
-    await page.screenshot({ ...opts, clip: { x, y, width: Math.min(vp.width - x, box.width + pad * 2), height: Math.min(vp.height - y, box.height + pad * 2) } });
+    // x_from: take the left and right edges from one target only (by position in the list).
+    const xb = typeof e.x_from === 'number' ? [boxes[e.x_from]] : boxes;
+    const left = Math.min(...xb.map((b) => b.x)), top = Math.min(...boxes.map((b) => b.y));
+    const right = Math.max(...xb.map((b) => b.x + b.width)), bottom = Math.max(...boxes.map((b) => b.y + b.height));
+    const x = Math.max(0, left - P.left), y = Math.max(0, top - P.top);
+    const w = Math.min(vp.width - x, right + P.right - x), h = Math.min(vp.height - y, bottom + P.bottom - y);
+    await page.screenshot({ ...opts, clip: { x, y, width: w, height: h } });
   } else if (e.capture === 'clip') {
     await page.screenshot({ ...opts, clip: e.clip });
   } else {

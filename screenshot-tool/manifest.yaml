@@ -15,7 +15,7 @@
 - id: add-assistant-describe
   image: images/graphium/assistant/add-assistant-describe.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -27,14 +27,24 @@
     line: 44
   context: The window asks *What would you like this assistant to do?* Describe the job the way you'd explain it to a new
     teammate — for example, *"Keep track of our office supply orders and tell me when we're running low."* Then click **Continue**.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click:
+      testid: add-assistant-tile
+  - wait_for:
+      testid: assistant-wizard-modal
+  - fill:
+      target:
+        css: '[data-testid="assistant-wizard-modal"] textarea'
+      value: Answer questions about our providers, their specialties, and which providers are currently active.
+  selector: .ReactModal__Content
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
+  padding: 0
 - id: add-assistant-name
   image: images/graphium/assistant/add-assistant-name.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -47,14 +57,31 @@
   context: '- **Starting from the workspace:** click **Continue** to choose where the assistant works. - **Starting inside
     a vault:** this is the last step. Review **What it can read** — every table in the vault is selected, so clear the checkbox
     for any table the assistant shouldn''t see — then click **Create a'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click:
+      testid: add-assistant-tile
+  - wait_for:
+      testid: assistant-wizard-modal
+  - fill:
+      target:
+        css: '[data-testid="assistant-wizard-modal"] textarea'
+      value: Answer questions about our providers, their specialties, and which providers are currently active.
+  - click: &id001
+      css: .ReactModal__Content button
+      has_text: Continue
+  - wait_for:
+      text: We think it should be called
+    timeout: 90000
+    note: The AI suggests a name; nothing is created until the final step, which the script never clicks
+  selector: .ReactModal__Content
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
+  padding: 0
 - id: add-assistant-vault
   image: images/graphium/assistant/add-assistant-vault.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -68,17 +95,34 @@
   context: '- **Or start a new one.** Select **A new vault**. Graphium AI suggests a name for the vault from your description,
     which you can change under **Name for the new vault**. Then click **Create assistant and vault**. This option isn''t available
     if your workspace has reached its plan''s vault limit. A **W'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click:
+      testid: add-assistant-tile
+  - wait_for:
+      testid: assistant-wizard-modal
+  - fill:
+      target:
+        css: '[data-testid="assistant-wizard-modal"] textarea'
+      value: Answer questions about our providers, their specialties, and which providers are currently active.
+  - click: *id001
+  - wait_for:
+      text: We think it should be called
+    timeout: 90000
+  - click: *id001
+  - wait_for:
+      text: Where should it keep its work
+  selector: .ReactModal__Content
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
+  padding: 0
 - id: add-assistant
   image: images/graphium/assistant/add-assistant.png
   area: assistant
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1269x134
   alt: New Assistant and Advanced setup buttons in the top-right corner of the Custom Assistants page
   used_in:
@@ -88,17 +132,20 @@
   context: Only **Admin** and **Builder** vault members can create assistants. On the Custom Assistants page, click **+ New
     Assistant** to describe the assistant and have Graphium AI set it up, or **Advanced setup** to configure every setting
     yourself. For both, see [Creating an AI Assistant](/graphium/ai-assi
-  start_url: null
+  start_url: /vaults/{{vaultId}}/assistants
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: header[class*="_header_"]
+    has_text: Custom Assistants
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: allow-assistant-edit-columns
   image: images/graphium/assistant/allow-assistant-edit-columns.png
   area: assistant
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1581x313
   alt: Allow column changes toggle enabled and clickable on a Read/Write table
   used_in:
@@ -108,10 +155,17 @@
   context: '- **When the vault setting is on**, the toggle can be turned on for each table. The same toggle appears in a custom
     assistant''s **Tools** tab. For what the assistant can change and how it confirms changes with you, see [Changing Your
     Data Using the AI Assistant](/graphium/ai-assistants/changing-your'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/settings/general
+  steps:
+  - scroll_to:
+      text: Assistant table and column changes
+  selector:
+  - css: '[data-testid="vault-detail-sidebar"] [class*="_group_"]'
+    has_text: Playbooks
+  - css: '[class*="_surface_"]'
+    has_text: Assistant table and column changes
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: allow-column-changes-locked
   image: images/graphium/assistant/allow-column-changes-locked.png
   area: assistant
@@ -228,10 +282,16 @@
   context: '- *"Flag any records where the date of birth field looks invalid."* > 💡 **Tip:** Be specific. Instead of "Show
     me the data," try "Show me all records submitted in February where the insurance field is blank." The more context you
     give, the more precise the answer.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - fill:
+      target:
+        css: '[data-testid="ai-assistant-input-container"] textarea'
+      value: What is the default dosage for Albuterol?
+  selector:
+    testid: ai-assistant-input-container
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: assistant-advanced-setup
   image: images/graphium/assistant/assistant-advanced-setup.png
   area: assistant
@@ -249,10 +309,13 @@
   context: 'On the vault''s Custom Assistants page (**Manage assistants** in the assistant selector, or the sidebar ⚙ for
     Admins), click **Advanced setup**. You can also click **Advanced setup** on the last step of the **Add an assistant**
     window. The assistant editor opens with the **General** tab selected and '
-  start_url: null
-  steps: []
+  start_url: /vaults/{{vaultId}}/assistants/new
+  steps:
+  - wait_for:
+      placeholder: Name your assistant
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: assistant-authorize-connection
   image: images/graphium/assistant/assistant-authorize-connection.png
   area: assistant
@@ -354,10 +417,11 @@
   context: 'Open a vault and the **Home** page loads automatically. The chat input bar shows the selected assistant''s name
     — for example, *"Ask General Assistant..."*. You can also start from the **Assistants** tab of the workspace home: click
     an assistant''s card to open a chat with it in its vault. See [The AI'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/ai-assistant
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: assistant-reply-artifact-card
   image: images/graphium/assistant/assistant-reply-artifact-card.png
   area: assistant
@@ -381,10 +445,10 @@
 - id: browse-assistants
   image: images/graphium/assistant/browse-assistants.png
   area: assistant
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
-  capture: viewport
+  capture: element
   current_size: 1536x371
   alt: Custom Assistants page showing assistant cards in grid view
   used_in:
@@ -394,14 +458,24 @@
   context: 'Use the **grid/list toggle** in the top-right corner to switch between card grid and list view. If no assistants
     have been created yet, the page shows an empty state: *"No assistants yet — Create specialized AI assistants with custom
     prompts and data access to help with specific tasks."*'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/assistants
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - css: header[class*="_header_"]
+    has_text: Custom Assistants
+  - css: '[class*="_card_"]'
+    has_text: QA Custom Assistant
+  - role: button
+    name: Home
+    exact: true
+    within:
+      testid: vault-detail-sidebar
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-context-connections
   image: images/graphium/assistant/chat-context-connections.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -414,14 +488,21 @@
   context: '| **SFTP File Server** | Upload File, Download File, Delete File, Move File, New File Uploaded, File Modified,
     File Deleted | The exact connections and actions you see depend on what your vault has configured — only connections actually
     added to the vault appear here. Toggle individual actions on or'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      testid: ai-assistant-context-button
+  - click: button[title="Connection Actions"]
+  selector:
+  - '[class*="_welcomeHero_"]'
+  - css: '[data-testid="ai-assistant-input-container"] [class*="_container_"]'
+    has_text: Chat Context
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-context-icon
   image: images/graphium/assistant/chat-context-icon.png
   area: assistant
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -434,14 +515,17 @@
   context: In the chat input bar on the vault Home page, click the **⚙ (settings) icon**. The **Chat Context** panel opens
     as a popover with four tabs — **Tables** (grid icon), **Tools** (wrench icon), **Connections** (link icon), and **Model**
     (sparkle icon). The **Tables**, **Tools**, and **Connections** tab
-  start_url: null
+  start_url: /vaults/{{vaultId}}/ai-assistant
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '[class*="_welcomeHero_"]'
+  - testid: ai-assistant-input-container
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-context-model-icon
   image: images/graphium/assistant/chat-context-model-icon.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -454,14 +538,21 @@
   context: 'The top of the tab shows which model the current conversation is using. A new chat starts with the workspace default.
     > **Note:** On the **Free** and **Starter** plans, the highest-capability models are greyed out with an **UPGRADE** label
     and can''t be selected. To use them, upgrade your plan — see '
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      testid: ai-assistant-context-button
+  - click: button[title="Model"]
+  selector:
+  - '[class*="_welcomeHero_"]'
+  - css: '[data-testid="ai-assistant-input-container"] [class*="_container_"]'
+    has_text: Chat Context
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-context-tables
   image: images/graphium/assistant/chat-context-tables.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -474,14 +565,21 @@
   context: '- **When the vault setting is on**, the toggle can be turned on for each table. The same toggle appears in a custom
     assistant''s **Tools** tab. For what the assistant can change and how it confirms changes with you, see [Changing Your
     Data Using the AI Assistant](/graphium/ai-assistants/changing-your'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      testid: ai-assistant-context-button
+  - click: button[title="Table Access"]
+  selector:
+  - '[class*="_welcomeHero_"]'
+  - css: '[data-testid="ai-assistant-input-container"] [class*="_container_"]'
+    has_text: Chat Context
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-context
   image: images/graphium/assistant/chat-context.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -493,10 +591,17 @@
     line: 98
   context: 3. Click **On** next to **Web search**. The AI will automatically use web search when it determines that internet
     data would improve its response.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      testid: ai-assistant-context-button
+  - click: button[title="General Tools"]
+  selector:
+  - '[class*="_welcomeHero_"]'
+  - css: '[data-testid="ai-assistant-input-container"] [class*="_container_"]'
+    has_text: Chat Context
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: chat-status-line
   image: images/graphium/assistant/chat-status-line.png
   area: assistant
@@ -519,7 +624,7 @@
 - id: chats-sidebar
   image: images/graphium/assistant/chats-sidebar.png
   area: assistant
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -532,10 +637,13 @@
   context: '**From the sidebar (Admins and Builders)** The **CHATS** section lists your most recent conversations with every
     assistant, each with the icon of the assistant it was held with. Click **More** to expand the list, and click a conversation
     to reopen it. A chat that hasn''t been given a title yet shows '
-  start_url: null
+  start_url: /vaults/{{vaultId}}/ai-assistant
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    testid: vault-detail-sidebar
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: choose-assistant-icon
   image: images/graphium/assistant/choose-assistant-icon.png
   area: assistant
@@ -551,16 +659,23 @@
     line: 90
   context: 2. Click the assistant you want to use. The popup also has a **Manage assistants** link at the bottom (Admins and
     Builders), which opens the **Custom Assistants** page.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - click:
+      testid: ai-assistant-selector-trigger
+  - wait_for:
+      testid: ai-assistant-selector-popover
+  selector:
+  - testid: ai-assistant-selector-trigger
+  - testid: ai-assistant-selector-popover
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: configure-assistant-general-settings
   image: images/graphium/assistant/configure-assistant-general-settings.png
   area: assistant
   status: capture
-  method: auto
-  method_note: Open the page and capture
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
   current_size: 1602x876
   alt: General settings tab showing icon, color, description, Who Can Access, AI model, and system prompt fields
@@ -571,14 +686,21 @@
   context: '**System Prompt** — Write the instructions that define how the assistant behaves. This is the most important field
     — it tells the AI what expertise it has, what its focus is, how it should respond, and any constraints it should follow.
     > **Note:** Both the assistant **name** and **system prompt** ar'
-  start_url: null
-  steps: []
+  start_url: /vaults/{{vaultId}}/assistants/new
+  steps:
+  - wait_for:
+      placeholder: Name your assistant
+  - click:
+      text: AI Model
+      exact: true
+    note: Expands the AI Model section, as in today's image
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: configure-assistant-tools
   image: images/graphium/assistant/configure-assistant-tools.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -592,10 +714,14 @@
   context: '- **Can Invoke Assistants** — select which other assistants this assistant may call when responding. This enables
     assistant chaining, where the current assistant can delegate a specific question to a specialized assistant and return
     the result to the user. Enabling resources here sets the assistant'''
-  start_url: null
-  steps: []
+  start_url: /vaults/{{vaultId}}/assistants/{{qaAssistantId}}
+  steps:
+  - click:
+      role: tab
+      name: Tools
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: connection-limit-reached
   image: images/graphium/assistant/connection-limit-reached.png
   area: assistant
@@ -673,10 +799,20 @@
   context: To create a copy of an existing assistant — useful for creating a variant with a different system prompt or tool
     configuration — open the assistant editor and click the **⋮ (three-dot menu)** next to the Save button. Select **Duplicate**.
     A copy of the assistant is created and added to the list. Ope
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants
+  steps:
+  - click:
+      css: button[aria-label="More options"]
+      within:
+        css: '[class*="_card_"]'
+        has_text: QA Custom Assistant
+  selector:
+  - css: '[class*="_card_"]'
+    has_text: QA Custom Assistant
+  - text: Archive
+    exact: true
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-21-30-39).'
 - id: edit-assistant
   image: images/graphium/assistant/edit-assistant.png
   area: assistant
@@ -781,7 +917,7 @@
 - id: name-assistant
   image: images/graphium/assistant/name-assistant.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -794,10 +930,14 @@
   context: In the **Identity** section, type a name in the **Name** field. Choose something descriptive that tells users what
     the assistant specializes in — for example, *Data Analyst*, *Operations Helper*, or *Compliance Monitor*. The name appears
     immediately in the **Test Chat** panel on the right so you can
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants/new
+  steps:
+  - wait_for:
+      placeholder: Name your assistant
+  selector: '[class*="_headerInfo_"]'
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: offline-chat-response
   image: images/graphium/assistant/offline-chat-response.png
   area: assistant
@@ -880,7 +1020,7 @@
 - id: recent-chats
   image: images/graphium/assistant/recent-chats.png
   area: assistant
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -893,10 +1033,12 @@
   context: '**From the sidebar (Admins and Builders)** The **CHATS** section lists your most recent conversations with every
     assistant, each with the icon of the assistant it was held with. Click **More** to expand the list, and click a conversation
     to reopen it. A chat that hasn''t been given a title yet shows '
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/ai-assistant
+  steps:
+  - scroll_to: '[class*="_recentChatsSection_"]'
+  selector: '[class*="_recentChatsSection_"]'
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: save-draft-assistant
   image: images/graphium/assistant/save-draft-assistant.png
   area: assistant
@@ -920,9 +1062,9 @@
 - id: sidebar-assistants-section
   image: images/graphium/assistant/sidebar-assistants-section.png
   area: assistant
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 269x211
   alt: ASSISTANTS section of the vault sidebar listing the General Assistant and custom assistants, with the manage and add
@@ -933,10 +1075,18 @@
     line: 105
   context: '- **+ (Add assistant)** — creates a new assistant. See [Creating an AI Assistant](/graphium/ai-assistants/creating-an-ai-assistant).
     Builders don''t see these buttons — they use **Manage assistants** in the assistant selector instead.'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/ai-assistant
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - role: button
+    name: Home
+    exact: true
+    within:
+      testid: vault-detail-sidebar
+  - css: '[data-testid="vault-detail-sidebar"] [class*="_group_"]'
+    has_text: ASSISTANTS
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: stop-chat-button
   image: images/graphium/assistant/stop-chat-button.png
   area: assistant
@@ -992,10 +1142,35 @@
     line: 119
   context: '- *"Create a Medications table with name, dose, route, and a status of Active, Discontinued or On hold."* - *"Create
     a Medications table with name, dose and route, and add these rows: Ibuprofen, 400mg, Oral; Lisinopril, 10mg, Oral."*'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/assistants/{{qaAssistantId}}
+  steps:
+  - click:
+      role: tab
+      name: Tools
+  - scroll_to_top:
+      text: Patients
+      exact: true
+      within:
+        testid: tools-tab-panel
+    note: Puts Patients just under the tabs, as in the current image
+  selector:
+  - '[class*="_detailContainer_"] > [class*="_header_"]'
+  - '[role="tablist"]'
+  - text: Patients
+    exact: true
+    within:
+      testid: tools-tab-panel
+  - '[data-testid^="table-schema-access-"][data-testid$="-row"]'
+  - text: Assistant can add and edit columns on this table.
+  reviewed: true
+  review_note: '2026-10-14: Shauna approved the new capture after crop fixes.'
+  no_scroll: true
+  padding:
+    top: 0
+    left: 48
+    right: 24
+    bottom: 16
+  x_from: 3
 - id: table-changes-proposal
   image: images/graphium/assistant/table-changes-proposal.png
   area: assistant
@@ -1140,7 +1315,7 @@
 - id: workspace-assistants-list
   image: images/graphium/assistant/workspace-assistants-list.png
   area: assistant
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
@@ -1154,16 +1329,21 @@
   context: Click a card or **Chat** to open the assistant's vault on the Home page with a new chat for that assistant. Use
     the toggle in the top-right corner to switch between the card grid and a list view. The list view shows the same details
     in columns (Assistant, Vault, Tables, Connections, Actions), with *
-  start_url: null
-  steps: []
+  start_url: /assistants
+  steps:
+  - click:
+      role: button
+      name: List view
+      exact: true
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: workspace-assistants-tab
   image: images/graphium/assistant/workspace-assistants-tab.png
   area: assistant
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1579x561
   alt: Workspace home on the Assistants tab, showing Your Assistants, the Add an assistant tile, and assistant cards
@@ -1173,10 +1353,15 @@
     line: 38
   context: '- A **Chat** link, and a ⚙ **Configure** button for vault Admins Click a card or **Chat** to open the assistant''s
     vault on the Home page with a new chat for that assistant.'
-  start_url: null
-  steps: []
+  start_url: /assistants
+  steps:
+  - click:
+      role: button
+      name: Grid view
+      exact: true
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-14: Shauna kept the current image. When recapturing after the redesign, ask her about framing first.'
 - id: billing-access
   image: images/graphium/billing/billing-access.png
   area: billing

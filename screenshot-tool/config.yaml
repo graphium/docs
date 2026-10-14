@@ -24,4 +24,5 @@ vars:
   vaultId: 019cd827-3788-7b45-b476-8c83741257d9    # Patient Records (Demo Workspace)
   vaultName: Patient Records
   tableId: 01a0df93-4750-78c3-a3fb-3d1f7e077213    # Providers 40
-  searchTerm: ''   # TODO (Shauna): search term for the vault search screenshots; "Inv" has no results in Patient Records
+  qaAssistantId: 019fcd76-72e8-7597-b178-c596b594a21e  # QA Custom Assistant
+  searchTerm: ''   # Not needed for now (both search-result screenshots are kept as-is). Set before recapturing them; "Inv" has no results in Patient Records.
