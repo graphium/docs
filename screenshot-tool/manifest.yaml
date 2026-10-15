@@ -614,7 +614,7 @@
 - id: chat-status-line
   image: images/graphium/assistant/chat-status-line.png
   area: assistant
-  status: capture
+  status: keep-current
   method: manual
   method_note: Live state while a reply is running; timing varies
   capture: unknown (new image)
@@ -629,7 +629,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: captured by hand by Shauna.'
 - id: chats-sidebar
   image: images/graphium/assistant/chats-sidebar.png
   area: assistant
@@ -1724,9 +1725,9 @@
   image: images/graphium/connections/add-connection.png
   area: connections
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1306x81
   alt: Add connection
   used_in:
@@ -1753,14 +1754,18 @@
     line: 24
   context: Click the **+ Add Connection** button in the top-right of the Data Connections page. The **Add Connection** picker
     opens.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: header[class*="_header_"]
+    has_text: Data Connections
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: add-sftp-connection
   image: images/graphium/connections/add-sftp-connection.png
   area: connections
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -1778,10 +1783,22 @@
     line: 30
   context: Under the **File Server** category, select **SFTP File Server**. Click **Details** to learn more, or click **+
     Add Connection** to proceed.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections
+  steps:
+  - &id010
+    click:
+      role: button
+      name: Add Connection
+      exact: true
+  - &id011
+    wait_for: .ReactModal__Content
+  - click:
+      css: .ReactModal__Content [role="button"]
+      has_text: SFTP (Key-Based Auth)
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: add-sftp-password-connection
   image: images/graphium/connections/add-sftp-password-connection.png
   area: connections
@@ -1804,7 +1821,7 @@
 - id: auto-sync-settings
   image: images/graphium/connections/auto-sync-settings.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -1831,14 +1848,18 @@
     line: 77
   context: '- **Auto-sync** — toggle on to enable automatic syncing - **Interval** — set the sync frequency (e.g., every 5
     minutes)'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{sheetsConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[class*="_section_"]'
+    has_text: Auto-sync
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: configure-api-key
   image: images/graphium/connections/configure-api-key.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -1852,13 +1873,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (data change or no matching connection).'
 - id: configure-connection
   image: images/graphium/connections/configure-connection.png
   area: connections
-  status: capture
-  method: auto
-  method_note: Open the page and capture
+  status: keep-current
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: element
   current_size: 643x439
   alt: Configure connection
@@ -1871,10 +1893,25 @@
     line: 38
   context: Click the connection type you want to add, then complete the configuration form — including the connection name,
     authentication credentials, and sync settings.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections
+  steps:
+  - *id010
+  - *id011
+  - click:
+      css: .ReactModal__Content [role="button"]
+      has_text: Graphium EMR
+  - click:
+      role: button
+      name: Add Connection
+      exact: true
+      within: .ReactModal__Content
+    note: Only moves to the Configure form; Create Connection is never clicked
+  - wait_for:
+      text: Configure Graphium EMR
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: configure-pipedream-sftp-password
   image: images/graphium/connections/configure-pipedream-sftp-password.png
   area: connections
@@ -1951,9 +1988,9 @@
 - id: connection-activity-log
   image: images/graphium/connections/connection-activity-log.png
   area: connections
-  status: capture
-  method: needs-test-data
-  method_note: A connection with recent activity
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1672x709
   alt: Connection activity log
@@ -1963,14 +2000,16 @@
     line: 30
   context: '- Connection-specific settings (vary by connection type) **Right panel — Activity Log:** shows all events triggered
     by the connection (see [Using the Activity Log](#using-the-activity-log) below).'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{emrConnId}}
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: connection-card
   image: images/graphium/connections/connection-card.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -1985,11 +2024,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (data change or no matching connection).'
 - id: connection-disabled
   image: images/graphium/connections/connection-disabled.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -2004,11 +2044,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (data change or no matching connection).'
 - id: connection-enabled
   image: images/graphium/connections/connection-enabled.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -2023,13 +2064,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (data change or no matching connection).'
 - id: connection-event-badges
   image: images/graphium/connections/connection-event-badges.png
   area: connections
-  status: capture
-  method: needs-test-data
-  method_note: A connection with trigger/action/sync/log/error events
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 561x297
   alt: Connection event badges
@@ -2039,10 +2081,13 @@
     line: 132
   context: '| **Created** | Green | The connection was created, with the settings that were set | | **error** | Red | An error
     occurred (auto-recovered or requires attention) |'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections/{{emrConnId}}
+  steps:
+  - scroll_to: div[class*="_container_"]:has(> div[class*="_header_"]:has-text("Activity Log"))
+  selector: div[class*="_container_"]:has(> div[class*="_header_"]:has-text("Activity Log"))
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: connections-sidebar
   image: images/graphium/connections/connections-sidebar.png
   area: connections
@@ -2075,10 +2120,18 @@
     section: 'Step-by-Step Instructions > Step 1: Open the Add Connection Picker'
     line: 20
   context: In the vault sidebar, click **Connections**.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - css: '[data-testid="vault-detail-sidebar"] [class*="_group_"]'
+    has_text: Playbooks
+  - text: Contributor
+    exact: true
+    within:
+      testid: vault-detail-sidebar
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: copy-api-key
   image: images/graphium/connections/copy-api-key.png
   area: connections
@@ -2120,9 +2173,9 @@
   image: images/graphium/connections/disconnect-connection.png
   area: connections
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: unknown (new image)
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: null
   alt: Authentication section of a connection showing the Disconnect button next to Reconnect, with the confirmation dialog
   used_in:
@@ -2131,16 +2184,20 @@
     line: 73
   context: 2. In the **Authentication** section, click **Disconnect** (next to **Reconnect**). 3. Read the confirmation message
     and confirm.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{sheetsConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[class*="_section_"]'
+    has_text: Disconnect
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: google-sheets-connection
   image: images/graphium/connections/google-sheets-connection.png
   area: connections
-  status: capture
-  method: auto
-  method_note: Open the page and capture
+  status: keep-current
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: element
   current_size: 646x679
   alt: Google Sheets connection
@@ -2150,16 +2207,26 @@
     line: 30
   context: Under the **Spreadsheet** category, select **Google Sheets**. Click **Details** to learn more, or click **+ Add
     Connection** to proceed.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections
+  steps:
+  - *id010
+  - *id011
+  - fill:
+      target: '#connectionSearch'
+      value: Google Sheets
+  - click:
+      css: .ReactModal__Content [role="button"]
+      has_text: Google Sheets
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: graphium-emr-connection
   image: images/graphium/connections/graphium-emr-connection.png
   area: connections
   status: capture
-  method: auto
-  method_note: Open the page and capture
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: element
   current_size: 1158x516
   alt: Graphium EMR connection
@@ -2169,10 +2236,17 @@
     line: 30
   context: Under the **EMR / EHR** category, select **Graphium EMR**. Click **Details** to learn more about the connection
     type, or click **+ Add Connection** to proceed.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections
+  steps:
+  - *id010
+  - *id011
+  - click:
+      css: .ReactModal__Content [role="button"]
+      has_text: Graphium EMR
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: locate-api-key
   image: images/graphium/connections/locate-api-key.png
   area: connections
@@ -2196,8 +2270,8 @@
   image: images/graphium/connections/open-connection.png
   area: connections
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 323x772
   alt: Open connection
@@ -2208,14 +2282,18 @@
   context: '- **Sync Settings** — auto-sync toggle and sync interval, where the connection type supports configurable syncing.
     Some connection types don''t — for example, HubSpot''s detail view shows "Sync not available for this connection type"
     here instead. - Connection-specific settings (vary by connection typ'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{sheetsConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: &id012
+    css: '[class*="_sidebar_"]'
+    has_text: Configuration
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: paste-api-key
   image: images/graphium/connections/paste-api-key.png
   area: connections
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -2228,10 +2306,12 @@
   context: '- Once you click create, you will need to copy the API key provided — note you will only have one time access
     to this key. - Navigate back to your Connection setup within Graphium AI and paste the API Key into the **API Key** field
     within the **Authentication** section of the Graphium EMR Connection'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{emrConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: *id012
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: search-connections
   image: images/graphium/connections/search-connections.png
   area: connections
@@ -2248,14 +2328,19 @@
   context: Use the **Search connections...** bar to search by name, or browse the categorized list. The picker groups connection
     types by category — EMR/EHR, File Server, Spreadsheet, Database, CRM, Accounting, Survey Tools, Medical Devices, Communication,
     and others. See [Connections](/graphium/core-concepts/
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/connections
+  steps:
+  - *id010
+  - *id011
+  - click: '#connectionSearch'
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: sftp-healthy
   image: images/graphium/connections/sftp-healthy.png
   area: connections
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A healthy SFTP connection
   capture: viewport
@@ -2280,7 +2365,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (data change or no matching connection).'
 - id: sftp-pipedream-successful
   image: images/graphium/connections/sftp-pipedream-successful.png
   area: connections
@@ -2312,9 +2398,9 @@
   image: images/graphium/connections/test-google-sheet.png
   area: connections
   status: capture
-  method: needs-test-data
-  method_note: A healthy Google Sheets connection
-  capture: viewport
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1624x83
   alt: Test Google Sheet connection
   used_in:
@@ -2324,17 +2410,21 @@
   context: If successful, the Google Sheets connection will appear in the Data Connections list with a status badge. Next,
     click the **Test** button in the top right corner to sync your data from your Google Sheet. You will want to ensure the
     Google Sheets connection shows **"Healthy"** otherwise your data wil
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{sheetsConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: &id013
+    css: div[class*="_header_"]
+    has_text: Last sync
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: test-graphium-emr
   image: images/graphium/connections/test-graphium-emr.png
   area: connections
   status: capture
-  method: needs-test-data
-  method_note: A healthy Graphium EMR connection
-  capture: viewport
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1577x75
   alt: Test Graphium EMR connection
   used_in:
@@ -2344,10 +2434,12 @@
   context: '- Navigate back to your Connection setup within Graphium AI and paste the API Key into the **API Key** field within
     the **Authentication** section of the Graphium EMR Connection sidebar and click **Save**. - Click the **Test** button
     in the top right corner to sync your data from Graphium AI''s EMR. '
-  start_url: null
+  start_url: /vaults/{{vaultId}}/connections/{{emrConnId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: *id013
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-20-42-54).'
 - id: testing-connection
   image: images/graphium/connections/testing-connection.png
   area: connections
@@ -2806,18 +2898,18 @@
   context: Click the **trigger card** at the top of the flow canvas to open **Trigger Configuration** in the right panel.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id010
+  - &id014
     click:
       role: button
       name: Open the trigger
       exact: true
-  - &id011
+  - &id015
     wait_for: aside[class*="_inspector_"]
-  - &id012
+  - &id016
     click:
       css: aside[class*="_inspector_"] button
       has_text: Manual
-  - &id013
+  - &id017
     wait_for: aside[class*="_inspector_"] [role="listbox"]
   - click:
       css: aside[class*="_inspector_"] [role="option"]
@@ -2847,28 +2939,28 @@
     Details** panel opens on the right, with **Success Criteria** below the step's instructions.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id018
+  - &id022
     click:
       role: button
       name: Step outputs
       exact: true
-  - &id019
+  - &id023
     click:
       role: button
       name: Use step outputs
       exact: true
     optional: true
     note: Confirms the mode switch inside the unsaved form
-  - &id020
+  - &id024
     click:
       role: button
       name: Open step 2
       exact: false
-  - &id021
+  - &id025
     wait_for:
       text: Step Details
       exact: true
-  - &id022
+  - &id026
     click:
       role: button
       name: Advanced Options
@@ -2915,23 +3007,23 @@
     column changes always require approval — there is no aut
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id014
+  - &id018
     click:
       role: button
       name: Configure shared access
       exact: true
-  - &id015
+  - &id019
     wait_for:
       text: Playbook Access
       exact: true
-  - &id016
+  - &id020
     click:
       role: button
       name: Read/Write
       exact: true
       within: aside[class*="_inspector_"]
       nth: 1
-  - &id017
+  - &id021
     click:
       role: button
       name: Requires Review
@@ -2980,10 +3072,10 @@
     why this playbook runs.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id010
-  - *id011
-  - *id012
-  - *id013
+  - *id014
+  - *id015
+  - *id016
+  - *id017
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Record Added
@@ -3009,8 +3101,8 @@
     and **Clear** links — use this to scope the connection down to only th
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
+  - *id018
+  - *id019
   - scroll_to:
       text: HubSpot
       within: aside[class*="_inspector_"]
@@ -3035,10 +3127,10 @@
     New or Updated Contact, New or Updated Deal, New Ticket |'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id010
-  - *id011
-  - *id012
-  - *id013
+  - *id014
+  - *id015
+  - *id016
+  - *id017
   - scroll_to:
       text: HUBSPOT
       exact: true
@@ -3064,10 +3156,10 @@
     connection trigger also has an optional **Description** field, and a **Clear all** link to reset the current trigger configuration.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id010
-  - *id011
-  - *id012
-  - *id013
+  - *id014
+  - *id015
+  - *id016
+  - *id017
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: New or Updated Contact
@@ -3204,8 +3296,8 @@
     each action shows whether it **Pauses for review** or **Runs witho'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
+  - *id018
+  - *id019
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3227,10 +3319,10 @@
     as reads yet, so every action — including ones that only look up data — may show **Pauses for review**.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
-  - *id016
-  - *id017
+  - *id018
+  - *id019
+  - *id020
+  - *id021
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3509,10 +3601,10 @@
     For Vault Event a'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id010
-  - *id011
-  - *id012
-  - *id013
+  - *id014
+  - *id015
+  - *id016
+  - *id017
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Scheduled
@@ -3550,10 +3642,10 @@
     — fire automatically when something happens in a connected exter'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id010
-  - *id011
-  - *id012
-  - *id013
+  - *id014
+  - *id015
+  - *id016
+  - *id017
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3575,8 +3667,8 @@
     step sees everything that happened before it.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
+  - *id022
+  - *id023
   selector:
     css: section[class*="_section_"]
     has_text: Step context
@@ -3601,11 +3693,11 @@
     playbook shouldn't continue without it.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
-  - *id020
-  - *id021
   - *id022
+  - *id023
+  - *id024
+  - *id025
+  - *id026
   - click:
       role: button
       name: Add output
@@ -3645,11 +3737,11 @@
     and pick that step.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
-  - *id020
-  - *id021
   - *id022
+  - *id023
+  - *id024
+  - *id025
+  - *id026
   - scroll_to:
       text: What this step reads
   selector:
@@ -3676,8 +3768,8 @@
     or deny'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id020
-  - *id021
+  - *id024
+  - *id025
   - click:
       role: button
       name: Add Criterion
@@ -4937,7 +5029,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id023
+  selector: &id027
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5328,7 +5420,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id024
+  selector: &id028
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5362,7 +5454,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id023
+  selector: *id027
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5494,7 +5586,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id024
+  selector: *id028
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5525,7 +5617,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id023
+  selector: *id027
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5598,7 +5690,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id024
+  selector: *id028
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'

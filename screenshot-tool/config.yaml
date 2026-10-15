@@ -26,6 +26,8 @@ vars:
   tableId: 01a0df93-4750-78c3-a3fb-3d1f7e077213    # Providers 40
   qaAssistantId: 019fcd76-72e8-7597-b178-c596b594a21e  # QA Custom Assistant
   playbookId: 019fcd43-e9d8-780a-b4ca-8ee6459cb465    # Patient Demographics Summary Report (draft)
+  sheetsConnId: 01a0c4d9-4845-70a4-913f-a50357afbc45  # Google Sheets – Patient Records connection
+  emrConnId: 019fcd8a-7d04-7fc0-b2ac-171569c0d484     # QA Test EMR Connection
   searchTerm: ''   # Not needed for now (both search-result screenshots are kept as-is). Set before recapturing them; "Inv" has no results in Patient Records.
 
 # Values that must not change during a run. Each is read before the run and after every
@@ -43,3 +45,7 @@ watch:
     url: /vaults/{{vaultId}}/playbooks
     target: { css: '[class*="_card_"]', has_text: Patient Demographics Summary Report }
     applies_to: /vaults/{{vaultId}}/playbooks
+  - label: Patient Records connection count
+    url: /vaults/{{vaultId}}/connections
+    target: { css: '[class*="_count_"]', has_text: connections }
+    applies_to: /vaults/{{vaultId}}/connections
