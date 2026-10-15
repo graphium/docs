@@ -49,3 +49,7 @@ watch:
     url: /vaults/{{vaultId}}/connections
     target: { css: '[class*="_count_"]', has_text: connections }
     applies_to: /vaults/{{vaultId}}/connections
+  - label: Providers 40 record count
+    url: /vaults/{{vaultId}}/tables/{{tableId}}
+    target: { css: '[data-testid="vault-table-content"] [class*="_footerText_"]' }
+    applies_to: /vaults/{{vaultId}}/tables/{{tableId}}

@@ -3894,8 +3894,8 @@
   image: images/graphium/records/add-record-button.png
   area: records
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 148x56
   alt: Add record button
@@ -3905,17 +3905,22 @@
     line: 19
   context: 1. Open the vault table and ensure you are on the **Data** tab. 2. Click the **+ Add** button in the table header.
     The button label uses the table's configured singular name — for example, **Add Patient** or **Add Procedure**.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: &id027
+    role: button
+    name: Add Providers 40
+    exact: true
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: column-header-row
   image: images/graphium/records/column-header-row.png
   area: records
   status: capture
   method: auto
   method_note: Open the page and capture
-  capture: viewport
+  capture: element
   current_size: 1524x55
   alt: Column header row
   used_in:
@@ -3925,10 +3930,12 @@
   context: '- **Column names** — Derived from the table''s schema. When the table has a configured set of default visible
     fields, only those columns appear, in the configured order. Otherwise all schema properties are shown. - **Sort indicator**
     — The active sort column displays an arrow icon after its name (↑ f'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: '[data-testid="vault-table-content"] thead'
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: create-record
   image: images/graphium/records/create-record.png
   area: records
@@ -3945,14 +3952,24 @@
   context: 2. Click the **+ Add** button in the table header. The button label uses the table's configured singular name —
     for example, **Add Patient** or **Add Procedure**. 3. A panel opens to the right with a blank form generated from the
     table's schema. Fill in the fields for the new record.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - click: *id027
+  - wait_for:
+      testid: vault-record-editor
+  - click:
+      testid: additional-fields-toggle
+    optional: true
+    note: Shows all fields, as in the current image
+  selector:
+    testid: vault-record-editor
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: delete-record
   image: images/graphium/records/delete-record.png
   area: records
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -3967,7 +3984,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: edit-record
   image: images/graphium/records/edit-record.png
   area: records
@@ -3983,14 +4001,28 @@
     line: 48
   context: 2. Click the pencil (**Edit**) icon on the right side of the record row. 3. A panel opens to the right pre-populated
     with the record's current field values.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - click:
+      role: button
+      name: Edit
+      exact: true
+      within: '[data-testid="vault-table-content"]'
+      nth: 0
+  - wait_for:
+      testid: vault-record-editor
+  - click:
+      testid: additional-fields-toggle
+    optional: true
+  selector:
+    testid: vault-record-editor
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: empty-table
   image: images/graphium/records/empty-table.png
   area: records
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -4005,14 +4037,15 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: record-filter-conditional
   image: images/graphium/records/record-filter-conditional.png
   area: records
   status: capture
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  capture: element
   current_size: 1516x233
   alt: Record filter conditional
   used_in:
@@ -4021,17 +4054,50 @@
     line: 35
   context: 3. Enter or select a value in the value field that appears. 4. The grid updates automatically to show only matching
     records.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - &id028
+    click:
+      role: button
+      name: Filter
+      exact: true
+  - &id029
+    wait_for: '[class*="_filterBar_"]'
+  - &id030
+    click:
+      css: '[class*="_filterBar_"] button'
+      has_text: Add condition
+  - &id031
+    fill:
+      target:
+        css: '[class*="_filterBar_"] input[id^="react-select-"]'
+        nth: 1
+      value: contains
+  - &id032
+    press: Enter
+    allow_enter: true
+    note: Picks the filter operator; filters are not saved
+  - &id033
+    fill:
+      target: '[class*="_filterBar_"] input:not([id^="react-select-"])'
+      value: Dana
+    optional: true
+  - click:
+      css: '[class*="_filterBar_"] button'
+      has_text: Add condition
+  selector:
+  - '[data-testid="vault-table-toolbar"]'
+  - '[class*="_filterBar_"]'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: record-filter-panel
   image: images/graphium/records/record-filter-panel.png
   area: records
   status: capture
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  capture: element
   current_size: 1527x189
   alt: Record filter panel
   used_in:
@@ -4040,17 +4106,24 @@
     line: 24
   context: 3. The filter panel opens above the data grid. Clicking **Filter** again hides the panel. Active filter conditions
     remain applied even when the panel is closed.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - *id028
+  - *id029
+  - *id030
+  selector:
+  - '[data-testid="vault-table-toolbar"]'
+  - '[class*="_filterBar_"]'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: record-in-table
   image: images/graphium/records/record-in-table.png
   area: records
   status: capture
   method: auto
   method_note: Open the page and capture
-  capture: viewport
+  capture: element
   current_size: 1302x171
   alt: Record in table
   used_in:
@@ -4062,14 +4135,18 @@
     line: 34
   context: 1. Locate the record you want to edit in the vault table. 2. Click the pencil (**Edit**) icon on the right side
     of the record row.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '[data-testid="vault-table-content"] thead'
+  - '[data-testid="vault-table-content"] tbody tr >> nth=1'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: remove-record-filter
   image: images/graphium/records/remove-record-filter.png
   area: records
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4081,14 +4158,26 @@
     line: 47
   context: Click the **×** button at the right end of any condition row to remove it. If all conditions are removed, all records
     are shown again.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - *id028
+  - *id029
+  - *id030
+  - *id031
+  - *id032
+  - *id033
+  selector:
+  - '[class*="_filterBar_"] input:not([id^="react-select-"])'
+  - role: button
+    name: Remove filter rule
+    exact: true
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: saved-record-filter
   image: images/graphium/records/saved-record-filter.png
   area: records
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A saved record filter
   capture: element
@@ -4103,11 +4192,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: show-voided-records
   image: images/graphium/records/show-voided-records.png
   area: records
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A table with voided records
   capture: viewport
@@ -4122,7 +4212,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: sort-record
   image: images/graphium/records/sort-record.png
   area: records
@@ -4138,10 +4229,18 @@
     line: 73
   context: '- Sorting is session-based and does not persist when you navigate away > **Tip:** Text columns sort alphabetically,
     number columns sort numerically, and date columns sort chronologically.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
+  steps:
+  - click:
+      css: '[data-testid="vault-table-content"] thead th'
+      has_text: Name
+    note: Sorting is session-only; nothing is saved
+  selector:
+    css: '[data-testid="vault-table-content"] thead th'
+    has_text: Name
+  reviewed: true
+  padding: 2
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: table-footer
   image: images/graphium/records/table-footer.png
   area: records
@@ -4158,14 +4257,16 @@
   context: The footer counter reads "Showing Y of Y records" once all records have been loaded. > **Note:** The grid loads
     the first 50 records on open, then automatically loads additional records in batches of 50 as you scroll down — no button
     click required.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: '[data-testid="vault-table-content"] [class*="_footer_"]'
+  reviewed: true
+  padding: 6
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: unvoid-record
   image: images/graphium/records/unvoid-record.png
   area: records
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A table with voided records
   capture: element
@@ -4180,14 +4281,15 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: vault-table
   image: images/graphium/records/vault-table.png
   area: records
   status: capture
   method: auto
   method_note: Open the page and capture
-  capture: viewport
+  capture: element
   current_size: 1301x276
   alt: Vault table
   used_in:
@@ -4196,14 +4298,18 @@
     line: 26
   context: Navigate to the vault that contains the table you want to manage. Select the table from the vault sidebar. The
     **Data** tab opens by default, displaying records in the data grid.
-  start_url: null
+  start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '[data-testid="vault-table-toolbar"]'
+  - '[data-testid="vault-table-content"] tbody tr >> nth=2'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-02-06).'
 - id: void-record
   image: images/graphium/records/void-record.png
   area: records
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4218,7 +4324,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (dialog on real data or missing data).'
 - id: ask-help-question
   image: images/graphium/reference/ask-help-question.png
   area: reference
@@ -5029,7 +5136,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id027
+  selector: &id034
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5420,7 +5527,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id028
+  selector: &id035
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5454,7 +5561,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id027
+  selector: *id034
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5586,7 +5693,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id028
+  selector: *id035
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5617,7 +5724,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id027
+  selector: *id034
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5690,7 +5797,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id028
+  selector: *id035
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
