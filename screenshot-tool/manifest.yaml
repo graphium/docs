@@ -4404,14 +4404,25 @@
   context: '- Four **suggested questions** as clickable chips — for example, *"How do I create a vault?"*, *"What are connections?"*,
     *"What is the AI Assistant?"*, and *"How do I invite teammates?"* Click any suggested question to send it immediately,
     or type your own question in the input box.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps: &id036
+  - &id037
+    click:
+      role: button
+      name: Help
+      exact: true
+  - &id038
+    wait_for: '[data-testid="help-assistant-panel"]'
+  selector:
+  - '[data-testid="help-assistant-panel"] [class*="_emptyState_"]'
+  - '[data-testid="help-assistant-panel"] [class*="_footer_"]'
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-18-23).'
 - id: close-help-assistant
   image: images/graphium/reference/close-help-assistant.png
   area: reference
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4423,14 +4434,16 @@
     line: 46
   context: '- Press **`Esc`** when the panel is focused. Closing the panel does not end your conversation — when you reopen
     it during the same session, your previous messages are still there.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps: *id036
+  selector: '[data-testid="help-assistant-panel"] [class*="_header_"]'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: contact-sales-ticket
   image: images/graphium/reference/contact-sales-ticket.png
   area: reference
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4442,10 +4455,19 @@
     line: 61
   context: 1. Click the **?** icon in the top navigation bar to open the Help panel. 2. Click **Talk to sales** at the bottom
     of the panel.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - *id037
+  - *id038
+  - click:
+      role: button
+      name: Talk to sales
+      exact: true
+    note: Opens the sales form; Submit is never clicked
+  selector: '[data-testid="help-assistant-panel"]'
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: help-assistant-icon
   image: images/graphium/reference/help-assistant-icon.png
   area: reference
@@ -4462,10 +4484,17 @@
   context: Click the **? (help) icon** in the global header at the top right of the screen. The Help panel slides out from
     the right side of the page. The panel stays open as you navigate around Graphium AI — you can keep it open while working
     in a vault, switching pages, or using other features without losing
-  start_url: null
+  start_url: /assistants
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - role: button
+    name: Help
+    exact: true
+  - css: header button
+    has_text: Demo User
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-18-23).'
 - id: help-assistant-panel
   image: images/graphium/reference/help-assistant-panel.png
   area: reference
@@ -4486,10 +4515,12 @@
     section: Opening and Closing the Help Panel > Opening the panel
     line: 28
   context: 1. Click the **?** icon in the top navigation bar to open the Help panel.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps: *id036
+  selector: '[data-testid="help-assistant-panel"]'
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-18-23).'
 - id: help-phi-notice
   image: images/graphium/reference/help-phi-notice.png
   area: reference
@@ -4506,14 +4537,16 @@
   context: '> ⚠️ **Important:** Do not include PHI, patient information, or personal identifiers in your questions. The Help
     Assistant is designed to answer questions about Graphium AI''s features and how to use the platform — not to process patient
     data.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps: *id036
+  selector: '[data-testid="help-assistant-panel"] [class*="_footer_"]'
+  reviewed: true
+  padding: 4
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-18-23).'
 - id: help-question-response
   image: images/graphium/reference/help-question-response.png
   area: reference
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: element
@@ -4528,11 +4561,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: help-source-links
   image: images/graphium/reference/help-source-links.png
   area: reference
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: element
@@ -4547,11 +4581,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: notification-icon
   image: images/graphium/reference/notification-icon.png
   area: reference
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: An unread notification
   capture: element
@@ -4567,7 +4602,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: sales-ticket-response
   image: images/graphium/reference/sales-ticket-response.png
   area: reference
@@ -4590,7 +4626,7 @@
 - id: submit-support-ticket
   image: images/graphium/reference/submit-support-ticket.png
   area: reference
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -4602,10 +4638,19 @@
     line: 34
   context: 1. Click the **?** icon in the top navigation bar to open the Help panel. 2. Click **Submit a ticket** at the bottom
     of the panel.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - *id037
+  - *id038
+  - click:
+      role: button
+      name: Submit a ticket
+      exact: true
+    note: Opens the ticket form; Submit is never clicked
+  selector: '[data-testid="help-assistant-panel"]'
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: support-ticket-response
   image: images/graphium/reference/support-ticket-response.png
   area: reference
@@ -4629,7 +4674,7 @@
 - id: unread-notification
   image: images/graphium/reference/unread-notification.png
   area: reference
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: An unread notification
   capture: element
@@ -4643,7 +4688,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: add-boolean-property
   image: images/graphium/tables/add-boolean-property.png
   area: tables
@@ -5198,7 +5244,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id036
+  selector: &id039
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5589,7 +5635,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id037
+  selector: &id040
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5623,7 +5669,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id036
+  selector: *id039
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5755,7 +5801,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id037
+  selector: *id040
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5786,7 +5832,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id036
+  selector: *id039
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5859,7 +5905,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id037
+  selector: *id040
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
