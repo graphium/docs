@@ -1498,15 +1498,14 @@
     exact: true
   - css: button
     has_text: Plan and invoices
-  reviewed: false
+  reviewed: true
   padding:
     top: 12
     left: 12
     right: 40
     bottom: 12
   workspace: Test Workspace
-  review_note: '2026-10-15: Shauna wants the new capture; first run failed on the selector, fixed to span Back to Workspace
-    .. Billing.'
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-32-45).'
 - id: change-seat-type
   image: images/graphium/billing/change-seat-type.png
   area: billing
@@ -2543,9 +2542,9 @@
 - id: builder-contributor-toggle
   image: images/graphium/core-concepts/builder-contributor-toggle.png
   area: core-concepts
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 268x155
   alt: Builder and Contributor toggle buttons at the bottom of the vault sidebar
@@ -2556,16 +2555,26 @@
   context: '**Contributor mode** shows a streamlined data entry interface. The structural tools are hidden. You see the tables
     and the data -- everything you need to add and edit records, nothing you do not need. The interface is cleaner and more
     focused. The typical pattern is this: Builders set up the vault d'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/settings/general
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - role: button
+    name: Settings
+    exact: true
+    within: &id014
+      testid: vault-detail-sidebar
+  - text: Contributor
+    exact: true
+    within: *id014
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: invite-new-workspace-user
   image: images/graphium/core-concepts/invite-new-workspace-user.png
   area: core-concepts
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1414x725
   alt: Invite New User form in Workspace Settings showing email, Role, and Seat Type fields
@@ -2576,16 +2585,20 @@
   context: Once they accept the invitation and join the workspace, add them to specific vaults from that vault's **Access
     & Permissions > Users** tab, just like any other existing member. > **Note:** Workspace Role and Seat Type are workspace-wide
     concepts and are not the same as the four vault-level roles (Ad
-  start_url: null
-  steps: []
+  start_url: /settings?tab=members
+  steps:
+  - wait_for:
+      testid: invite-email-input
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: vault-access-users-tab
   image: images/graphium/core-concepts/vault-access-users-tab.png
   area: core-concepts
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1626x735
   alt: Vault Access & Permissions page showing Add Member, People with Vault Access, and role dropdowns
@@ -2596,10 +2609,12 @@
   context: '**Change a role.** Each user has a role dropdown. Adjust it to promote or demote someone -- say, moving a Contributor
     up to Builder when they take on playbook configuration responsibilities, or moving a Builder down to Contributor when
     the setup phase is done. **Deactivate a user.** If someone no lo'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/settings/access
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-36-29).'
 - id: vault-role-permissions
   image: images/graphium/core-concepts/vault-role-permissions.png
   area: core-concepts
@@ -2620,13 +2635,14 @@
   steps:
   - scroll_to: '[class*="_rolePermissions_"]'
   selector: '[class*="_rolePermissions_"]'
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-36-29).'
 - id: workspace-switcher-and-settings
   image: images/graphium/core-concepts/workspace-switcher-and-settings.png
   area: core-concepts
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1430x491
   alt: Workspace switcher dropdown and gear icon in the header
@@ -2637,10 +2653,15 @@
   context: '**Switching workspaces.** If you belong to multiple workspaces -- say you manage Urban Health Partners but also
     consult for Graphium Corporate -- use the dropdown in the header to switch between them. Each workspace has its own context,
     and switching changes your entire view. **Workspace Settings.**'
-  start_url: null
-  steps: []
+  start_url: /settings?tab=workspaces
+  steps:
+  - wait_for:
+      text: You are currently in this workspace
+    optional: true
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-36-29).'
 - id: edit-profile
   image: images/graphium/getting-started/edit-profile.png
   area: getting-started
@@ -2658,7 +2679,7 @@
     opens.
   start_url: /assistants
   steps:
-  - click: &id014
+  - click: &id015
       css: header button
       has_text: Demo User
   - click:
@@ -2865,12 +2886,12 @@
     name in bold and your email address beneath it.
   start_url: /assistants
   steps:
-  - click: *id014
+  - click: *id015
   - wait_for:
       text: Edit Profile
       exact: true
   selector:
-  - *id014
+  - *id015
   - css: header [class*="_dropdown_"]
   reviewed: true
   padding: 10
@@ -2921,12 +2942,12 @@
     making it easy to identify your active workspace at a glance.'
   start_url: /assistants
   steps:
-  - click: &id015
+  - click: &id016
       testid: workspace-selector-menu
   - wait_for:
       text: Manage workspaces
   selector:
-  - *id015
+  - *id016
   - text: Manage workspaces
   reviewed: true
   padding: 12
@@ -3041,18 +3062,18 @@
   context: Click the **trigger card** at the top of the flow canvas to open **Trigger Configuration** in the right panel.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id016
+  - &id017
     click:
       role: button
       name: Open the trigger
       exact: true
-  - &id017
-    wait_for: aside[class*="_inspector_"]
   - &id018
+    wait_for: aside[class*="_inspector_"]
+  - &id019
     click:
       css: aside[class*="_inspector_"] button
       has_text: Manual
-  - &id019
+  - &id020
     wait_for: aside[class*="_inspector_"] [role="listbox"]
   - click:
       css: aside[class*="_inspector_"] [role="option"]
@@ -3082,28 +3103,28 @@
     Details** panel opens on the right, with **Success Criteria** below the step's instructions.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id024
+  - &id025
     click:
       role: button
       name: Step outputs
       exact: true
-  - &id025
+  - &id026
     click:
       role: button
       name: Use step outputs
       exact: true
     optional: true
     note: Confirms the mode switch inside the unsaved form
-  - &id026
+  - &id027
     click:
       role: button
       name: Open step 2
       exact: false
-  - &id027
+  - &id028
     wait_for:
       text: Step Details
       exact: true
-  - &id028
+  - &id029
     click:
       role: button
       name: Advanced Options
@@ -3150,23 +3171,23 @@
     column changes always require approval — there is no aut
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id020
+  - &id021
     click:
       role: button
       name: Configure shared access
       exact: true
-  - &id021
+  - &id022
     wait_for:
       text: Playbook Access
       exact: true
-  - &id022
+  - &id023
     click:
       role: button
       name: Read/Write
       exact: true
       within: aside[class*="_inspector_"]
       nth: 1
-  - &id023
+  - &id024
     click:
       role: button
       name: Requires Review
@@ -3215,10 +3236,10 @@
     why this playbook runs.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id016
   - *id017
   - *id018
   - *id019
+  - *id020
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Record Added
@@ -3244,8 +3265,8 @@
     and **Clear** links — use this to scope the connection down to only th
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id020
   - *id021
+  - *id022
   - scroll_to:
       text: HubSpot
       within: aside[class*="_inspector_"]
@@ -3270,10 +3291,10 @@
     New or Updated Contact, New or Updated Deal, New Ticket |'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id016
   - *id017
   - *id018
   - *id019
+  - *id020
   - scroll_to:
       text: HUBSPOT
       exact: true
@@ -3299,10 +3320,10 @@
     connection trigger also has an optional **Description** field, and a **Clear all** link to reset the current trigger configuration.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id016
   - *id017
   - *id018
   - *id019
+  - *id020
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: New or Updated Contact
@@ -3439,8 +3460,8 @@
     each action shows whether it **Pauses for review** or **Runs witho'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id020
   - *id021
+  - *id022
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3462,10 +3483,10 @@
     as reads yet, so every action — including ones that only look up data — may show **Pauses for review**.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id020
   - *id021
   - *id022
   - *id023
+  - *id024
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3744,10 +3765,10 @@
     For Vault Event a'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id016
   - *id017
   - *id018
   - *id019
+  - *id020
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Scheduled
@@ -3785,10 +3806,10 @@
     — fire automatically when something happens in a connected exter'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id016
   - *id017
   - *id018
   - *id019
+  - *id020
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3810,8 +3831,8 @@
     step sees everything that happened before it.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id024
   - *id025
+  - *id026
   selector:
     css: section[class*="_section_"]
     has_text: Step context
@@ -3836,11 +3857,11 @@
     playbook shouldn't continue without it.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id024
   - *id025
   - *id026
   - *id027
   - *id028
+  - *id029
   - click:
       role: button
       name: Add output
@@ -3880,11 +3901,11 @@
     and pick that step.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id024
   - *id025
   - *id026
   - *id027
   - *id028
+  - *id029
   - scroll_to:
       text: What this step reads
   selector:
@@ -3911,8 +3932,8 @@
     or deny'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id026
   - *id027
+  - *id028
   - click:
       role: button
       name: Add Criterion
@@ -4050,7 +4071,7 @@
     The button label uses the table's configured singular name — for example, **Add Patient** or **Add Procedure**.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: &id029
+  selector: &id030
     role: button
     name: Add Providers 40
     exact: true
@@ -4097,7 +4118,7 @@
     table's schema. Fill in the fields for the new record.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - click: *id029
+  - click: *id030
   - wait_for:
       testid: vault-record-editor
   - click:
@@ -4199,28 +4220,28 @@
     records.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - &id030
+  - &id031
     click:
       role: button
       name: Filter
       exact: true
-  - &id031
-    wait_for: '[class*="_filterBar_"]'
   - &id032
+    wait_for: '[class*="_filterBar_"]'
+  - &id033
     click:
       css: '[class*="_filterBar_"] button'
       has_text: Add condition
-  - &id033
+  - &id034
     fill:
       target:
         css: '[class*="_filterBar_"] input[id^="react-select-"]'
         nth: 1
       value: contains
-  - &id034
+  - &id035
     press: Enter
     allow_enter: true
     note: Picks the filter operator; filters are not saved
-  - &id035
+  - &id036
     fill:
       target: '[class*="_filterBar_"] input:not([id^="react-select-"])'
       value: Dana
@@ -4251,9 +4272,9 @@
     remain applied even when the panel is closed.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - *id030
   - *id031
   - *id032
+  - *id033
   selector:
   - '[data-testid="vault-table-toolbar"]'
   - '[class*="_filterBar_"]'
@@ -4303,12 +4324,12 @@
     are shown again.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - *id030
   - *id031
   - *id032
   - *id033
   - *id034
   - *id035
+  - *id036
   selector:
   - '[class*="_filterBar_"] input:not([id^="react-select-"])'
   - role: button
@@ -4486,13 +4507,13 @@
     *"What is the AI Assistant?"*, and *"How do I invite teammates?"* Click any suggested question to send it immediately,
     or type your own question in the input box.'
   start_url: /assistants
-  steps: &id036
-  - &id037
+  steps: &id037
+  - &id038
     click:
       role: button
       name: Help
       exact: true
-  - &id038
+  - &id039
     wait_for: '[data-testid="help-assistant-panel"]'
   selector:
   - '[data-testid="help-assistant-panel"] [class*="_emptyState_"]'
@@ -4516,7 +4537,7 @@
   context: '- Press **`Esc`** when the panel is focused. Closing the panel does not end your conversation — when you reopen
     it during the same session, your previous messages are still there.'
   start_url: /assistants
-  steps: *id036
+  steps: *id037
   selector: '[data-testid="help-assistant-panel"] [class*="_header_"]'
   reviewed: true
   padding: 4
@@ -4538,8 +4559,8 @@
     of the panel.
   start_url: /assistants
   steps:
-  - *id037
   - *id038
+  - *id039
   - click:
       role: button
       name: Talk to sales
@@ -4597,7 +4618,7 @@
     line: 28
   context: 1. Click the **?** icon in the top navigation bar to open the Help panel.
   start_url: /assistants
-  steps: *id036
+  steps: *id037
   selector: '[data-testid="help-assistant-panel"]'
   reviewed: true
   padding: 0
@@ -4619,7 +4640,7 @@
     Assistant is designed to answer questions about Graphium AI''s features and how to use the platform — not to process patient
     data.'
   start_url: /assistants
-  steps: *id036
+  steps: *id037
   selector: '[data-testid="help-assistant-panel"] [class*="_footer_"]'
   reviewed: true
   padding: 4
@@ -4721,8 +4742,8 @@
     of the panel.
   start_url: /assistants
   steps:
-  - *id037
   - *id038
+  - *id039
   - click:
       role: button
       name: Submit a ticket
@@ -5325,7 +5346,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id039
+  selector: &id040
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5716,7 +5737,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id040
+  selector: &id041
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5750,7 +5771,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id039
+  selector: *id040
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5882,7 +5903,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id040
+  selector: *id041
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5913,7 +5934,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id039
+  selector: *id040
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5986,7 +6007,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id040
+  selector: *id041
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
