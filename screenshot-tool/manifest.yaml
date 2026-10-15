@@ -1490,10 +1490,23 @@
   context: From anywhere in the application, click the **gear icon** (⚙️) in the top navigation bar to open workspace **Settings**.
     In the Settings sidebar, click **Billing**. > **Note:** If your workspace role is **Member**, the Billing page shows the
     plan, Graphium credits, and plan resource usage only. **Ch
-  start_url: null
+  start_url: /settings?tab=billing
   steps: []
-  selector: null
+  selector:
+  - role: button
+    name: Back to Workspace
+    exact: true
+  - css: button
+    has_text: Plan and invoices
   reviewed: false
+  padding:
+    top: 12
+    left: 12
+    right: 40
+    bottom: 12
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna wants the new capture; first run failed on the selector, fixed to span Back to Workspace
+    .. Billing.'
 - id: change-seat-type
   image: images/graphium/billing/change-seat-type.png
   area: billing
@@ -1510,16 +1523,25 @@
   context: The change applies immediately. If the new seat type exceeds the workspace's available capacity, Graphium AI will
     display a prompt directing you to the Billing page to increase seat capacity before the change can be applied. > **Note:**
     Workspace Owners and Admins are always billed as Builder seats.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=members
+  steps:
+  - click:
+      css: input[id^="react-select-"]
+      nth: 1
+      within: main [class*="_surface_"] tbody tr >> nth=1
+    note: Opens the Seat Type dropdown on the 2nd member; nothing is selected
+  selector:
+  - main [class*="_surface_"] tbody tr >> nth=1
+  - css: '[class*="-menu"]'
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: credit-usage-this-cycle
   image: images/graphium/billing/credit-usage-this-cycle.png
   area: billing
-  status: capture
-  method: needs-test-data
-  method_note: Credit usage in the current cycle
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 731x324
   alt: Credit usage this cycle section showing a per-service breakdown of credits consumed
@@ -1530,10 +1552,16 @@
   context: 'Below the total credit usage summary, the **Credit usage this cycle** section shows a breakdown of how the workspace''s
     credits were spent across services during the current billing period. The breakdown table lists each service that consumed
     credits — such as AI assistant conversations and playbook '
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=billing
+  steps:
+  - scroll_to:
+      testid: credit-usage-breakdown-card
+  selector:
+    testid: credit-usage-breakdown-card
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: invite-seat-assign
   image: images/graphium/billing/invite-seat-assign.png
   area: billing
@@ -1550,14 +1578,25 @@
   context: When inviting a new workspace member, you will be prompted to choose a billing seat type — Builder or Contributor
     — as part of the invitation flow. The seat type determines how the new member is billed once they accept the invitation.
     If no Builder or Contributor seat capacity is available when send
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=members
+  steps:
+  - fill:
+      target: '#inviteEmail'
+      value: test@graphium.com
+  - click:
+      css: '[class*="_card_"] input[id^="react-select-"]'
+    note: Opens the seat type dropdown; Send Invite is never clicked
+  selector:
+  - css: '[class*="_card_"]'
+    has_text: Invite New User
+  - css: '[class*="-menu"]'
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: payment-invoice-mgmt
   image: images/graphium/billing/payment-invoice-mgmt.png
   area: billing
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -1573,16 +1612,26 @@
   context: To go directly to your invoice history, click **View all invoices** in the **Recent Invoices** card on the right
     side of the Billing page. This also opens the Stripe billing portal, navigating to the invoice list. The payment method
     on file is used for recurring subscription charges and for seat cap
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=billing
+  steps:
+  - scroll_to:
+      css: '[class*="_card_"]'
+      has_text: Recent Invoices
+  selector:
+  - css: '[class*="_card_"]'
+    has_text: Billing portal
+  - css: '[class*="_card_"]'
+    has_text: Recent Invoices
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: plan-subscription-status
   image: images/graphium/billing/plan-subscription-status.png
   area: billing
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 711x237
   alt: Current plan and subscription status on the Billing page with the Change plan option
@@ -1595,14 +1644,19 @@
     line: 36
   context: '> **Note:** Plan changes that succeed are reflected on the Billing page immediately. No manual refresh is required.
     For a side-by-side view of each plan''s limits, see [Plan Comparison](#plan-comparison) below.'
-  start_url: null
+  start_url: /settings?tab=billing
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Change plan
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: plan-upgrade-notice
   image: images/graphium/billing/plan-upgrade-notice.png
   area: billing
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A workspace at a plan limit
   capture: element
@@ -1617,7 +1671,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: limit pop-ups need a workspace at its limit; kept current image.'
 - id: resource-usage
   image: images/graphium/billing/resource-usage.png
   area: billing
@@ -1633,10 +1688,18 @@
     line: 99
   context: '- Custom AI assistants per vault If the workspace approaches or reaches a limit, Graphium AI displays an in-app
     prompt guiding you to the Billing page to review upgrade options. See [Plan Limits and Upgrade Guidance](/graphium/billing/subscription-and-payment-settings#plan-limits-and-upgrade-guidanc'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=billing
+  steps:
+  - scroll_to:
+      css: '[class*="_card_"]'
+      has_text: Plan resource usage
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Plan resource usage
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: seat-assignments
   image: images/graphium/billing/seat-assignments.png
   area: billing
@@ -1652,10 +1715,14 @@
     line: 47
   context: To see each member's current billing seat type, open **Settings** from the workspace navigation and go to **Members**.
     Each member row displays their billing seat type alongside their workspace role.
-  start_url: null
-  steps: []
+  start_url: /settings?tab=members
+  steps:
+  - wait_for:
+      testid: invite-email-input
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: seat-composition
   image: images/graphium/billing/seat-composition.png
   area: billing
@@ -1675,14 +1742,22 @@
   context: '- Assigning a member to a seat type within available capacity does not trigger a charge — capacity changes are
     the only billing event. The **Seat Composition** card on the Billing page shows the total capacity purchased for each
     seat type alongside how many seats are currently assigned to members.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=billing
+  steps:
+  - scroll_to:
+      css: '[class*="_card_"]'
+      has_text: Seat composition
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Seat composition
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: seat-limit-notice
   image: images/graphium/billing/seat-limit-notice.png
   area: billing
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A workspace over its seat capacity
   capture: element
@@ -1700,13 +1775,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: limit pop-ups need a workspace at its limit; kept current image.'
 - id: total-credit-usage
   image: images/graphium/billing/total-credit-usage.png
   area: billing
   status: capture
-  method: needs-test-data
-  method_note: Credit usage in the current cycle
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 732x359
   alt: Graphium AI total credit usage section showing credits consumed and renewal date
@@ -1717,10 +1793,15 @@
   context: If you need additional credits, click **Buy credits** to purchase more. Credits are shared across the workspace
     and are consumed by all vault activity that uses AI features. > **Note:** If an AI Assistant reply times out or is interrupted
     partway through, credits are still used for the work the assi
-  start_url: null
+  start_url: /settings?tab=billing
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Graphium credits
+  reviewed: true
+  padding: 8
+  workspace: Test Workspace
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-24-48).'
 - id: add-connection
   image: images/graphium/connections/add-connection.png
   area: connections

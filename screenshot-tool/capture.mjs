@@ -115,6 +115,22 @@ let page = signedInPage;
 let signedOut = false;
 const settle = () => page.waitForTimeout(cfg.settle_ms ?? 1200);
 
+// Workspace the current entry expects (entries can set `workspace:`; default is config workspace_name).
+let expectedWorkspace = cfg.workspace_name;
+
+// Switch with the header switcher if the current workspace isn't the one wanted. Only changes the view.
+async function ensureWorkspace(name) {
+  const now = await page.getByTestId('workspace-selector-menu').first().innerText({ timeout: 10000 }).catch(() => '');
+  if (now.includes(name)) return;
+  for (const bad of [...(cfg.forbidden_workspaces || [])]) {
+    if (name.includes(bad)) throw new Error(`STOP: "${name}" is on the forbidden list.`);
+  }
+  await page.getByTestId('workspace-selector-menu').first().click();
+  await page.locator('[data-testid^="workspace-selector-item-"]', { hasText: name }).first().click({ timeout: 10000 });
+  await page.waitForFunction((n) => document.querySelector('[data-testid="workspace-selector-menu"]')?.innerText.includes(n), name, { timeout: 20000 });
+  await settle();
+}
+
 async function guardWorkspace() {
   if (signedOut) return; // sign-in, sign-up and similar pages
 
@@ -125,7 +141,7 @@ async function guardWorkspace() {
   for (const bad of [...(cfg.forbidden_workspaces || []), ...(cfg.forbidden_vaults || [])]) {
     if (top.includes(bad) || switcher.includes(bad)) throw new Error(`STOP: page shows "${bad}". Switch to ${cfg.workspace_name} and run again.`);
   }
-  if (!switcher.includes(cfg.workspace_name)) throw new Error(`STOP: header doesn't show "${cfg.workspace_name}".`);
+  if (!switcher.includes(expectedWorkspace)) throw new Error(`STOP: header doesn't show "${expectedWorkspace}".`);
 }
 
 async function safeLabel(loc) {
@@ -241,6 +257,15 @@ for (const e of ready) {
   }
   page = signedOut ? signedOutPage : signedInPage;
   try {
+    expectedWorkspace = e.workspace || cfg.workspace_name;
+    if (!signedOut) {
+      // Make sure the right workspace is selected before opening this screenshot's page.
+      const cur = await page.getByTestId('workspace-selector-menu').first().innerText({ timeout: 3000 }).catch(() => '');
+      if (!cur.includes(expectedWorkspace)) {
+        if (/^about:blank$/.test(page.url())) await page.goto(new URL('/assistants', cfg.base_url).toString());
+        await ensureWorkspace(expectedWorkspace);
+      }
+    }
     await runStep(e, { goto: e.start_url });
     for (const s of e.steps || []) {
       try { await runStep(e, s); } catch (err) { if (!s.optional) throw err; }
