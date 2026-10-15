@@ -86,6 +86,11 @@ fs.mkdirSync(path.join(runDir, 'old'), { recursive: true });
 const browser = await chromium.launch({ headless: false });
 const context = await browser.newContext({ viewport: cfg.viewport, deviceScaleFactor: cfg.device_scale_factor || 1 });
 const signedInPage = await context.newPage();
+// "Leave page? Changes you made may not be saved" - accept, so unsaved edits are discarded.
+// Any other browser prompt (confirm/alert) is declined, so nothing gets confirmed by accident.
+const handleDialog = (d) => (d.type() === 'beforeunload' ? d.accept() : d.dismiss()).catch(() => {});
+context.on('page', (pg) => pg.on('dialog', handleDialog));
+signedInPage.on('dialog', handleDialog);
 
 // ---------- you sign in ----------
 await signedInPage.goto(new URL('/sign-in', cfg.base_url).toString());

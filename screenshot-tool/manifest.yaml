@@ -2763,8 +2763,8 @@
   image: images/graphium/playbooks/add-playbook-context.png
   area: playbooks
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 389x242
   alt: Configure shared access button under Playbook Access in the left sidebar
@@ -2775,17 +2775,25 @@
   context: In the left sidebar, click **Configure shared access** under **Playbook Access** to open the resource panel. This
     is where you grant the playbook access to the vault resources it needs — the tables, connections, and tools available
     to every step.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - scroll_to:
+      role: button
+      name: Configure shared access
+      exact: true
+  selector:
+    css: section[class*="_section_"]
+    has_text: Configure shared access
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: add-playbook-trigger
   image: images/graphium/playbooks/add-playbook-trigger.png
   area: playbooks
   status: capture
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  method_note: Needs clicks to open the right state; leaves without saving
+  capture: element
   current_size: 1208x525
   alt: Trigger card at the top of the flow canvas
   used_in:
@@ -2796,16 +2804,38 @@
     section: General Event Triggers
     line: 51
   context: Click the **trigger card** at the top of the flow canvas to open **Trigger Configuration** in the right panel.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - &id010
+    click:
+      role: button
+      name: Open the trigger
+      exact: true
+  - &id011
+    wait_for: aside[class*="_inspector_"]
+  - &id012
+    click:
+      css: aside[class*="_inspector_"] button
+      has_text: Manual
+  - &id013
+    wait_for: aside[class*="_inspector_"] [role="listbox"]
+  - click:
+      css: aside[class*="_inspector_"] [role="option"]
+      has_text: Scheduled
+  selector:
+  - role: button
+    name: Open the trigger
+    exact: true
+  - aside[class*="_inspector_"]
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: advanced-options
   image: images/graphium/playbooks/advanced-options.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 1033x156
   alt: Success Criteria section in Step Details
@@ -2815,14 +2845,42 @@
     line: 61
   context: In the playbook editor, click **Edit**, then click the step you want to add a review checkpoint to. The **Step
     Details** panel opens on the right, with **Success Criteria** below the step's instructions.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - &id018
+    click:
+      role: button
+      name: Step outputs
+      exact: true
+  - &id019
+    click:
+      role: button
+      name: Use step outputs
+      exact: true
+    optional: true
+    note: Confirms the mode switch inside the unsaved form
+  - &id020
+    click:
+      role: button
+      name: Open step 2
+      exact: false
+  - &id021
+    wait_for:
+      text: Step Details
+      exact: true
+  - &id022
+    click:
+      role: button
+      name: Advanced Options
+      exact: true
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: ai-generate-playbook
   image: images/graphium/playbooks/ai-generate-playbook.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: ai-reply
   method_note: Sends a prompt and waits for the reply; check the wording before keeping
   capture: viewport
@@ -2837,13 +2895,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: allow-column-changes
   image: images/graphium/playbooks/allow-column-changes.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 476x326
   alt: Allow column changes toggle enabled on a Read/Write table in Playbook Access
@@ -2854,14 +2913,39 @@
   context: If a table is set to **Read/Write** in Playbook Access and its **Allow column changes** toggle is enabled, a playbook's
     steps may propose adding or editing columns on that table as they run. Unlike the Autonomous/Requires Review setting above,
     column changes always require approval — there is no aut
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - &id014
+    click:
+      role: button
+      name: Configure shared access
+      exact: true
+  - &id015
+    wait_for:
+      text: Playbook Access
+      exact: true
+  - &id016
+    click:
+      role: button
+      name: Read/Write
+      exact: true
+      within: aside[class*="_inspector_"]
+      nth: 1
+  - &id017
+    click:
+      role: button
+      name: Requires Review
+      exact: true
+      within: aside[class*="_inspector_"]
+      nth: 1
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: cancel-playbook-run
   image: images/graphium/playbooks/cancel-playbook-run.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: manual
   method_note: Needs a run that is still running
   capture: element
@@ -2877,13 +2961,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: configure-trigger
   image: images/graphium/playbooks/configure-trigger.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 473x445
   alt: Trigger Configuration panel showing fields for a Vault Event trigger
@@ -2893,16 +2978,25 @@
     line: 70
   context: '- **Select table** — The vault table to watch for the event. - **Description** (optional) — Document when and
     why this playbook runs.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - click:
+      css: aside[class*="_inspector_"] [role="option"]
+      has_text: Record Added
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: connection-action-access
   image: images/graphium/playbooks/connection-action-access.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 474x667
   alt: Connection Actions list expanded showing individual action checkboxes alongside Select all and Clear links
@@ -2913,16 +3007,23 @@
   context: 3. Toggling a connection type on reveals an **Actions** row showing how many actions are enabled (for example,
     *10 of 10 actions*). Click it to expand the full list, where each action has its own checkbox alongside **Select all**
     and **Clear** links — use this to scope the connection down to only th
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id014
+  - *id015
+  - scroll_to:
+      text: HubSpot
+      within: aside[class*="_inspector_"]
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: connection-event-trigger
   image: images/graphium/playbooks/connection-event-trigger.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 475x574
   alt: Trigger Configuration panel showing a connection event trigger selected
@@ -2932,16 +3033,26 @@
     line: 87
   context: '| FTP/SFTP | New File Added (Polling) | | HubSpot | New Deal in Stage, New Form Submission, New or Updated Company,
     New or Updated Contact, New or Updated Deal, New Ticket |'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - scroll_to:
+      text: HUBSPOT
+      exact: true
+      within: aside[class*="_inspector_"]
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: connection-trigger-parameters
   image: images/graphium/playbooks/connection-trigger-parameters.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 467x665
   alt: Trigger Configuration panel showing connection-specific fields
@@ -2951,16 +3062,25 @@
     line: 112
   context: '- **New Only** — When enabled, only fires for newly created contacts rather than updates to existing ones. Every
     connection trigger also has an optional **Description** field, and a **Clear all** link to reset the current trigger configuration.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - click:
+      css: aside[class*="_inspector_"] [role="option"]
+      has_text: New or Updated Contact
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: create-playbook-modal
   image: images/graphium/playbooks/create-playbook-modal.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 543x544
   alt: Create Playbook modal showing AI Assistant dropdown and description field
@@ -2971,14 +3091,23 @@
   context: A free-text field (up to 5,000 characters) where you describe what you want the playbook to do. Write in plain
     language — for example, *"Every morning, check for new patient records added in the last 24 hours and summarize the results."*
     The more specific you are, the better the output. Click **Gene
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks
+  steps:
+  - click:
+      role: button
+      name: New Playbook
+  - wait_for: .ReactModal__Content
+  - fill:
+      target: .ReactModal__Content textarea
+      value: Every morning summarize the previous day's completed orders and post a message to the leadership channel in Slack.
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: create-playbook
   image: images/graphium/playbooks/create-playbook.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -2993,13 +3122,14 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: disable-playbook
   image: images/graphium/playbooks/disable-playbook.png
   area: playbooks
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 419x251
   alt: Enabled/Disabled toggle on a playbook card in the Playbooks list
@@ -3010,16 +3140,20 @@
   context: 'To stop a playbook from running, toggle it off from the Playbooks list: find the **Enabled / Disabled** toggle
     in the bottom-right corner of the playbook''s card and click it. No confirmation is required — the card updates immediately
     to show **Disabled**. A disabled playbook will not fire on schedul'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/playbooks
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Patient Demographics Summary Report
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: manage-playbook-steps
   image: images/graphium/playbooks/manage-playbook-steps.png
   area: playbooks
   status: capture
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 654x523
   alt: Step card showing the insert (+) control and the ⋮ menu with Move up, Move down, Duplicate step, and Delete Step
@@ -3030,16 +3164,31 @@
   context: '- **Add a step** — Click the **+** icon between any two cards (or at the end of the flow) to insert a new step
     at that point. - **Reorder, duplicate, or delete a step** — Click the **⋮** menu on a step card for **Move up**, **Move
     down**, **Duplicate step**, or **Delete Step**.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - click:
+      role: button
+      name: Step 1 actions
+      exact: true
+  - wait_for:
+      text: Duplicate step
+  selector:
+  - role: button
+    name: Open the trigger
+    exact: true
+  - role: button
+    name: Open step 2
+    exact: false
+  - text: Delete Step
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: playbook-context-panel
   image: images/graphium/playbooks/playbook-context-panel.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 475x751
   alt: Playbook Access panel showing Tables, Connections, and Tools sections
@@ -3053,16 +3202,20 @@
   context: '**Connections** — Toggle on any vault connections the playbook needs to use. Each connection has an approval mode,
     which starts as **Requires Review**. Under **Actions**, choose which of the connection''s actions the playbook may use;
     each action shows whether it **Pauses for review** or **Runs witho'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id014
+  - *id015
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: playbook-review-checkpoint
   image: images/graphium/playbooks/playbook-review-checkpoint.png
   area: playbooks
-  status: capture
-  method: auto
-  method_note: Open the page and capture
+  status: keep-current
+  method: interactive
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 468x555
   alt: Review checkpoint configured on a resource in Playbook Access
@@ -3072,14 +3225,20 @@
     line: 40
   context: '- **Runs without review** — the action runs on its own > **Note:** Some connections'' actions haven''t been classified
     as reads yet, so every action — including ones that only look up data — may show **Pauses for review**.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id014
+  - *id015
+  - *id016
+  - *id017
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: playbook-review-notification
   image: images/graphium/playbooks/playbook-review-notification.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A playbook run waiting in Pending Review
   capture: element
@@ -3095,11 +3254,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: playbook-run-completed
   image: images/graphium/playbooks/playbook-run-completed.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A completed playbook run
   capture: element
@@ -3115,11 +3275,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: playbook-run-detail
   image: images/graphium/playbooks/playbook-run-detail.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A completed playbook run
   capture: viewport
@@ -3135,11 +3296,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: playbook-run-history
   image: images/graphium/playbooks/playbook-run-history.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: Completed Manual and Test runs
   capture: element
@@ -3154,11 +3316,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: playbook-run-running
   image: images/graphium/playbooks/playbook-run-running.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: manual
   method_note: Live state while a run is running
   capture: element
@@ -3174,14 +3337,15 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: playbook-step-details
   image: images/graphium/playbooks/playbook-step-details.png
   area: playbooks
   status: capture
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  method_note: Needs clicks to open the right state; leaves without saving
+  capture: element
   current_size: 1224x499
   alt: Step Details panel showing Step Title, Instructions, Success Criteria, and Advanced Options
   used_in:
@@ -3191,14 +3355,27 @@
   context: '- **Advanced Options** — An expandable section containing **Outputs and dependencies**: what the step produces
     and which earlier steps it reads. See [Passing Data Between Playbook Steps](/graphium/playbooks/passing-data-between-playbook-steps).
     Review the generated instructions carefully and edit an'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - click:
+      role: button
+      name: Open step 1
+      exact: false
+  - wait_for:
+      text: Step Details
+      exact: true
+  selector:
+  - role: button
+    name: Open the trigger
+    exact: true
+  - aside[class*="_inspector_"]
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: playbook-version
   image: images/graphium/playbooks/playbook-version.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: element
@@ -3211,17 +3388,23 @@
   context: Make your changes, then click **Save** to keep them as a draft, or **Publish** to make the new version active immediately.
     Changes do not affect the currently active published version until you publish again. > **Note:** Each version is numbered
     sequentially (v1, v2, v3...) and reflects how many tim
-  start_url: null
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector: '[class*="_identity_"]'
+  reviewed: true
+  padding:
+    top: 16
+    left: 72
+    right: 16
+    bottom: 16
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: publish-playbook
   image: images/graphium/playbooks/publish-playbook.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
-  capture: viewport
+  capture: element
   current_size: 1524x42
   alt: Publish button and Enabled badge
   used_in:
@@ -3230,14 +3413,20 @@
     line: 191
   context: '- Scheduled playbooks begin running at the next configured time. - Connection and Vault Event playbooks are automatically
     deployed — the trigger is registered with the external service and begins listening for events immediately.'
-  start_url: null
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '[class*="_identity_"]'
+  - role: button
+    name: Publish
+    exact: true
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: resolve-playbook-review
   image: images/graphium/playbooks/resolve-playbook-review.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A playbook run waiting in Pending Review
   capture: viewport
@@ -3251,11 +3440,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: run-step-outputs
   image: images/graphium/playbooks/run-step-outputs.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A completed run with declared step outputs
   capture: viewport
@@ -3270,14 +3460,15 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: save-draft-playbook
   image: images/graphium/playbooks/save-draft-playbook.png
   area: playbooks
-  status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  status: keep-current
+  method: auto
+  method_note: Open the page and capture
+  capture: element
   current_size: 1386x49
   alt: Save button in the playbook editor header
   used_in:
@@ -3287,16 +3478,22 @@
   context: 'Click **Save** in the top-right header to save your current configuration as a draft version. The header shows
     the current version number and draft status (for example, *v1 · Draft*), along with a **Ready to publish** badge once
     the playbook has at least one configured step. Drafts are not active — '
-  start_url: null
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps: []
-  selector: null
-  reviewed: false
+  selector:
+  - '[class*="_identity_"]'
+  - role: button
+    name: Save
+    exact: true
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: schedule-playbook-trigger
   image: images/graphium/playbooks/schedule-playbook-trigger.png
   area: playbooks
   status: capture
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 938x470
   alt: Trigger Configuration panel showing Frequency, Time, Time Zone, and Description fields for a Scheduled trigger
@@ -3310,16 +3507,34 @@
   context: '> **Note:** On the **Free** plan, playbooks can only be run manually — **Scheduled**, vault event, and connection
     triggers aren''t available. The **Starter** plan adds **Scheduled** triggers. See [Plan Comparison](/graphium/billing/subscription-and-payment-settings#plan-comparison).
     For Vault Event a'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  - click:
+      css: aside[class*="_inspector_"] [role="option"]
+      has_text: Scheduled
+  - fill:
+      target: aside[class*="_inspector_"] input[id^="react-select-"]
+      value: Weekly
+  - press: Enter
+    allow_enter: true
+    note: Picks Weekly in the unsaved form
+  - fill:
+      target: '#triggerDescription'
+      value: This playbook will run every Monday morning in order to note any new Family Medicine providers.
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: select-playbook-trigger
   image: images/graphium/playbooks/select-playbook-trigger.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 474x575
   alt: Run when dropdown showing General, Vault Events, and connection-specific trigger options
@@ -3333,16 +3548,22 @@
   context: '- **Vault Events** — **Record Added**, **Record Updated**, **Record Deleted** — fire automatically when a record
     changes in a specific vault table. - **Connection events** (listed per connection, e.g., New Row Added from Google Sheets)
     — fire automatically when something happens in a connected exter'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id010
+  - *id011
+  - *id012
+  - *id013
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: step-context-setting
   image: images/graphium/playbooks/step-context-setting.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 376x536
   alt: Step context setting in the playbook editor's left panel, with Shared conversation and Step outputs options
@@ -3352,16 +3573,22 @@
     line: 30
   context: '- **Step outputs** — each step only sees what earlier steps hand forward to it. - **Shared conversation** — every
     step sees everything that happened before it.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id018
+  - *id019
+  selector:
+    css: section[class*="_section_"]
+    has_text: Step context
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: step-outputs
   image: images/graphium/playbooks/step-outputs.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 476x782
   alt: Outputs and dependencies section in Step Details, showing an output's name, type, description, and the Step must produce
@@ -3372,16 +3599,40 @@
     line: 43
   context: 5. Add a short **description**, such as *"This week's open tickets."* 6. Check **Step must produce this** if the
     playbook shouldn't continue without it.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id018
+  - *id019
+  - *id020
+  - *id021
+  - *id022
+  - click:
+      role: button
+      name: Add output
+      exact: true
+  - fill:
+      target: '#outputName-0'
+      value: key_points_summary
+  - fill:
+      target: aside[class*="_inspector_"] input[id^="react-select-"]
+      value: Text
+  - press: Enter
+    allow_enter: true
+  - fill:
+      target: '#outputDescription-0'
+      value: A formatted list of the three key points extracted from the report
+  - click: '#outputRequired-0'
+    optional: true
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: step-reads
   image: images/graphium/playbooks/step-reads.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method_note: Needs clicks to open the right state; leaves without saving
   capture: element
   current_size: 419x441
   alt: What this step reads setting, with The step before this one and Specific steps options and the outputs it reads
@@ -3392,17 +3643,28 @@
   context: 2. Under **What this step reads**, leave **The step before this one** selected. This works for most playbooks.
     If a step needs something from further back — for example, step 3 needs what step 1 found — choose **Specific steps**
     and pick that step.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id018
+  - *id019
+  - *id020
+  - *id021
+  - *id022
+  - scroll_to:
+      text: What this step reads
+  selector:
+  - text: Note for whoever reads this playbook
+  - text: Reads the outputs of the step before it.
+  reviewed: true
+  padding: 16
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: success-criteria
   image: images/graphium/playbooks/success-criteria.png
   area: playbooks
   status: capture
   method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
-  capture: viewport
+  method_note: Needs clicks to open the right state; leaves without saving
+  capture: element
   current_size: 1627x409
   alt: Success Criteria row showing condition text field and Require Review action selected
   used_in:
@@ -3412,14 +3674,29 @@
   context: '- **Stop Without Failure** — if the criterion isn''t met, the run stops but is not marked as a failure - **Require
     Review** — the run always pauses and enters Pending Review status, showing a Builder the assessment so they can approve
     or deny'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
+  steps:
+  - *id020
+  - *id021
+  - click:
+      role: button
+      name: Add Criterion
+      exact: true
+  - fill:
+      target: '#criterion-0'
+      value: Approve addition of columns
+  - click:
+      role: button
+      name: Require Review
+      exact: true
+  selector: aside[class*="_inspector_"]
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-17-00-37).'
 - id: test-playbook
   image: images/graphium/playbooks/test-playbook.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: manual
   method_note: Live state while a test run is running
   capture: viewport
@@ -3435,11 +3712,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: test-run-buttons
   image: images/graphium/playbooks/test-run-buttons.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: interactive
   method_note: Needs clicks to open the right state; closes without saving
   capture: element
@@ -3458,11 +3736,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: test-run-completed
   image: images/graphium/playbooks/test-run-completed.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A completed test run
   capture: element
@@ -3477,11 +3756,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: test-run-pending
   image: images/graphium/playbooks/test-run-pending.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: manual
   method_note: Brief state before a run starts
   capture: element
@@ -3496,11 +3776,12 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: test-run-running
   image: images/graphium/playbooks/test-run-running.png
   area: playbooks
-  status: capture
+  status: keep-current
   method: manual
   method_note: Live state while a run is running
   capture: element
@@ -3515,7 +3796,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Shauna kept the current image (runs / needs setup / live state).'
 - id: add-record-button
   image: images/graphium/records/add-record-button.png
   area: records
@@ -4655,7 +4937,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id010
+  selector: &id023
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5046,7 +5328,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id011
+  selector: &id024
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5080,7 +5362,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id010
+  selector: *id023
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5212,7 +5494,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id011
+  selector: *id024
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5243,7 +5525,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id010
+  selector: *id023
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5316,7 +5598,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id011
+  selector: *id024
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
