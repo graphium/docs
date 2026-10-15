@@ -33,7 +33,7 @@ export const UNSAFE_LABELS = [
   'deactivate', 'deactivate vault', 'deactivate workspace', 'reactivate', 'reactivate vault',
   'submit', 'submit ticket', 'send', 'send invite', 'confirm', 'create vault', 'create', 'create table',
   'remove', 'archive', 'void', 'unvoid', 'approve', 'approve and continue', 'deny', 'add member',
-  'disconnect', 'add', 'cancel run', 'run', 'test', 'yes', 'upgrade', 'change plan', 'buy credits', 'generate', 'generate playbook', 'create connection', 'reconnect', 'connect',
+  'disconnect', 'add', 'cancel run', 'run', 'test', 'yes', 'upgrade', 'change plan', 'buy credits', 'generate', 'generate playbook', 'create connection', 'reconnect', 'connect', 'reset password', 'log out', 'sign in', 'create account', 'sign up with google', 'continue with google',
 ];
 
 export function isUnsafeLabel(label) {

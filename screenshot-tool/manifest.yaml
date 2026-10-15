@@ -2575,16 +2575,25 @@
     line: 31
   context: 1. Click your **name or avatar** to open the profile block. 2. Click **Edit Profile**. The profile editing view
     opens.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click: &id014
+      css: header button
+      has_text: Demo User
+  - click:
+      text: Edit Profile
+      exact: true
+  - wait_for: .ReactModal__Content
+  selector: .ReactModal__Content
+  reviewed: true
+  padding: 0
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: forgot-password-page
   image: images/graphium/getting-started/forgot-password-page.png
   area: getting-started
   status: capture
-  method: auto
-  method_note: Capture while signed out
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: viewport
   current_size: 1422x768
   alt: Graphium AI forgot password page
@@ -2594,10 +2603,17 @@
     line: 28
   context: 1. Navigate to the Graphium AI sign-in page at [app.graphium.ai/sign-in](https://app.graphium.ai/sign-in). 2. Click
     **Forgot password?** — this link appears to the right of the **Password** label, above the password field.
-  start_url: null
-  steps: []
+  start_url: /sign-in
+  steps:
+  - click:
+      text: Forgot password?
+  - wait_for:
+      text: Forgot Password
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  signed_out: true
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: google-auth-popup
   image: images/graphium/getting-started/google-auth-popup.png
   area: getting-started
@@ -2621,8 +2637,8 @@
   image: images/graphium/getting-started/invite-workspace-user.png
   area: getting-started
   status: capture
-  method: interactive
-  method_note: Needs clicks to open the right state; closes without saving
+  method: auto
+  method_note: Open the page and capture
   capture: element
   current_size: 863x204
   alt: Invite workspace user
@@ -2632,14 +2648,20 @@
     line: 40
   context: 1. From the **Members** page, go to the **Invite New User** section at the top. 2. Enter the email address of the
     person you want to invite.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /settings?tab=members
+  steps:
+  - wait_for:
+      testid: invite-email-input
+  selector:
+    css: '[class*="_card_"]'
+    has_text: Invite New User
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: pending-workspace-invite
   image: images/graphium/getting-started/pending-workspace-invite.png
   area: getting-started
-  status: capture
+  status: keep-current
   method: needs-test-data
   method_note: A pending workspace invitation
   capture: element
@@ -2655,7 +2677,8 @@
   start_url: null
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  review_note: '2026-10-15: Demo Workspace has no pending invitations; kept current image (sending an invite would email someone).'
 - id: reset-password-email
   image: images/graphium/getting-started/reset-password-email.png
   area: getting-started
@@ -2699,7 +2722,7 @@
   area: getting-started
   status: capture
   method: auto
-  method_note: Capture while signed out
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1468x794
   alt: Graphium AI sign-in page
@@ -2711,16 +2734,21 @@
     section: How to Sign In
     line: 28
   context: 1. Navigate to the Graphium AI sign-in page at [app.graphium.ai/sign-in](https://app.graphium.ai/sign-in).
-  start_url: null
-  steps: []
+  start_url: /sign-in
+  steps:
+  - wait_for:
+      text: Welcome back
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  signed_out: true
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: sign-up-page
   image: images/graphium/getting-started/sign-up-page.png
   area: getting-started
   status: capture
   method: auto
-  method_note: Capture while signed out
+  method_note: Open the page and capture
   capture: viewport
   current_size: 1444x794
   alt: Graphium AI sign-up page
@@ -2730,10 +2758,15 @@
     line: 34
   context: 1. Navigate to the Graphium AI sign-in page at [app.graphium.ai/sign-in](https://app.graphium.ai/sign-in). 2. Click
     the **Sign up** link at the bottom of the sign-in form ("Don't have an account? **Sign up**").
-  start_url: null
-  steps: []
+  start_url: /sign-up
+  steps:
+  - wait_for:
+      text: Create an Account
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  signed_out: true
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: user-profile-dropdown
   image: images/graphium/getting-started/user-profile-dropdown.png
   area: getting-started
@@ -2749,14 +2782,22 @@
     line: 20
   context: 2. Click your name or avatar to open the profile block. 3. The profile block drops down displaying your display
     name in bold and your email address beneath it.
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click: *id014
+  - wait_for:
+      text: Edit Profile
+      exact: true
+  selector:
+  - *id014
+  - css: header [class*="_dropdown_"]
+  reviewed: true
+  padding: 10
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: workspace-dashboard
   image: images/graphium/getting-started/workspace-dashboard.png
   area: getting-started
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -2771,16 +2812,23 @@
     line: 51
   context: '- You are signed in immediately — no separate email verification step is required before accessing the workspace
     home - The workspace is ready for you to create vaults, invite team members, and start capturing data'
-  start_url: null
-  steps: []
+  start_url: /assistants
+  steps:
+  - click:
+      role: button
+      name: Grid view
+      exact: true
+    optional: true
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: workspace-indicator
   image: images/graphium/getting-started/workspace-indicator.png
   area: getting-started
   status: capture
-  method: auto
-  method_note: Open the page and capture
+  method: interactive
+  method_note: Needs clicks to open the right state; closes without saving
   capture: element
   current_size: 390x266
   alt: Graphium AI workspace indicator
@@ -2790,10 +2838,18 @@
     line: 25
   context: '- A **gear icon (⚙)** to the right for accessing workspace settings The color of the icon is unique to each workspace,
     making it easy to identify your active workspace at a glance.'
-  start_url: null
-  steps: []
-  selector: null
-  reviewed: false
+  start_url: /assistants
+  steps:
+  - click: &id015
+      testid: workspace-selector-menu
+  - wait_for:
+      text: Manage workspaces
+  selector:
+  - *id015
+  - text: Manage workspaces
+  reviewed: true
+  padding: 12
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: workspace-invitation-email
   image: images/graphium/getting-started/workspace-invitation-email.png
   area: getting-started
@@ -2828,14 +2884,18 @@
     line: 29
   context: '| **Status** | **Active** (green) or **Deactivated** (grey) | | **Actions** | **Deactivate** for active members,
     or **Reactivate** for deactivated members |'
-  start_url: null
-  steps: []
+  start_url: /settings?tab=members
+  steps:
+  - wait_for:
+      testid: invite-email-input
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna approved the new capture (run 2026-10-15-21-11-51).'
 - id: workspace-settings-page
   image: images/graphium/getting-started/workspace-settings-page.png
   area: getting-started
-  status: capture
+  status: keep-current
   method: auto
   method_note: Open the page and capture
   capture: viewport
@@ -2847,10 +2907,12 @@
     line: 20
   context: 2. Click the **Workspace Settings** button — the gear icon (⚙) that appears immediately to the right of the workspace
     name. 3. The Workspace Settings page opens, defaulting to the **General** tab.
-  start_url: null
+  start_url: /settings
   steps: []
   selector: null
-  reviewed: false
+  reviewed: true
+  padding: 8
+  review_note: '2026-10-15: Shauna kept the current image.'
 - id: add-playbook-context
   image: images/graphium/playbooks/add-playbook-context.png
   area: playbooks
@@ -2898,18 +2960,18 @@
   context: Click the **trigger card** at the top of the flow canvas to open **Trigger Configuration** in the right panel.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id014
+  - &id016
     click:
       role: button
       name: Open the trigger
       exact: true
-  - &id015
+  - &id017
     wait_for: aside[class*="_inspector_"]
-  - &id016
+  - &id018
     click:
       css: aside[class*="_inspector_"] button
       has_text: Manual
-  - &id017
+  - &id019
     wait_for: aside[class*="_inspector_"] [role="listbox"]
   - click:
       css: aside[class*="_inspector_"] [role="option"]
@@ -2939,28 +3001,28 @@
     Details** panel opens on the right, with **Success Criteria** below the step's instructions.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id022
+  - &id024
     click:
       role: button
       name: Step outputs
       exact: true
-  - &id023
+  - &id025
     click:
       role: button
       name: Use step outputs
       exact: true
     optional: true
     note: Confirms the mode switch inside the unsaved form
-  - &id024
+  - &id026
     click:
       role: button
       name: Open step 2
       exact: false
-  - &id025
+  - &id027
     wait_for:
       text: Step Details
       exact: true
-  - &id026
+  - &id028
     click:
       role: button
       name: Advanced Options
@@ -3007,23 +3069,23 @@
     column changes always require approval — there is no aut
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - &id018
+  - &id020
     click:
       role: button
       name: Configure shared access
       exact: true
-  - &id019
+  - &id021
     wait_for:
       text: Playbook Access
       exact: true
-  - &id020
+  - &id022
     click:
       role: button
       name: Read/Write
       exact: true
       within: aside[class*="_inspector_"]
       nth: 1
-  - &id021
+  - &id023
     click:
       role: button
       name: Requires Review
@@ -3072,10 +3134,10 @@
     why this playbook runs.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
   - *id016
   - *id017
+  - *id018
+  - *id019
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Record Added
@@ -3101,8 +3163,8 @@
     and **Clear** links — use this to scope the connection down to only th
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
+  - *id020
+  - *id021
   - scroll_to:
       text: HubSpot
       within: aside[class*="_inspector_"]
@@ -3127,10 +3189,10 @@
     New or Updated Contact, New or Updated Deal, New Ticket |'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
   - *id016
   - *id017
+  - *id018
+  - *id019
   - scroll_to:
       text: HUBSPOT
       exact: true
@@ -3156,10 +3218,10 @@
     connection trigger also has an optional **Description** field, and a **Clear all** link to reset the current trigger configuration.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
   - *id016
   - *id017
+  - *id018
+  - *id019
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: New or Updated Contact
@@ -3296,8 +3358,8 @@
     each action shows whether it **Pauses for review** or **Runs witho'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
+  - *id020
+  - *id021
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3319,10 +3381,10 @@
     as reads yet, so every action — including ones that only look up data — may show **Pauses for review**.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id018
-  - *id019
   - *id020
   - *id021
+  - *id022
+  - *id023
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3601,10 +3663,10 @@
     For Vault Event a'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
   - *id016
   - *id017
+  - *id018
+  - *id019
   - click:
       css: aside[class*="_inspector_"] [role="option"]
       has_text: Scheduled
@@ -3642,10 +3704,10 @@
     — fire automatically when something happens in a connected exter'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id014
-  - *id015
   - *id016
   - *id017
+  - *id018
+  - *id019
   selector: aside[class*="_inspector_"]
   reviewed: true
   padding: 0
@@ -3667,8 +3729,8 @@
     step sees everything that happened before it.'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id022
-  - *id023
+  - *id024
+  - *id025
   selector:
     css: section[class*="_section_"]
     has_text: Step context
@@ -3693,11 +3755,11 @@
     playbook shouldn't continue without it.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id022
-  - *id023
   - *id024
   - *id025
   - *id026
+  - *id027
+  - *id028
   - click:
       role: button
       name: Add output
@@ -3737,11 +3799,11 @@
     and pick that step.
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id022
-  - *id023
   - *id024
   - *id025
   - *id026
+  - *id027
+  - *id028
   - scroll_to:
       text: What this step reads
   selector:
@@ -3768,8 +3830,8 @@
     or deny'
   start_url: /vaults/{{vaultId}}/playbooks/{{playbookId}}
   steps:
-  - *id024
-  - *id025
+  - *id026
+  - *id027
   - click:
       role: button
       name: Add Criterion
@@ -3907,7 +3969,7 @@
     The button label uses the table's configured singular name — for example, **Add Patient** or **Add Procedure**.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps: []
-  selector: &id027
+  selector: &id029
     role: button
     name: Add Providers 40
     exact: true
@@ -3954,7 +4016,7 @@
     table's schema. Fill in the fields for the new record.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - click: *id027
+  - click: *id029
   - wait_for:
       testid: vault-record-editor
   - click:
@@ -4056,28 +4118,28 @@
     records.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - &id028
+  - &id030
     click:
       role: button
       name: Filter
       exact: true
-  - &id029
+  - &id031
     wait_for: '[class*="_filterBar_"]'
-  - &id030
+  - &id032
     click:
       css: '[class*="_filterBar_"] button'
       has_text: Add condition
-  - &id031
+  - &id033
     fill:
       target:
         css: '[class*="_filterBar_"] input[id^="react-select-"]'
         nth: 1
       value: contains
-  - &id032
+  - &id034
     press: Enter
     allow_enter: true
     note: Picks the filter operator; filters are not saved
-  - &id033
+  - &id035
     fill:
       target: '[class*="_filterBar_"] input:not([id^="react-select-"])'
       value: Dana
@@ -4108,9 +4170,9 @@
     remain applied even when the panel is closed.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - *id028
-  - *id029
   - *id030
+  - *id031
+  - *id032
   selector:
   - '[data-testid="vault-table-toolbar"]'
   - '[class*="_filterBar_"]'
@@ -4160,12 +4222,12 @@
     are shown again.
   start_url: /vaults/{{vaultId}}/tables/{{tableId}}
   steps:
-  - *id028
-  - *id029
   - *id030
   - *id031
   - *id032
   - *id033
+  - *id034
+  - *id035
   selector:
   - '[class*="_filterBar_"] input:not([id^="react-select-"])'
   - role: button
@@ -5136,7 +5198,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: &id034
+  selector: &id036
   - text: Property Type
     exact: true
     within: .ReactModal__Content
@@ -5527,7 +5589,7 @@
   - fill:
       target: '#propertyDescription'
       value: Combines the company name and invoice number into a single summary field
-  selector: &id035
+  selector: &id037
   - css: .ReactModal__Content label[for="propertyName"]
   - text: The internal name is used as the field identifier
     within: .ReactModal__Content
@@ -5561,7 +5623,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id034
+  selector: *id036
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5693,7 +5755,7 @@
   - fill:
       target: '#propertyDescription'
       value: Reference the contact information for the invoice's main point of contact
-  selector: *id035
+  selector: *id037
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna kept the current image after seeing a new capture.'
@@ -5724,7 +5786,7 @@
   - press: Enter
     allow_enter: true
     note: Picks the property type; the form is not submitted
-  selector: *id034
+  selector: *id036
   reviewed: true
   padding: 12
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
@@ -5797,7 +5859,7 @@
       target: '#propertyDescription'
       value: Automatically populate the invoice number starting with 1 and note the current year at the end of the invoice
         number
-  selector: *id035
+  selector: *id037
   reviewed: true
   padding: 16
   review_note: '2026-10-14: Shauna approved the new capture (run 2026-10-14-22-52-42).'
